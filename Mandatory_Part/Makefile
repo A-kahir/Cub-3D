@@ -5,10 +5,15 @@ PARSER_SRC = \
 
 LIBFT_SRC = \
 	Parssing/Libft_utils/malloc.c \
-	Parssing/Libft_utils/ft_strcmp.c
+	Parssing/Libft_utils/ft_strcmp.c \
+	Parssing/Libft_utils/ft_strdup.c \
+	Parssing/Libft_utils/ft_strchr.c \
+	Parssing/Libft_utils/ft_strjoin.c \
+	Parssing/Libft_utils/ft_strlen.c \
 
 UTILS_SRC = \
-	Parssing/Utils_func/print_messages.c
+	Parssing/Utils_func/print_messages.c \
+	Parssing/Utils_func/ft_get_next_line.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
@@ -23,7 +28,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -IParssing -IParssing/Libft_
 
 all: $(MLX_FILE) $(NAME)
 
-$(NAME): $(OBJS) $(MLX_FILE)
+$(NAME): $(OBJS) $(MLX_FILE) parsing.h
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_FILE) $(MLX_FLAGS) -o $(NAME)
 
 $(MLX_FILE):
