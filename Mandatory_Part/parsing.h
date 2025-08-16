@@ -38,13 +38,12 @@ typedef struct s_leaks
 	struct s_leaks	*next;
 }	t_leaks;
 
-typedef struct s_texture
+typedef struct s_source
 {
-	int	north_txt;
-	int	south_txt;
-	int	east_txt;
-	int	west_txt;
-}	t_texture;
+	char *var;
+	char *value;
+	struct s_source	*next;
+}	t_source;
 
 
 //principale func:
@@ -53,6 +52,7 @@ typedef struct s_texture
 //Utils func:
 void	print_message(int flag);
 char	*ft_get_next_line(int fd);
+int		ft_chack_valid_source(char *str);
 
 //Libft utils:
 void	*malloc_cl(size_t size, t_mal mode);
@@ -61,6 +61,8 @@ char	*ft_strdup(char *s1, int flag);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char	*str);
-
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	**ft_split(char *s, char c);
+t_source	*ft_add_back(t_source *line, char *var, char *value);
 
 #endif

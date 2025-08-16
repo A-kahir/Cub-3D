@@ -10,10 +10,13 @@ LIBFT_SRC = \
 	Parssing/Libft_utils/ft_strchr.c \
 	Parssing/Libft_utils/ft_strjoin.c \
 	Parssing/Libft_utils/ft_strlen.c \
+	Parssing/Libft_utils/ft_strncmp.c \
+	Parssing/Libft_utils/ft_add_front.c \
 
 UTILS_SRC = \
 	Parssing/Utils_func/print_messages.c \
 	Parssing/Utils_func/ft_get_next_line.c \
+	Parssing/Utils_func/ft_chack_valid_source.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
@@ -23,7 +26,7 @@ MLX_FILE = $(MLX_DIR)/build/libmlx42.a
 BREW_PREFIX := $(shell brew --prefix)
 MLX_FLAGS = -L$(BREW_PREFIX)/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -IParssing -IParssing/Libft_utils -IParssing/Utils_func
 
 all: $(MLX_FILE) $(NAME)

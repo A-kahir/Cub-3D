@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../parsing.h"
 
 char	*ft_strdup(char *s1, int flag)
 {

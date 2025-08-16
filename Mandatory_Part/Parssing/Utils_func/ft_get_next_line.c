@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../parsing.h"
 
 static	char	*ft_operation(char *str, char *temp, char *buff)
 {
