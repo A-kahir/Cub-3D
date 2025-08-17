@@ -45,6 +45,20 @@ t_source *ft_fill_struct(t_source *src, char *line)
 	return (src);
 }
 
+
+int ft_check_map(char *line)
+{
+	int i;
+
+	i = 0;
+	if (line[i] == '\n' || (line[i] == 32 || (line[i] >= 9 && line[i] <= 13)))
+	{
+		return (-1);
+	}
+	printf("line ----> %s\n", line);
+	return (0);
+}
+
 t_source	*ft_get_source(t_source *src, char *file)
 {
 	int		fd;
@@ -58,8 +72,17 @@ t_source	*ft_get_source(t_source *src, char *file)
 		return (perror("line"), NULL);
 	while (line)
 	{
-		if (ft_chack_valid_source(line) == 0)
+		if (line && ft_chack_valid_source(line) == 0)
 			src = ft_fill_struct(src, line);
+		if (ft_strchr(line, 'C'))
+			break;
+		line = ft_get_next_line(fd);
+	}
+	line = ft_get_next_line(fd);
+	while (line)
+	{
+		if (line && ft_check_map(line) == 0)
+			printf("*************\n");
 		line = ft_get_next_line(fd);
 	}
 	return (src);
