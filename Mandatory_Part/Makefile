@@ -17,6 +17,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/print_messages.c \
 	Parssing/Utils_func/ft_get_next_line.c \
 	Parssing/Utils_func/ft_chack_valid_source.c \
+	Parssing/Utils_func/ft_fill_struct.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)

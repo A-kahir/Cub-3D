@@ -22,29 +22,61 @@ int	ft_parsing(int argc, char **argv)
 	return (0);
 }
 
-t_source *ft_fill_struct(t_source *src, char *line)
+int ft_if_valid_map(char *line)
 {
-	char **var;
-	char **value;
+	static int save_line;
+	int i;
+	int len;
 
-	if (!line)
-		return (NULL);
-	var = ft_split(line, ' ');
-	if (!var)
-		return (perror("split"), NULL);
-	value = ft_split(var[1], '\n');
-	if (!value || !value[0])
-		return (src);
-	if (var && (!ft_strncmp(var[0], "NO", 2) || !ft_strncmp(var[0], "SO", 2)
-		|| !ft_strncmp(var[0], "WE", 2) || !ft_strncmp(var[0], "WE", 2)
-		|| !ft_strncmp(var[0], "EA", 2) || !ft_strcmp(var[0], "F")
-		|| !ft_strcmp(var[0], "C")))
+	i = 0;
+	len = ft_strlen(line) - 3;
+	while (line[i] != '\0')
+	{
+		if (save_line == 0 && line[i] != '1')
 		{
-			src = ft_add_back(src, var[0], value[0]);
+			if (!(line[i] == 32 || (line[i] >= 9 && line[i] <= 13)))
+			{
+				write(2, "check your Map: You have invalid character: [", 46);
+				write(2, &line[i], 1);
+				write(2, "]", 2);
+				write(2, " from the first line Map\n", 26);
+				return (-1);
+			}
 		}
-	return (src);
+		else if (save_line > 0)
+		{
+			if (line[0] != '1')
+			{
+				if (!(line[i] == 32 || (line[i] >= 9 && line[i] <= 13)))
+				{
+					write(2, "check your Map: You have invalid character: [", 46);
+				    write(2, &line[0], 1);
+				    write(2, "]", 2);
+				    write(2, " from the line Map: [", 22);
+					write(2, line, ft_strlen(line) - 2);
+				    write(2, "]\n", 3);
+					return (-1);
+				}
+			}
+			else if (line[len] != '1')
+			{
+				if (!(line[i] == 32 || (line[i] >= 9 && line[i] <= 13)))
+				{
+					write(2, "check your Map: You have invalid character: [", 46);
+				    write(2, &line[len], 1);
+				    write(2, "]", 2);
+				    write(2, " from the line Map: [", 22);
+					write(2, line, ft_strlen(line) - 2);
+				    write(2, "]\n", 3);
+					return (-1);
+				}
+			}
+		}
+		i++;
+	}
+	save_line++;
+	return (0);
 }
-
 
 int ft_check_map(char *line)
 {
@@ -52,10 +84,11 @@ int ft_check_map(char *line)
 
 	i = 0;
 	if (line[i] == '\n' || (line[i] == 32 || (line[i] >= 9 && line[i] <= 13)))
-	{
 		return (-1);
+	if (ft_if_valid_map(line) == -1)
+	{
+		return (-2);
 	}
-	printf("line ----> %s\n", line);
 	return (0);
 }
 
@@ -79,12 +112,16 @@ t_source	*ft_get_source(t_source *src, char *file)
 		line = ft_get_next_line(fd);
 	}
 	line = ft_get_next_line(fd);
+	int check;
 	while (line)
 	{
-		if (line && ft_check_map(line) == 0)
-			printf("*************\n");
+		check = ft_check_map(line);
+		if (line && check == -2)
+			return (NULL);
 		line = ft_get_next_line(fd);
 	}
+	if (check == 0)
+	   printf("************\n");
 	return (src);
 }
 
@@ -98,10 +135,10 @@ int	main(int argc, char **argv)
 	src = ft_get_source(src, argv[1]);
 	if (!src)
 		return (print_message(1), 1);
-	t_source *tmp = src;
-	while (tmp)
-	{
-		printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
-		tmp = tmp->next;
-	}
+	// t_source *tmp = src;
+	// while (tmp)
+	// {
+	// 	printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
+	// 	tmp = tmp->next;
+	// }
 }

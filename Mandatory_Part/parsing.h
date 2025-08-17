@@ -53,6 +53,8 @@ typedef struct s_source
 void	print_message(int flag);
 char	*ft_get_next_line(int fd);
 int		ft_chack_valid_source(char *str);
+t_source *ft_fill_struct(t_source *src, char *line);
+
 
 //Libft utils:
 void	*malloc_cl(size_t size, t_mal mode);
