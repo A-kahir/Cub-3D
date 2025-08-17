@@ -25,24 +25,23 @@ int	ft_parsing(int argc, char **argv)
 t_source *ft_fill_struct(t_source *src, char *line)
 {
 	char **var;
+	char **value;
 
 	if (!line)
 		return (NULL);
 	var = ft_split(line, ' ');
 	if (!var)
 		return (perror("split"), NULL);
-	if (var && ft_strncmp(var[0], "NO", 2) == 0)
-		src = ft_add_back(src, var[0], var[1]);
-	else if (var && ft_strncmp(var[0], "SO", 2) == 0)
-		src = ft_add_back(src, var[0], var[1]);
-	else if (var && ft_strncmp(var[0], "WE", 2) == 0)
-		src = ft_add_back(src, var[0], var[1]);
-	else if (var && ft_strncmp(var[0], "EA", 2) == 0)
-		src = ft_add_back(src, var[0], var[1]);
-	else if (var && ft_strcmp(var[0], "F") == 0)
-		src = ft_add_back(src, var[0], var[1]);
-	else if (var && ft_strcmp(var[0], "C") == 0)
-		src = ft_add_back(src, var[0], var[1]);
+	value = ft_split(var[1], '\n');
+	if (!value || !value[0])
+		return (src);
+	if (var && (!ft_strncmp(var[0], "NO", 2) || !ft_strncmp(var[0], "SO", 2)
+		|| !ft_strncmp(var[0], "WE", 2) || !ft_strncmp(var[0], "WE", 2)
+		|| !ft_strncmp(var[0], "EA", 2) || !ft_strcmp(var[0], "F")
+		|| !ft_strcmp(var[0], "C")))
+		{
+			src = ft_add_back(src, var[0], value[0]);
+		}
 	return (src);
 }
 
@@ -70,9 +69,7 @@ int	main(int argc, char **argv)
 {
 	t_source	*src;
 
-	src = malloc_cl(sizeof(t_source), 0);
-	if (!src)
-		return (perror("malloc"), 1);
+	src = NULL;
 	if (ft_parsing(argc, argv) == -1)
 		return (1);
 	src = ft_get_source(src, argv[1]);
@@ -81,7 +78,7 @@ int	main(int argc, char **argv)
 	t_source *tmp = src;
 	while (tmp)
 	{
-		printf("tmp ===> %s = %s\n$", tmp->var, tmp->value);
+		printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
 		tmp = tmp->next;
 	}
 }
