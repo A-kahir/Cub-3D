@@ -29,7 +29,7 @@ int ft_if_valid_map(char *line)
 	int len;
 
 	i = 0;
-	len = ft_strlen(line) - 3;
+	len = ft_strlen(line) - 1;
 	while (line[i] != '\0')
 	{
 		if (save_line == 0 && line[i] != '1')
@@ -39,7 +39,7 @@ int ft_if_valid_map(char *line)
 				write(2, "check your Map: You have invalid character: [", 46);
 				write(2, &line[i], 1);
 				write(2, "]", 2);
-				write(2, " from the first line Map\n", 26);
+				write(2, " from the first line Map.\n", 27);
 				return (-1);
 			}
 		}
@@ -54,7 +54,7 @@ int ft_if_valid_map(char *line)
 				    write(2, "]", 2);
 				    write(2, " from the line Map: [", 22);
 					write(2, line, ft_strlen(line) - 2);
-				    write(2, "]\n", 3);
+				    write(2, "].\n", 4);
 					return (-1);
 				}
 			}
@@ -66,8 +66,8 @@ int ft_if_valid_map(char *line)
 				    write(2, &line[len], 1);
 				    write(2, "]", 2);
 				    write(2, " from the line Map: [", 22);
-					write(2, line, ft_strlen(line) - 2);
-				    write(2, "]\n", 3);
+					write(2, line, ft_strlen(line) - 1);
+				    write(2, "].\n", 4);
 					return (-1);
 				}
 			}
@@ -92,37 +92,96 @@ int ft_check_map(char *line)
 	return (0);
 }
 
-t_source	*ft_get_source(t_source *src, char *file)
+t_source *ft_get_source(t_source *src, char *file)
 {
-	int		fd;
-	char	*line;
+    int     fd;
+    char    *line;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (perror("fd"), NULL);
-	line = ft_get_next_line(fd);
-	if (!line)
-		return (perror("line"), NULL);
-	while (line)
-	{
-		if (line && ft_chack_valid_source(line) == 0)
-			src = ft_fill_struct(src, line);
-		if (ft_strchr(line, 'C'))
-			break;
-		line = ft_get_next_line(fd);
-	}
-	line = ft_get_next_line(fd);
+    fd = open(file, O_RDONLY);
+    if (fd == -1)
+        return (perror("open"), NULL);
+    while ((line = ft_get_next_line(fd)))
+    {
+        if (ft_chack_valid_source(line) == 0)
+            src = ft_fill_struct(src, line);
+        if (ft_strncmp(line, "C ", 2) == 0) 
+        {
+            free(line);
+            break;
+        }
+        free(line);
+    }
+    char **map = NULL;
+    int i = 0;
+	int j;
+    while ((line = ft_get_next_line(fd)))
+    {
+        if (!(line[0] == '\n' ||  line[0] == '\0'
+            || (line[0] == 32 || (line[0] >= 9 && line[0] <= 13))))
+        {
+			int len = ft_strlen(line);
+			if (line[len - 2] == '\r')
+				line[len - 2] = '\0';
+			if (len > 0 && line[len - 1] == '\n')
+				line[len - 1] = '\0';
+            char **new_map = malloc(sizeof(char *) * (i + 2));
+            if (!new_map)
+                return (perror("map malloc"), NULL);
+			j = 0;
+            while (j < i)
+			{
+                new_map[j] = map[j];
+				j++;
+			}
+            free(map);
+            new_map[i] = ft_strdup(line, 0);
+            new_map[i + 1] = NULL;
+            map = new_map;
+            i++;
+        }
+        free(line);
+    }
 	int check;
-	while (line)
+	i = 0;
+	while (map[i])
 	{
-		check = ft_check_map(line);
-		if (line && check == -2)
+		check = ft_check_map(map[i]);
+		if (check == -2)
 			return (NULL);
-		line = ft_get_next_line(fd);
+		i++;
 	}
+	if (map[i] == NULL)
+	{
+		i--;
+		j = 0;
+		while (map[i][j] != '\0')
+		{
+			if (map[i][j] != '1'
+				&& !(map[i][j] == 32 || (map[i][j] >= 9 && map[i][j] <= 13)))
+			{
+				write(2, "check your Map: You have invalid character: [", 46);
+				write(2, &map[i][j], 1);
+				write(2, "]", 2);
+				write(2, " from the Last line Map.\n", 26);
+				return (NULL);
+			}
+			j++;
+		}
+	}
+	src->map = malloc_cl(sizeof(char *) * (i + 1), 0);
+	if (!src->map)
+		return (perror("src map failed"), NULL);
 	if (check == 0)
-	   printf("************\n");
-	return (src);
+	{
+		j = 0;
+		while (j < i)
+		{
+			src->map[j] = ft_strdup(map[j], 0);
+			j++;
+		}
+	}
+	src->map[i] = NULL;
+    return (src);
 }
 
 int	main(int argc, char **argv)
@@ -135,10 +194,17 @@ int	main(int argc, char **argv)
 	src = ft_get_source(src, argv[1]);
 	if (!src)
 		return (print_message(1), 1);
-	// t_source *tmp = src;
-	// while (tmp)
-	// {
-	// 	printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
-	// 	tmp = tmp->next;
-	// }
+	t_source *tmp = src;
+	while (tmp)
+	{
+		printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
+		tmp = tmp->next;
+	}
+	printf("*********************\n");
+	int i = 0;
+	while (src->map[i])
+	{
+		printf("%s\n", src->map[i]);
+		i++;
+	}
 }

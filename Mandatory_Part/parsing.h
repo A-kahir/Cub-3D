@@ -42,6 +42,7 @@ typedef struct s_source
 {
 	char *var;
 	char *value;
+	char **map;
 	struct s_source	*next;
 }	t_source;
 

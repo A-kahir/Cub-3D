@@ -4,9 +4,19 @@ t_source *ft_fill_struct(t_source *src, char *line)
 {
 	char **var;
 	char **value;
+	int len;
+	int i;
 
 	if (!line)
 		return (NULL);
+	len = ft_strlen(line);
+	i = 0;
+	while (line[i])
+	{
+		if (line[len - 2] == '\r')
+			line[len - 2] = '\0';
+		i++;
+	}
 	var = ft_split(line, ' ');
 	if (!var)
 		return (perror("split"), NULL);
