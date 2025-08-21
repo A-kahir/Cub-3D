@@ -72,4 +72,9 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		**ft_split(char *s, char c);
 t_source	*ft_add_back(t_source *line, char *var, char *value);
 
+
+
+/// should remove when we finish
+void ft_debug(t_source *src, int flag); // in utils func
+
 #endif
