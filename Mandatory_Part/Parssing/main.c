@@ -23,5 +23,5 @@ int	main(int argc, char **argv)
 	if (!src)
 		return (print_message(1, NULL, '\0'), 1);
 	ft_debug(src, 1);
-	//M.faleh => all data now is stored in structs should now open windows and start working.
+	//Mm.faleh => all data now is stored in structs should now open windows and start working.
 }

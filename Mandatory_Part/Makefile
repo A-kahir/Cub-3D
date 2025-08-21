@@ -25,7 +25,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_check_before_map.c \
 	Parssing/Utils_func/ft_parsing.c \
 	Parssing/Utils_func/ft_get_source.c \
-	Parssing/Utils_func/ft_debug.c \
+	Parssing/Utils_func/ft_debug.c \ #should remove when we finish
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
