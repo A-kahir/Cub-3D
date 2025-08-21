@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/21 04:04:49 by akahir           ###   ########.fr       */
+/*   Updated: 2025/08/21 17:14:30 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void *ft_fill_the_map(int fd, t_source *src)
 				line[len - 2] = '\0';
 			if (len > 0 && line[len - 1] == '\n')
 				line[len - 1] = '\0';
-            char **new_map = malloc(sizeof(char *) * (i + 2));
+            char **new_map = malloc_cl(sizeof(char *) * (i + 2), 0);
             if (!new_map)
                 return (perror("map malloc"), NULL);
 			j = 0;
