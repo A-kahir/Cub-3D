@@ -51,11 +51,13 @@ typedef struct s_source
 
 
 //Utils func:
-void	print_message(int flag);
+void	print_message(int flag, char *arg, char ch);
 char	*ft_get_next_line(int fd);
 int		ft_chack_valid_source(char *str);
 t_source *ft_fill_struct(t_source *src, char *line);
-
+int		ft_if_valid_map(char *line, int i);
+void	*ft_fill_the_map(int fd, t_source *src);
+int		ft_check_map(char *line);
 
 //Libft utils:
 void	*malloc_cl(size_t size, t_mal mode);
