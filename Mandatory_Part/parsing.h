@@ -48,24 +48,33 @@ typedef struct s_source
 
 
 //principale func:
-
+int			ft_parsing(int argc, char **argv);
+t_source	*ft_get_source(t_source *src, char *file);
 
 //Utils func:
-void	print_message(int flag);
-char	*ft_get_next_line(int fd);
-int		ft_chack_valid_source(char *str);
-t_source *ft_fill_struct(t_source *src, char *line);
-
+void		print_message(int flag, char *arg, char ch);
+char		*ft_get_next_line(int fd);
+int			ft_chack_valid_source(char *str);
+t_source	 *ft_fill_struct(t_source *src, char *line);
+int			ft_if_valid_map(char *line, int i);
+void		*ft_fill_the_map(int fd, t_source *src);
+int			ft_check_map(char *line);
+int			ft_check_before_map(t_source *src);
 
 //Libft utils:
-void	*malloc_cl(size_t size, t_mal mode);
-int		ft_strcmp(char *s1, char *s2);
-char	*ft_strdup(char *s1, int flag);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlen(char	*str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	**ft_split(char *s, char c);
+void		*malloc_cl(size_t size, t_mal mode);
+int			ft_strcmp(char *s1, char *s2);
+char		*ft_strdup(char *s1, int flag);
+char		*ft_strchr(const char *s, int c);
+char		*ft_strjoin(char *s1, char *s2);
+int			ft_strlen(char	*str);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+char		**ft_split(char *s, char c);
 t_source	*ft_add_back(t_source *line, char *var, char *value);
+
+
+
+/// should remove when we finish
+void ft_debug(t_source *src, int flag); // in utils func
 
 #endif
