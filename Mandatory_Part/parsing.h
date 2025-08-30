@@ -24,6 +24,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <mlx.h>
 
 
 typedef enum s_mal
@@ -38,11 +39,20 @@ typedef struct s_leaks
 	struct s_leaks	*next;
 }	t_leaks;
 
+typedef struct s_colors
+{
+	int r;
+	int g;
+	int b;
+	unsigned int hexa_rgb;
+}	t_colors;
+
 typedef struct s_source
 {
 	char *var;
 	char *value;
 	char **map;
+	t_colors *colors;
 	struct s_source	*next;
 }	t_source;
 
@@ -71,7 +81,7 @@ int			ft_strlen(char	*str);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		**ft_split(char *s, char c);
 t_source	*ft_add_back(t_source *line, char *var, char *value);
-
+int			ft_atoi(char *str);
 
 
 /// should remove when we finish

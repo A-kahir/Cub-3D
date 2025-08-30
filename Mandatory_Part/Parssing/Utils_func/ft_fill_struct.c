@@ -37,10 +37,27 @@ t_source	*ft_fill_struct(t_source *src, char *line)
 		return (src);
 	if (var && (!ft_strncmp(var[0], "NO", 2) || !ft_strncmp(var[0], "SO", 2)
 			|| !ft_strncmp(var[0], "WE", 2) || !ft_strncmp(var[0], "WE", 2)
-			|| !ft_strncmp(var[0], "EA", 2) || !ft_strcmp(var[0], "F")
-			|| !ft_strcmp(var[0], "C")))
+			|| !ft_strncmp(var[0], "EA", 2)))
 	{
 		src = ft_add_back(src, var[0], value[0]);
+	}
+	else if (!ft_strcmp(var[0], "F") || !ft_strcmp(var[0], "C"))
+	{
+		char *rgb_str = NULL;
+		i = 1;
+		while (var[i])
+		{
+			if (!rgb_str)
+				rgb_str = ft_strdup(var[i], 0);
+			else
+			{
+				char *tmp = rgb_str;
+				rgb_str = ft_strjoin(rgb_str, var[i]);
+				free(tmp);
+			}
+			i++;
+		}
+		src = ft_add_back(src, var[0], rgb_str);
 	}
 	return (src);
 }

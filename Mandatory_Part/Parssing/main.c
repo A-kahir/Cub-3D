@@ -22,17 +22,5 @@ int	main(int argc, char **argv)
 	src = ft_get_source(src, argv[1]);
 	if (!src)
 		return (print_message(1, NULL, '\0'), 1);
-	t_source *tmp = src;
-	while (tmp)
-	{
-		printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
-		tmp = tmp->next;
-	}
-	printf("*********************\n");
-	int i = 0;
-	while (src->map[i])
-	{
-		printf("%s\n", src->map[i]);
-		i++;
-	}
+	ft_debug(src, 1);
 }

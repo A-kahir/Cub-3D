@@ -13,6 +13,7 @@ LIBFT_SRC = \
 	Parssing/Libft_utils/ft_strncmp.c \
 	Parssing/Libft_utils/ft_add_back.c \
 	Parssing/Libft_utils/ft_split.c \
+	Parssing/Libft_utils/ft_atoi.c \
 
 UTILS_SRC = \
 	Parssing/Utils_func/print_messages.c \
@@ -25,27 +26,18 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_check_before_map.c \
 	Parssing/Utils_func/ft_parsing.c \
 	Parssing/Utils_func/ft_get_source.c \
-	Parssing/Utils_func/ft_debug.c \ #should remove when we finish
+	Parssing/Utils_func/ft_debug.c # should remove when we finish
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
 
-MLX_DIR = ../MLX42
-MLX_FILE = $(MLX_DIR)/build/libmlx42.a
-BREW_PREFIX := $(shell brew --prefix)
-MLX_FLAGS = -L$(BREW_PREFIX)/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
-
 CC = cc -fsanitize=address -g
-CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -IParssing -IParssing/Libft_utils -IParssing/Utils_func
+CFLAGS = -Wall -Wextra -Werror -IParssing -IParssing/Libft_utils -IParssing/Utils_func
 
-all: $(MLX_FILE) $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX_FILE) parsing.h
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FILE) $(MLX_FLAGS) -o $(NAME)
-
-$(MLX_FILE):
-	cmake -S $(MLX_DIR) -B $(MLX_DIR)/build
-	cmake --build $(MLX_DIR)/build -j4
+$(NAME): $(OBJS) parsing.h
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
