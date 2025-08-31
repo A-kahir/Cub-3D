@@ -6,11 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:33:11 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/15 17:34:21 by akahir           ###   ########.fr       */
+/*   Updated: 2025/08/31 18:30:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../parsing.h"
+#include "../parsing.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {

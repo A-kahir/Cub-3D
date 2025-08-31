@@ -1,4 +1,16 @@
-#include "../../parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/31 16:23:38 by akahir            #+#    #+#             */
+/*   Updated: 2025/08/31 16:23:38 by akahir           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../parsing.h"
 
 t_source	*ft_add_back(t_source *line, char *var, char *value)
 {
@@ -13,6 +25,11 @@ t_source	*ft_add_back(t_source *line, char *var, char *value)
 		new_node->value = ft_strdup(value, 0);
 	else
 		new_node->value = NULL;
+	new_node->colors = malloc_cl(sizeof(t_colors), 0);
+	if (!new_node->colors)
+		return (line);
+	new_node->colors->hexa_rgb_f = 0;
+	new_node->colors->hexa_rgb_c = 0;
 	new_node->next = NULL;
 	if (!line)
 		return (new_node);

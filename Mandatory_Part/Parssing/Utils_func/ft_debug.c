@@ -6,11 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/30 21:55:58 by akahir           ###   ########.fr       */
+/*   Updated: 2025/08/31 18:30:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../parsing.h"
+#include "../parsing.h"
 
 void ft_debug(t_source *src, int flag)
 {
@@ -21,22 +21,24 @@ void ft_debug(t_source *src, int flag)
         while (tmp)
         {
             printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
+            if (tmp->colors)
+            {
+                if (tmp->colors->hexa_rgb_f)
+                    printf("tmp->colors->hexa_rgb_f ==> %d\n", tmp->colors->hexa_rgb_f);
+                if (tmp->colors->hexa_rgb_c)
+                    printf("tmp->colors->hexa_rgb_c ==> %d\n", tmp->colors->hexa_rgb_c);
+            }
             tmp = tmp->next;
         }
-        tmp = src;
-        while (tmp)
-        {
-            printf("*R ====> %d\n", tmp->colors->r);
-            printf("*G ====> %d\n", tmp->colors->g);
-            printf("*B ====> %d\n", tmp->colors->b);
-            tmp = tmp->next;
-        }
-        printf("\n********************************************\n\n");
+        printf("\n*************************************=> MAP <=*************************************\n\n");
         int i = 0;
-        while (src->map[i])
+        if (src->map)
         {
-            printf("%s\n", src->map[i]);
-            i++;
+            while (src->map[i])
+            {
+                printf("%s\n", src->map[i]);
+                i++;
+            }
         }
     }
 }

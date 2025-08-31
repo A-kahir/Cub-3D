@@ -6,11 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/21 15:44:18 by akahir           ###   ########.fr       */
+/*   Updated: 2025/08/31 20:38:56 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../parsing.h"
+#include "../parsing.h"
 
 void ft_cantinue3(int flag, char *arg, char ch)
 {
@@ -24,6 +24,16 @@ void ft_cantinue3(int flag, char *arg, char ch)
 	if (flag == 9)
 	{
 		write(2, "Make sure you have Player 👤\n", 32);
+		return ;
+	}
+	if (flag == 10)
+	{
+		write(2, "value of colors incorrect. ❌\n", 32);
+		return ;
+	}
+	if (flag == 11)
+	{
+		write(2, "You should respect RGB range.\n", 31);
 		return ;
 	}
 }
@@ -73,7 +83,7 @@ void ft_cantinue1(int flag, char *arg, char ch)
 		write(2, &ch, 1);
 		write(2, "]", 2);
 		write(2, " from the line Map: [", 22);
-		write(2, arg, ft_strlen(arg) - 2);
+		write(2, arg, ft_strlen(arg));
 		write(2, "].❌\n", 7);
 		return ;
 	}

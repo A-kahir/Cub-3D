@@ -6,11 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/21 15:38:56 by akahir           ###   ########.fr       */
+/*   Updated: 2025/08/31 18:30:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../parsing.h"
+#include "../parsing.h"
 
 static int ft_check_player(t_source *src)
 {

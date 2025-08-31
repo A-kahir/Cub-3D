@@ -1,4 +1,4 @@
-#include "../../parsing.h"
+#include "../parsing.h"
 
 static int	count_words(char const *s, char c)
 {

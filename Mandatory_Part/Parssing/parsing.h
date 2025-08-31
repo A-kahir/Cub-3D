@@ -18,6 +18,7 @@
 # endif
 
 # include <unistd.h>
+# include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <stddef.h>
@@ -41,10 +42,8 @@ typedef struct s_leaks
 
 typedef struct s_colors
 {
-	int r;
-	int g;
-	int b;
-	unsigned int hexa_rgb;
+	unsigned int hexa_rgb_f;
+	unsigned int hexa_rgb_c;
 }	t_colors;
 
 typedef struct s_source
@@ -70,6 +69,7 @@ int			ft_if_valid_map(char *line, int i);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_map(char *line);
 int			ft_check_before_map(t_source *src);
+int		ft_parse_map(t_source *src);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);

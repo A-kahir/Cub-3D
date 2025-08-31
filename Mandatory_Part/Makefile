@@ -26,7 +26,8 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_check_before_map.c \
 	Parssing/Utils_func/ft_parsing.c \
 	Parssing/Utils_func/ft_get_source.c \
-	Parssing/Utils_func/ft_debug.c # should remove when we finish
+	Parssing/Utils_func/ft_debug.c \
+	Parssing/Utils_func/ft_parse_map.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
@@ -36,7 +37,7 @@ CFLAGS = -Wall -Wextra -Werror -IParssing -IParssing/Libft_utils -IParssing/Util
 
 all: $(NAME)
 
-$(NAME): $(OBJS) parsing.h
+$(NAME): $(OBJS) Parssing/parsing.h
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c

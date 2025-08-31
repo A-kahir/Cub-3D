@@ -6,11 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:10:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/15 18:10:21 by akahir           ###   ########.fr       */
+/*   Updated: 2025/08/31 18:30:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../parsing.h"
+#include "../parsing.h"
 
 char	*ft_strchr(const char *s, int c)
 {

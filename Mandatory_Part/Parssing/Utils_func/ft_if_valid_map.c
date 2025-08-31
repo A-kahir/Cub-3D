@@ -6,18 +6,18 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:17:57 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/21 15:22:39 by akahir           ###   ########.fr       */
+/*   Updated: 2025/08/31 20:28:18 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../parsing.h"
+#include "../parsing.h"
 
 int ft_if_valid_map(char *line, int i)
 {
 	static int save_line;
 	int len;
 
-	1 && (len = ft_strlen(line) - 1);
+	1 && (len = ft_strlen(line) -1);
 	while (line[i] != '\0')
 	{
 		if (line[i + 1] == 32 || (line[i + 1] >= 9 && line[i + 1] <= 13))
