@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/01 12:37:39 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/01 18:30:44 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,11 @@ void ft_cantinue2(int flag, char *arg, char ch)
 
 void ft_cantinue1(int flag, char *arg, char ch)
 {
+	if (flag == 3)
+	{
+		write(2, "Error : MLX System call failed\n", 32);
+		return ;
+	}
 	if (flag == 4)
 	{
 		write(2, "check your Map: You have invalid character: [", 46);
