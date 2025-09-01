@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/01 16:39:31 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/01 18:10:32 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int ft_lenght_j(t_source *src)
 
 int	ft_parse_map(t_source *src)
 {
-	int p; // debug
 	int l;
 	int i;
 	int len_i;
@@ -39,13 +38,6 @@ int	ft_parse_map(t_source *src)
 	int len_j;
 	int save_pos;
 
-	p = 0;
-	while (src->map[p])
-	{
-		printf("%s\n", src->map[p]);
-		p++;
-	}
-	printf("\n\n");
 	i = 0;
 	l = 0;
 	len_j = ft_lenght_j(src);
@@ -70,7 +62,6 @@ int	ft_parse_map(t_source *src)
 		}
 		if (i > 0 && j == 0)
 		{
-			printf("222222222222222\n");
 			l = 0;
 			while (src->map[l])
 			{
