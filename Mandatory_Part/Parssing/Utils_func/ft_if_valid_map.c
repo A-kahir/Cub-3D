@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:17:57 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/31 20:28:18 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/01 12:37:15 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int ft_if_valid_map(char *line, int i)
             }
 			else if (line[len] != '1')
 				if (!(line[i] == 32 || (line[i] >= 9 && line[i] <= 13)))
-					return (print_message(3, line, line[len]), -1);
+					return (print_message(4, line, line[len]), -1);
 		}
 		i++;
 	}

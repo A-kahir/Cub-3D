@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/31 20:48:49 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/01 16:39:31 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int ft_lenght_j(t_source *src)
 		j++;
 		i++;
 	}
-	printf("len_j ===> %d\n\n", j);
 	return (j);
 }
 
@@ -38,6 +37,7 @@ int	ft_parse_map(t_source *src)
 	int len_i;
 	int j;
 	int len_j;
+	int save_pos;
 
 	p = 0;
 	while (src->map[p])
@@ -60,14 +60,17 @@ int	ft_parse_map(t_source *src)
 			{
 				if (src->map[i][l] != '1')
 				{
-					if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
+					if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)) && i == 0)
 						return (print_message(2, src->map[i], src->map[i][l]), -1);
+					else if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)) && i == len_j)
+						return (print_message(7, src->map[i], src->map[i][l]), -1);
 				}
 				l++;
 			}
 		}
 		if (i > 0 && j == 0)
 		{
+			printf("222222222222222\n");
 			l = 0;
 			while (src->map[l])
 			{
@@ -86,12 +89,32 @@ int	ft_parse_map(t_source *src)
 			{
 				if (src->map[i][l])
 				{
-					if (src->map[i][l] != '0' && src->map[i][l] != '1')
+					if (l == 0 && src->map[i][l] != '1'
+						&& ((src->map[i][l + 1] || src->map[i][l - 1]) != (src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13))))
 					{
-						if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13))
-							|| !(src->map[i][l] != 'N' || src->map[i][l] != 'S'))
+						if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13) || (src->map[i][l] == 'N') || (src->map[i][l] == 'S')))
 						{
-							printf("******************************************????????????????????????\n");
+							return (print_message(4, src->map[i], src->map[i][l]), -1);
+						}
+					}
+					else if ((src->map[i][l + 1] == 32 || (src->map[i][l + 1] >= 9 && src->map[i][l + 1] <= 13)))
+					{
+						if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
+						{
+							return (print_message(4, src->map[i], src->map[i][l]), -1);
+						}
+					}
+					else if (l > 0 && (src->map[i][l - 1] == 32 || (src->map[i][l - 1] >= 9 && src->map[i][l - 1] <= 13)))
+					{
+						if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
+						{
+							return (print_message(4, src->map[i], src->map[i][l]), -1);
+						}
+					}
+					else if (l == len_i)
+					{
+						if (src->map[i][l] != '1')
+						{
 							return (print_message(4, src->map[i], src->map[i][l]), -1);
 						}
 					}
@@ -99,10 +122,56 @@ int	ft_parse_map(t_source *src)
 				l++;
 			}
 		}
-		printf("\ni ===> %d\n", i);
-		printf("j ===> %d\n", j);
+		if (i > 0 && len_j > i && ((src->map[i + 1][0] == 32 || (src->map[i + 1][0] >= 9 && src->map[i + 1][0] <= 13)
+			|| ((src->map[i - 1][0] == 32 || (src->map[i - 1][0] >= 9 && src->map[i - 1][0] <= 13))))))
+		{
+			l = 0;
+			while (src->map[i][l] != '\0')
+			{
+				save_pos = 0;
+				if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
+				{
+					if (l > 0 && src->map[i][l - 1] == '1' && src->map[i][l + 1] == '1')
+					{
+						save_pos = l;
+						if ((src->map[i + 1][save_pos] == 32 || (src->map[i + 1][save_pos] >= 9 && src->map[i + 1][save_pos] <= 13)))
+						{
+							return (print_message(4, src->map[i], src->map[i][save_pos]), -1);
+						}
+						else if ((src->map[i - 1][save_pos] == 32 || (src->map[i - 1][save_pos] >= 9 && src->map[i - 1][save_pos] <= 13)))
+						{
+							return (print_message(4, src->map[i], src->map[i][save_pos]), -1);
+						}
+					}
+				}
+				l++;
+			}
+		}
 		i++;
 		j++;
+	}
+	i = 0;
+	while (src->map[i])
+	{
+		j = 0;
+		save_pos = 0;
+		while (src->map[i][j] != '\0')
+		{
+			if (i < len_j && (src->map[i][j] == 32 || (src->map[i][j] >= 9 && src->map[i][j] <= 13)))
+			{
+				save_pos = j;
+				if (!(src->map[i + 1][save_pos] == 32 || (src->map[i + 1][save_pos] >= 9 && src->map[i + 1][save_pos] <= 13)) && src->map[i + 1][save_pos] != '1')
+				{
+					return (print_message(4, src->map[i + 1], src->map[i + 1][save_pos]), -1);
+				}
+				else if (i > 0 && !(src->map[i - 1][save_pos] == 32 || (src->map[i - 1][save_pos] >= 9 && src->map[i - 1][save_pos] <= 13)) && src->map[i - 1][save_pos] != '1')
+				{
+					return (print_message(4, src->map[i - 1], src->map[i - 1][save_pos]), -1);
+				}
+			}
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }

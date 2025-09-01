@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/31 20:38:56 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/01 12:37:39 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,7 @@ void ft_cantinue2(int flag, char *arg, char ch)
 
 void ft_cantinue1(int flag, char *arg, char ch)
 {
-	if (flag == 3)
-	{
-		write(2, "check your Map: You have invalid character: [", 46);
-		write(2, &ch, 1);
-		write(2, "]", 2);
-		write(2, " from the line Map: [", 22);
-		write(2, arg, ft_strlen(arg));
-		write(2, "].❌\n", 7);
-		return ;
-	}
-	else if (flag == 4)
+	if (flag == 4)
 	{
 		write(2, "check your Map: You have invalid character: [", 46);
 		write(2, &ch, 1);
