@@ -51,6 +51,11 @@ typedef struct s_source
 	char *var;
 	char *value;
 	char **map;
+	void *mlx_pointer;
+	void *mlx_window;
+	void *mlx_image;
+	int hight;
+	int width;
 	t_colors *colors;
 	struct s_source	*next;
 }	t_source;
@@ -65,11 +70,10 @@ void		print_message(int flag, char *arg, char ch);
 char		*ft_get_next_line(int fd);
 int			ft_chack_valid_source(char *str);
 t_source	 *ft_fill_struct(t_source *src, char *line);
-int			ft_if_valid_map(char *line, int i);
 void		*ft_fill_the_map(int fd, t_source *src);
-int			ft_check_map(char *line);
 int			ft_check_before_map(t_source *src);
-int		ft_parse_map(t_source *src);
+int			ft_parse_map(t_source *src);
+int			ft_key_theme(int key, t_source *src);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);

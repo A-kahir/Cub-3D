@@ -26,6 +26,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_get_source.c \
 	Parssing/Utils_func/ft_debug.c \
 	Parssing/Utils_func/ft_parse_map.c \
+	Parssing/Utils_func/ft_key_theme.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
