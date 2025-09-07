@@ -20,9 +20,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_get_next_line.c \
 	Parssing/Utils_func/ft_check_valid_source.c \
 	Parssing/Utils_func/ft_fill_struct.c \
-	Parssing/Utils_func/ft_if_valid_map.c \
 	Parssing/Utils_func/ft_fill_the_map.c \
-	Parssing/Utils_func/ft_check_map.c \
 	Parssing/Utils_func/ft_check_before_map.c \
 	Parssing/Utils_func/ft_parsing.c \
 	Parssing/Utils_func/ft_get_source.c \

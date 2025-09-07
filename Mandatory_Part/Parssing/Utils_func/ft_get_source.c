@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/31 18:30:46 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/06 15:07:57 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ t_source *ft_get_source(t_source *src, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (perror("open"), NULL);
-	while ((line = ft_get_next_line(fd)))
+	line = ft_get_next_line(fd);
+	while (line)
 	{
 		if (ft_chack_valid_source(line) == 0)
 			src = ft_fill_struct(src, line);
@@ -56,6 +57,7 @@ t_source *ft_get_source(t_source *src, char *file)
 			break;
 		}
 		free(line);
+		line = ft_get_next_line(fd);
 	}
 	if (ft_check_before_map(src) == -1)
 		return (print_message(5, NULL, '\0'), NULL);

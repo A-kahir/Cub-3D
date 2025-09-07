@@ -6,11 +6,24 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/01 18:10:32 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/07 19:12:49 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing.h"
+
+void ft_debug_map(char *map, int pos)
+{
+	int i = 0;
+	while (pos > i)
+	{
+		printf(" ");
+		i++;
+	}
+	printf("i\n");
+	printf("%s\n\n", map);
+}
+
 
 int ft_lenght_j(t_source *src)
 {
@@ -60,15 +73,21 @@ int	ft_parse_map(t_source *src)
 				l++;
 			}
 		}
-		if (i > 0 && j == 0)
+		if (i > 0 && len_j > i)
 		{
 			l = 0;
-			while (src->map[l])
+			while (src->map[i][l] != '\0')
 			{
-				if (src->map[l][0] != '1' || src->map[l][len_i] != '1')
+				if (src->map[i][l] == '0')
 				{
-					if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
-						return (print_message(4, src->map[l], src->map[l][0]), -1);
+					if (src->map[i - 1][l - 1] != '1' && src->map[i][l - 1] == '1' && src->map[i - 1][l] == '1')
+						return (print_message(4, src->map[i],src->map[i][l]), -1);
+					else if (src->map[i + 1][l + 1] != '1' && src->map[i + 1][l] == '1' && src->map[i][l + 1] == '1')
+						return (print_message(4, src->map[i],src->map[i][l]), -1);
+					else if (src->map[i + 1][l - 1] != '1' && src->map[i + 1][l] == '1' && src->map[i][l - 1] == '1')
+						return (print_message(4, src->map[i],src->map[i][l]), -1);
+					else if (src->map[i - 1][l + 1] != '1' && src->map[i - 1][l] == '1' && src->map[i][l + 1] == '1')
+						return (print_message(4, src->map[i],src->map[i][l]), -1);
 				}
 				l++;
 			}
@@ -85,6 +104,7 @@ int	ft_parse_map(t_source *src)
 					{
 						if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13) || (src->map[i][l] == 'N') || (src->map[i][l] == 'S')))
 						{
+							printf("1\n");
 							return (print_message(4, src->map[i], src->map[i][l]), -1);
 						}
 					}
@@ -92,6 +112,7 @@ int	ft_parse_map(t_source *src)
 					{
 						if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
 						{
+							printf("2\n");
 							return (print_message(4, src->map[i], src->map[i][l]), -1);
 						}
 					}
@@ -99,6 +120,7 @@ int	ft_parse_map(t_source *src)
 					{
 						if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
 						{
+							printf("3\n");
 							return (print_message(4, src->map[i], src->map[i][l]), -1);
 						}
 					}
@@ -106,6 +128,7 @@ int	ft_parse_map(t_source *src)
 					{
 						if (src->map[i][l] != '1')
 						{
+							printf("4\n");
 							return (print_message(4, src->map[i], src->map[i][l]), -1);
 						}
 					}
@@ -127,10 +150,12 @@ int	ft_parse_map(t_source *src)
 						save_pos = l;
 						if ((src->map[i + 1][save_pos] == 32 || (src->map[i + 1][save_pos] >= 9 && src->map[i + 1][save_pos] <= 13)))
 						{
+							printf("5\n");
 							return (print_message(4, src->map[i], src->map[i][save_pos]), -1);
 						}
 						else if ((src->map[i - 1][save_pos] == 32 || (src->map[i - 1][save_pos] >= 9 && src->map[i - 1][save_pos] <= 13)))
 						{
+							printf("6\n");
 							return (print_message(4, src->map[i], src->map[i][save_pos]), -1);
 						}
 					}
@@ -138,29 +163,43 @@ int	ft_parse_map(t_source *src)
 				l++;
 			}
 		}
+		if (i != 0 && i != len_j)
+		{
+			l = 1;
+			while (src->map[i][l + 1] != '\0')
+			{
+				if (src->map[i][l] != '0' && src->map[i][l] != '1'
+					&& !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13))
+					&& !(src->map[i][l] == 'N' || src->map[i][l] == 'S'))
+				{
+					return (print_message(4, src->map[i], src->map[i][l]), -1);
+				}
+				l++;
+			}
+		}
 		i++;
 		j++;
 	}
-	i = 0;
+	i = 1;
+	l = 0;
 	while (src->map[i])
 	{
-		j = 0;
-		save_pos = 0;
-		while (src->map[i][j] != '\0')
+		l = 0;
+		while (src->map[i][l] != '\0')
 		{
-			if (i < len_j && (src->map[i][j] == 32 || (src->map[i][j] >= 9 && src->map[i][j] <= 13)))
+			if (l > 0 && len_j > i)
 			{
-				save_pos = j;
-				if (!(src->map[i + 1][save_pos] == 32 || (src->map[i + 1][save_pos] >= 9 && src->map[i + 1][save_pos] <= 13)) && src->map[i + 1][save_pos] != '1')
+				if (src->map[i][l] == '0')
 				{
-					return (print_message(4, src->map[i + 1], src->map[i + 1][save_pos]), -1);
-				}
-				else if (i > 0 && !(src->map[i - 1][save_pos] == 32 || (src->map[i - 1][save_pos] >= 9 && src->map[i - 1][save_pos] <= 13)) && src->map[i - 1][save_pos] != '1')
-				{
-					return (print_message(4, src->map[i - 1], src->map[i - 1][save_pos]), -1);
+					if ((src->map[i - 1][l] == 32 || (src->map[i - 1][l] >= 9 && src->map[i - 1][l] <= 13))
+						|| src->map[i + 1][l] == 32 || (src->map[i + 1][l] >= 9 && src->map[i + 1][l] <= 13))
+					{
+						printf("####\n");
+						return (print_message(4, src->map[i], src->map[i][l]), -1);
+					}
 				}
 			}
-			j++;
+			l++;
 		}
 		i++;
 	}
