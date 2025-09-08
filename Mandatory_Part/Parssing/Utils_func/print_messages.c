@@ -6,16 +6,23 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/01 18:30:44 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/08 18:51:51 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing.h"
 
-void ft_cantinue3(int flag, char *arg, char ch)
+void ft_cantinue4(int flag)
 {
-	(void)arg;
-	(void)ch;
+	if (flag == 12)
+	{
+		write(2, "Your Texture is invalid for MLX.❌\n", 37);
+		return ;
+	}
+}
+
+void ft_cantinue3(int flag)
+{
 	if (flag == 8)
 	{
 		write(2, "Make sure you have only One Player👤\n", 40);
@@ -36,7 +43,9 @@ void ft_cantinue3(int flag, char *arg, char ch)
 		write(2, "You should respect RGB range.\n", 31);
 		return ;
 	}
+	ft_cantinue4(flag);
 }
+
 void ft_cantinue2(int flag, char *arg, char ch)
 {
 	if (flag == 5)
@@ -62,7 +71,7 @@ void ft_cantinue2(int flag, char *arg, char ch)
 		write(2, arg, ft_strlen(arg));
 		write(2, "].❌\n", 7);
 	}
-	ft_cantinue3(flag, arg, ch);
+	ft_cantinue3(flag);
 }
 
 void ft_cantinue1(int flag, char *arg, char ch)

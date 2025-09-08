@@ -17,12 +17,9 @@ static void	*ft_open_mlx_window(t_source *src)
 	src->mlx_pointer = mlx_init();
 	if (!src->mlx_pointer)
 		return (print_message(3, NULL, '\0'), NULL);
-	src->hight = 832;
-	src->width = 1472;
 	src->mlx_window = mlx_new_window(src->mlx_pointer, src->width, src->hight, "- Paradise & Hell -");
 	if (!src->mlx_window)
 		return (print_message(3, NULL, '\0'), NULL);
-
 	int width_img = src->width;
 	int hight_img = src->hight;
 	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer, "Parssing/texture/first_page.xpm", &width_img, &hight_img);
@@ -33,7 +30,6 @@ static void	*ft_open_mlx_window(t_source *src)
 	mlx_hook(src->mlx_window, 2, 1L << 0, ft_key_theme, src);
 	return (src->mlx_pointer);
 }
-
 
 int	main(int argc, char **argv)
 {
