@@ -72,6 +72,7 @@ typedef struct s_source
 //principale func:
 int			ft_parsing(int argc, char **argv);
 t_source	*ft_get_source(t_source *src, char *file);
+void		ft_is_hell(t_source *src);
 
 //Utils func:
 void		print_message(int flag, char *arg, char ch);
@@ -96,6 +97,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		**ft_split(char *s, char c);
 t_source	*ft_add_back(t_source *line, char *var, char *value);
 int			ft_atoi(char *str);
+int			ft_is_spaces(char c);
 
 
 /// should remove when we finish

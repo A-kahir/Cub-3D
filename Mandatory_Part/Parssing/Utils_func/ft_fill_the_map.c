@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/08 17:44:30 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/09 17:21:39 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,15 @@ void	*ft_fill_the_map(int fd, t_source *src)
 
 	i = 0;
 	src->map = NULL;
-	while ((line = ft_get_next_line(fd)))
+	line = ft_get_next_line(fd);
+	while (line)
 	{
 		i = ft_add_line(src, line, i);
 		if (i < 0)
 			return (NULL);
+		line = ft_get_next_line(fd);
 	}
-    if (ft_parse_map(src) == -1)
-        return (NULL);
+	if (ft_parse_map(src) == -1)
+		return (NULL);
 	return (src);
 }

@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/08 19:17:38 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/09 16:56:31 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void ft_debug_map(char *map, int pos)
 	printf("i\n");
 	printf("%s\n\n", map);
 }
-
 
 int ft_lenght_j(t_source *src)
 {
@@ -65,9 +64,9 @@ int	ft_parse_map(t_source *src)
 			{
 				if (src->map[i][l] != '1')
 				{
-					if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)) && i == 0)
+					if (ft_is_spaces(src->map[i][l]) == -1 && i == 0)
 						return (print_message(2, src->map[i], src->map[i][l]), -1);
-					else if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)) && i == len_j)
+					else if (ft_is_spaces(src->map[i][l]) == -1 && i == len_j)
 						return (ft_debug_map(src->map[i], l), print_message(7, src->map[i], src->map[i][l]), -1);
 				}
 				l++;
@@ -78,13 +77,13 @@ int	ft_parse_map(t_source *src)
 			l = 0;
 			while (src->map[i][l] != '\0')
 			{
-				if (src->map[i][l] == '0')
+				if (src->map[i][l] == '0' || (src->map[i][l] == 'N' || src->map[i][l] == 'S' || src->map[i][l] == 'E' || src->map[i][l] == 'W'))
 				{
-					if (src->map[i - 1][l - 1] != '1' && src->map[i][l - 1] == '1' && src->map[i - 1][l] == '1')
+					if (i > 0 && l > 0 && src->map[i - 1][l - 1] != '1' && src->map[i][l - 1] == '1' && src->map[i - 1][l] == '1')
 						return (ft_debug_map(src->map[i], l), print_message(4, src->map[i],src->map[i][l]), -1);
 					else if (src->map[i + 1][l + 1] != '1' && src->map[i + 1][l] == '1' && src->map[i][l + 1] == '1')
 						return (ft_debug_map(src->map[i], l), print_message(4, src->map[i],src->map[i][l]), -1);
-					else if (src->map[i + 1][l - 1] != '1' && src->map[i + 1][l] == '1' && src->map[i][l - 1] == '1')
+					else if (i > 0 && l > 0 && src->map[i + 1][l - 1] != '1' && src->map[i + 1][l] == '1' && src->map[i][l - 1] == '1')
 						return (ft_debug_map(src->map[i], l), print_message(4, src->map[i],src->map[i][l]), -1);
 					else if (src->map[i - 1][l + 1] != '1' && src->map[i - 1][l] == '1' && src->map[i][l + 1] == '1')
 						return (ft_debug_map(src->map[i], l), print_message(4, src->map[i],src->map[i][l]), -1);
@@ -100,25 +99,26 @@ int	ft_parse_map(t_source *src)
 				if (src->map[i][l])
 				{
 					if (l == 0 && src->map[i][l] != '1'
-						&& ((src->map[i][l + 1] || src->map[i][l - 1]) != (src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13))))
+						&& ((src->map[i][l + 1] || src->map[i][l - 1]) != (ft_is_spaces(src->map[i][l]) == 0)))
 					{
-						if (!(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13) || (src->map[i][l] == 'N') || (src->map[i][l] == 'S')))
+						if (!(ft_is_spaces(src->map[i][l]) == 0
+							|| (src->map[i][l] == 'N') || (src->map[i][l] == 'S') || (src->map[i][l] == 'W') || (src->map[i][l] == 'E')))
 						{
 							printf("1\n");
 							return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][l]), -1);
 						}
 					}
-					else if ((src->map[i][l + 1] == 32 || (src->map[i][l + 1] >= 9 && src->map[i][l + 1] <= 13)))
+					else if (ft_is_spaces(src->map[i][l + 1]) == 0)
 					{
-						if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
+						if (src->map[i][l] != '1' && !(ft_is_spaces(src->map[i][l]) == 0))
 						{
 							printf("2\n");
 							return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][l]), -1);
 						}
 					}
-					else if (l > 0 && (src->map[i][l - 1] == 32 || (src->map[i][l - 1] >= 9 && src->map[i][l - 1] <= 13)))
+					else if (l > 0 && ft_is_spaces(src->map[i][l - 1]) == 0)
 					{
-						if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
+						if (src->map[i][l] != '1' && !(ft_is_spaces(src->map[i][l]) == 0))
 						{
 							printf("3\n");
 							return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][l]), -1);
@@ -136,24 +136,24 @@ int	ft_parse_map(t_source *src)
 				l++;
 			}
 		}
-		if (i > 0 && len_j > i && ((src->map[i + 1][0] == 32 || (src->map[i + 1][0] >= 9 && src->map[i + 1][0] <= 13)
-			|| ((src->map[i - 1][0] == 32 || (src->map[i - 1][0] >= 9 && src->map[i - 1][0] <= 13))))))
+		if (i > 0 && len_j > i && ((ft_is_spaces(src->map[i + 1][0]) == 0)
+			|| (ft_is_spaces(src->map[i - 1][0]) == 0)))
 		{
 			l = 0;
 			while (src->map[i][l] != '\0')
 			{
 				save_pos = 0;
-				if (src->map[i][l] != '1' && !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13)))
+				if (src->map[i][l] != '1' && ft_is_spaces(src->map[i][l]) == -1)
 				{
 					if (l > 0 && src->map[i][l - 1] == '1' && src->map[i][l + 1] == '1')
 					{
 						save_pos = l;
-						if ((src->map[i + 1][save_pos] == 32 || (src->map[i + 1][save_pos] >= 9 && src->map[i + 1][save_pos] <= 13)))
+						if (ft_is_spaces(src->map[i + 1][save_pos]) == 0)
 						{
 							printf("5\n");
 							return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][save_pos]), -1);
 						}
-						else if ((src->map[i - 1][save_pos] == 32 || (src->map[i - 1][save_pos] >= 9 && src->map[i - 1][save_pos] <= 13)))
+						else if (ft_is_spaces(src->map[i - 1][save_pos]) == 0)
 						{
 							printf("6\n");
 							return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][save_pos]), -1);
@@ -169,9 +169,10 @@ int	ft_parse_map(t_source *src)
 			while (src->map[i][l + 1] != '\0')
 			{
 				if (src->map[i][l] != '0' && src->map[i][l] != '1'
-					&& !(src->map[i][l] == 32 || (src->map[i][l] >= 9 && src->map[i][l] <= 13))
-					&& !(src->map[i][l] == 'N' || src->map[i][l] == 'S'))
+					&& ft_is_spaces(src->map[i][l]) == -1
+					&& !(src->map[i][l] == 'N' || src->map[i][l] == 'S' || src->map[i][l] == 'E' || src->map[i][l] == 'W'))
 				{
+					printf("heeeeeee\n");
 					return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][l]), -1);
 				}
 				l++;
@@ -189,10 +190,11 @@ int	ft_parse_map(t_source *src)
 		{
 			if (l > 0 && len_j > i)
 			{
-				if (src->map[i][l] == '0')
+				if (src->map[i][l] == '0'
+					|| (src->map[i][l] == 'N' || src->map[i][l] == 'S' || src->map[i][l] == 'E' || src->map[i][l] == 'W'))
 				{
-					if ((src->map[i - 1][l] == 32 || (src->map[i - 1][l] >= 9 && src->map[i - 1][l] <= 13))
-						|| src->map[i + 1][l] == 32 || (src->map[i + 1][l] >= 9 && src->map[i + 1][l] <= 13))
+					if ((ft_is_spaces(src->map[i - 1][l]) == 0)
+						|| (ft_is_spaces(src->map[i + 1][l]) == 0))
 					{
 						printf("####\n");
 						return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][l]), -1);

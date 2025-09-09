@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 21:15:57 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/30 21:17:06 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/09 16:57:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi(char *str)
 	signe = 1;
 	i = 0;
 	result = 0;
-	while (((str[i] >= 9 && str[i] <= 13) || str[i] == 32))
+	while (ft_is_spaces(str[i]) == 0)
 		i++;
 	if ((str[i] == '-') || (str[i] == '+'))
 	{

@@ -6,13 +6,13 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/08 18:51:51 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/09 17:16:15 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing.h"
 
-void ft_cantinue4(int flag)
+void	ft_cantinue4(int flag)
 {
 	if (flag == 12)
 	{
@@ -21,7 +21,7 @@ void ft_cantinue4(int flag)
 	}
 }
 
-void ft_cantinue3(int flag)
+void	ft_cantinue3(int flag)
 {
 	if (flag == 8)
 	{
@@ -46,7 +46,7 @@ void ft_cantinue3(int flag)
 	ft_cantinue4(flag);
 }
 
-void ft_cantinue2(int flag, char *arg, char ch)
+void	ft_cantinue2(int flag, char *arg, char ch)
 {
 	if (flag == 5)
 	{
@@ -74,7 +74,7 @@ void ft_cantinue2(int flag, char *arg, char ch)
 	ft_cantinue3(flag);
 }
 
-void ft_cantinue1(int flag, char *arg, char ch)
+void	ft_cantinue1(int flag, char *arg, char ch)
 {
 	if (flag == 3)
 	{

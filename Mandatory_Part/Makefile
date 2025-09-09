@@ -14,6 +14,7 @@ LIBFT_SRC = \
 	Parssing/Libft_utils/ft_add_back.c \
 	Parssing/Libft_utils/ft_split.c \
 	Parssing/Libft_utils/ft_atoi.c \
+	Parssing/Libft_utils/ft_is_spaces.c \
 
 UTILS_SRC = \
 	Parssing/Utils_func/print_messages.c \
@@ -28,6 +29,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_parse_map.c \
 	Parssing/Utils_func/ft_key_theme.c \
 	Parssing/Utils_func/ft_secound_parsing.c \
+	Parssing/Utils_func/ft_is_hell.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
