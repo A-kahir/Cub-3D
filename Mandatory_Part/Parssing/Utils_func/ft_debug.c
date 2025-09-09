@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/07 16:55:58 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/09 14:11:33 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,24 @@ void ft_debug(t_source *src, int flag)
         }
         printf("\n*************************************=> MAP <=*************************************\n\n");
         int i = 0;
-        if (src->map)
+        tmp = src;
+        if (tmp->map)
         {
-            while (src->map[i])
+            while (tmp->map[i])
             {
-                printf("%s\n", src->map[i]);
+                printf("%s\n", tmp->map[i]);
                 i++;
             }
+        }
+    }
+    if (flag == 2)
+    {
+        if (tmp->player)
+        {
+            printf("player info: \n");
+            printf("      player PX : %d\n", src->player->player_px);
+            printf("      player PY : %d\n", src->player->player_py);
+            printf("      player OR: %c\n", src->player->player_or);
         }
     }
 }

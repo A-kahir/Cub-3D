@@ -35,6 +35,12 @@ t_source	*ft_add_back(t_source *line, char *var, char *value)
 	new_node->hight = 832;
 	new_node->colors->hexa_rgb_f = 0;
 	new_node->colors->hexa_rgb_c = 0;
+	new_node->player = malloc_cl(sizeof(t_player), 0);
+	if (!new_node->player)
+		return (NULL);
+	new_node->player->player_px = 0;
+	new_node->player->player_py = 0;
+	new_node->player->player_or = '\0';
 	new_node->next = NULL;
 	if (!line)
 		return (new_node);

@@ -46,17 +46,25 @@ typedef struct s_colors
 	unsigned int hexa_rgb_c;
 }	t_colors;
 
+typedef struct s_player
+{
+	int		player_px;
+	int		player_py;
+	char	player_or;
+} t_player;
+
 typedef struct s_source
 {
-	char *var;
-	char *value;
-	char **map;
-	void *mlx_pointer;
-	void *mlx_window;
-	void *mlx_image;
-	int hight;
-	int width;
-	t_colors *colors;
+	char			*var;
+	char			*value;
+	char			**map;
+	void			*mlx_pointer;
+	void			*mlx_window;
+	void			*mlx_image;
+	int				hight;
+	int				width;
+	t_colors		*colors;
+	t_player		*player;
 	struct s_source	*next;
 }	t_source;
 

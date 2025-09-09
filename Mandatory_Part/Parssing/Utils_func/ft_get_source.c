@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/06 15:07:57 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/09 14:04:34 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ static int ft_check_player(t_source *src)
 		while (src->map[i][j] != '\0')
 		{
 			if (src->map[i][j] == 'S' || src->map[i][j] == 'N' || src->map[i][j] == 'W' || src->map[i][j] == 'E')
+			{
+				src->player->player_px = j;
+				src->player->player_py = i;
+				src->player->player_or = src->map[i][j];
 				player++;
+			}
 			j++;
 		}
 		i++;

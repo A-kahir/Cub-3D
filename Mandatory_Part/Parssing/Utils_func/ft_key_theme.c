@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/08 18:32:55 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/09 14:11:42 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ int ft_key_loading(int key, t_source *src)
 		ft_secound_parsing(src);
 		if (src->mlx_image)
 		{
-			printf("*****************************\n");
+			printf("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n");
 			mlx_destroy_image(src->mlx_pointer, src->mlx_image);
 			src->mlx_image = NULL;
 		}
 		printf("==> now you will start game\n**************************\n");// game starting from her a M.ifaleh
-		t_source *curr = src;
-		ft_debug(curr, 1);
+		ft_debug(src, 2);
 	}
 	return (-1);
 }
@@ -76,7 +75,7 @@ int	ft_key_theme(int key, t_source *src)
 			mlx_put_image_to_window(src->mlx_pointer, src->mlx_window, src->mlx_image, 0, 0);
 		else
 			return (write(2, "mlx image failed\n", 18), -1);
-		return (mlx_hook(src->mlx_window, 2, 1L << 0, ft_key_loading, src), 1);
+		return (mlx_key_hook(src->mlx_window, ft_key_loading, src), 1);
 	}
 	return (-1);
 }
