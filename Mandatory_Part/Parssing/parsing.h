@@ -42,14 +42,18 @@ typedef struct s_leaks
 
 typedef struct s_colors
 {
-	unsigned int hexa_rgb_f;
-	unsigned int hexa_rgb_c;
+	unsigned int	hexa_rgb_f;
+	unsigned int	hexa_rgb_c;
 }	t_colors;
 
 typedef struct s_player
 {
-	int		player_px;
-	int		player_py;
+	float		player_px;
+	float		player_py;
+	float		dir_x;
+	float		dir_y;
+	float		plan_x;
+	float		plan_y;
 	char	player_or;
 } t_player;
 
@@ -61,8 +65,12 @@ typedef struct s_source
 	void			*mlx_pointer;
 	void			*mlx_window;
 	void			*mlx_image;
-	int				hight;
+	int				height;
+	int				line_len;
+	int				bpp;
+	int				endian;
 	int				width;
+	void			*render_image;
 	t_colors		*colors;
 	t_player		*player;
 	struct s_source	*next;
@@ -99,7 +107,8 @@ t_source	*ft_add_back(t_source *line, char *var, char *value);
 int			ft_atoi(char *str);
 int			ft_is_spaces(char c);
 
-
+// rendering floor celling
+int 		render_frame(t_source *src);
 /// should remove when we finish
 void ft_debug(t_source *src, int flag); // in utils func
 

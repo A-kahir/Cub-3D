@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_debug.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/09 17:18:09 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/10 17:08:15 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_debug(t_source *src, int flag)
 		while (tmp)
 		{
 			printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
-			if (tmp->colors)
+			if (tmp)
 			{
 				if (tmp->colors->hexa_rgb_f)
 					printf("tmp->colors->hexa_rgb_f ==> %d\n", tmp->colors->hexa_rgb_f);
@@ -48,9 +48,13 @@ void	ft_debug(t_source *src, int flag)
 		if (tmp->player)
 		{
 			printf("player info: \n");
-			printf("      player PX : %d\n", src->player->player_px);
-			printf("      player PY : %d\n", src->player->player_py);
+			printf("      player PX : %.2f\n", src->player->player_px);
+			printf("      player PY : %.2f\n", src->player->player_py);
 			printf("      player OR: %c\n", src->player->player_or);
+			printf("      player Plan X : %.2f\n", src->player->plan_x);
+			printf("      player Plan Y : %.2f\n", src->player->plan_y);
+			printf("      player direction x : %.2f\n", src->player->dir_x);
+			printf("      player direction y : %.2f\n", src->player->dir_y);
 		}
 	}
 }

@@ -30,6 +30,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_key_theme.c \
 	Parssing/Utils_func/ft_secound_parsing.c \
 	Parssing/Utils_func/ft_is_hell.c \
+	Parssing/Utils_func/raycasting.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)
