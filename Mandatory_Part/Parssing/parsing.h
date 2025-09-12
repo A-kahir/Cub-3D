@@ -26,6 +26,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <mlx.h>
+# include <math.h>
 
 
 typedef enum s_mal
@@ -42,18 +43,14 @@ typedef struct s_leaks
 
 typedef struct s_colors
 {
-	unsigned int	hexa_rgb_f;
-	unsigned int	hexa_rgb_c;
+	unsigned int hexa_rgb_f;
+	unsigned int hexa_rgb_c;
 }	t_colors;
 
 typedef struct s_player
 {
-	float		player_px;
-	float		player_py;
-	float		dir_x;
-	float		dir_y;
-	float		plan_x;
-	float		plan_y;
+	int		player_px;
+	int		player_py;
 	char	player_or;
 } t_player;
 
@@ -65,12 +62,8 @@ typedef struct s_source
 	void			*mlx_pointer;
 	void			*mlx_window;
 	void			*mlx_image;
-	int				height;
-	int				line_len;
-	int				bpp;
-	int				endian;
+	int				hight;
 	int				width;
-	void			*render_image;
 	t_colors		*colors;
 	t_player		*player;
 	struct s_source	*next;
@@ -93,6 +86,8 @@ int			ft_parse_map(t_source *src);
 int			ft_key_theme(int key, t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
+void		ft_add_spaces_in_map(t_source *src);
+int			ft_max_len(t_source *src);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
@@ -101,15 +96,21 @@ char		*ft_strdup(char *s1, int flag);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strjoin(char *s1, char *s2);
 int			ft_strlen(char	*str);
+char		*ft_strstr(char *haystack, char *needle);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		**ft_split(char *s, char c);
 t_source	*ft_add_back(t_source *line, char *var, char *value);
 int			ft_atoi(char *str);
 int			ft_is_spaces(char c);
+int			ft_lenght_j(t_source *src);
 
-// rendering floor celling
-int 		render_frame(t_source *src);
+
 /// should remove when we finish
 void ft_debug(t_source *src, int flag); // in utils func
 
+
+
+
+
+void	ft_mini_map(t_source *src); // Utils_func ==> bonus part
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_secound_parsing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/10 17:38:19 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/09 17:15:48 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	ft_secound_parsing(t_source *src)
 {
 	int			width_img;
-	int			height_img;
+	int			hight_img;
 	t_source	*curr;
 
 	width_img = src->width;
-	height_img = src->height;
+	hight_img = src->hight;
 	curr = src;
 	while (curr)
 	{
@@ -28,7 +28,7 @@ void	ft_secound_parsing(t_source *src)
 				|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")))
 		{
 			src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-					curr->value, &width_img, &height_img);
+					curr->value, &width_img, &hight_img);
 			if (!src->mlx_image)
 				return (print_message(12, NULL, '\0'), exit(1));
 		}

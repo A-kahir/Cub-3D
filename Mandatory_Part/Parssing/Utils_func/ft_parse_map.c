@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/09 16:56:31 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/12 13:46:05 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_parse_map(t_source *src)
 	int len_j;
 	int save_pos;
 
+	ft_add_spaces_in_map(src);
 	i = 0;
 	l = 0;
 	len_j = ft_lenght_j(src);
@@ -128,8 +129,11 @@ int	ft_parse_map(t_source *src)
 					{
 						if (src->map[i][l] != '1')
 						{
-							printf("4\n");
-							return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][l]), -1);
+							if (ft_is_spaces(src->map[i][l]) == -1)
+							{
+								printf("4\n");
+								return (ft_debug_map(src->map[i], l), print_message(4, src->map[i], src->map[i][l]), -1);
+							}
 						}
 					}
 				}
