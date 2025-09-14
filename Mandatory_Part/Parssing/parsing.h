@@ -113,4 +113,5 @@ void ft_debug(t_source *src, int flag); // in utils func
 
 
 void	ft_mini_map(t_source *src); // Utils_func ==> bonus part
+int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);
 #endif

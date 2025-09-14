@@ -32,7 +32,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_secound_parsing.c \
 	Parssing/Utils_func/ft_is_hell.c \
 	Parssing/Utils_func/ft_add_spaces_in_map.c \
-	Parssing/Utils_func/ft_mini_map.c \
+	Parssing/Utils_func/ft_mini_map_bonus.c \
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
 OBJS = $(SRC:.c=.o)

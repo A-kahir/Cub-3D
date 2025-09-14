@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/12 18:41:00 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/14 16:47:32 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	ft_key_loading(int key, t_source *src)
 		}
 		printf("==> now you will start game\n**************************\n");
 		ft_debug(src, 2);
+		ft_mini_map(src); //bonus Part
+		mlx_key_hook(src->mlx_window, ft_key_move_player, src); // Bonus Part
+		
 	}
 	return (-1);
 }
@@ -50,8 +53,9 @@ int	ft_key_theme(int key, t_source *src)
 			mlx_put_image_to_window(src->mlx_pointer,
 				src->mlx_window, src->mlx_image, 0, 0);
 		else
-			return (write(2, "mlx image failed\n", 18), -1);
-		return (mlx_key_hook(src->mlx_window, ft_key_loading, src), 1);
+			return (write(2, "mlx image failed\n", 18), exit(1), -1);
+		mlx_key_hook(src->mlx_window, ft_key_loading, src);
+		return (1);
 	}
 	return (-1);
 }
