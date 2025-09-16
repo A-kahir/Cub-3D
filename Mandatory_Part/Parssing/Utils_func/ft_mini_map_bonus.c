@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 16:37:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/16 17:15:39 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/16 17:30:31 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,11 +132,12 @@ void	ft_mini_map(t_source *src)
 				int t_x = 0;
 				while (t_x < mini_size)
 				{
-					if (src->map[i][j] == '1')
+					if (ft_is_spaces(src->map[i][j]) == 0)
+						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0xB1B5B4);
+					else if (src->map[i][j] == '1')
 						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x000000);
-					else if (src->map[i][j] == '0')
-						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x98B5B7);
-					else if (src->map[i][j] != '1' && src->map[i][j] != '0')
+					else if (src->map[i][j] == '0' || src->map[i][j] == 'N'
+						|| src->map[i][j] == 'S' || src->map[i][j] == 'W' || src->map[i][j] == 'E')
 						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x98B5B7);
 					t_x++;
 				}
