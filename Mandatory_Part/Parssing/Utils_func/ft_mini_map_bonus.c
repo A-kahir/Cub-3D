@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 16:37:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/14 17:29:08 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/16 17:01:15 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void ft_put_frame_minimap(t_source *src, int mini_width, int mini_height)
         i = 0;
         while (i < mini_height)
         {
-            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + l_r, 8 + i, 0xDCDCDC);
-            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + mini_width - l_r, 8 + i, 0xDCDCDC);
+            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + l_r, 8 + i, 0xFFFFFF);
+            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + mini_width - l_r, 8 + i, 0xFFFFFF);
             i++;
         }
         l_r++;
@@ -67,8 +67,8 @@ void ft_put_frame_minimap(t_source *src, int mini_width, int mini_height)
         i = 0;
         while (i < mini_width)
         {
-            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + i, 8 + t_b, 0xDCDCDC);
-            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + i, 8 + mini_height - t_b, 0xDCDCDC);
+            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + i, 8 + t_b, 0xFFFFFF);
+            mlx_pixel_put(src->mlx_pointer, src->mlx_window, 8 + i, 8 + mini_height - t_b, 0xFFFFFF);
             i++;
         }
         t_b++;
@@ -79,12 +79,11 @@ void ft_put_frame_minimap(t_source *src, int mini_width, int mini_height)
 void	ft_mini_map(t_source *src)
 {
     int view = 5;
-	int start_x = src->player->player_px - view - 4;
-	int end_x = src->player->player_px + view + 4;
+	int start_x = src->player->player_px - view - 3;
+	int end_x = src->player->player_px + view + 3;
 	
 	int start_y = src->player->player_py - view;
 	int end_y = src->player->player_py + view;
-	
 
 	if (start_x < 0)
 	{
@@ -106,15 +105,23 @@ void	ft_mini_map(t_source *src)
 		start_y -= (end_y - ft_lenght_j(src));
 		end_y = ft_lenght_j(src);
 	}
+	if (start_x > end_x)
+    	start_x = 0;
+	if (start_y > end_y)
+		start_y = 0;
 	
+	if (start_x < 0)
+		start_x = 0;
+	if (start_y < 0)
+		start_y = 0;
 	int i = start_y;
 	int mini_size;
+	mini_size = 15;
 	while (i <= end_y)
 	{
 		int j = start_x;
 		while (j <= end_x)
 		{
-			mini_size = 15;
 			int draw_x = (j - start_x) * mini_size;
 			int draw_y = (i - start_y) * mini_size;
 
@@ -127,9 +134,9 @@ void	ft_mini_map(t_source *src)
 					if (src->map[i][j] == '1')
 						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x000000);
 					else if (src->map[i][j] == '0')
-						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x84847F);
-					else
-						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x84847F);
+						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x98B5B7);
+					else if (src->map[i][j] != '1' && src->map[i][j] != '0')
+						mlx_pixel_put(src->mlx_pointer, src->mlx_window, (draw_x + t_x + 8), (draw_y + t_y + 8), 0x98B5B7);
 					t_x++;
 				}
 				t_y++;
@@ -138,9 +145,18 @@ void	ft_mini_map(t_source *src)
 		}
 		i++;
 	}
-	
-	int mini_height = (end_y - start_y) * mini_size + 15;
-	int mini_width = (end_x - start_x + 1) * mini_size;
+	int map_width  = ft_strlen(src->map[0]);
+	int map_height = ft_lenght_j(src) + 1;
+	if (start_x < 0)
+		start_x = 0;
+	if (start_y < 0)
+		start_y = 0;
+	if (end_x >= map_width)
+		end_x = map_width - 1;
+	if (end_y >= map_height)
+		end_y = map_height - 1;
+	int mini_width = (view * 2 + 7) * mini_size;
+	int mini_height = (view * 2) * mini_size + 15;
 	ft_put_frame_minimap(src ,mini_width, mini_height);
 	
 	int player_size = (mini_size / 2) + 2;
@@ -152,7 +168,7 @@ void	ft_mini_map(t_source *src)
 		int x = 0;
 		while (x < player_size)
 		{
-			mlx_pixel_put(src->mlx_pointer, src->mlx_window, (player_dx + x + 8), (player_dy + y + 8), 0xFF0000);
+			mlx_pixel_put(src->mlx_pointer, src->mlx_window, (player_dx + x + 8), (player_dy + y + 8), 0xFFFFFF);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 21:15:57 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/09 16:57:17 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/14 22:05:35 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static	int	over_flow(int signe)
 
 int	ft_atoi(char *str)
 {
-	int i;
-	int signe;
-	int result;
+	int	i;
+	int	signe;
+	int	result;
 
 	signe = 1;
 	i = 0;

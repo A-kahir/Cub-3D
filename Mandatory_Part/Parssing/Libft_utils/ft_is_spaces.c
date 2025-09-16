@@ -6,11 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:56:01 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/09 16:56:05 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/14 22:05:48 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_is_spaces(char c)
+int	ft_is_spaces(char c)
 {
 	if (c == 32 || (c >= 9 && c <= 13))
 		return (0);

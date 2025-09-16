@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/09 17:06:50 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/14 22:03:28 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ t_source *ft_get_source(t_source *src, char *file)
 	}
 	if (ft_check_before_map(src) == -1)
 		return (print_message(5, NULL, '\0'), NULL);
-	if (ft_fill_the_map(fd, src) == NULL)
-		return (NULL);
-	if (ft_check_player(src) == -1)
+	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src) == -1)
 		return (NULL);
 	return (src);
 }

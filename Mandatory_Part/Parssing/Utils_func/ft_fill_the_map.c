@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/09 17:21:39 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/16 16:40:06 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	ft_add_line(t_source *src, char *line, int i)
 	j = -1;
 	while (++j < i)
 		tmp[j] = src->map[j];
-	free(src->map);
 	src->map = tmp;
 	src->map[i] = malloc_cl(sizeof(char) * (len + 1), 0);
 	if (!src->map[i])
