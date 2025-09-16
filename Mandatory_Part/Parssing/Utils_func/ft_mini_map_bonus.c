@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 16:37:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/16 17:01:15 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/16 17:15:39 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void ft_put_frame_minimap(t_source *src, int mini_width, int mini_height)
 void	ft_mini_map(t_source *src)
 {
     int view = 5;
+	int mini_size = 15;
 	int start_x = src->player->player_px - view - 3;
 	int end_x = src->player->player_px + view + 3;
 	
@@ -105,6 +106,7 @@ void	ft_mini_map(t_source *src)
 		start_y -= (end_y - ft_lenght_j(src));
 		end_y = ft_lenght_j(src);
 	}
+	
 	if (start_x > end_x)
     	start_x = 0;
 	if (start_y > end_y)
@@ -114,9 +116,8 @@ void	ft_mini_map(t_source *src)
 		start_x = 0;
 	if (start_y < 0)
 		start_y = 0;
+
 	int i = start_y;
-	int mini_size;
-	mini_size = 15;
 	while (i <= end_y)
 	{
 		int j = start_x;
@@ -145,8 +146,9 @@ void	ft_mini_map(t_source *src)
 		}
 		i++;
 	}
-	int map_width  = ft_strlen(src->map[0]);
-	int map_height = ft_lenght_j(src) + 1;
+
+	int map_width  = (end_x - start_x + 1) * mini_size;
+	int map_height = (end_y - start_y + 1) * mini_size;
 	if (start_x < 0)
 		start_x = 0;
 	if (start_y < 0)
@@ -155,9 +157,7 @@ void	ft_mini_map(t_source *src)
 		end_x = map_width - 1;
 	if (end_y >= map_height)
 		end_y = map_height - 1;
-	int mini_width = (view * 2 + 7) * mini_size;
-	int mini_height = (view * 2) * mini_size + 15;
-	ft_put_frame_minimap(src ,mini_width, mini_height);
+	ft_put_frame_minimap(src ,map_width, map_height);
 	
 	int player_size = (mini_size / 2) + 2;
 	int player_dx = (src->player->player_px - start_x) * mini_size + player_size / 2;
