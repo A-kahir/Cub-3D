@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../cub_mand.h"
 
 t_source	*ft_add_back(t_source *line, char *var, char *value)
 {
@@ -32,7 +32,7 @@ t_source	*ft_add_back(t_source *line, char *var, char *value)
 	new_node->mlx_pointer = 0;
 	new_node->mlx_window = 0;
 	new_node->width = 1472;
-	new_node->hight = 832;
+	new_node->height = 832;
 	new_node->colors->hexa_rgb_f = 0;
 	new_node->colors->hexa_rgb_c = 0;
 	new_node->player = malloc_cl(sizeof(t_player), 0);

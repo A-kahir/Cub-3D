@@ -10,26 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub_mand.h"
 
 static void	*ft_open_mlx_window(t_source *src)
 {
 	int	width_img;
-	int	hight_img;
+	int	height_img;
 
 	src->mlx_pointer = mlx_init();
 	if (!src->mlx_pointer)
 		return (print_message(3, NULL, '\0'), NULL);
 	src->mlx_window = mlx_new_window(src->mlx_pointer,
-			src->width, src->hight, "- Paradise & Hell -");
+			src->width, src->height, "- Paradise & Hell -");
 	if (!src->mlx_window)
 		return (print_message(3, NULL, '\0'), NULL);
 	width_img = src->width;
-	hight_img = src->hight;
+	height_img = src->height;
 	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-			"Parssing/texture/first_page.xpm", &width_img, &hight_img);
+			"Parssing_l/texture/first_page.xpm", &width_img, &height_img);
 	if (!src->mlx_image)
-		return (write(2, "mlx image failed\n", 18), NULL);
+		return (write(2, "mlx image failed1\n", 19), NULL);
 	mlx_put_image_to_window(src->mlx_pointer,
 		src->mlx_window, src->mlx_image, 0, 0);
 	mlx_key_hook(src->mlx_window, ft_key_theme, src);

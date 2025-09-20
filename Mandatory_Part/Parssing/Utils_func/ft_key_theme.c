@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/14 16:47:32 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/20 17:50:15 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../cub_mand.h"
 
 int	ft_key_loading(int key, t_source *src)
 {
@@ -37,7 +37,7 @@ int	ft_key_theme(int key, t_source *src)
 	int	h;
 
 	w = src->width;
-	h = src->hight;
+	h = src->height;
 	if (key == 19 || key == 18)
 	{
 		if (src->mlx_image)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mini_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 16:37:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/16 17:30:31 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../cub_mand.h"
 
 int ft_key_move_player(int key, t_source *src)
 {

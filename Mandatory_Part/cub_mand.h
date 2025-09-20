@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   cub_mand.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef CUB_MAND_H
+# define CUB_MAND_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 55
@@ -62,7 +62,7 @@ typedef struct s_source
 	void			*mlx_pointer;
 	void			*mlx_window;
 	void			*mlx_image;
-	int				hight;
+	int				height;
 	int				width;
 	t_colors		*colors;
 	t_player		*player;
