@@ -111,7 +111,7 @@ t_source	 *ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
-int			ft_key_theme(int key, t_source *src);
+void			ft_key_theme(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src);

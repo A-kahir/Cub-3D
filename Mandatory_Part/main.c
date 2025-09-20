@@ -21,18 +21,18 @@ static void	*ft_open_mlx_window(t_source *src)
 	if (!src->mlx_pointer)
 		return (print_message(3, NULL, '\0'), NULL);
 	src->mlx_window = mlx_new_window(src->mlx_pointer,
-			src->width, src->height, "- Paradise & Hell -");
+			src->width, src->height, "Hell -");
 	if (!src->mlx_window)
 		return (print_message(3, NULL, '\0'), NULL);
 	width_img = src->width;
 	height_img = src->height;
-	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-			"Parssing/texture/first_page.xpm", &width_img, &height_img);
-	if (!src->mlx_image)
-		return (write(2, "mlx image failed\n", 18), NULL);
-	mlx_put_image_to_window(src->mlx_pointer,
-		src->mlx_window, src->mlx_image, 0, 0);
-	mlx_key_hook(src->mlx_window, ft_key_theme, src);
+	// src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
+	// 		"Parssing/texture/first_page.xpm", &width_img, &height_img);
+	// if (!src->mlx_image)
+	// 	return (write(2, "mlx image failed\n", 18), NULL);
+	// mlx_put_image_to_window(src->mlx_pointer,
+	// 	src->mlx_window, src->mlx_image, 0, 0);
+	ft_key_theme(src);
 	return (src->mlx_pointer);
 }
 

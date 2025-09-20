@@ -1,10 +1,10 @@
-NO Parssing/texture/PARADISE/NO_paradise.xpm
-SO Parssing/texture/PARADISE/SO_paradise.xpm
-WE Parssing/texture/PARADISE/WE_paradise.xpm
-EA Parssing/texture/PARADISE/EA_paradise.xpm
+WE Parssing/texture/HELL/WE_hell.xpm
+SO Parssing/texture/HELL/SO_hell.xpm
+EA Parssing/texture/HELL/EA_hell.xpm
+NO Parssing/texture/HELL/NO_hell.xpm
 
-F 135, 206, 250
-C 245, 245, 220
+F 97, 0, 0
+C 22, 22, 22
 
 1111111111111111111111111111                        1111111111111111111111111111
 1000000000000000000000000001                        1000000000000000000000000001    11111111111111111111

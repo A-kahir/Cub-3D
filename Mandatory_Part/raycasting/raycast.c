@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/20 18:11:11 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/20 19:47:15 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,5 @@ int render_frame(t_source *src)
 		i++;
 	}
 	mlx_put_image_to_window(src->mlx_pointer, src->mlx_window, src->render_image, 0, 0);
-	ft_mini_map(src); //bonus Part
 	return (0);
 }

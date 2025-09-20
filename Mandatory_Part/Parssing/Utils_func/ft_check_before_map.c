@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/20 20:02:36 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,18 @@ int	ft_check_before_map(t_source *src)
 		}
 		curr = curr->next;
 	}
-	if (src && src->var && ft_strcmp(src->var, "NO") == 0)
-		if (src->next && ft_strcmp(src->next->var, "SO") == 0)
-			if (src->next->next && ft_strcmp(src->next->next->var, "WE") == 0)
-				if (src->next->next->next && ft_strcmp(src->next->next->next->var, "EA") == 0)
-					if (src->next->next->next->next && !ft_strcmp(src->next->next->next->next->var, "F"))
-						if (src->next->next->next->next->next && !ft_strcmp(src->next->next->next->next->next->var, "C"))
-							return (0);
+	int count = 0;
+	curr = src;
+	while (curr)
+	{
+		if (count > 6)
+		{
+			break ;
+		}
+		count++;
+		curr = curr->next;
+	}
+	if (count == 6)
+		return (0);
 	return (-1);
 }
