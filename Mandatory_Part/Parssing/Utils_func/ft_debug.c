@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_debug.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/20 18:35:54 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_debug(t_source *src, int flag)
 		if (tmp->player)
 		{
 			printf("player info: \n");
-			printf("      player PX : %d\n", src->player->player_px);
-			printf("      player PY : %d\n", src->player->player_py);
+			printf("      player PX : %f\n", src->player->player_px);
+			printf("      player PY : %f\n", src->player->player_py);
 			printf("      player OR: %c\n", src->player->player_or);
 		}
 	}

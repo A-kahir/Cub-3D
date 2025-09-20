@@ -27,7 +27,7 @@
 # include <sys/stat.h>
 # include <mlx.h>
 # include <math.h>
-
+#include <sys/time.h>
 
 typedef enum s_mal
 {
@@ -43,16 +43,32 @@ typedef struct s_leaks
 
 typedef struct s_colors
 {
-	unsigned int hexa_rgb_f;
-	unsigned int hexa_rgb_c;
+	unsigned int	hexa_rgb_f;
+	unsigned int	hexa_rgb_c;
 }	t_colors;
 
 typedef struct s_player
 {
-	int		player_px;
-	int		player_py;
+	double		player_px;
+	double		player_py;
+	double		dir_x;
+	double		dir_y;
+	double		plan_x;
+	double		plan_y;
 	char	player_or;
 } t_player;
+
+
+typedef struct s_texture
+{
+	void 	*image;
+	char 	*data;
+	int		width;
+	int		height;
+	int		bpp;
+	int 	line_len;
+	int 	endian;
+} t_tex;
 
 typedef struct s_source
 {
@@ -63,7 +79,19 @@ typedef struct s_source
 	void			*mlx_window;
 	void			*mlx_image;
 	int				height;
+	int				line_len;
+	int				bpp;
+	int				endian;
 	int				width;
+	long			old_time;
+	double			frame_time;
+	int				map_h;
+	int				map_w;
+	void			*render_image;
+	t_tex			no_tex;
+	t_tex			sud_tex;
+	t_tex			est_tex;
+	t_tex			west_tex;
 	t_colors		*colors;
 	t_player		*player;
 	struct s_source	*next;
@@ -96,22 +124,32 @@ char		*ft_strdup(char *s1, int flag);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strjoin(char *s1, char *s2);
 int			ft_strlen(char	*str);
-char		*ft_strstr(char *haystack, char *needle);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		**ft_split(char *s, char c);
 t_source	*ft_add_back(t_source *line, char *var, char *value);
 int			ft_atoi(char *str);
 int			ft_is_spaces(char c);
 int			ft_lenght_j(t_source *src);
+char 	   *ft_strstr(char *haystack, char *needle);
 
+//init data
+void		init_player(t_source *src);
+void		init_text(t_source *src);
+
+
+// rendering floor celling
+int 		render_frame(t_source *src);
+/// should remove when we finish
+void ft_debug(t_source *src, int flag); // in utils func
+//timing
+long	get_time(void);
 
 /// should remove when we finish
 void ft_debug(t_source *src, int flag); // in utils func
 
+//keys
+int	key_events(int key, t_source *src);
 
-
-
-
-void	ft_mini_map(t_source *src); // Utils_func ==> bonus part
+int	ft_mini_map(t_source *src); // Utils_func ==> bonus part
 int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);
 #endif

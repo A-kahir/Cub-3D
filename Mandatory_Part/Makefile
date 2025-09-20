@@ -15,6 +15,7 @@ LIBFT_SRC = \
 	Parssing/Libft_utils/ft_split.c \
 	Parssing/Libft_utils/ft_atoi.c \
 	Parssing/Libft_utils/ft_is_spaces.c \
+	Parssing/Libft_utils/ft_strstr.c \
 
 UTILS_SRC = \
 	Parssing/Utils_func/print_messages.c \
@@ -30,9 +31,14 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_key_theme.c \
 	Parssing/Utils_func/ft_secound_parsing.c \
 	Parssing/Utils_func/ft_is_hell.c \
-	Parssing/Utils_func/raycasting.c \
+	Parssing/Utils_func/ft_add_spaces_in_map.c \
+	Parssing/Utils_func/ft_mini_map_bonus.c \
 
-SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC)
+RAY_FUNC = \
+	raycasting/init.c\
+	raycasting/raycast.c\
+
+SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
 OBJS = $(SRC:.c=.o)
 
 CC = cc -fsanitize=address -g
@@ -41,7 +47,7 @@ MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(OBJS) Parssing/parsing.h
+$(NAME): $(OBJS) cub_mand.h
 	$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
 
 %.o: %.c

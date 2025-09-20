@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mini_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 16:37:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/20 18:40:29 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int ft_key_move_player(int key, t_source *src)
 	{
 		if (key == 13) // W
 		{
-			if (src->map[src->player->player_py - 1][src->player->player_px] != '1')
+			if (src->map[(int)src->player->player_py - 1][(int)src->player->player_px] != '1')
 				src->player->player_py--;
 		}
 		else if (key == 1) // S
 		{
-			if (src->map[src->player->player_py + 1][src->player->player_px] != '1')
+			if (src->map[(int)src->player->player_py + 1][(int)src->player->player_px] != '1')
 				src->player->player_py++;
 		}
 		else if (key == 0) // A
 		{
-			if (src->map[src->player->player_py][src->player->player_px - 1] != '1')
+			if (src->map[(int)src->player->player_py][(int)src->player->player_px - 1] != '1')
 				src->player->player_px--;
 		}
 		else if (key == 2) // D
 		{
-			if (src->map[src->player->player_py][src->player->player_px + 1] != '1')
+			if (src->map[(int)src->player->player_py][(int)src->player->player_px + 1] != '1')
 				src->player->player_px++;
 		}
 		ft_mini_map(src);
@@ -76,7 +76,7 @@ void ft_put_frame_minimap(t_source *src, int mini_width, int mini_height)
 }
 
 
-void	ft_mini_map(t_source *src)
+int	ft_mini_map(t_source *src)
 {
     int view = 5;
 	int mini_size = 15;
@@ -174,4 +174,5 @@ void	ft_mini_map(t_source *src)
 		}
 		y++;
 	}
+	return (0);
 }
