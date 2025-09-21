@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/20 18:10:14 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 02:00:26 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,69 +30,69 @@ int	key_events(int key, t_source *src)
 	}
 	if (key == 119)
 	{
-		newX = src->player->player_px + src->player->dir_x * move_speed;
-		newY = src->player->player_py + src->player->dir_y * move_speed;
+		newX = src->p->p_px + src->p->dir_x * move_speed;
+		newY = src->p->p_py + src->p->dir_y * move_speed;
 		if (newX >= 0 && newX < src->map_w && newY >= 0 && newY < src->map_h && src->map[(int)newY][(int)newX] != '1')
 		{
-			src->player->player_px = newX;
-			src->player->player_py = newY;
+			src->p->p_px = newX;
+			src->p->p_py = newY;
 		}
-		if (src->map[(int)src->player->player_py - 1][(int)src->player->player_px] != '1')
-			src->player->player_py--;
+		if (src->map[(int)src->p->p_py - 1][(int)src->p->p_px] != '1')
+			src->p->p_py--;
 	}
 	if (key == 97)
 	{
-		newX = src->player->player_px - src->player->plan_x * move_speed;
-		newY = src->player->player_py - src->player->plan_y * move_speed;
+		newX = src->p->p_px - src->p->plan_x * move_speed;
+		newY = src->p->p_py - src->p->plan_y * move_speed;
 		if (newX >= 0 && newX < src->map_w && newY >= 0 && newY < src->map_h && src->map[(int)newY][(int)newX] != '1')
 		{
-			src->player->player_px = newX;
-			src->player->player_py = newY;
+			src->p->p_px = newX;
+			src->p->p_py = newY;
 		}
-		if (src->map[(int)src->player->player_py][(int)src->player->player_px - 1] != '1')
-			src->player->player_px--;
+		if (src->map[(int)src->p->p_py][(int)src->p->p_px - 1] != '1')
+			src->p->p_px--;
 	}
 	if (key == 115)
 	{
-		newX = src->player->player_px - src->player->dir_x * move_speed;
-		newY = src->player->player_py - src->player->dir_y * move_speed;
+		newX = src->p->p_px - src->p->dir_x * move_speed;
+		newY = src->p->p_py - src->p->dir_y * move_speed;
 		if (newX >= 0 && newX < src->map_w && newY >= 0 && newY < src->map_h && src->map[(int)newY][(int)newX] != '1')
 		{
-			src->player->player_px = newX;
-			src->player->player_py = newY;
+			src->p->p_px = newX;
+			src->p->p_py = newY;
 		}
-		if (src->map[(int)src->player->player_py + 1][(int)src->player->player_px] != '1')
-			src->player->player_py++;
+		if (src->map[(int)src->p->p_py + 1][(int)src->p->p_px] != '1')
+			src->p->p_py++;
 	}
 	if (key == 100)
 	{
-		newX = src->player->player_px + src->player->plan_x * move_speed;
-		newY = src->player->player_py + src->player->plan_y * move_speed;
+		newX = src->p->p_px + src->p->plan_x * move_speed;
+		newY = src->p->p_py + src->p->plan_y * move_speed;
 		if (newX >= 0 && newX < src->map_w && newY >= 0 && newY < src->map_h && src->map[(int)newY][(int)newX] != '1')
 		{
-			src->player->player_px = newX;
-			src->player->player_py = newY;
+			src->p->p_px = newX;
+			src->p->p_py = newY;
 		}
-		if (src->map[(int)src->player->player_py][(int)src->player->player_px - 1] != '1')
-			src->player->player_px++;
+		if (src->map[(int)src->p->p_py][(int)src->p->p_px - 1] != '1')
+			src->p->p_px++;
 	}
 	if (key == 65361)
 	{
-		old_dirX = src->player->dir_x;
-		src->player->dir_x = src->player->dir_x * cos(-rot_speed) - src->player->dir_y * sin(-rot_speed);
-		src->player->dir_y = old_dirX * sin(-rot_speed) + src->player->dir_y * cos(-rot_speed);
-		old_plan_x = src->player->plan_x;
-		src->player->plan_x = src->player->plan_x * cos(-rot_speed) - src->player->plan_y * sin(-rot_speed);
-		src->player->plan_y = old_plan_x * sin(-rot_speed) + src->player->plan_y * cos(-rot_speed);
+		old_dirX = src->p->dir_x;
+		src->p->dir_x = src->p->dir_x * cos(-rot_speed) - src->p->dir_y * sin(-rot_speed);
+		src->p->dir_y = old_dirX * sin(-rot_speed) + src->p->dir_y * cos(-rot_speed);
+		old_plan_x = src->p->plan_x;
+		src->p->plan_x = src->p->plan_x * cos(-rot_speed) - src->p->plan_y * sin(-rot_speed);
+		src->p->plan_y = old_plan_x * sin(-rot_speed) + src->p->plan_y * cos(-rot_speed);
 	}
 	if (key == 65363)
 	{
-		old_dirX = src->player->dir_x;
-		src->player->dir_x = src->player->dir_x * cos(rot_speed) - src->player->dir_y * sin(rot_speed);
-		src->player->dir_y = old_dirX * sin(rot_speed) + src->player->dir_y * cos(rot_speed);
-		old_plan_x = src->player->plan_x;
-		src->player->plan_x = src->player->plan_x * cos(rot_speed) - src->player->plan_y * sin(rot_speed);
-		src->player->plan_y = old_plan_x * sin(rot_speed) + src->player->plan_y * cos(rot_speed);
+		old_dirX = src->p->dir_x;
+		src->p->dir_x = src->p->dir_x * cos(rot_speed) - src->p->dir_y * sin(rot_speed);
+		src->p->dir_y = old_dirX * sin(rot_speed) + src->p->dir_y * cos(rot_speed);
+		old_plan_x = src->p->plan_x;
+		src->p->plan_x = src->p->plan_x * cos(rot_speed) - src->p->plan_y * sin(rot_speed);
+		src->p->plan_y = old_plan_x * sin(rot_speed) + src->p->plan_y * cos(rot_speed);
 	}
 	// mlx_key_hook(src->mlx_window, ft_key_move_player, src);
 	// ft_mini_map(src);

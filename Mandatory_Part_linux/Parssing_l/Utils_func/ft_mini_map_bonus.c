@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 16:37:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/20 17:34:01 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 02:00:26 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ int ft_key_move_player(int key, t_source *src)
 
 	if (key == 119) // W
 	{
-		if (src->map[(int)src->player->player_py - 1][(int)src->player->player_px] != '1')
-			src->player->player_py--;
+		if (src->map[(int)src->p->p_py - 1][(int)src->p->p_px] != '1')
+			src->p->p_py--;
 	}
 	if (key == 115) // S
 	{
-		if (src->map[(int)src->player->player_py + 1][(int)src->player->player_px] != '1')
-			src->player->player_py++;
+		if (src->map[(int)src->p->p_py + 1][(int)src->p->p_px] != '1')
+			src->p->p_py++;
 	}
 	if (key == 97) // A
 	{
-		if (src->map[(int)src->player->player_py][(int)src->player->player_px - 1] != '1')
-			src->player->player_px--;
+		if (src->map[(int)src->p->p_py][(int)src->p->p_px - 1] != '1')
+			src->p->p_px--;
 	}
 	if (key == 100) // D
 	{
-		if (src->map[(int)src->player->player_py][(int)src->player->player_px + 1] != '1')
-			src->player->player_px++;
+		if (src->map[(int)src->p->p_py][(int)src->p->p_px + 1] != '1')
+			src->p->p_px++;
 	}
 	// ft_mini_map(src);
     return (0);
@@ -78,11 +78,11 @@ int	ft_mini_map(t_source *src)
 {
     int view = 5;
 	int mini_size = 15;
-	int start_x = src->player->player_px - view - 3;
-	int end_x = src->player->player_px + view + 3;
+	int start_x = src->p->p_px - view - 3;
+	int end_x = src->p->p_px + view + 3;
 	
-	int start_y = src->player->player_py - view;
-	int end_y = src->player->player_py + view;
+	int start_y = src->p->p_py - view;
+	int end_y = src->p->p_py + view;
 
 	if (start_x < 0)
 	{
@@ -159,8 +159,8 @@ int	ft_mini_map(t_source *src)
 	ft_put_frame_minimap(src ,map_width, map_height);
 	
 	int player_size = (mini_size / 2) + 2;
-	int player_dx = (src->player->player_px - start_x) * mini_size + player_size / 2;
-	int player_dy = (src->player->player_py - start_y) * mini_size + player_size / 2;
+	int player_dx = (src->p->p_px - start_x) * mini_size + player_size / 2;
+	int player_dy = (src->p->p_py - start_y) * mini_size + player_size / 2;
 	int y = 0;
 	while (y < player_size)
 	{

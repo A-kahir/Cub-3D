@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/20 18:11:11 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 02:00:26 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,31 +104,31 @@ int render_frame(t_source *src)
 	while (i < src->width)
 	{
 		camera_x = 2 * i / (double)src->width - 1;
-		ray_dir_x = src->player->dir_x + src->player->plan_x * camera_x;
-		ray_dir_y = src->player->dir_y + src->player->plan_y * camera_x;
-		mapX = (int)(src->player->player_px);
-		mapY = (int)(src->player->player_py);
+		ray_dir_x = src->p->dir_x + src->p->plan_x * camera_x;
+		ray_dir_y = src->p->dir_y + src->p->plan_y * camera_x;
+		mapX = (int)(src->p->p_px);
+		mapY = (int)(src->p->p_py);
 		delta_dist_x = fabs(1 / ray_dir_x);
 		delta_dist_y = fabs(1 / ray_dir_y);
 		if (ray_dir_x < 0)
 		{
 			stepX = -1;
-			side_dist_x = (src->player->player_px - mapX) * delta_dist_x;
+			side_dist_x = (src->p->p_px - mapX) * delta_dist_x;
 		}
 		else
 		{
 			stepX = 1;
-			side_dist_x = (mapX + 1.0 - src->player->player_px) * delta_dist_x;
+			side_dist_x = (mapX + 1.0 - src->p->p_px) * delta_dist_x;
 		}
 		if (ray_dir_y < 0)
 		{
 			stepY = -1;
-			side_dist_y = (src->player->player_py - mapY) * delta_dist_y;
+			side_dist_y = (src->p->p_py - mapY) * delta_dist_y;
 		}
 		else
 		{
 			stepY = 1;
-			side_dist_y = (mapY + 1.0 - src->player->player_py) * delta_dist_y;
+			side_dist_y = (mapY + 1.0 - src->p->p_py) * delta_dist_y;
 		}
 		hit = 0;
 		side = 0;
@@ -170,9 +170,9 @@ int render_frame(t_source *src)
 			draw_end = src->height - 1;
 		double wallX; // Position exacte où le rayon touche le mur
 		if (side == 0)
-			wallX = src->player->player_py + prepwalldis * ray_dir_y;
+			wallX = src->p->p_py + prepwalldis * ray_dir_y;
 		else
-			wallX = src->player->player_px + prepwalldis * ray_dir_x;
+			wallX = src->p->p_px + prepwalldis * ray_dir_x;
 		wallX -= floor(wallX);
 
 		t_tex *tex;

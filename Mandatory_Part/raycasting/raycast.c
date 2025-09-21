@@ -6,28 +6,34 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/20 19:47:15 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 04:25:09 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_mand.h"
 
-int get_map_height(char **map)
+int	get_map_height(char **map)
 {
-	int h = 0;
+	int	h;
+
+	h = 0;
 
 	while (map[h])
 		h++;
 	return (h);
 }
 
-int get_map_width(char **map)
+int	get_map_width(char **map)
 {
-	int max_w = 0;
-	int i = 0;
+	int	max_w;
+	int	i;
+	int	len;
+
+	max_w = 0;
+	i = 0;
 	while (map[i])
 	{
-		int len = strlen(map[i]);
+		len = strlen(map[i]);
 		if (len > max_w)
 			max_w = len;
 		i++;
@@ -45,11 +51,31 @@ void	my_put_pixel(char *data, t_source *src, int x, int y, int color)
 	*(unsigned int *)(data + pos) = color;
 }
 
+void	render_cell_floor(t_source *src, char *data)
+{
+	int	x;
+	int	y;
+	int	half;
+
+	x = 0;
+	y = 0;
+	half = src->height / 2;
+	while (y < half)
+	{
+		x = 0;
+		while (x < src->width)
+		{
+			my_put_pixel(data, src, x, y, src->colors->hexa_rgb_f);
+			my_put_pixel(data, src, x, (src->height - y - 1),
+				src->colors->hexa_rgb_c);
+			x++;
+		}
+		y++;
+	}
+}
+
 int render_frame(t_source *src)
 {
-	int		half;
-	int		y;
-	int		x;
 	char	*data;
 	int		i;
 	double	camera_x;
@@ -73,10 +99,7 @@ int render_frame(t_source *src)
 	double	time;
 	int		wall_dir;
 
-	y = 0;
-	x = 0;
 	i = 0;
-	half = src->height / 2;
 	src->map_h = get_map_height(src->map);
 	src->map_w = get_map_width(src->map);
 	time = get_time();
@@ -90,45 +113,35 @@ int render_frame(t_source *src)
 	if (!data)
 		return (0);
 	memset(data, 0, src->width * src->height * (src->bpp / 8));
-	while (y < half)
-	{
-		x = 0;
-		while (x < src->width)
-		{
-			my_put_pixel(data, src, x, y, src->colors->hexa_rgb_f);
-			my_put_pixel(data, src, x, (src->height - y - 1), src->colors->hexa_rgb_c);
-			x++;
-		}
-		y++;
-	}
+	render_cell_floor(src, data);
 	while (i < src->width)
 	{
 		camera_x = 2 * i / (double)src->width - 1;
-		ray_dir_x = src->player->dir_x + src->player->plan_x * camera_x;
-		ray_dir_y = src->player->dir_y + src->player->plan_y * camera_x;
-		mapX = (int)(src->player->player_px);
-		mapY = (int)(src->player->player_py);
+		ray_dir_x = src->p->dir_x + src->p->plan_x * camera_x;
+		ray_dir_y = src->p->dir_y + src->p->plan_y * camera_x;
+		mapX = (int)(src->p->p_px);
+		mapY = (int)(src->p->p_py);
 		delta_dist_x = fabs(1 / ray_dir_x);
 		delta_dist_y = fabs(1 / ray_dir_y);
 		if (ray_dir_x < 0)
 		{
 			stepX = -1;
-			side_dist_x = (src->player->player_px - mapX) * delta_dist_x;
+			side_dist_x = (src->p->p_px - mapX) * delta_dist_x;
 		}
 		else
 		{
 			stepX = 1;
-			side_dist_x = (mapX + 1.0 - src->player->player_px) * delta_dist_x;
+			side_dist_x = (mapX + 1.0 - src->p->p_px) * delta_dist_x;
 		}
 		if (ray_dir_y < 0)
 		{
 			stepY = -1;
-			side_dist_y = (src->player->player_py - mapY) * delta_dist_y;
+			side_dist_y = (src->p->p_py - mapY) * delta_dist_y;
 		}
 		else
 		{
 			stepY = 1;
-			side_dist_y = (mapY + 1.0 - src->player->player_py) * delta_dist_y;
+			side_dist_y = (mapY + 1.0 - src->p->p_py) * delta_dist_y;
 		}
 		hit = 0;
 		side = 0;
@@ -170,9 +183,9 @@ int render_frame(t_source *src)
 			draw_end = src->height - 1;
 		double wallX; // Position exacte où le rayon touche le mur
 		if (side == 0)
-			wallX = src->player->player_py + prepwalldis * ray_dir_y;
+			wallX = src->p->p_py + prepwalldis * ray_dir_y;
 		else
-			wallX = src->player->player_px + prepwalldis * ray_dir_x;
+			wallX = src->p->p_px + prepwalldis * ray_dir_x;
 		wallX -= floor(wallX);
 
 		t_tex *tex;

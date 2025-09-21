@@ -47,28 +47,40 @@ typedef struct s_colors
 	unsigned int	hexa_rgb_c;
 }	t_colors;
 
+typedef struct s_info_text
+{
+	int	w_n;
+	int	h_n;
+	int	w_s;
+	int	h_s;
+	int	w_e;
+	int	h_e;
+	int	w_w;
+	int	h_w;
+}	t_info_text;
+
 typedef struct s_player
 {
-	double		player_px;
-	double		player_py;
+	double		p_px;
+	double		p_py;
 	double		dir_x;
 	double		dir_y;
 	double		plan_x;
 	double		plan_y;
-	char	player_or;
-} t_player;
+	char		p_or;
+}	t_player;
 
 
 typedef struct s_texture
 {
-	void 	*image;
-	char 	*data;
+	void	*image;
+	char	*data;
 	int		width;
 	int		height;
 	int		bpp;
-	int 	line_len;
-	int 	endian;
-} t_tex;
+	int		line_len;
+	int		endian;
+}	t_tex;
 
 typedef struct s_source
 {
@@ -93,7 +105,8 @@ typedef struct s_source
 	t_tex			est_tex;
 	t_tex			west_tex;
 	t_colors		*colors;
-	t_player		*player;
+	t_player		*p;
+	t_info_text		text;
 	struct s_source	*next;
 }	t_source;
 
@@ -114,7 +127,7 @@ int			ft_parse_map(t_source *src);
 void			ft_key_theme(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
-void		ft_add_spaces_in_map(t_source *src);
+void		ft_add_spaces_in_map(t_source *src, int len);
 int			ft_max_len(t_source *src);
 
 //Libft utils:
@@ -148,7 +161,10 @@ long	get_time(void);
 void ft_debug(t_source *src, int flag); // in utils func
 
 //keys
-int	key_events(int key, t_source *src);
+int		key_events(int key, t_source *src);
+void	norm_keys2(int key, t_source *src, double move_speed);
+void	norm_keys1(int key, t_source *src, double move_speed);
+void	norm_key_fleche(int key, t_source *src, double r_speed);
 
 int	ft_mini_map(t_source *src); // Utils_func ==> bonus part
 int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);

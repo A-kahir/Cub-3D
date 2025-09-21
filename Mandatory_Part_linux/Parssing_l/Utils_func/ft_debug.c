@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 19:22:13 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 02:00:26 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	ft_debug(t_source *src, int flag)
 	}
 	if (flag == 2)
 	{
-		if (tmp->player)
+		if (tmp->p)
 		{
 			printf("player info: \n");
-			printf("      player PX : %f\n", src->player->player_px);
-			printf("      player PY : %f\n", src->player->player_py);
-			printf("      player OR: %c\n", src->player->player_or);
+			printf("      player PX : %f\n", src->p->p_px);
+			printf("      player PY : %f\n", src->p->p_py);
+			printf("      player OR: %c\n", src->p->p_or);
 		}
 	}
 }
