@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_before_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/20 20:02:36 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/22 19:07:29 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,28 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	return (0);
 }
 
+int	ft_check_textures(t_source *src)
+{
+	int count;
+	t_source *curr;
+
+	count = 0;
+	curr = src;
+	while (curr)
+	{
+		if (ft_strcmp(curr->var, "F") == 0)
+			break ;
+		if (ft_strcmp(curr->var, "NO") == 0 || ft_strcmp(curr->var, "SO") == 0
+			|| ft_strcmp(curr->var, "WE") == 0 || ft_strcmp(curr->var, "EA") == 0)
+		{
+			count++;
+		}
+		if (count == 4)
+			return (0);
+	}
+	return (1);
+}
+
 int	ft_check_before_map(t_source *src)
 {
 	t_source	*curr;
@@ -94,18 +116,7 @@ int	ft_check_before_map(t_source *src)
 		}
 		curr = curr->next;
 	}
-	int count = 0;
-	curr = src;
-	while (curr)
-	{
-		if (count > 6)
-		{
-			break ;
-		}
-		count++;
-		curr = curr->next;
-	}
-	if (count == 6)
+	if (ft_check_textures(src) == 0)
 		return (0);
 	return (-1);
 }
