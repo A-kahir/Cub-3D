@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_spaces_in_map.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:46:25 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/23 00:35:14 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_len(char *str)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!str)
 		return (0);
@@ -32,9 +32,9 @@ static int	ft_len(char *str)
 
 int	ft_max_len(t_source *src)
 {
-	int max;
-	int temp;
-	int i;
+	int	max;
+	int	temp;
+	int	i;
 
 	max = 0;
 	i = 0;
@@ -48,36 +48,29 @@ int	ft_max_len(t_source *src)
 	return (max);
 }
 
-void    ft_add_spaces_in_map(t_source *src)
+void	ft_add_spaces_in_map(t_source *src)
 {
-    int i;
-    int j;
-    int max;
-    char *new_row;
+	int		i;
+	int		j;
+	int		max;
+	int		len;
+	char	*new_row;
 
-    max = ft_max_len(src);
-    i = 0;
-    while (src->map[i])
-    {
-        int len = ft_strlen(src->map[i]);
-        if (len < max)
-        {
-            new_row = (char *)malloc_cl(sizeof(char) * (max + 1), 0);
-            j = 0;
-            while (src->map[i][j])
-            {
-                new_row[j] = src->map[i][j];
-                j++;
-            }
-            while (j < max)
-            {
-                new_row[j] = ' ';
-                j++;
-            }
-            new_row[j] = '\0';
-            src->map[i] = new_row;
-            len++;
-        }
-        i++;
-    }
+	1 && (max = ft_max_len(src), i = 0);
+	while (src->map[i])
+	{
+		len = ft_strlen(src->map[i]);
+		if (len < max)
+		{
+			new_row = (char *)malloc_cl(sizeof(char) * (max + 1), 0);
+			j = 0;
+			while (src->map[i][j])
+				1 && (new_row[j] = src->map[i][j], j++);
+			while (j < max)
+				1 && (new_row[j] = ' ', j++);
+			new_row[j] = '\0';
+			1 && (src->map[i] = new_row, len++);
+		}
+		i++;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/20 20:24:26 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/23 00:18:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	ft_key_theme(t_source *src)
 	// 	if (key == 19)
 	// 		ft_is_hell(src);
 		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-				"Parssing/texture/Loading_page.xpm", &w, &h);
+				"Parssing/texture/Loading-hell.xpm", &w, &h);
 		if (src->mlx_image)
 			mlx_put_image_to_window(src->mlx_pointer,
 				src->mlx_window, src->mlx_image, 0, 0);

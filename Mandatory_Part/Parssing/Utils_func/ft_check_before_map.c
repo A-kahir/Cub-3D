@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/22 19:19:13 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/23 00:44:39 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	int		i;
 	int		j;
 
-	if (!curr->value)
-		return (-1);
 	colors_rgb = ft_split(curr->value, ',');
 	if (!colors_rgb || !colors_rgb[0] || !colors_rgb[1]
 		|| !colors_rgb[2] || colors_rgb[3] != NULL
@@ -64,15 +62,15 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 
 int	ft_check_textures(t_source *src)
 {
-	t_source *curr;
-	int count;
+	t_source	*curr;
+	int			count;
 
 	curr = src;
 	count = 0;
 	while (curr)
 	{
-		if (ft_strcmp(curr->var, "NO") == 0 || ft_strcmp(curr->var, "SO") == 0
-			|| ft_strcmp(curr->var, "WE") == 0 || ft_strcmp(curr->var, "EA") == 0)
+		if (ft_strcmp(curr->var, "NO") == 0 || !ft_strcmp(curr->var, "SO")
+			|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA"))
 		{
 			count++;
 		}
@@ -83,27 +81,42 @@ int	ft_check_textures(t_source *src)
 	return (1);
 }
 
-int	ft_check_before_map(t_source *src)
+static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 {
 	t_source	*curr;
-	int			hexa_f = -1;
-	int			hexa_c = -1;
 
 	curr = src;
+	*hexa_f = -1;
+	*hexa_c = -1;
 	while (curr)
 	{
 		if (!curr->value)
 			return (-1);
 		if (ft_strcmp(curr->var, "F") == 0 || ft_strcmp(curr->var, "C") == 0)
+		{
+			if (!curr->value)
+				return (-1);
 			if (ft_prepare_hexa_rgb(curr) == -1)
 				return (-1);
+		}
 		if (ft_strcmp(curr->var, "F") == 0)
-			hexa_f = curr->colors->hexa_rgb_f;
+			*hexa_f = curr->colors->hexa_rgb_f;
 		if (ft_strcmp(curr->var, "C") == 0)
-			hexa_c = curr->colors->hexa_rgb_c;
+			*hexa_c = curr->colors->hexa_rgb_c;
 		curr = curr->next;
 	}
-	if (hexa_f == -1 || hexa_c == -1)
+	if (*hexa_f == -1 || *hexa_c == -1)
+		return (-1);
+	return (0);
+}
+
+int	ft_check_before_map(t_source *src)
+{
+	t_source	*curr;
+	int			hexa_f;
+	int			hexa_c;
+
+	if (ft_hexa_colors(src, &hexa_f, &hexa_c) == -1)
 		return (-1);
 	curr = src;
 	while (curr)
