@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/22 19:07:29 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/22 19:19:13 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,21 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 
 int	ft_check_textures(t_source *src)
 {
-	int count;
 	t_source *curr;
+	int count;
 
-	count = 0;
 	curr = src;
+	count = 0;
 	while (curr)
 	{
-		if (ft_strcmp(curr->var, "F") == 0)
-			break ;
 		if (ft_strcmp(curr->var, "NO") == 0 || ft_strcmp(curr->var, "SO") == 0
 			|| ft_strcmp(curr->var, "WE") == 0 || ft_strcmp(curr->var, "EA") == 0)
 		{
 			count++;
 		}
-		if (count == 4)
+		else if (count == 4)
 			return (0);
+		curr = curr->next;
 	}
 	return (1);
 }
