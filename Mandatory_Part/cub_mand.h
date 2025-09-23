@@ -64,6 +64,7 @@ typedef struct s_raycast
 	int		side;
 	double	perpwalldis;
 	int		wall_dir;
+	int		tex_x;
 }	t_raycast;
 
 typedef struct s_player
