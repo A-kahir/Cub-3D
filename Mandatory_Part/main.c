@@ -36,8 +36,14 @@ static void	*ft_open_mlx_window(t_source *src)
 	return (src->mlx_pointer);
 }
 
+void f()
+{
+	system("leaks cub3D");
+}
+
 int	main(int argc, char **argv)
 {
+	atexit(f);
 	t_source	*src;
 
 	src = NULL;
@@ -50,5 +56,6 @@ int	main(int argc, char **argv)
 	if (!src->mlx_pointer)
 		return (-1);
 	mlx_loop(src->mlx_pointer);
+	malloc_cl(0, 1);
 }
 

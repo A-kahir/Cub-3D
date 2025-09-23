@@ -33,6 +33,7 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_is_hell.c \
 	Parssing/Utils_func/ft_add_spaces_in_map.c \
 	Parssing/Utils_func/ft_parse_map2.c \
+	Parssing/Utils_func/ft_parse_map3.c \
 	Parssing/Utils_func/ft_lenght_j.c \
 
 RAY_FUNC = \
@@ -42,7 +43,7 @@ RAY_FUNC = \
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
 OBJS = $(SRC:.c=.o)
 
-CC = cc -fsanitize=address -g
+CC = cc #-fsanitize=address -g
 CFLAGS = -Wall -Wextra -Werror -IParssing -IParssing/Libft_utils -IParssing/Utils_func
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
