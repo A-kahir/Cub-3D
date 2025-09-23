@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/21 02:00:26 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/23 04:05:36 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int render_frame(t_source *src)
 	double	side_dist_y;
 	int		hit;
 	int		side;
-	double	prepwalldis;
+	double	perpwalldis;
 	int		lineheight;
 	int		draw_start;
 	int		draw_end;
@@ -158,10 +158,10 @@ int render_frame(t_source *src)
 				hit = 1;
 		}
 		if (side == 0)
-			prepwalldis = side_dist_x - delta_dist_x;
+			perpwalldis = side_dist_x - delta_dist_x;
 		else
-			prepwalldis = side_dist_y - delta_dist_y;
-		lineheight = (int)(src->height / prepwalldis);
+			perpwalldis = side_dist_y - delta_dist_y;
+		lineheight = (int)(src->height / perpwalldis);
 		draw_start = -lineheight / 2 + src->height / 2;
 		if (draw_start < 0)
 			draw_start = 0;
@@ -170,9 +170,9 @@ int render_frame(t_source *src)
 			draw_end = src->height - 1;
 		double wallX; // Position exacte où le rayon touche le mur
 		if (side == 0)
-			wallX = src->p->p_py + prepwalldis * ray_dir_y;
+			wallX = src->p->p_py + perpwalldis * ray_dir_y;
 		else
-			wallX = src->p->p_px + prepwalldis * ray_dir_x;
+			wallX = src->p->p_px + perpwalldis * ray_dir_x;
 		wallX -= floor(wallX);
 
 		t_tex *tex;

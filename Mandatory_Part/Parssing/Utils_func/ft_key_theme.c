@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/21 02:15:14 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/23 00:36:40 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	ft_key_loading(int key, t_source *src)
 		printf("==> now you will start game\n**************************\n");
 		init_player(src);
 		init_text(src);
+		src->map_h = get_map_height(src->map);
+		src->map_w = get_map_width(src->map);
 		src->old_time = get_time();
 		src->frame_time = 0.0;
 		src->render_image = mlx_new_image(src->mlx_pointer,

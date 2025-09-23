@@ -47,17 +47,24 @@ typedef struct s_colors
 	unsigned int	hexa_rgb_c;
 }	t_colors;
 
-typedef struct s_info_text
+typedef struct s_raycast
 {
-	int	w_n;
-	int	h_n;
-	int	w_s;
-	int	h_s;
-	int	w_e;
-	int	h_e;
-	int	w_w;
-	int	h_w;
-}	t_info_text;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		mapx;
+	int		mapy;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		stepx;
+	int		stepy;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		hit;
+	int		side;
+	double	perpwalldis;
+	int		wall_dir;
+}	t_raycast;
 
 typedef struct s_player
 {
@@ -69,7 +76,6 @@ typedef struct s_player
 	double		plan_y;
 	char		p_or;
 }	t_player;
-
 
 typedef struct s_texture
 {
@@ -106,10 +112,11 @@ typedef struct s_source
 	t_tex			west_tex;
 	t_colors		*colors;
 	t_player		*p;
-	t_info_text		text;
+	int				draw_start;
+	int				draw_end;
+	int				tex_x;
 	struct s_source	*next;
 }	t_source;
-
 
 //principale func:
 int			ft_parsing(int argc, char **argv);
@@ -120,11 +127,11 @@ void		ft_is_hell(t_source *src);
 void		print_message(int flag, char *arg, char ch);
 char		*ft_get_next_line(int fd);
 int			ft_chack_valid_source(char *str);
-t_source	 *ft_fill_struct(t_source *src, char *line);
+t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
-void			ft_key_theme(t_source *src);
+void		ft_key_theme(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src, int len);
@@ -143,28 +150,34 @@ t_source	*ft_add_back(t_source *line, char *var, char *value);
 int			ft_atoi(char *str);
 int			ft_is_spaces(char c);
 int			ft_lenght_j(t_source *src);
-char 	   *ft_strstr(char *haystack, char *needle);
+char		*ft_strstr(char *haystack, char *needle);
 
 //init data
 void		init_player(t_source *src);
 void		init_text(t_source *src);
 
-
+//utils raycasting
+int			get_map_height(char **map);
+int			get_map_width(char **map);
+void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
+void		init_data(t_source *src, t_raycast *ray, int *i);
+void		dda_algo(t_source *src, t_raycast *ray);
+int			init_frame(t_source *src, char **data);
+void		calc_wall_dist(t_source *src, t_raycast *ray);
+void		calc_wall_projection(t_source *src,
+				t_raycast *ray, int *start, int *end);
 // rendering floor celling
-int 		render_frame(t_source *src);
+int			render_frame(t_source *src);
 /// should remove when we finish
-void ft_debug(t_source *src, int flag); // in utils func
+void		ft_debug(t_source *src, int flag); // in utils func
 //timing
-long	get_time(void);
-
-/// should remove when we finish
-void ft_debug(t_source *src, int flag); // in utils func
+long		get_time(void);
 
 //keys
-int		key_events(int key, t_source *src);
-void	norm_keys2(int key, t_source *src, double move_speed);
-void	norm_keys1(int key, t_source *src, double move_speed);
-void	norm_key_fleche(int key, t_source *src, double r_speed);
+int			key_events(int key, t_source *src);
+void		norm_keys2(int key, t_source *src, double move_speed);
+void		norm_keys1(int key, t_source *src, double move_speed);
+void		norm_key_fleche(int key, t_source *src, double r_speed);
 
 int	ft_mini_map(t_source *src); // Utils_func ==> bonus part
 int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);

@@ -37,6 +37,8 @@ RAY_FUNC = \
 	raycasting/init_player.c\
 	raycasting/init_text.c\
 	raycasting/raycast.c\
+	raycasting/utils.c\
+	raycasting/render.c\
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
 OBJS = $(SRC:.c=.o)
