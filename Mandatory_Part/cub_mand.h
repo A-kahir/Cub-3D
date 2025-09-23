@@ -97,7 +97,6 @@ typedef struct s_source
 	struct s_source	*next;
 }	t_source;
 
-
 //principale func:
 int			ft_parsing(int argc, char **argv);
 t_source	*ft_get_source(t_source *src, char *file);
@@ -107,15 +106,16 @@ void		ft_is_hell(t_source *src);
 void		print_message(int flag, char *arg, char ch);
 char		*ft_get_next_line(int fd);
 int			ft_chack_valid_source(char *str);
-t_source	 *ft_fill_struct(t_source *src, char *line);
+t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
-void			ft_key_theme(t_source *src);
+void		ft_key_theme(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src);
 int			ft_max_len(t_source *src);
+char	ft_check(t_source *src, int r, int c);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
@@ -130,12 +130,16 @@ t_source	*ft_add_back(t_source *line, char *var, char *value);
 int			ft_atoi(char *str);
 int			ft_is_spaces(char c);
 int			ft_lenght_j(t_source *src);
-char 	   *ft_strstr(char *haystack, char *needle);
+char		*ft_strstr(char *haystack, char *needle);
+int			check_corner_and_side(t_source *src, int i, int l);
+int			ft_check_corners(t_source *src, int i, int l);
+int			ft_check_middle_chars(t_source *src, int i, int len_j);
+int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
+int			ft_valid_char_rows(t_source *src, int i, int len_j);
 
 //init data
 void		init_player(t_source *src);
 void		init_text(t_source *src);
-
 
 // rendering floor celling
 int 		render_frame(t_source *src);
@@ -146,10 +150,12 @@ long	get_time(void);
 
 /// should remove when we finish
 void ft_debug(t_source *src, int flag); // in utils func
+void	ft_debug_map(char *map, int pos); // in utils func
 
 //keys
 int	key_events(int key, t_source *src);
 
 int	ft_mini_map(t_source *src); // Utils_func ==> bonus part
 int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);
+
 #endif

@@ -32,7 +32,8 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_secound_parsing.c \
 	Parssing/Utils_func/ft_is_hell.c \
 	Parssing/Utils_func/ft_add_spaces_in_map.c \
-	Parssing/Utils_func/ft_mini_map_bonus.c \
+	Parssing/Utils_func/ft_parse_map2.c \
+	Parssing/Utils_func/ft_lenght_j.c \
 
 RAY_FUNC = \
 	raycasting/init.c\

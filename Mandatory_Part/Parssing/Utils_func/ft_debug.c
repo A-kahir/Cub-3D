@@ -6,11 +6,25 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/20 18:35:54 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/23 19:23:36 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_mand.h"
+
+void	ft_debug_map(char *map, int pos)
+{
+	int	i;
+
+	i = 0;
+	while (pos > i)
+	{
+		printf(" ");
+		i++;
+	}
+	printf("i\n");
+	printf("%s\n\n", map);
+}
 
 void	ft_debug(t_source *src, int flag)
 {
