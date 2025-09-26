@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/21 04:12:15 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 00:01:07 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,42 @@ void	init_text(t_source *src)
 		perror("Error\nFailed to get texture data\n");
 		exit(1);
 	}
+}
+
+t_tex	*select_texture(t_source *src, t_raycast *ray)
+{
+	if (ray->wall_dir == 0)
+		return (&src->no_tex);
+	else if (ray->wall_dir == 1)
+		return (&src->sud_tex);
+	else if (ray->wall_dir == 2)
+		return (&src->west_tex);
+	else
+		return (&src->est_tex);
+}
+
+int	calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex)
+{
+	double	wall_x;
+	int		tex_x;
+
+	if (ray->side == 0)
+		wall_x = src->p->p_py + ray->perpwalldis * ray->ray_dir_y;
+	else
+		wall_x = src->p->p_px + ray->perpwalldis * ray->ray_dir_x;
+	wall_x -= floor(wall_x);
+	tex_x = (int)(wall_x * (double)tex->width);
+	if ((ray->side == 0 && ray->ray_dir_x > 0)
+		|| (ray->side == 1 && ray->ray_dir_y < 0))
+		tex_x = tex->width - tex_x - 1;
+	if (tex_x < 0 || tex_x >= tex->width)
+	{
+		printf("Error: tex_x=%d out of bounds (width=%d)\n",
+			tex_x, tex->width);
+		if (tex_x < 0)
+			tex_x = 0;
+		else
+			tex_x = tex->width - 1;
+	}
+	return (tex_x);
 }

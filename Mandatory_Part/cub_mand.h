@@ -17,6 +17,9 @@
 #  define BUFFER_SIZE 55
 # endif
 
+# define WIDTH 1472
+# define HEIGHT 832
+
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
@@ -113,6 +116,7 @@ typedef struct s_source
 	t_tex			west_tex;
 	t_colors		*colors;
 	t_player		*p;
+	t_raycast		*ray;
 	int				draw_start;
 	int				draw_end;
 	int				tex_x;
@@ -162,11 +166,14 @@ int			get_map_height(char **map);
 int			get_map_width(char **map);
 void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
 void		init_data(t_source *src, t_raycast *ray, int *i);
-void		dda_algo(t_source *src, t_raycast *ray);
-int			init_frame(t_source *src, char **data);
-void		calc_wall_dist(t_source *src, t_raycast *ray);
-void		calc_wall_projection(t_source *src,
-				t_raycast *ray, int *start, int *end);
+int			dda(t_source *src, t_raycast *ray);
+void		init_side_dest(t_source *src, t_raycast *ray);
+void		calculate_wall_params(t_source *src, t_raycast *ray,
+				int *lineheight);
+void		calculate_draw_limits(t_source *src, int lineheight,
+				int *draw_start, int *draw_end);
+t_tex		*select_texture(t_source *src, t_raycast *ray);
+int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
 // rendering floor celling
 int			render_frame(t_source *src);
 /// should remove when we finish
