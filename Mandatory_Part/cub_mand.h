@@ -141,6 +141,7 @@ int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src, int len);
 int			ft_max_len(t_source *src);
+char	ft_check(t_source *src, int r, int c);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
@@ -156,6 +157,11 @@ int			ft_atoi(char *str);
 int			ft_is_spaces(char c);
 int			ft_lenght_j(t_source *src);
 char		*ft_strstr(char *haystack, char *needle);
+int			check_corner_and_side(t_source *src, int i, int l);
+int			ft_check_corners(t_source *src, int i, int l);
+int			ft_check_middle_chars(t_source *src, int i, int len_j);
+int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
+int			ft_valid_char_rows(t_source *src, int i, int len_j);
 
 //init data
 void		init_player(t_source *src);
@@ -179,6 +185,11 @@ int			render_frame(t_source *src);
 /// should remove when we finish
 void		ft_debug(t_source *src, int flag); // in utils func
 //timing
+long	get_time(void);
+
+/// should remove when we finish
+void ft_debug(t_source *src, int flag); // in utils func
+void	ft_debug_map(char *map, int pos); // in utils func
 long		get_time(void);
 
 //keys
@@ -189,4 +200,5 @@ void		norm_key_fleche(int key, t_source *src, double r_speed);
 
 int	ft_mini_map(t_source *src); // Utils_func ==> bonus part
 int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);
+
 #endif

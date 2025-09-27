@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_source.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/21 03:25:27 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/23 00:32:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_mand.h"
 
-static int	ft_check_player(t_source *src, int player)
+static int	ft_check_player(t_source *src)
 {
+	int	player;
 	int	i;
 	int	j;
 
-	player = 0;
-	i = -1;
-	while (src && src->map[++i])
+	1 && (player = 0, i = 0);
+	while (src && src->map[i])
 	{
 		j = -1;
 		while (src->map[i][++j] != '\0')
@@ -27,10 +27,8 @@ static int	ft_check_player(t_source *src, int player)
 			if (src->map[i][j] == 'S' || src->map[i][j] == 'N'
 				|| src->map[i][j] == 'W' || src->map[i][j] == 'E')
 			{
-				src->p->p_px = j;
-				src->p->p_py = i;
-				src->p->p_or = src->map[i][j];
-				player++;
+				1 && (src->player->player_px = j, src->player->player_py = i);
+				1 && (src->player->player_or = src->map[i][j], player++);
 			}
 		}
 	}
@@ -45,7 +43,6 @@ t_source	*ft_get_source(t_source *src, char *file)
 {
 	int		fd;
 	char	*line;
-	int		player;
 
 	player = 0;
 	fd = open(file, O_RDONLY);
@@ -56,7 +53,7 @@ t_source	*ft_get_source(t_source *src, char *file)
 	{
 		if (ft_chack_valid_source(line) == 0)
 			src = ft_fill_struct(src, line);
-		if (ft_strncmp(line, "C ", 2) == 0) 
+		if (ft_strncmp(line, "C ", 2) == 0)
 		{
 			free(line);
 			break ;

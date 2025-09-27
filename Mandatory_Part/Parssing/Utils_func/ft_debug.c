@@ -12,6 +12,20 @@
 
 #include "../cub_mand.h"
 
+void	ft_debug_map(char *map, int pos)
+{
+	int	i;
+
+	i = 0;
+	while (pos > i)
+	{
+		printf(" ");
+		i++;
+	}
+	printf("i\n");
+	printf("%s\n\n", map);
+}
+
 void	ft_debug(t_source *src, int flag)
 {
 	t_source	*tmp;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_messages.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/23 00:01:09 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	ft_cantinue1(int flag, char *arg, char ch)
 
 void	print_message(int flag, char *arg, char ch)
 {
+	write(2, "Error :\n", 9);
 	if (flag == 0)
 	{
 		write(2, "invalid Args ❌\n", 18);
