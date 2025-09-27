@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_debug.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 02:05:37 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:29:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 void	ft_debug_map(char *map, int pos)
 {

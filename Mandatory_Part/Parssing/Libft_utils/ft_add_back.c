@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 void	init_new_node(t_source *new_node)
 {

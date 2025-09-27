@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 static t_source	*ft_handle_rgb(t_source *src, char **var)
 {

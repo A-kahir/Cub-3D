@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_before_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:09:40 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:29:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 static int	ft_fill_struct_colors(t_source *src, char **colors_rgb)
 {

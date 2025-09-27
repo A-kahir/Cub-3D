@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 static int	count_words(char const *s, char c)
 {

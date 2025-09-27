@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/26 23:59:22 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:38:31 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 int	key_events(int key, t_source *src)
 {
@@ -68,7 +68,7 @@ void	ft_key_theme(t_source *src)
 	w = WIDTH;
 	h = HEIGHT;
 	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-			"Parssing/texture/Loading_page.xpm", &w, &h);
+			"Mandatory_Part/Parssing/texture/loading_page.xpm", &w, &h);
 	if (src->mlx_image)
 		mlx_put_image_to_window(src->mlx_pointer,
 			src->mlx_window, src->mlx_image, 0, 0);

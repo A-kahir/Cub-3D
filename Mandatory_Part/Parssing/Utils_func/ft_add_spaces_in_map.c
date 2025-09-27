@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_spaces_in_map.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:46:25 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 01:58:00 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:29:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 static int	ft_len(char *str)
 {

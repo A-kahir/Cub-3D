@@ -6,11 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:25:02 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 19:25:20 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:29:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 int	ft_valid_char_rows(t_source *src, int i, int len_j)
 {

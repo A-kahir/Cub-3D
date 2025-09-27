@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:17:42 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 01:16:39 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:29:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_mand.h"
+#include "../../cub_mand.h"
 
 char	ft_check(t_source *src, int r, int c)
 {

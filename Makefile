@@ -1,11 +1,8 @@
-NAME = cub
+NAME = cub3D
 NAME_BONUS = cub3D_bonus
 
-PARSER_SRC = \
-	Mandatory_Part/main.c
-
-PARSER_B = \
-	Bonus_Part/main.c
+PARSER_SRC = Mandatory_Part/main.c
+PARSER_B   = Bonus_Part/main.c
 
 LIBFT_SRC = \
 	Mandatory_Part/Parssing/Libft_utils/malloc.c \
@@ -19,7 +16,7 @@ LIBFT_SRC = \
 	Mandatory_Part/Parssing/Libft_utils/ft_split.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_atoi.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_is_spaces.c \
-	Mandatory_Part/Parssing/Libft_utils/ft_strstr.c \
+	Mandatory_Part/Parssing/Libft_utils/ft_strstr.c
 
 LIBFT_SRCB = \
 	Bonus_Part/Parssing_b/Libft_utils/malloc.c \
@@ -33,7 +30,7 @@ LIBFT_SRCB = \
 	Bonus_Part/Parssing_b/Libft_utils/ft_split.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_atoi.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_is_spaces.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c
 
 UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/print_messages.c \
@@ -51,8 +48,8 @@ UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/ft_key_theme.c \
 	Mandatory_Part/Parssing/Utils_func/ft_secound_parsing.c \
 	Mandatory_Part/Parssing/Utils_func/ft_add_spaces_in_map.c \
-	Mandatory_Part/Parssing/Utils_func/keys.c\
-	Mandatory_Part/Parssing/Utils_func/ft_lenght_j.c\
+	Mandatory_Part/Parssing/Utils_func/keys.c \
+	Mandatory_Part/Parssing/Utils_func/ft_lenght_j.c
 
 UTILS_SRC_B = \
 	Bonus_Part/Parssing_b/Utils_func/print_messages.c \
@@ -70,31 +67,38 @@ UTILS_SRC_B = \
 	Bonus_Part/Parssing_b/Utils_func/ft_key_theme.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_secound_parsing.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_add_spaces_in_map.c \
-	Bonus_Part/Parssing_b/Utils_func/keys.c\
-	Bonus_Part/Parssing_b/Utils_func/ft_lenght_j.c\
+	Bonus_Part/Parssing_b/Utils_func/keys.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_lenght_j.c
 
 RAY_FUNC = \
-	Mandatory_Part/raycasting/init_player.c\
-	Mandatory_Part/raycasting/init_text.c\
-	Mandatory_Part/raycasting/raycast.c\
-	Mandatory_Part/raycasting/utils.c\
-	Mandatory_Part/raycasting/render.c\
+	Mandatory_Part/raycasting/init_player.c \
+	Mandatory_Part/raycasting/init_text.c \
+	Mandatory_Part/raycasting/raycast.c \
+	Mandatory_Part/raycasting/utils.c \
+	Mandatory_Part/raycasting/render.c
 
 RAY_FUNC_B = \
-	Bonus_Part/raycasting_b/init_player.c\
-	Bonus_Part/raycasting_b/init_text.c\
-	Bonus_Part/raycasting_b/raycast.c\
-	Bonus_Part/raycasting_b/utils.c\
-	Bonus_Part/raycasting_b/render.c\
+	Bonus_Part/raycasting_b/init_player.c \
+	Bonus_Part/raycasting_b/init_text.c \
+	Bonus_Part/raycasting_b/raycast.c \
+	Bonus_Part/raycasting_b/utils.c \
+	Bonus_Part/raycasting_b/render.c
 
-SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
-SRC_B = $(PARSER_B) $(LIBFT_SRCB) $(UTILS_SRC_B) $(RAY_FUNC_B)
+SRC   = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
+SRC_B = $(PARSER_B)   $(LIBFT_SRCB) $(UTILS_SRC_B) $(RAY_FUNC_B)
 
 OBJS = $(SRC:.c=.o)
 OBJB = $(SRC_B:.c=.o)
 
-CC = cc -fsanitize=address -g
-CFLAGS = -Wall -Wextra -Werror -IParssing -IParssing/Libft_utils -IParssing/Utils_func
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g \
+         -IMandatory_Part/Parssing \
+         -IMandatory_Part/Parssing/Libft_utils \
+         -IMandatory_Part/Parssing/Utils_func \
+         -IBonus_Part/Parssing_b \
+         -IBonus_Part/Parssing_b/Libft_utils \
+         -IBonus_Part/Parssing_b/Utils_func
+
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
@@ -105,9 +109,9 @@ $(NAME): $(OBJS) Mandatory_Part/cub_mand.h
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus : $(NAME_BONUS)
+bonus: $(NAME_BONUS)
 
-$(NAME_BONUS) : $(OBJB) Bonus_Part/cub_bonus.h
+$(NAME_BONUS): $(OBJB) Bonus_Part/cub_bonus.h
 	$(CC) $(CFLAGS) $(OBJB) $(MLXFLAGS) -o $(NAME_BONUS)
 
 clean:
@@ -118,5 +122,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re
-
+.PHONY: all clean fclean re bonus
