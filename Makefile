@@ -71,6 +71,7 @@ UTILS_SRC_B = \
 	Bonus_Part/Parssing_b/Utils_func/ft_lenght_j.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_is_hell.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_mini_map_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_static_flag.c \
 
 RAY_FUNC = \
 	Mandatory_Part/raycasting/init_player.c \

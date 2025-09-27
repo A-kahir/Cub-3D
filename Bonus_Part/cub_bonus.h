@@ -143,6 +143,8 @@ void		ft_add_spaces_in_map(t_source *src);
 int			ft_max_len(t_source *src);
 char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
+int			ft_static_flag(int new_nb, int flag);
+
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);

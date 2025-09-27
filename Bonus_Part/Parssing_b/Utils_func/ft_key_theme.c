@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 20:04:20 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 22:13:27 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ int	ft_key_theme_b(int key, t_source *src)
 			src->mlx_image = NULL;
 		}
 		if (key == 19)
+		{
 			ft_is_hell(src);
+			ft_static_flag(1, 1);
+		}
 		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 				"Bonus_Part/Parssing_b/texture/Loading_page.xpm", &w, &h);
 		if (src->mlx_image)

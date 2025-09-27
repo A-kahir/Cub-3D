@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 19:24:03 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 20:30:38 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 22:03:00 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void set_pixel_img(t_source *src, char *img_data, int x, int y, int color
     *(unsigned int *)dst = (unsigned int)color;
 }
 
-static void ft_frame_mini_mp(t_source *src, char *img_data, int ox, int oy, int mini_width, int mini_height)
+static void ft_frame_mini_mp(t_source *src, char *img_data, int o_x, int o_y, int mini_width, int mini_height)
 {
     int i;
 	int	l_r;
@@ -37,8 +37,8 @@ static void ft_frame_mini_mp(t_source *src, char *img_data, int ox, int oy, int 
 		i = 0;
         while (i < mini_height)
         {
-            set_pixel_img(src, img_data, ox + l_r, oy + i, 0xFFFFFF);
-            set_pixel_img(src, img_data, ox + mini_width - l_r - 1, oy + i, 0xFFFFFF);
+            set_pixel_img(src, img_data, o_x + l_r, o_y + i, 0xFFFFFF);
+            set_pixel_img(src, img_data, o_x + mini_width - l_r - 1, o_y + i, 0xFFFFFF);
 			i++;
         }
 		l_r++;
@@ -48,8 +48,8 @@ static void ft_frame_mini_mp(t_source *src, char *img_data, int ox, int oy, int 
 		i = 0;
         while (i < mini_width)
         {
-            set_pixel_img(src, img_data, ox + i, oy + t_b, 0xFFFFFF);
-            set_pixel_img(src, img_data, ox + i, oy + mini_height - t_b - 1, 0xFFFFFF);
+            set_pixel_img(src, img_data, o_x + i, o_y + t_b, 0xFFFFFF);
+            set_pixel_img(src, img_data, o_x + i, o_y + mini_height - t_b - 1, 0xFFFFFF);
 			i++;
         }
 		t_b++;
@@ -123,12 +123,24 @@ int ft_mini_map(t_source *src)
             int draw_x = left_off + (j - start_x) * mini_size;
             int draw_y = top_off  + (i - start_y) * mini_size;
             int color;
-            if (ft_is_spaces(src->map[i][j]) == 0)
-                color = 0xB1B5B4;
-            else if (src->map[i][j] == '1')
-                color = 0x000000;
-            else
-                color = 0x98B5B7;
+            if (ft_static_flag(0, 0) == 0)
+            {
+                if (ft_is_spaces(src->map[i][j]) == 0)
+                    color = 0xB1B5B4;
+                else if (src->map[i][j] == '1')
+                    color = 0x000000;
+                else
+                    color = 0x98B5B7;
+            }
+            else if (ft_static_flag(0, 0) == 1)
+            {
+                if (ft_is_spaces(src->map[i][j]) == 0)
+                    color = 0x700000;
+                else if (src->map[i][j] == '1')
+                    color = 0x000000;
+                else
+                    color = 0x4C4C4C;
+            }
 			int cy = 0;
             while (cy < mini_size)
             {
