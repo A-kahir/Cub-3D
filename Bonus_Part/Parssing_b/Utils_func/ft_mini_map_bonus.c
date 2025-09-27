@@ -6,13 +6,13 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 19:24:03 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 20:28:35 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 20:30:38 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
 
-static void put_pixel_img(t_source *src, char *img_data, int x, int y, int color)
+static void set_pixel_img(t_source *src, char *img_data, int x, int y, int color)
 {
     int b_p_x;
     char *dst;
@@ -37,8 +37,8 @@ static void ft_frame_mini_mp(t_source *src, char *img_data, int ox, int oy, int 
 		i = 0;
         while (i < mini_height)
         {
-            put_pixel_img(src, img_data, ox + l_r, oy + i, 0xFFFFFF);
-            put_pixel_img(src, img_data, ox + mini_width - l_r - 1, oy + i, 0xFFFFFF);
+            set_pixel_img(src, img_data, ox + l_r, oy + i, 0xFFFFFF);
+            set_pixel_img(src, img_data, ox + mini_width - l_r - 1, oy + i, 0xFFFFFF);
 			i++;
         }
 		l_r++;
@@ -48,8 +48,8 @@ static void ft_frame_mini_mp(t_source *src, char *img_data, int ox, int oy, int 
 		i = 0;
         while (i < mini_width)
         {
-            put_pixel_img(src, img_data, ox + i, oy + t_b, 0xFFFFFF);
-            put_pixel_img(src, img_data, ox + i, oy + mini_height - t_b - 1, 0xFFFFFF);
+            set_pixel_img(src, img_data, ox + i, oy + t_b, 0xFFFFFF);
+            set_pixel_img(src, img_data, ox + i, oy + mini_height - t_b - 1, 0xFFFFFF);
 			i++;
         }
 		t_b++;
@@ -137,7 +137,7 @@ int ft_mini_map(t_source *src)
                 while (cx < mini_size)
                 {
                     int px = draw_x + cx;
-                    put_pixel_img(src, img_data, px, py, color);
+                    set_pixel_img(src, img_data, px, py, color);
 					cx++;
                 }
 				cy++;
@@ -156,7 +156,7 @@ int ft_mini_map(t_source *src)
 		int x = 0;
         while (x < player_size)
 		{
-            put_pixel_img(src, img_data, player_dx + x, player_dy + y, 0xFFFFFF);
+            set_pixel_img(src, img_data, player_dx + x, player_dy + y, 0xFFFFFF);
 			x++;
 		}
 		y++;
