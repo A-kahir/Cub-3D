@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/27 08:25:40 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 20:07:41 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int	render_frame(t_source *src)
 	render_cell_floor(src, data);
 	while (++i < WIDTH)
 		process_column(src, data, i, params);
+	ft_mini_map(src);
 	mlx_put_image_to_window(src->mlx_pointer, src->mlx_window,
 		src->render_image, 0, 0);
 	return (free(ray), 0);

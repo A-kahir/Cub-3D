@@ -196,6 +196,5 @@ void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
 
 int			ft_mini_map(t_source *src);
-int			ft_key_move_p(int key, t_source *src);
 
 #endif

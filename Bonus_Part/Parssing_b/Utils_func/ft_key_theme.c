@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 19:31:38 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 20:04:20 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ int	ft_key_loading(int key, t_source *src)
 		mlx_hook(src->mlx_window, 2, 1L << 0, key_events, src);
 		mlx_hook(src->mlx_window, 3, 1L << 1, key_events, src);
 		mlx_loop_hook(src->mlx_pointer, render_frame, src);
-		// ft_mini_map(src); // need set up in right place
-		// mlx_loop_hook(src->mlx_pointer, ft_mini_map, src); //bonus Part
-		// mlx_key_hook(src->mlx_window, ft_key_move_p, src); // Bonus Part
 	}
 	return (0);
 }
