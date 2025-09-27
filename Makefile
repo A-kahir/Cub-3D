@@ -2,7 +2,10 @@ NAME = cub
 NAME_BONUS = cub3D_bonus
 
 PARSER_SRC = \
-	main.c
+	Mandatory_Part/main.c
+
+PARSER_B = \
+	Bonus_Part/main.c
 
 LIBFT_SRC = \
 	Mandatory_Part/Parssing/Libft_utils/malloc.c \
@@ -85,7 +88,10 @@ RAY_FUNC_B = \
 	Bonus_Part/raycasting_b/render.c\
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
+SRC_B = $(PARSER_B) $(LIBFT_SRCB) $(UTILS_SRC_B) $(RAY_FUNC_B)
+
 OBJS = $(SRC:.c=.o)
+OBJB = $(SRC_B:.c=.o)
 
 CC = cc -fsanitize=address -g
 CFLAGS = -Wall -Wextra -Werror -IParssing -IParssing/Libft_utils -IParssing/Utils_func
@@ -93,17 +99,22 @@ MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(OBJS) cub_bonus.h
+$(NAME): $(OBJS) Mandatory_Part/cub_mand.h
 	$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus : $(NAME_BONUS)
+
+$(NAME_BONUS) : $(OBJB) Bonus_Part/cub_bonus.h
+	$(CC) $(CFLAGS) $(OBJB) $(MLXFLAGS) -o $(NAME_BONUS)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJB)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
 
