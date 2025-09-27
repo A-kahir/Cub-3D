@@ -55,7 +55,6 @@ typedef struct s_player
 	double		dir_y;
 	double		plan_x;
 	double		plan_y;
-	char	player_or;
 } t_player;
 
 

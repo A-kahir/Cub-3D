@@ -6,15 +6,14 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 03:08:56 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_mand.h"
 
-static int ft_check_player(t_source *src)
+static int ft_check_player(t_source *src, int player)
 {
-	int player;
 	int i;
 	int j;
 
@@ -28,9 +27,9 @@ static int ft_check_player(t_source *src)
 			if (src->map[i][j] == 'S' || src->map[i][j] == 'N'
 				|| src->map[i][j] == 'W' || src->map[i][j] == 'E')
 			{
-				src->player->player_px = j;
-				src->player->player_py = i;
-				src->player->player_or = src->map[i][j];
+				src->p->p_px = j;
+				src->p->p_py = i;
+				src->p->p_or = src->map[i][j];
 				player++;
 			}
 			j++;
@@ -48,6 +47,7 @@ t_source *ft_get_source(t_source *src, char *file)
 {
 	int     fd;
 	char    *line;
+	int		player;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -67,7 +67,7 @@ t_source *ft_get_source(t_source *src, char *file)
 	}
 	if (ft_check_before_map(src) == -1)
 		return (print_message(5, NULL, '\0'), NULL);
-	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src) == -1)
+	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src, player) == -1)
 		return (NULL);
 	return (src);
 }

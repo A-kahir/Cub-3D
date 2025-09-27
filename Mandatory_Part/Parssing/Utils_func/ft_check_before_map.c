@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/20 20:02:36 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 03:04:18 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,10 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	i = 0;
 	while (colors_rgb[i])
 	{
-		j = 0;
-		while (colors_rgb[i][j] != '\0')
-		{
+		j = -1;
+		while (colors_rgb[i][++j] != '\0')
 			if (!(colors_rgb[i][j] >= '0' && colors_rgb[i][j] <= '9'))
 				return (print_message(10, NULL, '\0'), -1);
-			j++;
-		}
 		i++;
 	}
 	if (ft_fill_struct_colors(curr, colors_rgb) == -1)
@@ -62,12 +59,58 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	return (0);
 }
 
+int	check_args1(t_source *src)
+{
+	int			count;
+	t_source	*curr;
+
+	count = 0;
+	curr = src;
+	while (curr)
+	{
+		if (count > 6)
+			break ;
+		count++;
+		curr = curr->next;
+	}
+	if (count == 6)
+		return (0);
+	return (-1);
+}
+
+// int	check_args2(t_source *src, int hexa_c, int hexa_f)
+// {
+// 	t_source	*curr;
+
+// 	curr = src;
+// 	while (curr)
+// 	{
+// 		if (!curr->value)
+// 			return (-1);
+// 		if (ft_strcmp(curr->var, "F") == 0 || ft_strcmp(curr->var, "C") == 0)
+// 			if (ft_prepare_hexa_rgb(curr) == -1)
+// 				return (-1);
+// 		if (ft_strcmp(curr->var, "F") == 0)
+// 			hexa_f = curr->colors->hexa_rgb_f;
+// 		if (ft_strcmp(curr->var, "C") == 0)
+// 			hexa_c = curr->colors->hexa_rgb_c;
+// 		curr = curr->next;
+// 	}
+// 	if (hexa_f == -1 || hexa_c == -1)
+// 		return (-1);
+// 	return (0);
+// }
+
 int	ft_check_before_map(t_source *src)
 {
 	t_source	*curr;
-	int			hexa_f = -1;
-	int			hexa_c = -1;
+	int			hexa_f;
+	int			hexa_c;
 
+	hexa_c = -1;
+	hexa_f = -1;
+	if (check_args1(src) == -1)
+		return (-1);
 	curr = src;
 	while (curr)
 	{
@@ -94,18 +137,5 @@ int	ft_check_before_map(t_source *src)
 		}
 		curr = curr->next;
 	}
-	int count = 0;
-	curr = src;
-	while (curr)
-	{
-		if (count > 6)
-		{
-			break ;
-		}
-		count++;
-		curr = curr->next;
-	}
-	if (count == 6)
-		return (0);
-	return (-1);
+	return (0);
 }

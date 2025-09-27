@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 19:16:09 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/26 23:59:22 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_secound_parsing(t_source *src)
 	int			height_img;
 	t_source	*curr;
 
-	width_img = src->width;
-	height_img = src->height;
+	width_img = WIDTH;
+	height_img = HEIGHT;
 	curr = src;
 	while (curr)
 	{

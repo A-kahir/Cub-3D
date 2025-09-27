@@ -6,15 +6,17 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/19 18:28:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 03:11:10 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_mand.h"
 
-void ft_debug_map(char *map, int pos)
+void	ft_debug_map(char *map, int pos)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (pos > i)
 	{
 		printf(" ");
@@ -24,11 +26,11 @@ void ft_debug_map(char *map, int pos)
 	printf("%s\n\n", map);
 }
 
-int ft_lenght_j(t_source *src)
+int	ft_lenght_j(t_source *src)
 {
-	t_source *curr;
-	int i;
-	int j;
+	t_source	*curr;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = -1;
@@ -49,8 +51,10 @@ int	ft_parse_map(t_source *src)
 	int j;
 	int len_j;
 	int save_pos;
+	int	len_map;
 
-	ft_add_spaces_in_map(src);
+	len_map = 0;
+	ft_add_spaces_in_map(src, len_map);
 	i = 0;
 	l = 0;
 	len_j = ft_lenght_j(src);
