@@ -46,13 +46,10 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	i = 0;
 	while (colors_rgb[i])
 	{
-		j = 0;
-		while (colors_rgb[i][j] != '\0')
-		{
+		j = -1;
+		while (colors_rgb[i][++j] != '\0')
 			if (!(colors_rgb[i][j] >= '0' && colors_rgb[i][j] <= '9'))
 				return (print_message(10, NULL, '\0'), -1);
-			j++;
-		}
 		i++;
 	}
 	if (ft_fill_struct_colors(curr, colors_rgb) == -1)
@@ -85,6 +82,10 @@ static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 {
 	t_source	*curr;
 
+	hexa_c = -1;
+	hexa_f = -1;
+	if (check_args1(src) == -1)
+		return (-1);
 	curr = src;
 	*hexa_f = -1;
 	*hexa_c = -1;

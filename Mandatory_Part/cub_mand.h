@@ -17,6 +17,9 @@
 #  define BUFFER_SIZE 55
 # endif
 
+# define WIDTH 1472
+# define HEIGHT 832
+
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
@@ -47,28 +50,47 @@ typedef struct s_colors
 	unsigned int	hexa_rgb_c;
 }	t_colors;
 
+typedef struct s_raycast
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		mapx;
+	int		mapy;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		stepx;
+	int		stepy;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		hit;
+	int		side;
+	double	perpwalldis;
+	int		wall_dir;
+	int		tex_x;
+}	t_raycast;
+
 typedef struct s_player
 {
-	double		player_px;
-	double		player_py;
+	double		p_px;
+	double		p_py;
 	double		dir_x;
 	double		dir_y;
 	double		plan_x;
 	double		plan_y;
-	char	player_or;
-} t_player;
-
+	char		p_or;
+}	t_player;
 
 typedef struct s_texture
 {
-	void 	*image;
-	char 	*data;
+	void	*image;
+	char	*data;
 	int		width;
 	int		height;
 	int		bpp;
-	int 	line_len;
-	int 	endian;
-} t_tex;
+	int		line_len;
+	int		endian;
+}	t_tex;
 
 typedef struct s_source
 {
@@ -93,7 +115,11 @@ typedef struct s_source
 	t_tex			est_tex;
 	t_tex			west_tex;
 	t_colors		*colors;
-	t_player		*player;
+	t_player		*p;
+	t_raycast		*ray;
+	int				draw_start;
+	int				draw_end;
+	int				tex_x;
 	struct s_source	*next;
 }	t_source;
 
@@ -113,7 +139,7 @@ int			ft_parse_map(t_source *src);
 void		ft_key_theme(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
-void		ft_add_spaces_in_map(t_source *src);
+void		ft_add_spaces_in_map(t_source *src, int len);
 int			ft_max_len(t_source *src);
 char	ft_check(t_source *src, int r, int c);
 
@@ -141,19 +167,36 @@ int			ft_valid_char_rows(t_source *src, int i, int len_j);
 void		init_player(t_source *src);
 void		init_text(t_source *src);
 
+//utils raycasting
+int			get_map_height(char **map);
+int			get_map_width(char **map);
+void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
+void		init_data(t_source *src, t_raycast *ray, int *i);
+int			dda(t_source *src, t_raycast *ray);
+void		init_side_dest(t_source *src, t_raycast *ray);
+void		calculate_wall_params(t_source *src, t_raycast *ray,
+				int *lineheight);
+void		calculate_draw_limits(t_source *src, int lineheight,
+				int *draw_start, int *draw_end);
+t_tex		*select_texture(t_source *src, t_raycast *ray);
+int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
 // rendering floor celling
-int 		render_frame(t_source *src);
+int			render_frame(t_source *src);
 /// should remove when we finish
-void ft_debug(t_source *src, int flag); // in utils func
+void		ft_debug(t_source *src, int flag); // in utils func
 //timing
 long	get_time(void);
 
 /// should remove when we finish
 void ft_debug(t_source *src, int flag); // in utils func
 void	ft_debug_map(char *map, int pos); // in utils func
+long		get_time(void);
 
 //keys
-int	key_events(int key, t_source *src);
+int			key_events(int key, t_source *src);
+void		norm_keys2(int key, t_source *src, double move_speed);
+void		norm_keys1(int key, t_source *src, double move_speed);
+void		norm_key_fleche(int key, t_source *src, double r_speed);
 
 int	ft_mini_map(t_source *src); // Utils_func ==> bonus part
 int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);

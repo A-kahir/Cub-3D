@@ -30,15 +30,18 @@ UTILS_SRC = \
 	Parssing/Utils_func/ft_parse_map.c \
 	Parssing/Utils_func/ft_key_theme.c \
 	Parssing/Utils_func/ft_secound_parsing.c \
-	Parssing/Utils_func/ft_is_hell.c \
 	Parssing/Utils_func/ft_add_spaces_in_map.c \
 	Parssing/Utils_func/ft_parse_map2.c \
 	Parssing/Utils_func/ft_parse_map3.c \
 	Parssing/Utils_func/ft_lenght_j.c \
+	Parssing/Utils_func/keys.c\
 
 RAY_FUNC = \
-	raycasting/init.c\
+	raycasting/init_player.c\
+	raycasting/init_text.c\
 	raycasting/raycast.c\
+	raycasting/utils.c\
+	raycasting/render.c\
 
 SRC = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
 OBJS = $(SRC:.c=.o)

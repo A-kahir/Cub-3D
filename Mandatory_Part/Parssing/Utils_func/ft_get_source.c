@@ -21,8 +21,8 @@ static int	ft_check_player(t_source *src)
 	1 && (player = 0, i = 0);
 	while (src && src->map[i])
 	{
-		j = 0;
-		while (src->map[i][j] != '\0')
+		j = -1;
+		while (src->map[i][++j] != '\0')
 		{
 			if (src->map[i][j] == 'S' || src->map[i][j] == 'N'
 				|| src->map[i][j] == 'W' || src->map[i][j] == 'E')
@@ -30,9 +30,7 @@ static int	ft_check_player(t_source *src)
 				1 && (src->player->player_px = j, src->player->player_py = i);
 				1 && (src->player->player_or = src->map[i][j], player++);
 			}
-			j++;
 		}
-		i++;
 	}
 	if (player > 1)
 		return (print_message(8, NULL, '\0'), -1);
@@ -46,6 +44,7 @@ t_source	*ft_get_source(t_source *src, char *file)
 	int		fd;
 	char	*line;
 
+	player = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (perror("open"), NULL);
@@ -64,7 +63,7 @@ t_source	*ft_get_source(t_source *src, char *file)
 	}
 	if (ft_check_before_map(src) == -1)
 		return (print_message(5, NULL, '\0'), NULL);
-	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src) == -1)
+	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src, player) == -1)
 		return (NULL);
 	return (src);
 }

@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 19:11:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/20 16:22:09 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/21 02:00:26 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,35 @@
 
 void	init_player(t_source *src)
 {
-	src->player->player_px += 0.5;
-	src->player->player_py += 0.5;
-	if (src->player->player_or == 'N')
+	src->p->p_px += 0.5;
+	src->p->p_py += 0.5;
+	if (src->p->p_or == 'N')
 	{
-		src->player->dir_x = 0;
-		src->player->dir_y = -1;
-		src->player->plan_x = 0.66;
-		src->player->plan_y = 0;
+		src->p->dir_x = 0;
+		src->p->dir_y = -1;
+		src->p->plan_x = 0.66;
+		src->p->plan_y = 0;
 	}
-	if (src->player->player_or == 'S')
+	if (src->p->p_or == 'S')
 	{
-		src->player->dir_x = 0;
-		src->player->dir_y = 1;
-		src->player->plan_x = -0.66;
-		src->player->plan_y = 0;
+		src->p->dir_x = 0;
+		src->p->dir_y = 1;
+		src->p->plan_x = -0.66;
+		src->p->plan_y = 0;
 	}
-	if (src->player->player_or == 'E')
+	if (src->p->p_or == 'E')
 	{
-		src->player->dir_x = 1;
-		src->player->dir_y = 0;
-		src->player->plan_x = 0;
-		src->player->plan_y = 0.66;
+		src->p->dir_x = 1;
+		src->p->dir_y = 0;
+		src->p->plan_x = 0;
+		src->p->plan_y = 0.66;
 	}
-	if (src->player->player_or == 'W')
+	if (src->p->p_or == 'W')
 	{
-		src->player->dir_x = -1;
-		src->player->dir_y = 0;
-		src->player->plan_x = 0;
-		src->player->plan_y = -0.66;
+		src->p->dir_x = -1;
+		src->p->dir_y = 0;
+		src->p->plan_x = 0;
+		src->p->plan_y = -0.66;
 	}
 }
 
