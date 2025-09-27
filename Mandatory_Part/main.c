@@ -18,7 +18,6 @@ static void	*ft_open_mlx_window(t_source *src)
 	if (!src->mlx_pointer)
 		return (print_message(3, NULL, '\0'), NULL);
 	src->mlx_window = mlx_new_window(src->mlx_pointer,
-			src->width, src->height, "- HELL -");
 			WIDTH, HEIGHT, "Hell -");
 	if (!src->mlx_window)
 		return (print_message(3, NULL, '\0'), NULL);
@@ -27,7 +26,7 @@ static void	*ft_open_mlx_window(t_source *src)
 }
 
 int	main(int argc, char **argv)
-{
+{ 
 	t_source	*src;
 
 	src = NULL;
@@ -40,5 +39,4 @@ int	main(int argc, char **argv)
 	if (!src->mlx_pointer)
 		return (-1);
 	mlx_loop(src->mlx_pointer);
-	malloc_cl(0, 1);
 }

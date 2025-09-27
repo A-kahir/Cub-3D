@@ -6,11 +6,11 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 18:19:18 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:58:59 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 void	ft_secound_parsing(t_source *src)
 {
@@ -18,8 +18,8 @@ void	ft_secound_parsing(t_source *src)
 	int			height_img;
 	t_source	*curr;
 
-	width_img = src->width;
-	height_img = src->height;
+	width_img = WIDTH;
+	height_img = HEIGHT;
 	curr = src;
 	while (curr)
 	{

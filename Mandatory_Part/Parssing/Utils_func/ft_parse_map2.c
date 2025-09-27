@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:17:42 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 19:28:39 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 01:16:39 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	ft_check(t_source *src, int r, int c)
 {
-	if (r < 0 || r >= src->height)
+	if (r < 0 || r >= HEIGHT)
 		return (' ');
 	if (!src->map[r])
 		return (' ');

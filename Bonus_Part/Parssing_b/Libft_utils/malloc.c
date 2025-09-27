@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 static void	free_leaks_list(t_leaks **head)
 {

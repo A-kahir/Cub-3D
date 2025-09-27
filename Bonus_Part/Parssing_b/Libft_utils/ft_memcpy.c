@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 void	*ft_memcpy(void *dst, void *src, size_t n)
 {

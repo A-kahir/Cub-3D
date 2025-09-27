@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_spaces.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:56:01 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/14 22:05:48 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:35:40 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "cub_mand.h"
 
 int	ft_is_spaces(char c)
 {

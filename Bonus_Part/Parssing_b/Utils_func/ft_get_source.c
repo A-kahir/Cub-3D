@@ -6,19 +6,19 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 18:19:39 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:58:36 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
-static int	ft_check_player(t_source *src, int player)
+static int	ft_check_player(t_source *src)
 {
 	int	i;
 	int	j;
+	int	player;
 
-	player = 0;
-	i = -1;
+	1 && (player = 0, i = 0);
 	while (src && src->map[++i])
 	{
 		j = -1;
@@ -45,9 +45,7 @@ t_source	*ft_get_source(t_source *src, char *file)
 {
 	int		fd;
 	char	*line;
-	int		player;
 
-	player = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (perror("open"), NULL);
@@ -66,7 +64,7 @@ t_source	*ft_get_source(t_source *src, char *file)
 	}
 	if (ft_check_before_map(src) == -1)
 		return (print_message(5, NULL, '\0'), NULL);
-	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src, player) == -1)
+	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src) == -1)
 		return (NULL);
 	return (src);
 }

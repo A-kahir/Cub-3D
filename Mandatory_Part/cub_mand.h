@@ -139,9 +139,10 @@ int			ft_parse_map(t_source *src);
 void		ft_key_theme(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
-void		ft_add_spaces_in_map(t_source *src, int len);
+void		ft_add_spaces_in_map(t_source *src);
 int			ft_max_len(t_source *src);
-char	ft_check(t_source *src, int r, int c);
+char		ft_check(t_source *src, int r, int c);
+int			check_args1(t_source *src);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
@@ -183,13 +184,9 @@ int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
 // rendering floor celling
 int			render_frame(t_source *src);
 /// should remove when we finish
+void		ft_debug_map(char *map, int pos); // in utils func
 void		ft_debug(t_source *src, int flag); // in utils func
 //timing
-long	get_time(void);
-
-/// should remove when we finish
-void ft_debug(t_source *src, int flag); // in utils func
-void	ft_debug_map(char *map, int pos); // in utils func
 long		get_time(void);
 
 //keys
@@ -198,7 +195,7 @@ void		norm_keys2(int key, t_source *src, double move_speed);
 void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
 
-int	ft_mini_map(t_source *src); // Utils_func ==> bonus part
-int ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);
+int			ft_mini_map(t_source *src);
+int 		ft_key_move_player(int key, t_source *src);
 
 #endif

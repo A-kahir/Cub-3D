@@ -18,7 +18,7 @@ static void	*ft_open_mlx_window(t_source *src)
 	if (!src->mlx_pointer)
 		return (print_message(3, NULL, '\0'), NULL);
 	src->mlx_window = mlx_new_window(src->mlx_pointer,
-			src->width, src->height, "Hell -");
+			WIDTH, HEIGHT, "Hell");
 	if (!src->mlx_window)
 		return (print_message(3, NULL, '\0'), NULL);
 	ft_key_theme(src);

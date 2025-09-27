@@ -6,11 +6,11 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/23 18:19:11 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:59:03 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 void	norm_key_fleche(int key, t_source *src, double r_speed)
 {

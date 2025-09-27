@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
 /*   Updated: 2025/09/26 23:59:22 by ifaleh           ###   ########.fr       */

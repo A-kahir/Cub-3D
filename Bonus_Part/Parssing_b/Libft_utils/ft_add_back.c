@@ -10,15 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 void	init_new_node(t_source *new_node)
 {
 	new_node->mlx_image = 0;
 	new_node->mlx_pointer = 0;
 	new_node->mlx_window = 0;
-	new_node->width = 1472;
-	new_node->height = 832;
 	new_node->colors->hexa_rgb_f = 0;
 	new_node->colors->hexa_rgb_c = 0;
 	new_node->p = malloc_cl(sizeof(t_player), 0);

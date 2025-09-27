@@ -6,11 +6,11 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:11:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 18:21:43 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:57:16 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {

@@ -6,11 +6,11 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:17:49 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 18:21:47 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:57:43 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 int	ft_strlen(char *str)
 {

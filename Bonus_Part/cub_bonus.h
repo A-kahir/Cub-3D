@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_mand.h                                          :+:      :+:    :+:   */
+/*   cub_mand.h                                          :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,6 +16,9 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 55
 # endif
+
+# define WIDTH 1472
+# define HEIGHT 832
 
 # include <unistd.h>
 # include <string.h>
@@ -64,6 +67,7 @@ typedef struct s_raycast
 	int		side;
 	double	perpwalldis;
 	int		wall_dir;
+	int		tex_x;
 }	t_raycast;
 
 typedef struct s_player
@@ -112,6 +116,7 @@ typedef struct s_source
 	t_tex			west_tex;
 	t_colors		*colors;
 	t_player		*p;
+	t_raycast		*ray;
 	int				draw_start;
 	int				draw_end;
 	int				tex_x;
@@ -134,8 +139,10 @@ int			ft_parse_map(t_source *src);
 void		ft_key_theme(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
-void		ft_add_spaces_in_map(t_source *src, int len);
+void		ft_add_spaces_in_map(t_source *src);
 int			ft_max_len(t_source *src);
+char		ft_check(t_source *src, int r, int c);
+int			check_args1(t_source *src);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
@@ -151,6 +158,11 @@ int			ft_atoi(char *str);
 int			ft_is_spaces(char c);
 int			ft_lenght_j(t_source *src);
 char		*ft_strstr(char *haystack, char *needle);
+int			check_corner_and_side(t_source *src, int i, int l);
+int			ft_check_corners(t_source *src, int i, int l);
+int			ft_check_middle_chars(t_source *src, int i, int len_j);
+int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
+int			ft_valid_char_rows(t_source *src, int i, int len_j);
 
 //init data
 void		init_player(t_source *src);
@@ -161,14 +173,18 @@ int			get_map_height(char **map);
 int			get_map_width(char **map);
 void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
 void		init_data(t_source *src, t_raycast *ray, int *i);
-void		dda_algo(t_source *src, t_raycast *ray);
-int			init_frame(t_source *src, char **data);
-void		calc_wall_dist(t_source *src, t_raycast *ray);
-void		calc_wall_projection(t_source *src,
-				t_raycast *ray, int *start, int *end);
+int			dda(t_source *src, t_raycast *ray);
+void		init_side_dest(t_source *src, t_raycast *ray);
+void		calculate_wall_params(t_source *src, t_raycast *ray,
+				int *lineheight);
+void		calculate_draw_limits(t_source *src, int lineheight,
+				int *draw_start, int *draw_end);
+t_tex		*select_texture(t_source *src, t_raycast *ray);
+int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
 // rendering floor celling
 int			render_frame(t_source *src);
 /// should remove when we finish
+void		ft_debug_map(char *map, int pos); // in utils func
 void		ft_debug(t_source *src, int flag); // in utils func
 //timing
 long		get_time(void);
@@ -179,6 +195,7 @@ void		norm_keys2(int key, t_source *src, double move_speed);
 void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
 
-int			ft_mini_map(t_source *src); // Utils_func ==> bonus part
-int			ft_key_move_player(int key, t_source *src); // utils_func ==> bonut part(move player in minimap);
+int			ft_mini_map(t_source *src);
+int			ft_key_move_player(int key, t_source *src);
+
 #endif

@@ -6,11 +6,11 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:40:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 18:21:55 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:57:50 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 char	*ft_strstr(char *haystack, char *needle)
 {

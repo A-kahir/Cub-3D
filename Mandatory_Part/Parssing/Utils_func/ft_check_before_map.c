@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_before_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 00:44:39 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:09:40 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,9 @@ static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 {
 	t_source	*curr;
 
-	hexa_c = -1;
-	hexa_f = -1;
-	if (check_args1(src) == -1)
-		return (-1);
-	curr = src;
 	*hexa_f = -1;
 	*hexa_c = -1;
+	curr = src;
 	while (curr)
 	{
 		if (!curr->value)

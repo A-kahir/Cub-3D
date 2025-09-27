@@ -6,11 +6,11 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/23 18:20:08 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/27 08:58:11 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_bonus.h"
+#include "../../cub_bonus.h"
 
 static int	ft_fill_struct_colors(t_source *src, char **colors_rgb)
 {
@@ -38,8 +38,6 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	int		i;
 	int		j;
 
-	if (!curr->value)
-		return (-1);
 	colors_rgb = ft_split(curr->value, ',');
 	if (!colors_rgb || !colors_rgb[0] || !colors_rgb[1]
 		|| !colors_rgb[2] || colors_rgb[3] != NULL
@@ -59,47 +57,55 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	return (0);
 }
 
-int	check_args1(t_source *src)
+int	ft_check_textures(t_source *src)
 {
+	t_source	*curr;
 	int			count;
+
+	curr = src;
+	count = 0;
+	while (curr)
+	{
+		if (ft_strcmp(curr->var, "NO") == 0 || !ft_strcmp(curr->var, "SO")
+			|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA"))
+		{
+			count++;
+		}
+		else if (count == 4)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
+}
+
+static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
+{
 	t_source	*curr;
 
-	count = 0;
+	*hexa_f = -1;
+	*hexa_c = -1;
 	curr = src;
 	while (curr)
 	{
-		if (count > 6)
-			break ;
-		count++;
+		if (!curr->value)
+			return (-1);
+		if (ft_strcmp(curr->var, "F") == 0 || ft_strcmp(curr->var, "C") == 0)
+		{
+			if (!curr->value)
+				return (-1);
+			if (ft_prepare_hexa_rgb(curr) == -1)
+				return (-1);
+		}
+		if (ft_strcmp(curr->var, "F") == 0)
+			*hexa_f = curr->colors->hexa_rgb_f;
+		if (ft_strcmp(curr->var, "C") == 0)
+			*hexa_c = curr->colors->hexa_rgb_c;
 		curr = curr->next;
 	}
-	if (count == 6)
-		return (0);
-	return (-1);
+	if (*hexa_f == -1 || *hexa_c == -1)
+		return (-1);
+	return (0);
 }
-
-// int	check_args2(t_source *src, int hexa_c, int hexa_f)
-// {
-// 	t_source	*curr;
-
-// 	curr = src;
-// 	while (curr)
-// 	{
-// 		if (!curr->value)
-// 			return (-1);
-// 		if (ft_strcmp(curr->var, "F") == 0 || ft_strcmp(curr->var, "C") == 0)
-// 			if (ft_prepare_hexa_rgb(curr) == -1)
-// 				return (-1);
-// 		if (ft_strcmp(curr->var, "F") == 0)
-// 			hexa_f = curr->colors->hexa_rgb_f;
-// 		if (ft_strcmp(curr->var, "C") == 0)
-// 			hexa_c = curr->colors->hexa_rgb_c;
-// 		curr = curr->next;
-// 	}
-// 	if (hexa_f == -1 || hexa_c == -1)
-// 		return (-1);
-// 	return (0);
-// }
 
 int	ft_check_before_map(t_source *src)
 {
@@ -107,25 +113,7 @@ int	ft_check_before_map(t_source *src)
 	int			hexa_f;
 	int			hexa_c;
 
-	hexa_c = -1;
-	hexa_f = -1;
-	if (check_args1(src) == -1)
-		return (-1);
-	curr = src;
-	while (curr)
-	{
-		if (!curr->value)
-			return (-1);
-		if (ft_strcmp(curr->var, "F") == 0 || ft_strcmp(curr->var, "C") == 0)
-			if (ft_prepare_hexa_rgb(curr) == -1)
-				return (-1);
-		if (ft_strcmp(curr->var, "F") == 0)
-			hexa_f = curr->colors->hexa_rgb_f;
-		if (ft_strcmp(curr->var, "C") == 0)
-			hexa_c = curr->colors->hexa_rgb_c;
-		curr = curr->next;
-	}
-	if (hexa_f == -1 || hexa_c == -1)
+	if (ft_hexa_colors(src, &hexa_f, &hexa_c) == -1)
 		return (-1);
 	curr = src;
 	while (curr)
@@ -137,5 +125,7 @@ int	ft_check_before_map(t_source *src)
 		}
 		curr = curr->next;
 	}
-	return (0);
+	if (ft_check_textures(src) == 0)
+		return (0);
+	return (-1);
 }
