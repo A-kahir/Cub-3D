@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 18:33:47 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/27 19:31:38 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	ft_key_loading(int key, t_source *src)
 		}
 		mlx_clear_window(src->mlx_pointer, src->mlx_window);
 		mlx_do_sync(src->mlx_pointer);
-		printf("==> now you will start game\n**************************\n");
 		init_player(src);
 		init_text(src);
 		src->map_h = get_map_height(src->map);
@@ -56,23 +55,37 @@ int	ft_key_loading(int key, t_source *src)
 		mlx_hook(src->mlx_window, 2, 1L << 0, key_events, src);
 		mlx_hook(src->mlx_window, 3, 1L << 1, key_events, src);
 		mlx_loop_hook(src->mlx_pointer, render_frame, src);
+		// ft_mini_map(src); // need set up in right place
+		// mlx_loop_hook(src->mlx_pointer, ft_mini_map, src); //bonus Part
+		// mlx_key_hook(src->mlx_window, ft_key_move_p, src); // Bonus Part
 	}
 	return (0);
 }
 
-void	ft_key_theme(t_source *src)
+int	ft_key_theme_b(int key, t_source *src)
 {
 	int	w;
 	int	h;
 
 	w = WIDTH;
 	h = HEIGHT;
-	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-			"Parssing_b/texture/Loading_page.xpm", &w, &h);
-	if (src->mlx_image)
-		mlx_put_image_to_window(src->mlx_pointer,
-			src->mlx_window, src->mlx_image, 0, 0);
-	else
-		(write(2, "mlx image failed\n", 18), exit(1));
-	mlx_key_hook(src->mlx_window, ft_key_loading, src);
+	if (key == 18 || key == 19)
+	{
+		if (src->mlx_image)
+		{
+			mlx_destroy_image(src->mlx_pointer, src->mlx_image);
+			src->mlx_image = NULL;
+		}
+		if (key == 19)
+			ft_is_hell(src);
+		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
+				"Bonus_Part/Parssing_b/texture/Loading_page.xpm", &w, &h);
+		if (src->mlx_image)
+			mlx_put_image_to_window(src->mlx_pointer,
+				src->mlx_window, src->mlx_image, 0, 0);
+		else
+			return (write(2, "mlx image failed\n", 18), exit(1), -1);
+		mlx_key_hook(src->mlx_window, ft_key_loading, src);
+	}
+	return (1);
 }

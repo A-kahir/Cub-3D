@@ -68,7 +68,9 @@ UTILS_SRC_B = \
 	Bonus_Part/Parssing_b/Utils_func/ft_secound_parsing.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_add_spaces_in_map.c \
 	Bonus_Part/Parssing_b/Utils_func/keys.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_lenght_j.c
+	Bonus_Part/Parssing_b/Utils_func/ft_lenght_j.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_is_hell.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_mini_map_bonus.c \
 
 RAY_FUNC = \
 	Mandatory_Part/raycasting/init_player.c \
