@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_messages.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:59:07 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/28 22:20:08 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	ft_cantinue4(int flag)
 	if (flag == 12)
 	{
 		write(2, "Your Texture is invalid for MLX.❌\n", 37);
+		return ;
+	}
+	else if (flag == 13)
+	{
+		write(2, "Door is not set correct\n", 25);
 		return ;
 	}
 }

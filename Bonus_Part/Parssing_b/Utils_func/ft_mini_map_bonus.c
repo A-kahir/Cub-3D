@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 19:24:03 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 22:03:00 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/28 23:09:02 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,8 @@ int ft_mini_map(t_source *src)
                     color = 0xB1B5B4;
                 else if (src->map[i][j] == '1')
                     color = 0x000000;
+                else if (src->map[i][j] == 'D')
+                    color = 0x51DFD3;
                 else
                     color = 0x98B5B7;
             }
@@ -138,6 +140,8 @@ int ft_mini_map(t_source *src)
                     color = 0x700000;
                 else if (src->map[i][j] == '1')
                     color = 0x000000;
+                else if (src->map[i][j] == 'D')
+                    color = 0xB0B0B0;
                 else
                     color = 0x4C4C4C;
             }

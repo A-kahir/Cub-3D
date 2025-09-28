@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 22:13:27 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/28 23:04:30 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ int	ft_key_loading(int key, t_source *src)
 		mlx_do_sync(src->mlx_pointer);
 		init_player(src);
 		init_text(src);
+		t_doors *tmp = src->door; // debug Doors
+		while (tmp)
+		{
+			printf("door => x:%d y:%d\n", tmp->x, tmp->y);
+			tmp = tmp->next;
+		}
 		src->map_h = get_map_height(src->map);
 		src->map_w = get_map_width(src->map);
 		src->old_time = get_time();

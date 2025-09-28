@@ -25,6 +25,10 @@ void	init_new_node(t_source *new_node)
 	new_node->p->p_px = 0;
 	new_node->p->p_py = 0;
 	new_node->p->p_or = '\0';
+	new_node->door = malloc_cl(sizeof(t_doors), 0);
+	new_node->door->x = 0;
+	new_node->door->y = 0;
+	new_node->door = NULL;
 	new_node->next = NULL;
 }
 
