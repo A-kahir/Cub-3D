@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 18:38:31 by akahir           ###   ########.fr       */
+/*   Updated: 2025/09/28 23:18:29 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	ft_key_loading(int key, t_source *src)
 		}
 		mlx_clear_window(src->mlx_pointer, src->mlx_window);
 		mlx_do_sync(src->mlx_pointer);
-		printf("==> now you will start game\n**************************\n");
 		init_player(src);
 		init_text(src);
 		src->map_h = get_map_height(src->map);
