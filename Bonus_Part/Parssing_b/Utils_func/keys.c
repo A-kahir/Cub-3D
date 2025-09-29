@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/27 08:59:03 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/09/28 20:15:28 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,43 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 		}
 	}
 }
+
+void	norm_mouse1(t_source *src, double rot_speed, int delta_x)
+{
+	double		old_d;
+	double		old_p;
+
+	old_d = src->p->dir_x;
+	src->p->dir_x = old_d * cos(-rot_speed * (-delta_x) * 0.0005)
+		- src->p->dir_y * sin(-rot_speed * (-delta_x) * 0.0005);
+	src->p->dir_y = old_d * sin(-rot_speed * (-delta_x) * 0.0005)
+		+ src->p->dir_y * cos(-rot_speed * (-delta_x) * 0.0005);
+	old_p = src->p->plan_x;
+	src->p->plan_x = old_p * cos(-rot_speed * (-delta_x) * 0.0005)
+		- src->p->plan_y * sin(-rot_speed * (-delta_x) * 0.0005);
+	src->p->plan_y = old_p * sin(-rot_speed * (-delta_x) * 0.0005)
+		+ src->p->plan_y * cos(-rot_speed * (-delta_x) * 0.0005);
+}
+
+void	norm_mouse(t_source *src, double rot_speed, int delta_x)
+{
+	double		old_d;
+	double		old_p;
+
+	if (delta_x > 0)
+	{
+		old_d = src->p->dir_x;
+		src->p->dir_x = old_d * cos(rot_speed * delta_x * 0.0005)
+			- src->p->dir_y * sin(rot_speed * delta_x * 0.0005);
+		src->p->dir_y = old_d * sin(rot_speed * delta_x * 0.0005)
+			+ src->p->dir_y * cos(rot_speed * delta_x * 0.0005);
+		old_p = src->p->plan_x;
+		src->p->plan_x = old_p * cos(rot_speed * delta_x * 0.0005)
+			- src->p->plan_y * sin(rot_speed * delta_x * 0.0005);
+		src->p->plan_y = old_p * sin(rot_speed * delta_x * 0.0005)
+			+ src->p->plan_y * cos(rot_speed * delta_x * 0.0005);
+	}
+	else if (delta_x < 0)
+		norm_mouse1(src, rot_speed, delta_x);
+}
+
