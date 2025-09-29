@@ -70,6 +70,13 @@ typedef struct s_raycast
 	int		tex_x;
 }	t_raycast;
 
+typedef struct s_doors
+{
+	int	x;
+	int	y;
+	struct s_doors *next;
+}	t_doors;
+
 typedef struct s_player
 {
 	double		p_px;
@@ -123,6 +130,7 @@ typedef struct s_source
 	t_tex			west_tex;
 	t_colors		*colors;
 	t_player		*p;
+	t_doors			*door;
 	t_raycast		*ray;
 	int				draw_start;
 	int				draw_end;
@@ -205,6 +213,8 @@ void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
 void		norm_mouse(t_source *src, double rot_speed, int delta_x);
 
+// Bonus func :
 int			ft_mini_map(t_source *src);
+void	ft_add_door(t_source *src, int x, int y);
 
 #endif
