@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 19:24:03 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 18:38:49 by akahir           ###   ########.fr       */
+/*   Created: 2025/10/03 18:41:40 by akahir            #+#    #+#             */
+/*   Updated: 2025/10/03 18:41:41 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,46 @@
 
 static void set_pixel_img(t_source *src, char *img_data, int x, int y, int color)
 {
-    int b_p_x;
-    char *dst;
+	int b_p_x;
+	char *dst;
 
-    if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
-        return;
-    b_p_x = src->bpp / 8;
-    dst = img_data + (y * src->line_len + x * b_p_x);
-    *(unsigned int *)dst = (unsigned int)color;
+	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+		return ;
+	b_p_x = src->bpp / 8;
+	dst = img_data + (y * src->line_len + x * b_p_x);
+	*(unsigned int *)dst = (unsigned int)color;
 }
 
 static void ft_frame_mini_mp(t_source *src, char *img_data, int o_x, int o_y, int mini_width, int mini_height)
 {
-    int i;
+	int i;
 	int	l_r;
 	int	t_b;
-    int frame;
+	int frame;
 
 	1 && (frame = 3, l_r = 0, t_b = 0);
-    while (l_r <= frame)
-    {
+	while (l_r <= frame)
+	{
 		i = 0;
-        while (i < mini_height)
-        {
-            set_pixel_img(src, img_data, o_x + l_r, o_y + i, 0xFFFFFF);
-            set_pixel_img(src, img_data, o_x + mini_width - l_r - 1, o_y + i, 0xFFFFFF);
+		while (i < mini_height)
+		{
+			set_pixel_img(src, img_data, o_x + l_r, o_y + i, 0xFFFFFF);
+			set_pixel_img(src, img_data, o_x + mini_width - l_r - 1, o_y + i, 0xFFFFFF);
 			i++;
-        }
+		}
 		l_r++;
-    }
-    while (t_b <= frame)
-    {
+	}
+	while (t_b <= frame)
+	{
 		i = 0;
-        while (i < mini_width)
-        {
-            set_pixel_img(src, img_data, o_x + i, o_y + t_b, 0xFFFFFF);
-            set_pixel_img(src, img_data, o_x + i, o_y + mini_height - t_b - 1, 0xFFFFFF);
+		while (i < mini_width)
+		{
+			set_pixel_img(src, img_data, o_x + i, o_y + t_b, 0xFFFFFF);
+			set_pixel_img(src, img_data, o_x + i, o_y + mini_height - t_b - 1, 0xFFFFFF);
 			i++;
-        }
+		}
 		t_b++;
-    }
+	}
 }
 
 int ft_mini_map(t_source *src)

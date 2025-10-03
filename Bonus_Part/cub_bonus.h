@@ -99,6 +99,13 @@ typedef struct s_texture
 	int		endian;
 }	t_tex;
 
+typedef struct s_door
+{
+	int	x;
+	int	y;
+	int	is_open;
+}	t_door;
+
 typedef struct s_source
 {
 	char			*var;
@@ -204,6 +211,7 @@ int			key_events(int key, t_source *src);
 void		norm_keys2(int key, t_source *src, double move_speed);
 void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
+void		norm_mouse(t_source *src, double rot_speed, int delta_x);
 
 // Bonus func :
 int			ft_mini_map(t_source *src);
