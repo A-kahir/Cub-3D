@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/27 18:30:29 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/03 21:32:12 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int	process_column(t_source *src, char *data, int i, int params[4])
 	while (ray->hit == 0)
 		if (dda(src, ray) == 1)
 			break ;
-	calculate_wall_params(src, ray, &lineheight);
-	calculate_draw_limits(src, lineheight, &draw_start, &draw_end);
+	calculate_wall_params(ray, &lineheight);
+	calculate_draw_limits(lineheight, &draw_start, &draw_end);
 	tex = select_texture(src, ray);
 	params[0] = i;
 	params[1] = draw_start;

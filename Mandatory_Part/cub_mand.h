@@ -175,9 +175,9 @@ void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
 void		init_data(t_source *src, t_raycast *ray, int *i);
 int			dda(t_source *src, t_raycast *ray);
 void		init_side_dest(t_source *src, t_raycast *ray);
-void		calculate_wall_params(t_source *src, t_raycast *ray,
+void		calculate_wall_params(t_raycast *ray,
 				int *lineheight);
-void		calculate_draw_limits(t_source *src, int lineheight,
+void		calculate_draw_limits(int lineheight,
 				int *draw_start, int *draw_end);
 t_tex		*select_texture(t_source *src, t_raycast *ray);
 int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
@@ -194,8 +194,5 @@ int			key_events(int key, t_source *src);
 void		norm_keys2(int key, t_source *src, double move_speed);
 void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
-
-int			ft_mini_map(t_source *src);
-int 		ft_key_move_player(int key, t_source *src);
 
 #endif

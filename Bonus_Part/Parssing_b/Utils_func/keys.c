@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/28 20:15:28 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/03 20:21:19 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	norm_key_fleche(int key, t_source *src, double r_speed)
 	double	old_d;
 	double	old_p;
 
-	if (key == 123)
+	if (key == 65361)
 	{
 		old_d = src->p->dir_x;
 		src->p->dir_x = src->p->dir_x * cos(-r_speed)
@@ -27,7 +27,7 @@ void	norm_key_fleche(int key, t_source *src, double r_speed)
 		src->p->plan_x = old_p * cos(-r_speed) - src->p->plan_y * sin(-r_speed);
 		src->p->plan_y = old_p * sin(-r_speed) + src->p->plan_y * cos(-r_speed);
 	}
-	if (key == 124)
+	if (key == 65363)
 	{
 		old_d = src->p->dir_x;
 		src->p->dir_x = old_d * cos(r_speed) - src->p->dir_y * sin(r_speed);
@@ -43,7 +43,7 @@ void	norm_keys1(int key, t_source *src, double move_speed)
 	double	newx;
 	double	newy;
 
-	if (key == 1)
+	if (key == 115)
 	{
 		newx = src->p->p_px - src->p->dir_x * move_speed;
 		newy = src->p->p_py - src->p->dir_y * move_speed;
@@ -54,7 +54,7 @@ void	norm_keys1(int key, t_source *src, double move_speed)
 			src->p->p_py = newy;
 		}
 	}
-	if (key == 2)
+	if (key == 100)
 	{
 		newx = src->p->p_px + src->p->plan_x * move_speed;
 		newy = src->p->p_py + src->p->plan_y * move_speed;
@@ -72,7 +72,7 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 	double	newx;
 	double	newy;
 
-	if (key == 13)
+	if (key == 119)
 	{
 		newx = src->p->p_px + src->p->dir_x * move_speed;
 		newy = src->p->p_py + src->p->dir_y * move_speed;
@@ -83,7 +83,7 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 			src->p->p_py = newy;
 		}
 	}
-	if (key == 0)
+	if (key == 97)
 	{
 		newx = src->p->p_px - src->p->plan_x * move_speed;
 		newy = src->p->p_py - src->p->plan_y * move_speed;

@@ -151,7 +151,7 @@ t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
-int		ft_key_theme_b(int key, t_source *src);
+int			ft_key_theme_b(int key, t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_secound_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src);
@@ -192,9 +192,9 @@ void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
 void		init_data(t_source *src, t_raycast *ray, int *i);
 int			dda(t_source *src, t_raycast *ray);
 void		init_side_dest(t_source *src, t_raycast *ray);
-void		calculate_wall_params(t_source *src, t_raycast *ray,
+void		calculate_wall_params(t_raycast *ray,
 				int *lineheight);
-void		calculate_draw_limits(t_source *src, int lineheight,
+void		calculate_draw_limits(int lineheight,
 				int *draw_start, int *draw_end);
 t_tex		*select_texture(t_source *src, t_raycast *ray);
 int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);

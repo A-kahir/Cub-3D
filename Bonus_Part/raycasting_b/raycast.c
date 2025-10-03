@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/09/29 16:26:42 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/03 21:34:36 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,8 @@ int	dda(t_source *src, t_raycast *ray)
 	return (0);
 }
 
-void	calculate_wall_params(t_source *src, t_raycast *ray, int *lineheight)
+void	calculate_wall_params(t_raycast *ray, int *lineheight)
 {
-	(void)src;
 	if (ray->side == 0)
 		ray->perpwalldis = ray->side_dist_x - ray->delta_dist_x;
 	else
@@ -90,10 +89,9 @@ void	calculate_wall_params(t_source *src, t_raycast *ray, int *lineheight)
 	*lineheight = (int)(HEIGHT / ray->perpwalldis);
 }
 
-void	calculate_draw_limits(t_source *src, int lineheight,
+void	calculate_draw_limits(int lineheight,
 			int *draw_start, int *draw_end)
 {
-	(void)src;
 	*draw_start = -lineheight / 2 + HEIGHT / 2;
 	if (*draw_start < 0)
 		*draw_start = 0;

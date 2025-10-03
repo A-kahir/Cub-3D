@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mini_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:41:40 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 18:41:41 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/03 20:10:06 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,9 @@ int ft_mini_map(t_source *src)
     if (top_off + map_height >= HEIGHT)
         map_height = HEIGHT - top_off - 1;
     if (map_width <= 0 || map_height <= 0)
+    {
         return (0);
+    } 
 	int i = start_y;
     while (i <= end_y)
     {
