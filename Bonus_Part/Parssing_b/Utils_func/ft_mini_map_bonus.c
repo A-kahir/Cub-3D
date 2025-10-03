@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 19:24:03 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/28 23:25:03 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/03 18:38:49 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int ft_mini_map(t_source *src)
     if (end_y >= map_h)
     {
         start_y -= (end_y - (map_h - 1));
-        end_y = map_h - 1;
+        end_y = map_h;
     }
     if (start_x > end_x)
 		start_x = 0;
@@ -164,8 +164,8 @@ int ft_mini_map(t_source *src)
     }
     ft_frame_mini_mp(src, img_data, left_off, top_off, map_width, map_height);
     int player_size = (mini_size / 2) + 2;
-    int player_dx = left_off + (int)((src->p->p_px - start_x) * mini_size) + (mini_size - player_size) / 2;
-    int player_dy = top_off  + (int)((src->p->p_py - start_y) * mini_size) + (mini_size - player_size) / 2;
+    int player_dx = left_off + (src->p->p_px - start_x) * mini_size - player_size / 2;
+    int player_dy = top_off  + (src->p->p_py - start_y) * mini_size - player_size / 2;
 	int y = 0;
     while (y < player_size)
     {
