@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/03 21:32:00 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/04 17:52:24 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,20 @@ int	dda(t_source *src, t_raycast *ray)
 		ray->side_dist_x += ray->delta_dist_x;
 		ray->mapx += ray->stepx;
 		ray->side = 0;
-		ray->wall_dir = (ray->ray_dir_x < 0) ? 3 : 2;
+		if (ray->ray_dir_x < 0)
+			ray->wall_dir = 3;
+		else
+			ray->wall_dir = 2;
 	}
 	else
 	{
 		ray->side_dist_y += ray->delta_dist_y;
 		ray->mapy += ray->stepy;
 		ray->side = 1;
-		ray->wall_dir = (ray->ray_dir_y < 0) ? 0 : 1;
+		if (ray->ray_dir_y > 0)
+			ray->wall_dir = 0;
+		else
+			ray->wall_dir = 1;
 	}
 	if (ray->mapx < 0 || ray->mapx >= src->map_w
 		|| ray->mapy < 0 || ray->mapy >= src->map_h)

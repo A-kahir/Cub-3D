@@ -59,6 +59,7 @@
   "files.associations": {
     "parsing.h": "c",
     "__node_handle": "c",
-    "cub_mand.h": "c"
+    "cub_mand.h": "c",
+    "cub_bonus.h": "c"
   }
 }
