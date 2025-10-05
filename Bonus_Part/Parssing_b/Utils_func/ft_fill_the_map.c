@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/05 22:42:09 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/05 23:00:39 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,9 @@ void	*ft_fill_the_map(int fd, t_source *src)
 	char	*line;
 	int		i;
 
-	i = 0;
-	src->map = NULL;
-	line = ft_get_next_line(fd);
-	while (line[0] == 32 || (line[0] >= 9 && line[0] <= 13)
-		|| line[0] == '\n' || line[0] == '\0')
-	{
+	1 && (i = 0, src->map = NULL, line = ft_get_next_line(fd));
+	while (ft_is_spaces(line[0]) == 0 || line[0] == '\n' || line[0] == '\0')
 		line = ft_get_next_line(fd);
-	}
 	if (!ft_strncmp(line, "DR", 2))
 	{
 		if (ft_chack_valid_source(line) == 0)
@@ -60,9 +55,7 @@ void	*ft_fill_the_map(int fd, t_source *src)
 		line = ft_get_next_line(fd);
 		while (line[0] == 32 || (line[0] >= 9 && line[0] <= 13)
 		|| line[0] == '\n' || line[0] == '\0')
-		{
 			line = ft_get_next_line(fd);
-		}
 	}
 	while (line)
 	{
