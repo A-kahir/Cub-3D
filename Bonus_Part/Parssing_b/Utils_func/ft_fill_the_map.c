@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_the_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:58:30 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/05 22:42:09 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,22 @@ void	*ft_fill_the_map(int fd, t_source *src)
 	i = 0;
 	src->map = NULL;
 	line = ft_get_next_line(fd);
+	while (line[0] == 32 || (line[0] >= 9 && line[0] <= 13)
+		|| line[0] == '\n' || line[0] == '\0')
+	{
+		line = ft_get_next_line(fd);
+	}
+	if (!ft_strncmp(line, "DR", 2))
+	{
+		if (ft_chack_valid_source(line) == 0)
+			src = ft_fill_struct(src, line);
+		line = ft_get_next_line(fd);
+		while (line[0] == 32 || (line[0] >= 9 && line[0] <= 13)
+		|| line[0] == '\n' || line[0] == '\0')
+		{
+			line = ft_get_next_line(fd);
+		}
+	}
 	while (line)
 	{
 		i = ft_add_line(src, line, i);
