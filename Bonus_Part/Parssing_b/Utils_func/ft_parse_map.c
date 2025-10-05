@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 22:07:12 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/04 17:25:43 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
                     else if (src->map[i + 1][l] != '1' && src->map[i - 1][l] != '1')
                     {
                         if (src->map[i][l - 1] != '1' && src->map[i][l + 1] != '1')
-                            return (printf("hna\n"), print_message(13, NULL, '\0'), -1);
+                            return (print_message(13, NULL, '\0'), -1);
                     }
                 }
                 ft_add_door(src, l, i);

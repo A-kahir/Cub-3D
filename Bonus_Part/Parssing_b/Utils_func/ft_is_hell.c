@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 19:10:27 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 19:22:37 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/05 01:08:53 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ void	ft_is_hell(t_source *src)
 			curr->value = "Bonus_Part/Parssing_b/texture/HELL/WE_hell.xpm";
 		else if (ft_strcmp(curr->var, "EA") == 0 && curr->value)
 			curr->value = "Bonus_Part/Parssing_b/texture/HELL/EA_hell.xpm";
+		else if (ft_strcmp(curr->var, "DR") == 0 && curr->value)
+			curr->value = "Bonus_Part/Parssing_b/texture/HELL/DR_hell.xpm";
 		curr->colors->hexa_rgb_f = 0x610000;
 		curr->colors->hexa_rgb_c = 0x161616;
 		curr = curr->next;
 	}
+	ft_secound_parsing(src);
 }

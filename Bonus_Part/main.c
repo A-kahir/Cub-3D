@@ -42,6 +42,7 @@ int	main(int argc, char **argv)
 	src = ft_get_source(src, argv[1]);
 	if (!src)
 		return (print_message(1, NULL, '\0'), 1);
+	// ft_debug(src, 1);
 	src->mlx_pointer = ft_open_mlx_window(src);
 	if (!src->mlx_pointer)
 		return (-1);

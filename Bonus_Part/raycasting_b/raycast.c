@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/03 21:34:36 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/04 18:55:42 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	dda(t_source *src, t_raycast *ray)
 		ray->side_dist_y += ray->delta_dist_y;
 		ray->mapy += ray->stepy;
 		ray->side = 1;
-		if (ray->ray_dir_x > 0)
+		if (ray->ray_dir_y > 0)
 			ray->wall_dir = 0;
 		else
 			ray->wall_dir = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 20:27:54 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/04 20:40:38 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	ft_key_loading(int key, t_source *src)
 {
 	if (key == 65293)
 	{
-		ft_secound_parsing(src);
 		if (src->mlx_image)
 		{
 			mlx_destroy_image(src->mlx_pointer, src->mlx_image);
@@ -86,6 +85,7 @@ int	ft_key_theme_b(int key, t_source *src)
 
 	w = WIDTH;
 	h = HEIGHT;
+	ft_secound_parsing(src);
 	if (key == 49 || key == 50)
 	{
 		if (src->mlx_image)

@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 18:53:20 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/04 21:36:14 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ft_secound_parsing(t_source *src)
 	{
 		if (curr && curr->var && curr->value
 			&& (!ft_strcmp(curr->var, "NO") || !ft_strcmp(curr->var, "SO")
-				|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")))
+				|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")
+				|| !ft_strcmp(curr->var, "DR")))
 		{
 			src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 					curr->value, &width_img, &height_img);
