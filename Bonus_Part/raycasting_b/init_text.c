@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/06 01:26:15 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/06 02:21:52 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	init_text_img(t_source *src)
 	src->no_tex.image = mlx_xpm_file_to_image(src->mlx_pointer, src->value,
 			&src->no_tex.width, &src->no_tex.height);
 	src->sud_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
-			src->next->value, &src->sud_tex.width, &src->sud_tex.height);
+			src->sud_tex.path, &src->sud_tex.width, &src->sud_tex.height);
 	src->west_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
-			src->next->next->value, &src->west_tex.width,
+			src->west_tex.path, &src->west_tex.width,
 			&src->west_tex.height);
 	src->est_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
-			src->next->next->next->value, &src->est_tex.width,
+			src->est_tex.path, &src->est_tex.width,
 			&src->est_tex.height);
 src->doors_tex.image = mlx_xpm_file_to_image(src->mlx_pointer, "Bonus_Part/Parssing_b/texture/DR_hell.xpm",
       	  &src->doors_tex.width, &src->doors_tex.height);
