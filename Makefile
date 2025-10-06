@@ -86,7 +86,8 @@ RAY_FUNC_B = \
 	Bonus_Part/raycasting_b/init_text.c \
 	Bonus_Part/raycasting_b/raycast.c \
 	Bonus_Part/raycasting_b/utils.c \
-	Bonus_Part/raycasting_b/render.c
+	Bonus_Part/raycasting_b/render.c \
+	Bonus_Part/raycasting_b/doors.c
 
 SRC   = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
 SRC_B = $(PARSER_B)   $(LIBFT_SRCB) $(UTILS_SRC_B) $(RAY_FUNC_B)

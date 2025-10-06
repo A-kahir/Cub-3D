@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/04 17:31:48 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/06 01:26:15 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static void	init_text_img(t_source *src)
 	src->est_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
 			src->next->next->next->value, &src->est_tex.width,
 			&src->est_tex.height);
+src->doors_tex.image = mlx_xpm_file_to_image(src->mlx_pointer, "Bonus_Part/Parssing_b/texture/DR_hell.xpm",
+      	  &src->doors_tex.width, &src->doors_tex.height);
 	if (!src->no_tex.image || !src->sud_tex.image
-		|| !src->west_tex.image || !src->est_tex.image)
+		|| !src->west_tex.image || !src->est_tex.image || !src->doors_tex.image)
 	{
 		perror("Error\nFailed to load texture images\n");
 		exit(1);
@@ -43,8 +45,10 @@ void	init_text(t_source *src)
 			&src->west_tex.bpp, &src->west_tex.line_len, &src->west_tex.endian);
 	src->est_tex.data = mlx_get_data_addr(src->est_tex.image, &src->est_tex.bpp,
 			&src->est_tex.line_len, &src->est_tex.endian);
+	src->doors_tex.data = mlx_get_data_addr(src->doors_tex.image, &src->doors_tex.bpp,
+						&src->doors_tex.line_len, &src->doors_tex.endian);
 	if (!src->no_tex.data || !src->sud_tex.data
-		|| !src->west_tex.data || !src->est_tex.data)
+		|| !src->west_tex.data || !src->est_tex.data || !src->doors_tex.data)
 	{
 		perror("Error\nFailed to get texture data\n");
 		exit(1);
@@ -59,8 +63,10 @@ t_tex	*select_texture(t_source *src, t_raycast *ray)
 		return (&src->sud_tex);
 	else if (ray->wall_dir == 2)
 		return (&src->west_tex);
-	else
+	else if (ray->wall_dir == 3)
 		return (&src->est_tex);
+	else
+		return (&src->doors_tex);
 }
 
 int	calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex)

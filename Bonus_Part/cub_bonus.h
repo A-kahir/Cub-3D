@@ -67,15 +67,10 @@ typedef struct s_raycast
 	int		side;
 	double	perpwalldis;
 	int		wall_dir;
+	int		hit_type;
+	int		door_id;
 	int		tex_x;
 }	t_raycast;
-
-typedef struct s_doors
-{
-	int	x;
-	int	y;
-	struct s_doors *next;
-}	t_doors;
 
 typedef struct s_player
 {
@@ -99,12 +94,16 @@ typedef struct s_texture
 	int		endian;
 }	t_tex;
 
-typedef struct s_door
+typedef struct s_doors
 {
-	int	x;
-	int	y;
-	int	is_open;
-}	t_door;
+	int				index;
+	int				x;
+	int				y;
+	int 			etat;
+	double			p_ouvert;
+	double			timer;
+	struct s_doors	*next;
+}	t_doors;
 
 typedef struct s_source
 {
@@ -128,6 +127,7 @@ typedef struct s_source
 	t_tex			sud_tex;
 	t_tex			est_tex;
 	t_tex			west_tex;
+	t_tex			doors_tex;
 	t_colors		*colors;
 	t_player		*p;
 	t_doors			*door;
@@ -212,9 +212,14 @@ void		norm_keys2(int key, t_source *src, double move_speed);
 void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
 void		norm_mouse(t_source *src, double rot_speed, int delta_x);
-
+void		norm_key3(int key, t_source *src);
 // Bonus func :
+
+//minimap
 int			ft_mini_map(t_source *src);
-void	ft_add_door(t_source *src, int x, int y);
+void		ft_add_door(t_source *src, int x, int y, int index);
+//doors
+int			ft_door(t_source *src, int mapx, int mapy);
+int			door_state(t_source *src, int index);
 
 #endif

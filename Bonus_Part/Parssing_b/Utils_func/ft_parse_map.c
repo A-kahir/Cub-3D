@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 22:07:12 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/04 21:44:45 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,10 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 {
 	int	i;
 	int	l;
+	int	index;
 
 	i = 1;
+	index = 0;
 	while (src->map[i])
 	{
 		l = 0;
@@ -115,7 +117,8 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
                             return (printf("hna\n"), print_message(13, NULL, '\0'), -1);
                     }
                 }
-                ft_add_door(src, l, i);
+				index++;
+                ft_add_door(src, l, i, index);
             }
 			else
 			{

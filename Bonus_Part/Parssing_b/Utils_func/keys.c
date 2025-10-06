@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/03 20:21:19 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/06 01:47:11 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,3 +135,20 @@ void	norm_mouse(t_source *src, double rot_speed, int delta_x)
 		norm_mouse1(src, rot_speed, delta_x);
 }
 
+void	norm_key3(int key, t_source *src)
+{
+	double	dest;
+	t_doors	*current;
+
+	current = src->door;
+	if (key == 32)//key == 49
+	{
+		while (current)
+		{
+			dest = sqrt(pow(src->p->p_px - current->x, 2) + pow(src->p->p_py - current->y, 2));
+			if (dest < 1.5)
+				current->etat = !current->etat;
+			current = current->next;
+		}
+	}
+}

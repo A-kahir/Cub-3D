@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 20:27:54 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/06 01:40:10 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	key_events(int key, t_source *src)
 	norm_keys2(key, src, move_speed);
 	norm_keys1(key, src, move_speed);
 	norm_key_fleche(key, src, rot_speed);
+	norm_key3(key, src);
 	return (0);
 }
 
