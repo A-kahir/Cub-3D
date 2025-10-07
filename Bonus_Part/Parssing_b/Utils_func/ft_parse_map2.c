@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:17:42 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/28 22:07:03 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/06 21:45:00 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_check_middle_chars(t_source *src, int i, int len_j)
 	{
 		if (src->map[i][l] == '0' || (src->map[i][l] == 'N'
 			|| src->map[i][l] == 'S' || src->map[i][l] == 'E'
-			|| src->map[i][l] == 'W'))
+			|| src->map[i][l] == 'W' || src->map[i][l] == 'D'))
 		{
 			if (ft_check_corners(src, i, l) == -1)
 				return (-1);

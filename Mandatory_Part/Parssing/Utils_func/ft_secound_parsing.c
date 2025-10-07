@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_secound_parsing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 18:46:12 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/07 01:23:39 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_mand.h"
+
+void	fill_textures(t_source *src, char *var, char *value)
+{
+	if (!ft_strcmp(var, "NO"))
+		src->no_tex.path = value;
+	if (!ft_strcmp(var, "SO"))
+		src->sud_tex.path = value;
+	if (!ft_strcmp(var, "EA"))
+		src->est_tex.path = value;
+	if (!ft_strcmp(var, "WE"))
+		src->west_tex.path = value;
+}
 
 void	ft_secound_parsing(t_source *src)
 {
@@ -31,6 +43,7 @@ void	ft_secound_parsing(t_source *src)
 					curr->value, &width_img, &height_img);
 			if (!src->mlx_image)
 				return (print_message(12, NULL, '\0'), exit(1));
+			fill_textures(src, curr->var, curr->value);
 		}
 		curr = curr->next;
 	}

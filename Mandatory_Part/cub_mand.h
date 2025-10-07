@@ -85,6 +85,7 @@ typedef struct s_texture
 {
 	void	*image;
 	char	*data;
+	char	*path;
 	int		width;
 	int		height;
 	int		bpp;

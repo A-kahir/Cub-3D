@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 16:15:12 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/05 22:41:28 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/07 02:38:25 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,14 @@ int	door_state(t_source *src, int index)
 	}
 	return (0);
 }
+
+// void	update_door_animatioon(t_source *src)
+// {
+// 	t_doors	*curr;
+	
+// 	curr = src->door;
+// 	while (curr)
+// 	{
+		
+// 	}
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_source.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 18:29:02 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/07 01:41:08 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,38 @@ static int	ft_check_player(t_source *src)
 	return (0);
 }
 
+int ft_stop_reading(t_source *src)
+{
+	static int NO;
+	static int SO;
+	static int WE;
+	static int EA;
+	static int F;
+	static int C;
+	t_source *curr;
+
+	curr = src;
+	while (curr)
+	{
+		if (!ft_strcmp(curr->var, "NO"))
+			NO = 1;
+		else if (!ft_strcmp(curr->var, "SO"))
+			SO = 1;
+		else if (!ft_strcmp(curr->var, "WE"))
+			WE = 1;
+		else if (!ft_strcmp(curr->var, "EA"))
+			EA = 1;
+		else if (!ft_strcmp(curr->var, "F"))
+			F = 1;
+		else if (!ft_strcmp(curr->var, "C"))
+			C = 1;
+		curr = curr->next;
+	}
+	if (NO && SO && WE && EA && F && C)
+		return (0);
+	return (-1);
+}
+
 t_source	*ft_get_source(t_source *src, char *file)
 {
 	int		fd;
@@ -54,7 +86,7 @@ t_source	*ft_get_source(t_source *src, char *file)
 	{
 		if (ft_chack_valid_source(line) == 0)
 			src = ft_fill_struct(src, line);
-		if (ft_strncmp(line, "C ", 2) == 0) 
+		if (ft_stop_reading(src) == 0)
 		{
 			free(line);
 			break ;

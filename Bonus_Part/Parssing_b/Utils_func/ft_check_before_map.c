@@ -6,12 +6,11 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:58:11 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/07 01:19:35 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
-
 static int	ft_fill_struct_colors(t_source *src, char **colors_rgb)
 {
 	int	r;
@@ -66,35 +65,37 @@ int	ft_check_textures(t_source *src)
 	count = 0;
 	while (curr)
 	{
-		if (ft_strcmp(curr->var, "NO") == 0 || !ft_strcmp(curr->var, "SO")
-			|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA"))
+		if (curr->var && 
+			(!ft_strcmp(curr->var, "NO") || !ft_strcmp(curr->var, "SO")
+			|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")
+			|| !ft_strcmp(curr->var, "DR")))
 		{
-			count++;
+			count++;	
 		}
-		else if (count == 4)
-			return (0);
 		curr = curr->next;
 	}
+	if (count == 4 || count == 5)
+		return (0);
 	return (1);
 }
 
 static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 {
 	t_source	*curr;
+	char *check;
 
-	*hexa_f = -1;
-	*hexa_c = -1;
-	curr = src;
+	1 && (*hexa_f = -1, *hexa_c = -1, curr = src);
 	while (curr)
 	{
 		if (!curr->value)
 			return (-1);
 		if (ft_strcmp(curr->var, "F") == 0 || ft_strcmp(curr->var, "C") == 0)
 		{
-			if (!curr->value)
+			if (!curr->value || (check && ft_strcmp(curr->var, check) == 0))
 				return (-1);
 			if (ft_prepare_hexa_rgb(curr) == -1)
 				return (-1);
+			check = curr->var;
 		}
 		if (ft_strcmp(curr->var, "F") == 0)
 			*hexa_f = curr->colors->hexa_rgb_f;
