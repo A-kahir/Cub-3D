@@ -159,6 +159,7 @@ int			ft_max_len(t_source *src);
 char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
+int			ft_check_DR_with_D(t_source *src);
 
 
 //Libft utils:

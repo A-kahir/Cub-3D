@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/05 20:02:02 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/11 14:19:27 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ int ft_stop_reading(t_source *src)
 			C = 1;
 		curr = curr->next;
 	}
-	printf("NO=%d SO=%d WE=%d EA=%d F=%d C=%d DR=%d\n\n", NO, SO, WE, EA, F, C, DR);
 	if (NO && SO && WE && EA && F && C)
+	{
+		printf("NO=%d SO=%d WE=%d EA=%d F=%d C=%d DR=%d\n\n", NO, SO, WE, EA, F, C, DR);
 		return (0);
+	}
 	return (-1);
 }
 

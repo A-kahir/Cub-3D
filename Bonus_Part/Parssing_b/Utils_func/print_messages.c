@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/28 22:20:08 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/11 14:03:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	ft_cantinue4(int flag)
 	else if (flag == 13)
 	{
 		write(2, "Door is not set correct\n", 25);
+		return ;
+	}
+	else if (flag == 14)
+	{
+		write(2, "You Make Door in map without DR texture\n", 41);
 		return ;
 	}
 }

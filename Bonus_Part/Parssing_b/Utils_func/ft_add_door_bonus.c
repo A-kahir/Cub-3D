@@ -6,11 +6,27 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 23:05:49 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/28 23:06:13 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/11 14:14:43 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
+
+int	ft_check_DR_with_D(t_source *src)
+{
+	t_source *curr;
+	int have_dr;
+
+	curr = src;
+	have_dr = 0;
+	while (curr)
+	{
+		if (ft_strcmp(curr->var, "DR") == 0)
+			return (0);
+		curr = curr->next;
+	}
+	return (-1);
+}
 
 void	ft_add_door(t_source *src, int x, int y)
 {

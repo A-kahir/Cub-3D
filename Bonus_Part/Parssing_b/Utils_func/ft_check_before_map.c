@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/05 01:46:59 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/10 13:48:32 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 	t_source	*curr;
 	char *check;
 
-	1 && (*hexa_f = -1, *hexa_c = -1, curr = src);
+	1 && (*hexa_f = -1, *hexa_c = -1, curr = src, check = NULL);
 	while (curr)
 	{
 		if (!curr->value)
