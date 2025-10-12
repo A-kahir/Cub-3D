@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/04 17:31:40 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/12 01:43:40 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static void	init_text_img(t_source *src)
 {
-	src->no_tex.image = mlx_xpm_file_to_image(src->mlx_pointer, src->value,
+	src->no_tex.image = mlx_xpm_file_to_image(src->mlx_pointer, src->no_tex.path,
 			&src->no_tex.width, &src->no_tex.height);
 	src->sud_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
-			src->next->value, &src->sud_tex.width, &src->sud_tex.height);
+			src->sud_tex.path, &src->sud_tex.width, &src->sud_tex.height);
 	src->west_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
-			src->next->next->value, &src->west_tex.width,
+			src->west_tex.path, &src->west_tex.width,
 			&src->west_tex.height);
 	src->est_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
-			src->next->next->next->value, &src->est_tex.width,
+			src->est_tex.path, &src->est_tex.width,
 			&src->est_tex.height);
 	if (!src->no_tex.image || !src->sud_tex.image
 		|| !src->west_tex.image || !src->est_tex.image)
