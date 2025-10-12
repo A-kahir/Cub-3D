@@ -222,5 +222,7 @@ void		ft_add_door(t_source *src, int x, int y, int index);
 //doors
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);
+void		update_door_animation(t_source *src);
+int			ft_check_DR_with_D(t_source *src);
 
 #endif

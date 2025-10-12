@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 16:15:12 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/07 02:38:25 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/08 22:02:41 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,33 @@ int	door_state(t_source *src, int index)
 	return (0);
 }
 
-// void	update_door_animatioon(t_source *src)
-// {
-// 	t_doors	*curr;
+void	update_door_animation(t_source *src)
+{
+	t_doors	*curr;
 	
-// 	curr = src->door;
-// 	while (curr)
-// 	{
-		
-// 	}
-// }
+	curr = src->door;
+	while (curr)
+	{
+		if (curr->etat == 1 && curr->p_ouvert < 1.0)
+		{
+			curr->timer = src->frame_time;
+			curr->p_ouvert = curr->timer / 1.0;
+			if (curr->p_ouvert >= 1.0)
+			{
+				curr->p_ouvert = 1.0;
+				curr->timer = 0.0;
+			}
+		}
+		else if (curr->etat == 0 && curr->p_ouvert > 0.0)
+		{
+			curr->timer += src->frame_time;
+			curr->p_ouvert = 1.0 - (curr->timer / 1.0);
+			if (curr->p_ouvert <= 0.0)
+			{
+				curr->p_ouvert = 0.0;
+				curr->timer = 0.0;
+			}
+		}
+		curr = curr->next;
+	}
+}

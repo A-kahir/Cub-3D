@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/03 22:12:53 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/08 22:16:34 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,18 @@ void	draw_wall_column(char *data, t_source *src, t_tex *tex, int params[4])
 	int		draw_end = params[2];
 	int		lineheight = params[3];
 	int		tex_x;
+	double	p_ouvert = 0.0;
 
 	tex_x = calculate_tex_x(src, src->ray, tex);
 	drawing = draw_start;
+	if (src->ray->wall_dir == 4)
+    {
+        t_doors *current = src->door;
+        while (current && current->index != src->ray->door_id)
+            current = current->next;
+        if (current)
+            p_ouvert = current->p_ouvert;
+    }
 	while (drawing <= draw_end)
 	{
 		texPos = (drawing - HEIGHT / 2.0 + lineheight / 2.0)
@@ -62,7 +71,12 @@ void	draw_wall_column(char *data, t_source *src, t_tex *tex, int params[4])
 			else
 				texY = tex->height - 1;
 		}
-		color = *(unsigned int *)(tex->data + (texY * tex->line_len + tex_x
+		int adjusted_tex_x = tex_x;
+        if (src->ray->wall_dir == 4)
+            adjusted_tex_x = tex_x + (int)(p_ouvert * tex->width);
+        if (adjusted_tex_x >= tex->width)
+            adjusted_tex_x = tex->width - 1;
+		color = *(unsigned int *)(tex->data + (texY * tex->line_len + adjusted_tex_x
 					* (tex->bpp / 8)));
 		my_put_pixel(data, src, i, drawing, color);
 		drawing++;
@@ -119,6 +133,7 @@ int	render_frame(t_source *src)
 	if (!data)
 		return (0);
 	memset(data, 0, WIDTH * HEIGHT * (src->bpp / 8));
+	update_door_animation(src);
 	render_cell_floor(src, data);
 	while (++i < WIDTH)
 		process_column(src, data, i, params);

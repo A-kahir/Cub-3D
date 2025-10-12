@@ -6,11 +6,12 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/07 01:19:35 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/11 23:41:03 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
+
 static int	ft_fill_struct_colors(t_source *src, char **colors_rgb)
 {
 	int	r;
@@ -84,7 +85,7 @@ static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 	t_source	*curr;
 	char *check;
 
-	1 && (*hexa_f = -1, *hexa_c = -1, curr = src);
+	1 && (*hexa_f = -1, *hexa_c = -1, curr = src, check = NULL);
 	while (curr)
 	{
 		if (!curr->value)

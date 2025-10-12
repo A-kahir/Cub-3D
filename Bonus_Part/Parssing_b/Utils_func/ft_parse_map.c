@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/06 21:42:52 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/11 23:56:31 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,23 +103,24 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 		while (src->map[i][l] != '\0')
 		{
 			if (src->map[i][l] == 'D')
-            {
-                if (i > 0 && l > 0 && l < ft_strlen(src->map[i]))
-                {
-                    if (src->map[i][l - 1] != '1' && src->map[i][l + 1] != '1')
-                    {
-                        if (src->map[i + 1][l] != '1' && src->map[i - 1][l] != '1')
-                            return (print_message(13, NULL, '\0'), -1);
-                    }
-                    else if (src->map[i + 1][l] != '1' && src->map[i - 1][l] != '1')
-                    {
-                        if (src->map[i][l - 1] != '1' && src->map[i][l + 1] != '1')
-                            return (printf("hna\n"), print_message(13, NULL, '\0'), -1);
-                    }
-                }
-				index++;
-                ft_add_door(src, l, i, index);
-            }
+			{
+				if (i == 0 || l == 0 || !src->map[i + 1] || l >= (int)ft_strlen(src->map[i]) - 1)
+					return (print_message(13, NULL, '\0'), -1);
+				if (src->map[i][l - 1] == 'D' || src->map[i][l + 1] == 'D'
+					|| src->map[i - 1][l] == 'D' || src->map[i + 1][l] == 'D')
+					return (print_message(13, NULL, '\0'), -1);
+				if ((src->map[i][l - 1] == '1' && src->map[i][l + 1] == '1'
+					&& src->map[i - 1][l] != '1' && src->map[i + 1][l] != '1')
+					|| (src->map[i - 1][l] == '1' && src->map[i + 1][l] == '1'
+					&& src->map[i][l - 1] != '1' && src->map[i][l + 1] != '1'))
+					{
+						index++;
+						if (ft_check_DR_with_D(src) == 0)
+							ft_add_door(src, l, i, index);
+						else
+							return (print_message(14, NULL, '\0'), -1);
+					}
+			}
 			else
 			{
 				if (l > 0 && len_j > i)
