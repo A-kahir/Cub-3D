@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/06 01:47:11 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/15 21:06:00 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,19 @@ void	norm_keys1(int key, t_source *src, double move_speed)
 	{
 		newx = src->p->p_px - src->p->dir_x * move_speed;
 		newy = src->p->p_py - src->p->dir_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && newy >= 0
-			&& newy < src->map_h && src->map[(int)newy][(int)newx] != '1')
-		{
-			src->p->p_px = newx;
+		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
+			src->p->p_px = newx;	
+		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
 			src->p->p_py = newy;
-		}
 	}
 	if (key == 100)
 	{
 		newx = src->p->p_px + src->p->plan_x * move_speed;
 		newy = src->p->p_py + src->p->plan_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && newy >= 0 && newy < src->map_h
-			&& src->map[(int)newy][(int)newx] != '1')
-		{
+		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
 			src->p->p_px = newx;
+		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
 			src->p->p_py = newy;
-		}
 	}
 }
 
@@ -76,23 +72,19 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 	{
 		newx = src->p->p_px + src->p->dir_x * move_speed;
 		newy = src->p->p_py + src->p->dir_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && newy >= 0 && newy < src->map_h
-			&& src->map[(int)newy][(int)newx] != '1')
-		{
+		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
 			src->p->p_px = newx;
+		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
 			src->p->p_py = newy;
-		}
 	}
 	if (key == 97)
 	{
 		newx = src->p->p_px - src->p->plan_x * move_speed;
 		newy = src->p->p_py - src->p->plan_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && newy >= 0 && newy < src->map_h
-			&& src->map[(int)newy][(int)newx] != '1')
-		{
+		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
 			src->p->p_px = newx;
+		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
 			src->p->p_py = newy;
-		}
 	}
 }
 

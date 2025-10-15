@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/06 01:18:25 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/15 19:10:17 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,12 @@ int	dda(t_source *src, t_raycast *ray)
 		ray->hit_type = 1;
 		ray->door_id = ft_door(src, ray->mapx, ray->mapy);
 		state = door_state(src, ray->door_id);
-		if (state == 1)
+		if (state == 0)
 			ray->hit = 0;
 		else
 		{
 			ray->hit = 1;
+			ray->hit_type = 0;
 			ray->wall_dir = 4;
 		}
 	}	

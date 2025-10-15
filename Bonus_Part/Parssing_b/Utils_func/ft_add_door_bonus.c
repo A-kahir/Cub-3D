@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 23:05:49 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/12 00:01:16 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/15 19:04:22 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_add_door(t_source *src, int x, int y, int index)
 	new_door->index = index;
 	new_door->x = x;
 	new_door->y = y;
-	new_door->etat = 0;
+	new_door->etat = 1;
 	new_door->p_ouvert = 0.0;
 	new_door->timer = 0.0;
 	new_door->next = NULL;

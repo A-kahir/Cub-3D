@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/08 22:27:56 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/15 20:28:08 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	key_events(int key, t_source *src)
 	if (key == 65307)
 	{
 		mlx_destroy_window(src->mlx_pointer, src->mlx_window);
+		malloc_cl(0, 1);
 		exit(0);
 	}
 	norm_keys2(key, src, move_speed);
