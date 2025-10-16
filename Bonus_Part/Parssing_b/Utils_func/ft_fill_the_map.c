@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_the_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/15 20:37:44 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/16 02:39:01 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_add_line(t_source *src, char *line, int i)
 	while (line[++j])
 		src->map[i][j] = line[j];
 	src->map[i][j] = '\0';
-	return (free(line), src->map[++i] = NULL, i);
+	return (src->map[++i] = NULL, i);
 }
 
 void	*ft_fill_the_map(int fd, t_source *src)

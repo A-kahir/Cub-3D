@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:03:21 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/15 20:41:26 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/16 02:40:03 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static	char	*ft_operation(char *str, char *temp, char *buff)
 		temp = ft_strjoin(str, buff);
 		if (temp == NULL)
 			return (free(buff), free(str), NULL);
-		free(str);
 	}
 	return (temp);
 }
@@ -48,7 +47,6 @@ static	char	*continue_rd(char *str, int fd, char *buff)
 		if (ft_strchr(str, '\n'))
 			break ;
 	}
-	free(buff);
 	return (str);
 }
 
@@ -63,18 +61,15 @@ static char	*return_and_save(char *newline_pos, char **str, char **line)
 		temp = ft_strdup(newline_pos + 1, 0);
 		if (!(*line) || !temp)
 			return (free(*str), *str = NULL, free(*line), free(temp), NULL);
-		free(*str);
 		*str = temp;
 		temp = ft_strjoin(*line, "\n");
 		if (temp == NULL)
 			return (free(*str), *str = NULL, free(*line), NULL);
-		free(*line);
 		*line = temp;
 	}
 	else
 	{
 		*line = ft_strdup(*str, 0);
-		free(*str);
 		*str = NULL;
 	}
 	return (*line);

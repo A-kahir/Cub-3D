@@ -15,7 +15,6 @@
 static t_source	*ft_handle_rgb(t_source *src, char **var)
 {
 	char	*rgb_str;
-	char	*tmp;
 	int		i;
 
 	rgb_str = NULL;
@@ -25,11 +24,7 @@ static t_source	*ft_handle_rgb(t_source *src, char **var)
 		if (!rgb_str)
 			rgb_str = ft_strdup(var[i], 0);
 		else
-		{
-			tmp = rgb_str;
 			rgb_str = ft_strjoin(rgb_str, var[i]);
-			free(tmp);
-		}
 		i++;
 	}
 	src = ft_add_back(src, var[0], rgb_str);

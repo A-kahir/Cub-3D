@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_source.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/15 20:38:30 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/16 02:32:49 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,7 @@ t_source	*ft_get_source(t_source *src, char *file)
 		if (ft_chack_valid_source(line) == 0)
 			src = ft_fill_struct(src, line);
 		if (ft_stop_reading(src) == 0)
-		{
-			free(line);
 			break ;
-		}
-		free(line);
 		line = ft_get_next_line(fd);
 	}
 	if (ft_check_before_map(src) == -1)
