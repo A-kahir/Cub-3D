@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/15 21:06:00 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/16 01:37:01 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,25 @@ void	norm_key_fleche(int key, t_source *src, double r_speed)
 	}
 }
 
-void	norm_keys1(int key, t_source *src, double move_speed)
+int	can_pass(t_source *src, int x, int y)
 {
-	double	newx;
-	double	newy;
+	char	col;
+	int		door_id;
 
-	if (key == 115)
+	if (x < 0 || x >= src->map_w || y < 0 || y >= src->map_h)
+		return (0);
+	
+	col = src->map[y][x];
+	if (col == '1')
+		return (0);
+	if (col == 'D')
 	{
-		newx = src->p->p_px - src->p->dir_x * move_speed;
-		newy = src->p->p_py - src->p->dir_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
-			src->p->p_px = newx;	
-		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
-			src->p->p_py = newy;
+		door_id = ft_door(src, x, y);
+		if (door_id == -1)
+			return (0);
+		return (door_state(src, door_id) == 0);
 	}
-	if (key == 100)
-	{
-		newx = src->p->p_px + src->p->plan_x * move_speed;
-		newy = src->p->p_py + src->p->plan_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
-			src->p->p_px = newx;
-		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
-			src->p->p_py = newy;
-	}
+	return (1);
 }
 
 void	norm_keys2(int key, t_source *src, double move_speed)
@@ -68,22 +64,52 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 	double	newx;
 	double	newy;
 
-	if (key == 119)
+	if (key == 119)//w
 	{
 		newx = src->p->p_px + src->p->dir_x * move_speed;
 		newy = src->p->p_py + src->p->dir_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
+		if (can_pass(src, (int)newx, (int)src->p->p_py))
 			src->p->p_px = newx;
-		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
+		if (can_pass(src, (int)src->p->p_px, (int)newy))
 			src->p->p_py = newy;
 	}
-	if (key == 97)
+	
+	if (key == 97)// A
 	{
 		newx = src->p->p_px - src->p->plan_x * move_speed;
 		newy = src->p->p_py - src->p->plan_y * move_speed;
-		if (newx >= 0 && newx < src->map_w && src->map[(int)src->p->p_py][(int)newx] != '1')
+		
+		if (can_pass(src, (int)newx, (int)src->p->p_py))
 			src->p->p_px = newx;
-		if (newy >= 0 && newy < src->map_h && src->map[(int)newy][(int)src->p->p_px] != '1')
+		if (can_pass(src, (int)src->p->p_px, (int)newy))
+			src->p->p_py = newy;
+	}
+}
+
+void	norm_keys1(int key, t_source *src, double move_speed)
+{
+	double	newx;
+	double	newy;
+
+	if (key == 115)// S
+	{
+		newx = src->p->p_px - src->p->dir_x * move_speed;
+		newy = src->p->p_py - src->p->dir_y * move_speed;
+		
+		if (can_pass(src, (int)newx, (int)src->p->p_py))
+			src->p->p_px = newx;
+		if (can_pass(src, (int)src->p->p_px, (int)newy))
+			src->p->p_py = newy;
+	}
+	
+	if (key == 100)// D
+	{
+		newx = src->p->p_px + src->p->plan_x * move_speed;
+		newy = src->p->p_py + src->p->plan_y * move_speed;
+		
+		if (can_pass(src, (int)newx, (int)src->p->p_py))
+			src->p->p_px = newx;
+		if (can_pass(src, (int)src->p->p_px, (int)newy))
 			src->p->p_py = newy;
 	}
 }
