@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/19 19:04:20 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/20 17:09:21 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 					return (print_message(13, NULL, '\0'), -1);
 				if (src->map[i][l - 1] == 'D' || src->map[i][l + 1] == 'D'
 					|| src->map[i - 1][l] == 'D' || src->map[i + 1][l] == 'D')
-					return (print_message(13, NULL, '\0'), -1);
+						return (print_message(13, NULL, '\0'), -1);
 				if ((src->map[i][l - 1] == '1' && src->map[i][l + 1] == '1'
 					&& src->map[i - 1][l] != '1' && src->map[i + 1][l] != '1')
 					|| (src->map[i - 1][l] == '1' && src->map[i + 1][l] == '1'
@@ -122,6 +122,8 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 					else
 						return (print_message(14, NULL, '\0'), -1);
 				}
+				else
+						return (print_message(13, NULL, '\0'), -1);
 			}
 			if (i > 0 && src->map[i][l] == 'L')
 			{
