@@ -193,6 +193,7 @@ int			ft_check_corners(t_source *src, int i, int l);
 int			ft_check_middle_chars(t_source *src, int i, int len_j);
 int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
 int			ft_valid_char_rows(t_source *src, int i, int len_j);
+void		ft_free_mlx(t_source *src);
 
 //init data
 void		init_player(t_source *src);

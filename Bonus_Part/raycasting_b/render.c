@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/15 20:33:45 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/20 16:46:05 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	render_frame(t_source *src)
 	if (src->frame_time == 0)
 		src->frame_time = 0.0001;
 	src->old_time = time;
-	ray = malloc(sizeof(t_raycast));
+	ray = malloc_cl(sizeof(t_raycast), 0);
 	if (!ray)
 		return (1);
 	if (!src->render_image)
@@ -140,5 +140,5 @@ int	render_frame(t_source *src)
 	ft_mini_map(src);
 	mlx_put_image_to_window(src->mlx_pointer, src->mlx_window,
 		src->render_image, 0, 0);
-	return (free(ray), 0);
+	return (0);
 }

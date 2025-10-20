@@ -30,7 +30,8 @@ LIBFT_SRCB = \
 	Bonus_Part/Parssing_b/Libft_utils/ft_split.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_atoi.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_is_spaces.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c
+	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_free_mlx.c 
 
 UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/print_messages.c \

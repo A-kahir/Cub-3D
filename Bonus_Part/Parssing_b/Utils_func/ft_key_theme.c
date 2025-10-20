@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/15 20:28:08 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/20 16:54:18 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	key_events(int key, t_source *src)
 	rot_speed = src->frame_time * 3.0;
 	if (key == 65307)
 	{
-		mlx_destroy_window(src->mlx_pointer, src->mlx_window);
-		malloc_cl(0, 1);
+		1 && (ft_free_mlx(src), malloc_cl(0, 1));
 		exit(0);
 	}
 	norm_keys2(key, src, move_speed);
