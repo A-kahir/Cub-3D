@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_secound_parsing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/07 01:26:26 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/20 15:35:33 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	fill_textures(t_source *src, char *var, char *value)
 		src->est_tex.path = value;
 	if (!ft_strcmp(var, "WE"))
 		src->west_tex.path = value;
+	if (!ft_strcmp(var, "DR"))
+		src->doors_tex.path = value;
 }
 
 void	ft_secound_parsing(t_source *src)

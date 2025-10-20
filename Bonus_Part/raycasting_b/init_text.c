@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_text.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/11 18:40:50 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/20 15:34:38 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	init_text_img(t_source *src)
 	src->est_tex.image = mlx_xpm_file_to_image(src->mlx_pointer,
 			src->est_tex.path, &src->est_tex.width,
 			&src->est_tex.height);
-	src->doors_tex.image = mlx_xpm_file_to_image(src->mlx_pointer, "Bonus_Part/Parssing_b/texture/DR_hell.xpm",
+	src->doors_tex.image = mlx_xpm_file_to_image(src->mlx_pointer, src->doors_tex.path,
       	  &src->doors_tex.width, &src->doors_tex.height);
 	if (!src->no_tex.image || !src->sud_tex.image
 		|| !src->west_tex.image || !src->est_tex.image || !src->doors_tex.image)
