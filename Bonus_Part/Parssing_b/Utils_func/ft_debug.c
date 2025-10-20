@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/20 12:41:40 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/20 14:22:58 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,38 @@ void	ft_debug(t_source *src, int flag)
 		{
 			if (tmp->door)
 			{
-				printf("Door info : \n");
-				printf("      Door Index : %d\n", tmp->door->index);
-				printf("      Door X : %d\n", tmp->door->x);
-				printf("      Door Y : %d\n", tmp->door->y);
+				t_doors *d = tmp->door;
+				while (d)
+				{
+					printf("Door info : \n");
+					printf("      Door Index : %d\n", tmp->door->index);
+					printf("      Door X : %d\n", tmp->door->x);
+					printf("      Door Y : %d\n\n", tmp->door->y);
+					d = d->next;
+				}
 			}
 			tmp = tmp->next;
 		}
 	}
-
 	if (flag == 4)
 	{
 		while (tmp)
 		{
 			if (tmp->sprites)
 			{
-				printf("Animated sprite info : \n");
-				printf("      sprite Index : %d\n", tmp->sprites->index);
-				printf("      sprite X : %d\n", tmp->sprites->x);
-				printf("      sprite Y : %d\n", tmp->sprites->y);
+				t_sprites *s = tmp->sprites;
+				while (s)
+				{
+					printf("Animated sprite info:\n");
+					printf("      sprite Index : %d\n", s->index);
+					printf("      sprite X     : %d\n", s->x);
+					printf("      sprite Y     : %d\n\n", s->y);
+					s = s->next;
+				}
 			}
 			tmp = tmp->next;
 		}
-		return ;
+		return;
 	}
-
 }
 
