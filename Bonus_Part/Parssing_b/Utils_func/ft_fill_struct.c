@@ -48,9 +48,9 @@ t_source	*ft_fill_struct(t_source *src, char *line)
 	value = ft_split(var[1], '\n');
 	if (!value || !value[0])
 		return (src);
-	if (var && (!ft_strncmp(var[0], "NO", 2) || !ft_strncmp(var[0], "SO", 2)
+	if (var && ((!ft_strncmp(var[0], "NO", 2) || !ft_strncmp(var[0], "SO", 2)
 			|| !ft_strncmp(var[0], "WE", 2) || !ft_strncmp(var[0], "EA", 2)
-			|| !ft_strncmp(var[0], "DR", 2)))
+			|| !ft_strncmp(var[0], "DR", 2)) || !ft_strcmp(var[0], "S")))
 		src = ft_add_back(src, var[0], value[0]);
 	else if (!ft_strcmp(var[0], "F") || !ft_strcmp(var[0], "C"))
 		src = ft_handle_rgb(src, var);
