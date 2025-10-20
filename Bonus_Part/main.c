@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		return (print_message(1, NULL, '\0'), 1);
 	// ft_debug(src, 1);
 	// ft_debug(src, 3);
-	// ft_debug(src, 4);
+	ft_debug(src, 4);
 	src->mlx_pointer = ft_open_mlx_window(src);
 	if (!src->mlx_pointer)
 		return (-1);
