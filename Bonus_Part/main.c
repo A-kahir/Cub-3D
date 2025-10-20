@@ -48,6 +48,5 @@ int	main(int argc, char **argv)
 	src->mlx_pointer = ft_open_mlx_window(src);
 	if (!src->mlx_pointer)
 		return (-1);
-		
 	mlx_loop(src->mlx_pointer);
 }
