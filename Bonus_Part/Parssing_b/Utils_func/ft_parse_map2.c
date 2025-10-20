@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:17:42 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/06 21:45:00 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/19 17:57:05 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	ft_check(t_source *src, int r, int c)
 		return (' ');
 	if (src->map[r][c] == '0' || src->map[r][c] == '1'
 		|| src->map[r][c] == 'N' || src->map[r][c] == 'S'
-		|| src->map[r][c] == 'E' || src->map[r][c] == 'W' || src->map[r][c] == 'D')
+		|| src->map[r][c] == 'E' || src->map[r][c] == 'W' || src->map[r][c] == 'D' || src->map[r][c] == 'L')
 		return (src->map[r][c]);
 	return (' ');
 }
@@ -32,7 +32,7 @@ int	check_corner_and_side(t_source *src, int i, int l)
 	char	curr;
 
 	curr = ft_check(src, i, l);
-	if (curr == '0' || curr == 'N' || curr == 'S' || curr == 'E' || curr == 'W' || curr == 'D')
+	if (curr == '0' || curr == 'N' || curr == 'S' || curr == 'E' || curr == 'W' || curr == 'D' || curr == 'L')
 	{
 		if (ft_check(src, i - 1, l - 1) == ' ')
 			return (-1);
@@ -73,7 +73,7 @@ int	ft_check_middle_chars(t_source *src, int i, int len_j)
 	{
 		if (src->map[i][l] == '0' || (src->map[i][l] == 'N'
 			|| src->map[i][l] == 'S' || src->map[i][l] == 'E'
-			|| src->map[i][l] == 'W' || src->map[i][l] == 'D'))
+			|| src->map[i][l] == 'W' || src->map[i][l] == 'D' || src->map[i][l] == 'L'))
 		{
 			if (ft_check_corners(src, i, l) == -1)
 				return (-1);

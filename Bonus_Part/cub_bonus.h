@@ -106,6 +106,17 @@ typedef struct s_doors
 	struct s_doors	*next;
 }	t_doors;
 
+typedef struct s_sprites
+{
+	int				index;
+	int				x;
+	int				y;
+	int 			etat;
+	double			p_ouvert;
+	double			timer;
+	struct s_sprites	*next;
+}	t_sprites;
+
 typedef struct s_source
 {
 	char			*var;
@@ -132,6 +143,7 @@ typedef struct s_source
 	t_colors		*colors;
 	t_player		*p;
 	t_doors			*door;
+	t_sprites		*sprites;
 	t_raycast		*ray;
 	int				draw_start;
 	int				draw_end;
@@ -223,6 +235,7 @@ void		ft_add_door(t_source *src, int x, int y, int index);
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);
 void		update_door_animation(t_source *src);
-int			ft_check_DR_with_D(t_source *src);
+int	ft_check_struct_with_flag_map(t_source *src, char *check);
+void	ft_add_sprites(t_source *src, int x, int y, int index);
 
 #endif

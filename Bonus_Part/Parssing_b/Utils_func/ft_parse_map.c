@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/15 20:21:31 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/19 19:04:20 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_check_cadring_map(t_source *src, int i, int len_i)
 				if (!(ft_is_spaces(src->map[i][l]) == 0
 					|| (src->map[i][l] == 'N') || (src->map[i][l] == 'S')
 					|| (src->map[i][l] == 'W') || (src->map[i][l] == 'E')
-					|| (src->map[i][l] == 'D')))
+					|| (src->map[i][l] == 'D') || (src->map[i][l] == 'L')))
 						return (ft_debug_map(src->map[i], l),
 						print_message(4, src->map[i], src->map[i][l]), -1);
 			}
@@ -93,10 +93,12 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 {
 	int	i;
 	int	l;
-	int	index;
+	int	index_d;
+	int index_l;
 
 	i = 1;
-	index = 0;
+	index_d = 0;
+	index_l = 0;
 	while (src->map[i])
 	{
 		l = 0;
@@ -113,20 +115,45 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 					&& src->map[i - 1][l] != '1' && src->map[i + 1][l] != '1')
 					|| (src->map[i - 1][l] == '1' && src->map[i + 1][l] == '1'
 					&& src->map[i][l - 1] != '1' && src->map[i][l + 1] != '1'))
+				{
+					index_d++;
+					if (ft_check_struct_with_flag_map(src, "DR") == 0)
+						ft_add_door(src, l, i, index_d);
+					else
+						return (print_message(14, NULL, '\0'), -1);
+				}
+			}
+			if (i > 0 && src->map[i][l] == 'L')
+			{
+				if (i == 0 || l == 0 || !src->map[i + 1] || l >= (int)ft_strlen(src->map[i]) - 1)
+					return (print_message(15, NULL, '\0'), -1);
+				if (i == len_j || l == (int)ft_strlen(src->map[i]))
+					return (print_message(15, NULL, '\0'), -1);
+				if (!src->map[i - 1] || !src->map[i + 1]
+					|| ft_is_spaces(src->map[i - 1][l]) == 0
+					|| ft_is_spaces(src->map[i + 1][l]) == 0
+					|| ft_is_spaces(src->map[i][l - 1]) == 0
+					|| ft_is_spaces(src->map[i][l + 1]) == 0)
+				{
+					return (print_message(15, NULL, '\0'), -1);
+				}
+				else 
+				{
+					index_l++;
+					if (ft_check_struct_with_flag_map(src, "S") == 0)
 					{
-						index++;
-						if (ft_check_DR_with_D(src) == 0)
-							ft_add_door(src, l, i, index);
-						else
-							return (print_message(14, NULL, '\0'), -1);
+						ft_add_sprites(src, i, l, index_l);
 					}
+					else
+						return (print_message(16, NULL, '\0'), -1);
+				}
 			}
 			else
 			{
 				if (l > 0 && len_j > i)
 					if (src->map[i][l] == '0'
 						|| (src->map[i][l] == 'N' || src->map[i][l] == 'S'
-						|| src->map[i][l] == 'E' || src->map[i][l] == 'W' || src->map[i][l] == 'D'))
+						|| src->map[i][l] == 'E' || src->map[i][l] == 'W' || src->map[i][l] == 'D' || src->map[i][l] == 'L'))
 						if ((ft_is_spaces(src->map[i - 1][l]) == 0)
 							|| (ft_is_spaces(src->map[i + 1][l]) == 0))
 								return (ft_debug_map(src->map[i], l),

@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/16 02:39:01 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/19 18:36:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ static int	ft_add_line(t_source *src, char *line, int i)
 	while (++j < i)
 		tmp[j] = src->map[j];
 	src->map = tmp;
-	src->map[i] = malloc_cl(sizeof(char) * (len + 1), 0);
+	src->map[i] = malloc_cl(len + 1, 0);
 	if (!src->map[i])
 		return (perror("malloc failed"), -1);
 	j = -1;
 	while (line[++j])
 		src->map[i][j] = line[j];
 	src->map[i][j] = '\0';
-	return (src->map[++i] = NULL, i);
+	src->map[++i] = NULL;
+	return (i);
 }
 
 void	*ft_fill_the_map(int fd, t_source *src)
@@ -45,11 +46,12 @@ void	*ft_fill_the_map(int fd, t_source *src)
 	char	*line;
 	int		i;
 
-	1 && (i = 0, src->map = NULL, line = ft_get_next_line(fd));
-	while (line && (ft_is_spaces(line[0]) == 0
-		|| line[0] == '\n' || line[0] == '\0'))
+	i = 0;
+	src->map = NULL;
+	line = ft_get_next_line(fd);
+	while (line && (ft_is_spaces(line[0]) == 0 || line[0] == '\n' || line[0] == '\0'))
 		line = ft_get_next_line(fd);
-	if (line && !ft_strncmp(line, "DR", 2))
+	while (line && (!ft_strncmp(line, "DR", 2) || !ft_strncmp(line, "S", 1)))
 	{
 		if (ft_chack_valid_source(line) == 0)
 			src = ft_fill_struct(src, line);
@@ -58,27 +60,21 @@ void	*ft_fill_the_map(int fd, t_source *src)
 				|| line[0] == '\n' || line[0] == '\0'))
 			line = ft_get_next_line(fd);
 	}
-	if (line == NULL)
-		return (NULL);
 	while (line)
 	{
 		if (line[0] == '\n' || line[0] == '\0')
-		{
-			free(line);
 			break ;
-		}
-		if (line[0] != '0' && line[0] != '1' && line[0] != ' ' && line[0] != 'D'
-			&& line[0] != '\t')
-		{
-			free(line);
-			break;
-		}
+		if (line[0] != '0' && line[0] != '1' && line[0] != ' ' &&
+			line[0] != 'D' && line[0] != 'S' && line[0] != '\t')
+			break ;
 		i = ft_add_line(src, line, i);
 		if (i < 0)
 			return (NULL);
 		line = ft_get_next_line(fd);
 	}
-	1 && (src->map[i] = NULL, line = ft_get_next_line(fd));
+	if (src->map)
+		src->map[i] = NULL;
+	line = ft_get_next_line(fd);
 	if (line != NULL)
 		return (NULL);
 	if (ft_parse_map(src) == -1)

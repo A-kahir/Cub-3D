@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_before_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/11 23:41:03 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/19 17:00:22 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ int	ft_check_textures(t_source *src)
 		if (curr->var && 
 			(!ft_strcmp(curr->var, "NO") || !ft_strcmp(curr->var, "SO")
 			|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")
-			|| !ft_strcmp(curr->var, "DR")))
+			|| !ft_strcmp(curr->var, "DR") || !ft_strcmp(curr->var, "S")))
 		{
 			count++;	
 		}
 		curr = curr->next;
 	}
-	if (count == 4 || count == 5)
+	if (count == 4 || count == 5 || count == 6)
 		return (0);
 	return (1);
 }

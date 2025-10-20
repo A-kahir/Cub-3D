@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_debug.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:58:22 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/20 12:41:40 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,25 @@ void	ft_debug_map(char *map, int pos)
 void	ft_debug(t_source *src, int flag)
 {
 	t_source	*tmp;
+	int			i;
 
 	tmp = src;
 	if (flag == 1)
 	{
+		if (tmp && tmp->colors)
+		{
+			if (tmp->colors->hexa_rgb_f)
+				printf("tmp->colors->hexa_rgb_f ==> %d\n", tmp->colors->hexa_rgb_f);
+			if (tmp->colors->hexa_rgb_c)
+				printf("tmp->colors->hexa_rgb_c ==> %d\n", tmp->colors->hexa_rgb_c);
+		}
 		while (tmp)
 		{
-			printf("tmp ===> %s = %s\n", tmp->var, tmp->value);
-			if (tmp->colors)
-			{
-				if (tmp->colors->hexa_rgb_f)
-					printf("tmp->colors->hexa_rgb_f ==> %d\n", tmp->colors->hexa_rgb_f);
-				if (tmp->colors->hexa_rgb_c)
-					printf("tmp->colors->hexa_rgb_c ==> %d\n", tmp->colors->hexa_rgb_c);
-			}
+			printf("tmp ===> %s = %s\n", tmp->var ? tmp->var : "(null)", tmp->value ? tmp->value : "(null)");
 			tmp = tmp->next;
 		}
 		printf("\n*************************************=> MAP <=*************************************\n\n");
-		int i = 0;
+		i = 0;
 		tmp = src;
 		if (tmp->map)
 		{
@@ -57,14 +58,48 @@ void	ft_debug(t_source *src, int flag)
 			}
 		}
 	}
+
 	if (flag == 2)
 	{
-		if (tmp->p)
+		if (tmp && tmp->p)
 		{
 			printf("player info: \n");
-			printf("      player PX : %f\n", src->p->p_px);
-			printf("      player PY : %f\n", src->p->p_py);
-			printf("      player OR: %c\n", src->p->p_or);
+			printf("      player PX : %f\n", tmp->p->p_px);
+			printf("      player PY : %f\n", tmp->p->p_py);
+			printf("      player OR: %c\n", tmp->p->p_or);
 		}
 	}
+
+	if (flag == 3)
+	{
+		while (tmp)
+		{
+			if (tmp->door)
+			{
+				printf("Door info : \n");
+				printf("      Door Index : %d\n", tmp->door->index);
+				printf("      Door X : %d\n", tmp->door->x);
+				printf("      Door Y : %d\n", tmp->door->y);
+			}
+			tmp = tmp->next;
+		}
+	}
+
+	if (flag == 4)
+	{
+		while (tmp)
+		{
+			if (tmp->sprites)
+			{
+				printf("Animated sprite info : \n");
+				printf("      sprite Index : %d\n", tmp->sprites->index);
+				printf("      sprite X : %d\n", tmp->sprites->x);
+				printf("      sprite Y : %d\n", tmp->sprites->y);
+			}
+			tmp = tmp->next;
+		}
+		return ;
+	}
+
 }
+

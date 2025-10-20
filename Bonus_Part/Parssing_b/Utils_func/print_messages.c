@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_messages.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/11 23:43:22 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/19 18:23:10 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ void	ft_cantinue4(int flag)
 	{
 		write(2, "You Make Door in map without DR texture\n", 41);
 		return ;
+	}
+	else if (flag == 15)
+	{
+		write(2, "Animated sprites is not set correct\n", 37);
+		return ;
+	}
+	else if (flag == 16)
+	{
+		write(2, "You Make sprites in map without S texture\n", 43);
 	}
 }
 
