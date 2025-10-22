@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mini_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:41:40 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 20:10:06 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/22 23:53:50 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,10 @@ int ft_mini_map(t_source *src)
                 else
                     color = 0x4C4C4C;
             }
+            if (src->map[i][j] == 'L' && ft_static_flag(0, 0) == 0)
+                color = 0x0090FF;
+            else if (src->map[i][j] == 'L' && ft_static_flag(0, 0) == 1)
+                color = 0xFF1519;
 			int cy = 0;
             while (cy < mini_size)
             {

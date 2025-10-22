@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/19 18:23:10 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/22 21:21:33 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,12 @@ void	ft_cantinue1(int flag, char *arg, char ch)
 
 void	print_message(int flag, char *arg, char ch)
 {
+	static int flag_error;
+	if (flag_error == 0)
+	{
+		write(2, "Error :\n", 9);
+		flag_error = 1;
+	}
 	if (flag == 0)
 	{
 		write(2, "invalid Args ❌\n", 18);

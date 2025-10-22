@@ -212,11 +212,14 @@ void		calculate_draw_limits(int lineheight,
 				int *draw_start, int *draw_end);
 t_tex		*select_texture(t_source *src, t_raycast *ray);
 int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
+
 // rendering floor celling
 int			render_frame(t_source *src);
+
 /// should remove when we finish
 void		ft_debug_map(char *map, int pos); // in utils func
 void		ft_debug(t_source *src, int flag); // in utils func
+
 //timing
 long		get_time(void);
 
@@ -232,6 +235,7 @@ void		norm_key3(int key, t_source *src);
 //minimap
 int			ft_mini_map(t_source *src);
 void		ft_add_door(t_source *src, int x, int y, int index);
+
 //doors
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);

@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/20 16:54:18 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/22 21:55:54 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	key_events(int key, t_source *src)
 	rot_speed = src->frame_time * 3.0;
 	if (key == 65307)
 	{
-		1 && (ft_free_mlx(src), malloc_cl(0, 1));
+		ft_free_mlx(src);
+		malloc_cl(0, 1);
 		exit(0);
 	}
 	norm_keys2(key, src, move_speed);
@@ -54,7 +55,6 @@ int	ft_key_loading(int key, t_source *src)
 {
 	if (key == 65293)
 	{
-		ft_secound_parsing(src);
 		if (src->mlx_image)
 		{
 			mlx_destroy_image(src->mlx_pointer, src->mlx_image);
@@ -89,6 +89,7 @@ int	ft_key_theme_b(int key, t_source *src)
 	h = HEIGHT;
 	if (key == 49 || key == 50)
 	{
+		ft_secound_parsing(src);
 		if (src->mlx_image)
 		{
 			mlx_destroy_image(src->mlx_pointer, src->mlx_image);
@@ -97,6 +98,7 @@ int	ft_key_theme_b(int key, t_source *src)
 		if (key == 50)
 		{
 			ft_is_hell(src);
+			ft_secound_parsing(src);
 			ft_static_flag(1, 1);
 		}
 		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
