@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/21 17:57:48 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/26 21:29:54 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_check_player(t_source *src)
 	int	player;
 
 	1 && (player = 0, i = 0);
-	while (src && src->map[++i])
+	while (src && src->map && src->map[++i])
 	{
 		j = -1;
 		while (src->map[i][++j] != '\0')
@@ -49,6 +49,8 @@ int	ft_stop_reading(t_source *src)
 	int	EA = 0;
 	int	F = 0;
 	int	C = 0;
+	int DR = 0;
+	int S = 0;
 	t_source *curr = src;
 
 	while (curr)
@@ -65,9 +67,13 @@ int	ft_stop_reading(t_source *src)
 			F = 1;
 		else if (!ft_strcmp(curr->var, "C"))
 			C = 1;
+		else if (!ft_strcmp(curr->var, "DR"))
+			DR = 1;
+		else if (!ft_strcmp(curr->var, "S"))
+			S = 1;
 		curr = curr->next;
 	}
-	if (NO && SO && WE && EA && F && C)
+	if (NO && SO && WE && EA && F && C && DR && S)
 		return (0);
 	return (-1);
 }

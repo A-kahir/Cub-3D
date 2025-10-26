@@ -172,6 +172,7 @@ int			ft_max_len(t_source *src);
 char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
+int	ft_stop_reading(t_source *src);
 
 
 //Libft utils:
@@ -240,7 +241,6 @@ void		ft_add_door(t_source *src, int x, int y, int index);
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);
 void		update_door_animation(t_source *src);
-int	ft_check_struct_with_flag_map(t_source *src, char *check);
 void	ft_add_sprites(t_source *src, int x, int y, int index);
 
 #endif

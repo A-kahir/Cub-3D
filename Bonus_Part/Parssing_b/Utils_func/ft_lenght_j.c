@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lenght_j.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:22:22 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:58:42 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/23 12:08:08 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_lenght_j(t_source *src)
 	i = 0;
 	j = -1;
 	curr = src;
-	while (curr->map[i])
+	while (curr && curr->map && curr->map[i])
 	{
 		j++;
 		i++;

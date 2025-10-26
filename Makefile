@@ -100,7 +100,7 @@ MLX_DIR = mlx
 MLX = $(MLX_DIR)/libmlx.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror  \
+CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g\
          -IMandatory_Part/Parssing \
          -IMandatory_Part/Parssing/Libft_utils \
          -IMandatory_Part/Parssing/Utils_func \

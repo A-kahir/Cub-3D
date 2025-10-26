@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/19 17:00:22 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/26 21:26:20 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,6 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	return (0);
 }
 
-int	ft_check_textures(t_source *src)
-{
-	t_source	*curr;
-	int			count;
-
-	curr = src;
-	count = 0;
-	while (curr)
-	{
-		if (curr->var && 
-			(!ft_strcmp(curr->var, "NO") || !ft_strcmp(curr->var, "SO")
-			|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")
-			|| !ft_strcmp(curr->var, "DR") || !ft_strcmp(curr->var, "S")))
-		{
-			count++;	
-		}
-		curr = curr->next;
-	}
-	if (count == 4 || count == 5 || count == 6)
-		return (0);
-	return (1);
-}
-
 static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 {
 	t_source	*curr;
@@ -127,7 +104,7 @@ int	ft_check_before_map(t_source *src)
 		}
 		curr = curr->next;
 	}
-	if (ft_check_textures(src) == 0)
+	if (ft_stop_reading(src) == 0)
 		return (0);
 	return (-1);
 }

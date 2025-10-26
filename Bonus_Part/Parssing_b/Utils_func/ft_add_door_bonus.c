@@ -6,27 +6,11 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 23:05:49 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/19 18:58:02 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/26 21:44:34 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
-
-int	ft_check_struct_with_flag_map(t_source *src, char *check)
-{
-	t_source *curr;
-
-	curr = src;
-	while (curr)
-	{
-		if (curr->var && check && ft_strcmp(curr->var, check) == 0)
-			return (0);
-		curr = curr->next;
-	}
-	return (-1);
-}
-
-
 
 void	ft_add_door(t_source *src, int x, int y, int index)
 {
