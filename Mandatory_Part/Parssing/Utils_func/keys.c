@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/16 02:02:15 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/27 16:11:05 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	norm_key_fleche(int key, t_source *src, double r_speed)
 int	can_pass(t_source *src, int x, int y)
 {
 	char	col;
-	int		door_id;
+	// int		door_id;
 
 	if (x < 0 || x >= src->map_w || y < 0 || y >= src->map_h)
 		return (0);

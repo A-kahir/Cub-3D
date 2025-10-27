@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:46:25 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/23 12:07:54 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/27 22:03:43 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_len(char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] && ft_is_spaces(str[i]) == 0)
+	while (str[i] && ft_is_spaces(str[i]) == -1)
 		i++;
 	j = ft_strlen(str) - 1;
 	while (j >= 0 && ft_is_spaces(str[j]) == 0)
@@ -29,6 +29,7 @@ static int	ft_len(char *str)
 		return (0);
 	return (j - i + 1);
 }
+
 
 int	ft_max_len(t_source *src)
 {
@@ -58,14 +59,18 @@ void	ft_add_spaces_in_map(t_source *src)
 	char	*new_row;
 	int		len;
 
+	if (!src || !src->map)
+		return ;
 	max = ft_max_len(src);
 	i = -1;
-	while (src && src->map && src->map[++i])
+	while (src->map[++i])
 	{
 		len = ft_strlen(src->map[i]);
 		if (len < max)
 		{
 			new_row = (char *)malloc_cl(sizeof(char) * (max + 1), 0);
+			if (!new_row)
+				return ;
 			j = -1;
 			while (src->map[i][++j])
 				new_row[j] = src->map[i][j];
@@ -73,7 +78,7 @@ void	ft_add_spaces_in_map(t_source *src)
 				new_row[j++] = ' ';
 			new_row[j] = '\0';
 			src->map[i] = new_row;
-			len++;
 		}
 	}
 }
+
