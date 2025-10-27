@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/26 21:29:03 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/27 14:34:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,23 @@ void	*ft_fill_the_map(int fd, t_source *src)
 	line = ft_get_next_line(fd);
 	while (line && (line[0] == '\n' || line[0] == '\0'))
 		line = ft_get_next_line(fd);
-	while (line && (!ft_strncmp(line, "DR", 2) || !ft_strncmp(line, "S", 1)))
+	while (line && !ft_strncmp(line, "DR", 2))
 	{
-		if (ft_chack_valid_source(line) == 0)
-		src = ft_fill_struct(src, line);
+		if (ft_chack_valid_source(src, line) == 0)
+			src = ft_fill_struct(src, line);
 		line = ft_get_next_line(fd);
 		while (line && (line[0] == 32 || (line[0] >= 9 && line[0] <= 13)
-		|| line[0] == '\n' || line[0] == '\0'))
-		line = ft_get_next_line(fd);
+			|| line[0] == '\n' || line[0] == '\0'))
+			line = ft_get_next_line(fd);
 	}
 	while (line)
 	{
-		if (!ft_strncmp(line, "DR", 2) || !ft_strncmp(line, "S", 1))
+		if (!ft_strncmp(line, "DR", 2))
 			src = ft_fill_struct(src, line);
 		else
 		{
 			if (line[0] == '\n' || line[0] == '\0')
 				break ;
-			// if (line[0] != '0' && line[0] != '1' && line[0] != ' ' &&
-			// 	line[0] != 'D' && line[0] != 'S' && line[0] != '\t')
-			// 	break ;
 			i = ft_add_line(src, line, i);
 			if (i < 0)
 				return (NULL);

@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/22 21:21:33 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/27 14:08:32 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	ft_cantinue4(int flag)
 	else if (flag == 16)
 	{
 		write(2, "You Make sprites in map without S texture\n", 43);
+	}
+	else if (flag == 17)
+	{
+		write(2, "You dublicate Texture\n", 23);
 	}
 }
 

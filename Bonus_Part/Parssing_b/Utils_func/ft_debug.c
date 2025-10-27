@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:46:28 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/20 14:22:58 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/27 01:47:08 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_debug_map(char *map, int pos)
 void	ft_debug(t_source *src, int flag)
 {
 	t_source	*tmp;
-	int			i;
+	// int			i;
 
 	tmp = src;
 	if (flag == 1)
@@ -46,17 +46,17 @@ void	ft_debug(t_source *src, int flag)
 			printf("tmp ===> %s = %s\n", tmp->var ? tmp->var : "(null)", tmp->value ? tmp->value : "(null)");
 			tmp = tmp->next;
 		}
-		printf("\n*************************************=> MAP <=*************************************\n\n");
-		i = 0;
-		tmp = src;
-		if (tmp->map)
-		{
-			while (tmp->map[i])
-			{
-				printf("%s\n", tmp->map[i]);
-				i++;
-			}
-		}
+		// printf("\n*************************************=> MAP <=*************************************\n\n");
+		// i = 0;
+		// tmp = src;
+		// if (tmp->map)
+		// {
+		// 	while (tmp->map[i])
+		// 	{
+		// 		printf("%s\n", tmp->map[i]);
+		// 		i++;
+		// 	}
+		// }
 	}
 
 	if (flag == 2)
@@ -88,26 +88,6 @@ void	ft_debug(t_source *src, int flag)
 			}
 			tmp = tmp->next;
 		}
-	}
-	if (flag == 4)
-	{
-		while (tmp)
-		{
-			if (tmp->sprites)
-			{
-				t_sprites *s = tmp->sprites;
-				while (s)
-				{
-					printf("Animated sprite info:\n");
-					printf("      sprite Index : %d\n", s->index);
-					printf("      sprite X     : %d\n", s->x);
-					printf("      sprite Y     : %d\n\n", s->y);
-					s = s->next;
-				}
-			}
-			tmp = tmp->next;
-		}
-		return;
 	}
 }
 

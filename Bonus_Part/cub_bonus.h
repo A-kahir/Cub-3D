@@ -106,17 +106,6 @@ typedef struct s_doors
 	struct s_doors	*next;
 }	t_doors;
 
-typedef struct s_sprites
-{
-	int				index;
-	int				x;
-	int				y;
-	int 			etat;
-	double			p_ouvert;
-	double			timer;
-	struct s_sprites	*next;
-}	t_sprites;
-
 typedef struct s_source
 {
 	char			*var;
@@ -143,7 +132,6 @@ typedef struct s_source
 	t_colors		*colors;
 	t_player		*p;
 	t_doors			*door;
-	t_sprites		*sprites;
 	t_raycast		*ray;
 	int				draw_start;
 	int				draw_end;
@@ -159,7 +147,7 @@ void		ft_is_hell(t_source *src);
 //Utils func:
 void		print_message(int flag, char *arg, char ch);
 char		*ft_get_next_line(int fd);
-int			ft_chack_valid_source(char *str);
+int			ft_chack_valid_source(t_source *src, char *str);
 t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
@@ -241,6 +229,5 @@ void		ft_add_door(t_source *src, int x, int y, int index);
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);
 void		update_door_animation(t_source *src);
-void	ft_add_sprites(t_source *src, int x, int y, int index);
 
 #endif

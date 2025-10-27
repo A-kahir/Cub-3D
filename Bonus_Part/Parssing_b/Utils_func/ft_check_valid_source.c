@@ -12,10 +12,19 @@
 
 #include "../../cub_bonus.h"
 
-int	ft_chack_valid_source(char *str)
+int	ft_chack_valid_source(t_source *src, char *str)
 {
+	t_source *curr;
+
 	if (!str)
 		return (-1);
+	curr = src;
+	while (curr)
+	{
+		if (!ft_strncmp(curr->var, str, 2) || !ft_strncmp(curr->var, str, 1))
+			return (print_message(17, NULL, '\0'), exit(1), -1);
+		curr = curr->next;
+	}
 	if (ft_is_spaces(str[0]) == 0)
 		return (-1);
 	if (str[0] == '\n' || str[0] == '\0')
