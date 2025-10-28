@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/22 21:55:54 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/28 23:44:58 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,37 @@ int	mouse_move(int x, int y, t_source *src)
 	return (0);
 }
 
+void	key_animation(int key, t_source *src)
+{
+	int	h = HEIGHT;
+	int	w = WIDTH / 2;
+
+	if (key == 110)
+	{
+		int	i = 0;
+		while (i <= 30)
+		{
+			char *image = ft_itoa(i);
+			char *path;
+			if (ft_static_flag(0, 0) == 1)
+			{
+				path = ft_strjoin(ft_strjoin("Bonus_Part/Parssing_b/texture/HELL/xpm_sprites/", image), ".xpm");
+			}
+			else
+				path = ft_strjoin(ft_strjoin("Bonus_Part/Parssing_b/texture/PARADISE/xpm_sprites/", image), ".xpm");
+			void *sprite = mlx_xpm_file_to_image(src->mlx_pointer, path, &w, &h);
+			if (!sprite)
+				return (write(2, "mlx image failed\n", 18), exit(1));
+			int sp_x = (WIDTH - w) / 2;
+			int sp_y = HEIGHT - h;
+			mlx_put_image_to_window(src->mlx_pointer, src->mlx_window, sprite, sp_x, sp_y);
+			usleep(80000);
+			mlx_destroy_image(src->mlx_pointer, sprite);
+			i++;
+		}
+	}
+}
+
 int	key_events(int key, t_source *src)
 {
 	double	move_speed;
@@ -47,6 +78,7 @@ int	key_events(int key, t_source *src)
 	norm_keys2(key, src, move_speed);
 	norm_keys1(key, src, move_speed);
 	norm_key_fleche(key, src, rot_speed);
+	key_animation(key, src);
 	norm_key3(key, src);
 	return (0);
 }
