@@ -106,17 +106,6 @@ typedef struct s_doors
 	struct s_doors	*next;
 }	t_doors;
 
-typedef struct s_sprites
-{
-	int				index;
-	int				x;
-	int				y;
-	int 			etat;
-	double			p_ouvert;
-	double			timer;
-	struct s_sprites	*next;
-}	t_sprites;
-
 typedef struct s_source
 {
 	char			*var;
@@ -143,7 +132,6 @@ typedef struct s_source
 	t_colors		*colors;
 	t_player		*p;
 	t_doors			*door;
-	t_sprites		*sprites;
 	t_raycast		*ray;
 	int				draw_start;
 	int				draw_end;
@@ -159,7 +147,7 @@ void		ft_is_hell(t_source *src);
 //Utils func:
 void		print_message(int flag, char *arg, char ch);
 char		*ft_get_next_line(int fd);
-int			ft_chack_valid_source(char *str);
+int			ft_chack_valid_source(t_source *src, char *str);
 t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
@@ -172,6 +160,7 @@ int			ft_max_len(t_source *src);
 char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
+int	ft_stop_reading(t_source *src);
 
 
 //Libft utils:
@@ -193,6 +182,8 @@ int			ft_check_corners(t_source *src, int i, int l);
 int			ft_check_middle_chars(t_source *src, int i, int len_j);
 int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
 int			ft_valid_char_rows(t_source *src, int i, int len_j);
+void		ft_free_mlx(t_source *src);
+char	*ft_itoa(int n);
 
 //init data
 void		init_player(t_source *src);
@@ -211,11 +202,14 @@ void		calculate_draw_limits(int lineheight,
 				int *draw_start, int *draw_end);
 t_tex		*select_texture(t_source *src, t_raycast *ray);
 int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
+
 // rendering floor celling
 int			render_frame(t_source *src);
+
 /// should remove when we finish
 void		ft_debug_map(char *map, int pos); // in utils func
 void		ft_debug(t_source *src, int flag); // in utils func
+
 //timing
 long		get_time(void);
 
@@ -231,11 +225,10 @@ void		norm_key3(int key, t_source *src);
 //minimap
 int			ft_mini_map(t_source *src);
 void		ft_add_door(t_source *src, int x, int y, int index);
+
 //doors
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);
 void		update_door_animation(t_source *src);
-int	ft_check_struct_with_flag_map(t_source *src, char *check);
-void	ft_add_sprites(t_source *src, int x, int y, int index);
 
 #endif

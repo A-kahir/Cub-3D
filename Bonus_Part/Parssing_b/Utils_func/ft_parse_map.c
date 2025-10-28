@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/19 19:04:20 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/27 01:52:47 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_check_first_last_row(t_source *src, int i, int len_j)
 		{
 			if (ft_is_spaces(src->map[i][l]) == -1 && i == 0)
 				return (print_message(2, src->map[i], src->map[i][l]), -1);
-			else if (ft_is_spaces(src->map[i][l]) == -1 && i == len_j)
+			if (ft_is_spaces(src->map[i][l]) == -1 && i == len_j)
 				return (ft_debug_map(src->map[i], l),
 					print_message(7, src->map[i], src->map[i][l]), -1);
 		}
@@ -48,7 +48,7 @@ static int	ft_check_cadring_map(t_source *src, int i, int len_i)
 				if (!(ft_is_spaces(src->map[i][l]) == 0
 					|| (src->map[i][l] == 'N') || (src->map[i][l] == 'S')
 					|| (src->map[i][l] == 'W') || (src->map[i][l] == 'E')
-					|| (src->map[i][l] == 'D') || (src->map[i][l] == 'L')))
+					|| (src->map[i][l] == 'D')))
 						return (ft_debug_map(src->map[i], l),
 						print_message(4, src->map[i], src->map[i][l]), -1);
 			}
@@ -99,7 +99,7 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 	i = 1;
 	index_d = 0;
 	index_l = 0;
-	while (src->map[i])
+	while (src && src->map && src->map[i])
 	{
 		l = 0;
 		while (src->map[i][l] != '\0')
@@ -110,50 +110,24 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 					return (print_message(13, NULL, '\0'), -1);
 				if (src->map[i][l - 1] == 'D' || src->map[i][l + 1] == 'D'
 					|| src->map[i - 1][l] == 'D' || src->map[i + 1][l] == 'D')
-					return (print_message(13, NULL, '\0'), -1);
+						return (print_message(13, NULL, '\0'), -1);
 				if ((src->map[i][l - 1] == '1' && src->map[i][l + 1] == '1'
 					&& src->map[i - 1][l] != '1' && src->map[i + 1][l] != '1')
 					|| (src->map[i - 1][l] == '1' && src->map[i + 1][l] == '1'
 					&& src->map[i][l - 1] != '1' && src->map[i][l + 1] != '1'))
 				{
 					index_d++;
-					if (ft_check_struct_with_flag_map(src, "DR") == 0)
-						ft_add_door(src, l, i, index_d);
-					else
-						return (print_message(14, NULL, '\0'), -1);
+					ft_add_door(src, l, i, index_d);
 				}
-			}
-			if (i > 0 && src->map[i][l] == 'L')
-			{
-				if (i == 0 || l == 0 || !src->map[i + 1] || l >= (int)ft_strlen(src->map[i]) - 1)
-					return (print_message(15, NULL, '\0'), -1);
-				if (i == len_j || l == (int)ft_strlen(src->map[i]))
-					return (print_message(15, NULL, '\0'), -1);
-				if (!src->map[i - 1] || !src->map[i + 1]
-					|| ft_is_spaces(src->map[i - 1][l]) == 0
-					|| ft_is_spaces(src->map[i + 1][l]) == 0
-					|| ft_is_spaces(src->map[i][l - 1]) == 0
-					|| ft_is_spaces(src->map[i][l + 1]) == 0)
-				{
-					return (print_message(15, NULL, '\0'), -1);
-				}
-				else 
-				{
-					index_l++;
-					if (ft_check_struct_with_flag_map(src, "S") == 0)
-					{
-						ft_add_sprites(src, i, l, index_l);
-					}
-					else
-						return (print_message(16, NULL, '\0'), -1);
-				}
+				else
+						return (print_message(13, NULL, '\0'), -1);
 			}
 			else
 			{
 				if (l > 0 && len_j > i)
 					if (src->map[i][l] == '0'
 						|| (src->map[i][l] == 'N' || src->map[i][l] == 'S'
-						|| src->map[i][l] == 'E' || src->map[i][l] == 'W' || src->map[i][l] == 'D' || src->map[i][l] == 'L'))
+						|| src->map[i][l] == 'E' || src->map[i][l] == 'W' || src->map[i][l] == 'D'))
 						if ((ft_is_spaces(src->map[i - 1][l]) == 0)
 							|| (ft_is_spaces(src->map[i + 1][l]) == 0))
 								return (ft_debug_map(src->map[i], l),
@@ -174,7 +148,7 @@ int	ft_parse_map(t_source *src)
 
 	ft_add_spaces_in_map(src);
 	1 && (len_j = ft_lenght_j(src), i = 0);
-	while (src->map[i])
+	while (src && src->map && src->map[i])
 	{
 		len_i = ft_strlen(src->map[i]) - 1;
 		if (i == 0 || i == len_j)

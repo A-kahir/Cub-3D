@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:03:21 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/16 02:40:03 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/22 21:33:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ char	*ft_get_next_line(int fd)
 	char		*buff;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (free(str), str = NULL, NULL);
+		return (NULL);
 	buff = malloc_cl((size_t)BUFFER_SIZE + 1, 0);
 	if (buff == NULL)
-		return (free(str), NULL);
+		return (NULL);
 	str = continue_rd(str, fd, buff);
 	if (!str || *str == '\0')
-		return (free(str), str = NULL, NULL);
+		return (NULL);
 	newline_pos = ft_strchr(str, '\n');
 	return (return_and_save(newline_pos, &str, &line));
 }

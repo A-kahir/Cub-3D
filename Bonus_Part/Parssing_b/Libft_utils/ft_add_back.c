@@ -32,13 +32,6 @@ void	init_new_node(t_source *new_node)
 	new_node->door->y = 0;
 	new_node->door = NULL;
 	new_node->next = NULL;
-	new_node->sprites = malloc_cl(sizeof(t_sprites), 0);
-	if (!new_node->sprites)
-		return ;
-	new_node->sprites->x = 0;
-	new_node->sprites->y = 0;
-	new_node->sprites = NULL;
-	new_node->next = NULL;
 }
 
 t_source	*ft_add_back(t_source *line, char *var, char *value)

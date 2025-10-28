@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/19 17:00:22 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/27 01:36:03 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	char	**colors_rgb;
 	int		i;
 	int		j;
+	char *check;
 
+	1 && (check = curr->value, i = 0);
+	while (check[i++])
+		if ((check[i] == ',' && check[i + 1] == ',') || check[0] == ',')
+			return (print_message(11, NULL, '\0'), exit(1), -1);
 	colors_rgb = ft_split(curr->value, ',');
 	if (!colors_rgb || !colors_rgb[0] || !colors_rgb[1]
 		|| !colors_rgb[2] || colors_rgb[3] != NULL
 		|| curr->value[ft_strlen(curr->value) - 1] == ',')
-		return (print_message(11, NULL, '\0'), exit(1), -1);
+			return (print_message(11, NULL, '\0'), exit(1), -1);
 	i = 0;
 	while (colors_rgb[i])
 	{
@@ -55,29 +60,6 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	if (ft_fill_struct_colors(curr, colors_rgb) == -1)
 		return (-1);
 	return (0);
-}
-
-int	ft_check_textures(t_source *src)
-{
-	t_source	*curr;
-	int			count;
-
-	curr = src;
-	count = 0;
-	while (curr)
-	{
-		if (curr->var && 
-			(!ft_strcmp(curr->var, "NO") || !ft_strcmp(curr->var, "SO")
-			|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")
-			|| !ft_strcmp(curr->var, "DR") || !ft_strcmp(curr->var, "S")))
-		{
-			count++;	
-		}
-		curr = curr->next;
-	}
-	if (count == 4 || count == 5 || count == 6)
-		return (0);
-	return (1);
 }
 
 static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
@@ -127,7 +109,7 @@ int	ft_check_before_map(t_source *src)
 		}
 		curr = curr->next;
 	}
-	if (ft_check_textures(src) == 0)
+	if (ft_stop_reading(src) == 0)
 		return (0);
 	return (-1);
 }

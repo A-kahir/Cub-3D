@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_spaces_in_map.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:46:25 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:58:07 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/27 22:03:43 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_len(char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] && ft_is_spaces(str[i]) == 0)
+	while (str[i] && ft_is_spaces(str[i]) == -1)
 		i++;
 	j = ft_strlen(str) - 1;
 	while (j >= 0 && ft_is_spaces(str[j]) == 0)
@@ -30,15 +30,18 @@ static int	ft_len(char *str)
 	return (j - i + 1);
 }
 
+
 int	ft_max_len(t_source *src)
 {
 	int	max;
 	int	temp;
 	int	i;
 
+	if (!src->map)
+		return (0);
 	max = 0;
 	i = 0;
-	while (src->map[i])
+	while (src && src->map && src->map[i])
 	{
 		temp = ft_len(src->map[i]);
 		if (temp > max)
@@ -56,6 +59,8 @@ void	ft_add_spaces_in_map(t_source *src)
 	char	*new_row;
 	int		len;
 
+	if (!src || !src->map)
+		return ;
 	max = ft_max_len(src);
 	i = -1;
 	while (src->map[++i])
@@ -64,6 +69,8 @@ void	ft_add_spaces_in_map(t_source *src)
 		if (len < max)
 		{
 			new_row = (char *)malloc_cl(sizeof(char) * (max + 1), 0);
+			if (!new_row)
+				return ;
 			j = -1;
 			while (src->map[i][++j])
 				new_row[j] = src->map[i][j];
@@ -71,7 +78,7 @@ void	ft_add_spaces_in_map(t_source *src)
 				new_row[j++] = ' ';
 			new_row[j] = '\0';
 			src->map[i] = new_row;
-			len++;
 		}
 	}
 }
+

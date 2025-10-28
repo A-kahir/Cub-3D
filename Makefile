@@ -30,7 +30,9 @@ LIBFT_SRCB = \
 	Bonus_Part/Parssing_b/Libft_utils/ft_split.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_atoi.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_is_spaces.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c
+	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_free_mlx.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_itoa.c 
 
 UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/print_messages.c \
@@ -99,7 +101,7 @@ MLX_DIR = mlx
 MLX = $(MLX_DIR)/libmlx.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g \
+CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g\
          -IMandatory_Part/Parssing \
          -IMandatory_Part/Parssing/Libft_utils \
          -IMandatory_Part/Parssing/Utils_func \

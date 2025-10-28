@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mini_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:41:40 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/03 20:10:06 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/27 22:19:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,36 +90,32 @@ int ft_mini_map(t_source *src)
     int map_h = ft_lenght_j(src);
     if (end_x >= map_row_len)
     {
-        start_x -= (end_x - (map_row_len - 1));
-        end_x = map_row_len - 1;
+        start_x -= (end_x - (map_row_len));
+        end_x = map_row_len;
     }
     if (end_y >= map_h)
     {
-        start_y -= (end_y - (map_h - 1));
+        start_y -= (end_y - (map_h));
         end_y = map_h;
     }
-    if (start_x > end_x)
+    if (start_x > end_x || start_x < 0)
 		start_x = 0;
-    if (start_y > end_y)
-		start_y = 0;
-    if (start_x < 0)
-		start_x = 0;
-    if (start_y < 0)
+    if (start_y > end_y || start_y < 0)
 		start_y = 0;
     int map_width  = (end_x - start_x + 1) * mini_size;
     int map_height = (end_y - start_y + 1) * mini_size;
     if (left_off + map_width >= WIDTH)
-        map_width = WIDTH - left_off - 1;
+    map_width = WIDTH - left_off - 1;
     if (top_off + map_height >= HEIGHT)
-        map_height = HEIGHT - top_off - 1;
+    map_height = HEIGHT - top_off - 1;
     if (map_width <= 0 || map_height <= 0)
     {
         return (0);
-    } 
-	int i = start_y;
+    }
+    int i = start_y;
     while (i <= end_y)
     {
-		int j = start_x;
+        int j = start_x;
         while (j <= end_x)
         {
             int draw_x = left_off + (j - start_x) * mini_size;
@@ -128,24 +124,24 @@ int ft_mini_map(t_source *src)
             if (ft_static_flag(0, 0) == 0)
             {
                 if (ft_is_spaces(src->map[i][j]) == 0)
-                    color = 0xB1B5B4;
+                color = 0xB1B5B4;
                 else if (src->map[i][j] == '1')
-                    color = 0x000000;
+                color = 0x000000;
                 else if (src->map[i][j] == 'D')
-                    color = 0xFFFFF05;
+                color = 0xFFFFF05;
                 else
-                    color = 0x98B5B7;
+                color = 0x98B5B7;
             }
             else if (ft_static_flag(0, 0) == 1)
             {
                 if (ft_is_spaces(src->map[i][j]) == 0)
-                    color = 0x700000;
+                color = 0x700000;
                 else if (src->map[i][j] == '1')
-                    color = 0x000000;
+                color = 0x000000;
                 else if (src->map[i][j] == 'D')
-                    color = 0xFFFFF05;
+                color = 0xFFFFF05;
                 else
-                    color = 0x4C4C4C;
+                color = 0x4C4C4C;
             }
 			int cy = 0;
             while (cy < mini_size)
@@ -171,7 +167,7 @@ int ft_mini_map(t_source *src)
 	int y = 0;
     while (y < player_size)
     {
-		int x = 0;
+        int x = 0;
         while (x < player_size)
 		{
             set_pixel_img(src, img_data, player_dx + x, player_dy + y, 0xFFFFFF);

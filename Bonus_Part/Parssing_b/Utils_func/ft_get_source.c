@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/19 17:23:14 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/27 14:03:06 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_check_player(t_source *src)
 	int	player;
 
 	1 && (player = 0, i = 0);
-	while (src && src->map[++i])
+	while (src && src->map && src->map[++i])
 	{
 		j = -1;
 		while (src->map[i][++j] != '\0')
@@ -49,6 +49,7 @@ int	ft_stop_reading(t_source *src)
 	int	EA = 0;
 	int	F = 0;
 	int	C = 0;
+	int DR = 0;
 	t_source *curr = src;
 
 	while (curr)
@@ -65,9 +66,11 @@ int	ft_stop_reading(t_source *src)
 			F = 1;
 		else if (!ft_strcmp(curr->var, "C"))
 			C = 1;
+		else if (!ft_strcmp(curr->var, "DR"))
+			DR = 1;
 		curr = curr->next;
 	}
-	if (NO && SO && WE && EA && F && C)
+	if (NO && SO && WE && EA && F && C && DR)
 		return (0);
 	return (-1);
 }
@@ -84,12 +87,14 @@ t_source	*ft_get_source(t_source *src, char *file)
 	line = ft_get_next_line(fd);
 	while (line)
 	{
+		while (*line == ' ' || *line == '\t')
+    		line++;
 		if (line[0] == '\n' || ft_is_spaces(line[0]) == 0)
 		{
 			line = ft_get_next_line(fd);
 			continue ;
 		}
-		if (ft_chack_valid_source(line) == 0)
+		if (ft_chack_valid_source(src, line) == 0)
 			src = ft_fill_struct(src, line);
 		if (ft_stop_reading(src) == 0)
 			break ;
@@ -99,5 +104,5 @@ t_source	*ft_get_source(t_source *src, char *file)
 		return (print_message(5, NULL, '\0'), NULL);
 	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src) == -1)
 		return (NULL);
-	return (src);
+	return (close(fd), src);
 }
