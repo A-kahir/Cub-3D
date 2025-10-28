@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/27 01:52:47 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 00:44:58 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,9 @@ static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 	int	i;
 	int	l;
 	int	index_d;
-	int index_l;
 
 	i = 1;
 	index_d = 0;
-	index_l = 0;
 	while (src && src->map && src->map[i])
 	{
 		l = 0;

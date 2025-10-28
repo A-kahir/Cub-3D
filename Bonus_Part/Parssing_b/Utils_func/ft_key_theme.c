@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/29 00:10:37 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 00:59:16 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	mouse_move(int x, int y, t_source *src)
 	return (0);
 }
 
-void	key_animation(int key, t_source *src)
+int	key_animation(int key, t_source *src)
 {
 	int	h = HEIGHT;
 	int	w = WIDTH / 2;
@@ -51,7 +51,7 @@ void	key_animation(int key, t_source *src)
 				path = ft_strjoin(ft_strjoin("Bonus_Part/Parssing_b/texture/PARADISE/xpm_sprites/", image), ".xpm");
 			void *sprite = mlx_xpm_file_to_image(src->mlx_pointer, path, &w, &h);
 			if (!sprite)
-				return (write(2, "mlx image failed\n", 18), exit(1));
+				return (write(2, "mlx image failed\n", 18), exit(1), 1);
 			int sp_x = (WIDTH - w) / 2;
 			int sp_y = HEIGHT - h;
 			mlx_put_image_to_window(src->mlx_pointer, src->mlx_window, sprite, sp_x, sp_y);
@@ -60,6 +60,7 @@ void	key_animation(int key, t_source *src)
 			i++;
 		}
 	}
+	return (0);
 }
 
 int	key_events(int key, t_source *src)
@@ -104,6 +105,7 @@ int	ft_key_loading(int key, t_source *src)
 				WIDTH, HEIGHT);
 		if (!src->render_image)
 			return (1);
+		// mlx_hook(src->mlx_window, 2, 1L << 0, key_animation, src);
 		mlx_hook(src->mlx_window, 2, 1L << 0, key_events, src);
 		mlx_hook(src->mlx_window, 3, 1L << 1, key_events, src);
 		mlx_hook(src->mlx_window, 6, 1L << 6, mouse_move, src);
