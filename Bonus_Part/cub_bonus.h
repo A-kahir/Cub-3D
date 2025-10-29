@@ -50,6 +50,20 @@ typedef struct s_colors
 	unsigned int	hexa_rgb_c;
 }	t_colors;
 
+typedef struct s_minimp
+{
+    int view;
+    int mini_size;
+    int left_off;
+    int top_off;
+    int start_x;
+    int end_x;
+    int start_y;
+    int end_y;
+    int map_width;
+    int map_height;
+}   t_minimp;
+
 typedef struct s_raycast
 {
 	double	camera_x;
@@ -133,6 +147,7 @@ typedef struct s_source
 	t_player		*p;
 	t_doors			*door;
 	t_raycast		*ray;
+	t_minimp		*mmp;
 	int				draw_start;
 	int				draw_end;
 	int				tex_x;
@@ -224,9 +239,19 @@ void		norm_key3(int key, t_source *src);
 
 //minimap
 int			ft_mini_map(t_source *src);
-void		ft_add_door(t_source *src, int x, int y, int index);
+	//-> conditions mmp
+void		ft_calc_demonsions(t_minimp *mmp);
+void		ft_fix_negative(t_minimp *mmp);
+void		ft_cadring_outside(t_minimp *mmp, int map_w, int map_h);
+void		ft_init_minimap(t_minimp *mmp, t_source *src);
+	//-> draw Pixels
+void		ft_set_pixel_img(t_source *src, char *img_data, int x, int y, int color);
+void		ft_draw_pixel(t_source *src, char *img_data, t_minimp *mmp, int color);
+void		ft_render_tiles(t_source *src, char *img_data, t_minimp *mmp);
+int			ft_get_color_pixel(t_source *src, int i, int j);
 
 //doors
+void		ft_add_door(t_source *src, int x, int y, int index);
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);
 void		update_door_animation(t_source *src);
