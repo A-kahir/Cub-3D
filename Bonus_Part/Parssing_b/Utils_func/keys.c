@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/27 01:14:40 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 05:04:00 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	can_pass(t_source *src, int x, int y)
 
 	if (x < 0 || x >= src->map_w || y < 0 || y >= src->map_h)
 		return (0);
-	
 	col = src->map[y][x];
 	if (col == '1')
 		return (0);
@@ -64,7 +63,7 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 	double	newx;
 	double	newy;
 
-	if (key == 119)//w
+	if (key == 119)
 	{
 		newx = src->p->p_px + src->p->dir_x * move_speed;
 		newy = src->p->p_py + src->p->dir_y * move_speed;
@@ -73,12 +72,10 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 		if (can_pass(src, (int)src->p->p_px, (int)newy))
 			src->p->p_py = newy;
 	}
-	
-	if (key == 97)// A
+	if (key == 97)
 	{
 		newx = src->p->p_px - src->p->plan_x * move_speed;
 		newy = src->p->p_py - src->p->plan_y * move_speed;
-		
 		if (can_pass(src, (int)newx, (int)src->p->p_py))
 			src->p->p_px = newx;
 		if (can_pass(src, (int)src->p->p_px, (int)newy))
@@ -91,66 +88,24 @@ void	norm_keys1(int key, t_source *src, double move_speed)
 	double	newx;
 	double	newy;
 
-	if (key == 115)// S
+	if (key == 115)
 	{
 		newx = src->p->p_px - src->p->dir_x * move_speed;
 		newy = src->p->p_py - src->p->dir_y * move_speed;
-		
 		if (can_pass(src, (int)newx, (int)src->p->p_py))
 			src->p->p_px = newx;
 		if (can_pass(src, (int)src->p->p_px, (int)newy))
 			src->p->p_py = newy;
 	}
-	
-	if (key == 100)// D
+	if (key == 100)
 	{
 		newx = src->p->p_px + src->p->plan_x * move_speed;
 		newy = src->p->p_py + src->p->plan_y * move_speed;
-		
 		if (can_pass(src, (int)newx, (int)src->p->p_py))
 			src->p->p_px = newx;
 		if (can_pass(src, (int)src->p->p_px, (int)newy))
 			src->p->p_py = newy;
 	}
-}
-
-void	norm_mouse1(t_source *src, double rot_speed, int delta_x)
-{
-	double		old_d;
-	double		old_p;
-
-	old_d = src->p->dir_x;
-	src->p->dir_x = old_d * cos(-rot_speed * (-delta_x) * 0.0005)
-		- src->p->dir_y * sin(-rot_speed * (-delta_x) * 0.0005);
-	src->p->dir_y = old_d * sin(-rot_speed * (-delta_x) * 0.0005)
-		+ src->p->dir_y * cos(-rot_speed * (-delta_x) * 0.0005);
-	old_p = src->p->plan_x;
-	src->p->plan_x = old_p * cos(-rot_speed * (-delta_x) * 0.0005)
-		- src->p->plan_y * sin(-rot_speed * (-delta_x) * 0.0005);
-	src->p->plan_y = old_p * sin(-rot_speed * (-delta_x) * 0.0005)
-		+ src->p->plan_y * cos(-rot_speed * (-delta_x) * 0.0005);
-}
-
-void	norm_mouse(t_source *src, double rot_speed, int delta_x)
-{
-	double		old_d;
-	double		old_p;
-
-	if (delta_x > 0)
-	{
-		old_d = src->p->dir_x;
-		src->p->dir_x = old_d * cos(rot_speed * delta_x * 0.0005)
-			- src->p->dir_y * sin(rot_speed * delta_x * 0.0005);
-		src->p->dir_y = old_d * sin(rot_speed * delta_x * 0.0005)
-			+ src->p->dir_y * cos(rot_speed * delta_x * 0.0005);
-		old_p = src->p->plan_x;
-		src->p->plan_x = old_p * cos(rot_speed * delta_x * 0.0005)
-			- src->p->plan_y * sin(rot_speed * delta_x * 0.0005);
-		src->p->plan_y = old_p * sin(rot_speed * delta_x * 0.0005)
-			+ src->p->plan_y * cos(rot_speed * delta_x * 0.0005);
-	}
-	else if (delta_x < 0)
-		norm_mouse1(src, rot_speed, delta_x);
 }
 
 void	norm_key3(int key, t_source *src)
@@ -159,11 +114,12 @@ void	norm_key3(int key, t_source *src)
 	t_doors	*current;
 
 	current = src->door;
-	if (key == 32)//key == 49
+	if (key == 32)
 	{
 		while (current)
 		{
-			dest = sqrt(pow(src->p->p_px - current->x, 2) + pow(src->p->p_py - current->y, 2));
+			dest = sqrt(pow(src->p->p_px - current->x, 2)
+					+ pow(src->p->p_py - current->y, 2));
 			if (dest < 1.5)
 				current->etat = !current->etat;
 			current = current->next;

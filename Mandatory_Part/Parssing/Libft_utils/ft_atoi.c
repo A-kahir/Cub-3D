@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 21:15:57 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 18:29:02 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 07:57:05 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 static	int	over_flow(int signe)
 {
 	if (signe == 1)
-	{
 		return (-1);
-	}
 	else
-	{
 		return (0);
-	}
 }
 
 int	ft_atoi(char *str)

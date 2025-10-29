@@ -75,6 +75,9 @@ UTILS_SRC_B = \
 	Bonus_Part/Parssing_b/Utils_func/ft_mini_map_bonus.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_static_flag.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_add_door_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_check_player.c \
+	Bonus_Part/Parssing_b/Utils_func/keys_2.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_check_but.c 
 
 RAY_FUNC = \
 	Mandatory_Part/raycasting/init_player.c \

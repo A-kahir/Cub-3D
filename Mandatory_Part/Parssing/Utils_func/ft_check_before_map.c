@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/07 01:33:05 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/29 07:56:11 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_check_textures(t_source *src)
 static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 {
 	t_source	*curr;
-	char *check;
+	char		*check;
 
 	1 && (*hexa_f = -1, *hexa_c = -1, curr = src);
 	while (curr)

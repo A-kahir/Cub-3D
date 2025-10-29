@@ -67,7 +67,6 @@ typedef struct s_raycast
 	int		side;
 	double	perpwalldis;
 	int		wall_dir;
-	int		hit_type;
 	int		door_id;
 	int		tex_x;
 }	t_raycast;
@@ -100,11 +99,33 @@ typedef struct s_doors
 	int				index;
 	int				x;
 	int				y;
-	int 			etat;
+	int				etat;
 	double			p_ouvert;
 	double			timer;
 	struct s_doors	*next;
 }	t_doors;
+
+typedef struct s_chars
+{
+	int			no;
+	int			so;
+	int			we;
+	int			ea;
+	int			f;
+	int			c;
+	int			dr;
+}	t_chars;
+
+typedef struct s_sp_infos
+{
+	int		h;
+	int		w;
+	int		i;
+	char	*path;
+	void	*sprite;
+	int		sp_x;
+	int		sp_y;
+}	t_sp_infos;
 
 typedef struct s_source
 {
@@ -154,13 +175,13 @@ int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
 int			ft_key_theme_b(int key, t_source *src);
 int			ft_key_loading(int key, t_source *src);
-void		ft_secound_parsing(t_source *src);
+void		ft_sec_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src);
 int			ft_max_len(t_source *src);
 char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
-int	ft_stop_reading(t_source *src);
+int			ft_stop_reading(t_source *src);
 
 
 //Libft utils:
@@ -183,7 +204,7 @@ int			ft_check_middle_chars(t_source *src, int i, int len_j);
 int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
 int			ft_valid_char_rows(t_source *src, int i, int len_j);
 void		ft_free_mlx(t_source *src);
-char	*ft_itoa(int n);
+char		*ft_itoa(int n);
 
 //init data
 void		init_player(t_source *src);
@@ -230,5 +251,9 @@ void		ft_add_door(t_source *src, int x, int y, int index);
 int			ft_door(t_source *src, int mapx, int mapy);
 int			door_state(t_source *src, int index);
 void		update_door_animation(t_source *src);
-
+int			ft_check_player(t_source *src);
+t_source	*ft_read_lines(int fd, t_source *src);
+int			key_animation(int key, t_source *src);
+int			ft_check_up_bottom_valid_chars(t_source *src, int len_j);
+void		dda_norm(t_raycast *ray);
 #endif

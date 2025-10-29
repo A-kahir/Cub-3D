@@ -14,7 +14,7 @@
 
 int	ft_chack_valid_source(t_source *src, char *str)
 {
-	t_source *curr;
+	t_source	*curr;
 
 	if (!str)
 		return (-1);
