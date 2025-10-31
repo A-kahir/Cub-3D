@@ -30,7 +30,7 @@
 # include <sys/stat.h>
 # include <mlx.h>
 # include <math.h>
-#include <sys/time.h>
+# include <sys/time.h>
 
 typedef enum s_mal
 {
@@ -49,6 +49,20 @@ typedef struct s_colors
 	unsigned int	hexa_rgb_f;
 	unsigned int	hexa_rgb_c;
 }	t_colors;
+
+typedef struct s_minimp
+{
+	int	view;
+	int	mini_size;
+	int	left_off;
+	int	top_off;
+	int	start_x;
+	int	end_x;
+	int	start_y;
+	int	end_y;
+	int	map_width;
+	int	map_height;
+}	t_minimp;
 
 typedef struct s_raycast
 {
@@ -70,6 +84,13 @@ typedef struct s_raycast
 	int		door_id;
 	int		tex_x;
 }	t_raycast;
+
+typedef struct s_pixel
+{
+	int	x;
+	int	y;
+	int	color;
+}	t_pixel;
 
 typedef struct s_player
 {
@@ -127,6 +148,19 @@ typedef struct s_sp_infos
 	int		sp_y;
 }	t_sp_infos;
 
+typedef struct s_wall_draw
+{
+	int		i;
+	int		draw_start;
+	int		draw_end;
+	int		lineheight;
+	int		drawing;
+	int		tex_x;
+	double	p_ouvert;
+	t_tex	*tex;
+
+}	t_wall_draw;
+
 typedef struct s_source
 {
 	char			*var;
@@ -154,9 +188,8 @@ typedef struct s_source
 	t_player		*p;
 	t_doors			*door;
 	t_raycast		*ray;
-	int				draw_start;
-	int				draw_end;
-	int				tex_x;
+	t_minimp		*mmp;
+	int				color;
 	struct s_source	*next;
 }	t_source;
 
@@ -182,7 +215,6 @@ char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
 int			ft_stop_reading(t_source *src);
-
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
@@ -210,10 +242,17 @@ char		*ft_itoa(int n);
 void		init_player(t_source *src);
 void		init_text(t_source *src);
 
+// drawing
+void		init_wall_params(t_wall_draw *w, int params[4], t_source *src);
+double		get_door_opening(t_source *src);
+int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
+int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
+void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,
+			t_tex *tex);
 //utils raycasting
 int			get_map_height(char **map);
 int			get_map_width(char **map);
-void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
+void		my_put_pixel(char *data, t_source *src, t_pixel p, int color);
 void		init_data(t_source *src, t_raycast *ray, int *i);
 int			dda(t_source *src, t_raycast *ray);
 void		init_side_dest(t_source *src, t_raycast *ray);
@@ -243,8 +282,18 @@ void		norm_mouse(t_source *src, double rot_speed, int delta_x);
 void		norm_key3(int key, t_source *src);
 // Bonus func :
 
-//minimap
-int			ft_mini_map(t_source *src);
+	//-> conditions mmp
+void		ft_calc_demonsions(t_minimp *mmp);
+void		ft_fix_negative(t_minimp *mmp);
+void		ft_cadring_outside(t_minimp *mmp, int map_w, int map_h);
+void		ft_init_minimap(t_minimp *mmp, t_source *src);
+	//-> draw Pixels
+void		ft_set_pixel_img(t_source *src, char *img_data, t_pixel pixel,
+				int color);
+void		ft_draw_pixel(t_source *src, char *img_data,
+				t_minimp *mmp, int color);
+void		ft_render_tiles(t_source *src, char *img_data, t_minimp *mmp);
+int			ft_get_color_pixel(t_source *src, int i, int j);
 void		ft_add_door(t_source *src, int x, int y, int index);
 
 //doors
@@ -256,4 +305,5 @@ t_source	*ft_read_lines(int fd, t_source *src);
 int			key_animation(int key, t_source *src);
 int			ft_check_up_bottom_valid_chars(t_source *src, int len_j);
 void		dda_norm(t_raycast *ray);
+
 #endif

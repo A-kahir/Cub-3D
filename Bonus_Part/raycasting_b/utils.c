@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 03:58:42 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/29 07:48:43 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/30 05:12:33 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	get_map_width(char **map)
 	return (max_w);
 }
 
-void	my_put_pixel(char *data, t_source *src, int x, int y, int color)
+void	my_put_pixel(char *data, t_source *src, t_pixel p, int color)
 {
 	int	pos;
 
-	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+	if (p.x < 0 || p.x >= WIDTH || p.y < 0 || p.y >= HEIGHT)
 		return ;
-	pos = (y * src->line_len + x * (src->bpp / 8));
+	pos = (p.y * src->line_len + p.x * (src->bpp / 8));
 	*(unsigned int *)(data + pos) = color;
 }
 
