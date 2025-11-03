@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/07 01:23:39 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/03 16:35:30 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fill_textures(t_source *src, char *var, char *value)
 		src->west_tex.path = value;
 }
 
-void	ft_secound_parsing(t_source *src)
+void	ft_sec_parsing(t_source *src)
 {
 	int			width_img;
 	int			height_img;

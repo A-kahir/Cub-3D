@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_before_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/27 01:36:03 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 03:27:18 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	char	**colors_rgb;
 	int		i;
 	int		j;
-	char *check;
+	char	*check;
 
 	1 && (check = curr->value, i = 0);
 	while (check[i++])
@@ -47,15 +47,14 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	if (!colors_rgb || !colors_rgb[0] || !colors_rgb[1]
 		|| !colors_rgb[2] || colors_rgb[3] != NULL
 		|| curr->value[ft_strlen(curr->value) - 1] == ',')
-			return (print_message(11, NULL, '\0'), exit(1), -1);
-	i = 0;
-	while (colors_rgb[i])
+		return (print_message(11, NULL, '\0'), exit(1), -1);
+	i = -1;
+	while (colors_rgb[++i])
 	{
 		j = -1;
 		while (colors_rgb[i][++j] != '\0')
 			if (!(colors_rgb[i][j] >= '0' && colors_rgb[i][j] <= '9'))
 				return (print_message(10, NULL, '\0'), -1);
-		i++;
 	}
 	if (ft_fill_struct_colors(curr, colors_rgb) == -1)
 		return (-1);
@@ -65,7 +64,7 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 static int	ft_hexa_colors(t_source *src, int *hexa_f, int *hexa_c)
 {
 	t_source	*curr;
-	char *check;
+	char		*check;
 
 	1 && (*hexa_f = -1, *hexa_c = -1, curr = src, check = NULL);
 	while (curr)

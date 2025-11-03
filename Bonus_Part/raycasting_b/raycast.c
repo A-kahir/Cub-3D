@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:24:58 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/15 19:10:17 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/29 07:50:09 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,37 +54,16 @@ int	dda(t_source *src, t_raycast *ray)
 {
 	int	state;
 
-	if (ray->side_dist_x < ray->side_dist_y)
-	{
-		ray->side_dist_x += ray->delta_dist_x;
-		ray->mapx += ray->stepx;
-		ray->side = 0;
-		if (ray->ray_dir_x < 0)
-			ray->wall_dir = 3;
-		else
-			ray->wall_dir = 2;
-	}
-	else
-	{
-		ray->side_dist_y += ray->delta_dist_y;
-		ray->mapy += ray->stepy;
-		ray->side = 1;
-		if (ray->ray_dir_y > 0)
-			ray->wall_dir = 0;
-		else
-			ray->wall_dir = 1;
-	}
+	dda_norm(ray);
 	if (ray->mapx < 0 || ray->mapx >= src->map_w
 		|| ray->mapy < 0 || ray->mapy >= src->map_h)
 		return (ray->hit = 1, 1);
 	if (src->map[ray->mapy][ray->mapx] == '1')
 	{
 		ray->hit = 1;
-		ray->hit_type = 0;
 	}
 	if (src->map[ray->mapy][ray->mapx] == 'D')
 	{
-		ray->hit_type = 1;
 		ray->door_id = ft_door(src, ray->mapx, ray->mapy);
 		state = door_state(src, ray->door_id);
 		if (state == 0)
@@ -92,10 +71,9 @@ int	dda(t_source *src, t_raycast *ray)
 		else
 		{
 			ray->hit = 1;
-			ray->hit_type = 0;
 			ray->wall_dir = 4;
 		}
-	}	
+	}
 	return (0);
 }
 

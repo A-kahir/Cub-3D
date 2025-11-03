@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/07 01:36:16 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/31 17:43:21 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_check_first_last_row(t_source *src, int i, int len_j)
 		{
 			if (ft_is_spaces(src->map[i][l]) == -1 && i == 0)
 				return (print_message(2, src->map[i], src->map[i][l]), -1);
-			else if (ft_is_spaces(src->map[i][l]) == -1 && i == len_j)
+			if (ft_is_spaces(src->map[i][l]) == -1 && i == len_j)
 				return (ft_debug_map(src->map[i], l),
 					print_message(7, src->map[i], src->map[i][l]), -1);
 		}
@@ -88,32 +88,6 @@ static int	ft_check_vertical_spaces(t_source *src, int i, int len_j)
 	return (0);
 }
 
-static int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
-{
-	int	i;
-	int	l;
-
-	i = 1;
-	while (src->map[i])
-	{
-		l = 0;
-		while (src->map[i][l] != '\0')
-		{
-			if (l > 0 && len_j > i)
-				if (src->map[i][l] == '0'
-					|| (src->map[i][l] == 'N' || src->map[i][l] == 'S'
-					|| src->map[i][l] == 'E' || src->map[i][l] == 'W'))
-					if ((ft_is_spaces(src->map[i - 1][l]) == 0)
-						|| (ft_is_spaces(src->map[i + 1][l]) == 0))
-						return (ft_debug_map(src->map[i], l),
-							print_message(4, src->map[i], src->map[i][l]), -1);
-			l++;
-		}
-		i++;
-	}
-	return (0);
-}
-
 int	ft_parse_map(t_source *src)
 {
 	int	i;
@@ -122,7 +96,7 @@ int	ft_parse_map(t_source *src)
 
 	ft_add_spaces_in_map(src);
 	1 && (len_j = ft_lenght_j(src), i = 0);
-	while (src->map[i])
+	while (src && src->map && src->map[i])
 	{
 		len_i = ft_strlen(src->map[i]) - 1;
 		if (i == 0 || i == len_j)

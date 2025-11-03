@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_secound_parsing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/20 17:14:03 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 07:28:43 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	fill_textures(t_source *src, char *var, char *value)
 		src->doors_tex.path = value;
 }
 
-void	ft_secound_parsing(t_source *src)
+void	ft_sec_parsing(t_source *src)
 {
 	int			width_img;
 	int			height_img;

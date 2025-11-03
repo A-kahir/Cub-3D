@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_static_flag.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 22:13:41 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 22:13:54 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 07:29:50 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_static_flag(int new_nb, int flag)
 {
-	static int save_nb;
+	static int	save_nb;
 
 	if (flag == 1)
 		save_nb = new_nb;

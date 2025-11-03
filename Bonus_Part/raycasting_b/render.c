@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/20 16:46:05 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/31 11:36:16 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	render_cell_floor(t_source *src, char *data)
 {
-	int	x;
-	int	y;
-	int	half;
+	int		x;
+	int		y;
+	int		half;
+	t_pixel	p;
 
 	x = 0;
 	y = 0;
@@ -26,9 +27,12 @@ void	render_cell_floor(t_source *src, char *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			my_put_pixel(data, src, x, y, src->colors->hexa_rgb_f);
-			my_put_pixel(data, src, x, (HEIGHT - y - 1),
-				src->colors->hexa_rgb_c);
+			p.x = x;
+			p.y = y;
+			my_put_pixel(data, src, p, src->colors->hexa_rgb_f);
+			p.x = x;
+			p.y = (HEIGHT - y - 1);
+			my_put_pixel(data, src, p, src->colors->hexa_rgb_c);
 			x++;
 		}
 		y++;
@@ -37,50 +41,12 @@ void	render_cell_floor(t_source *src, char *data)
 
 void	draw_wall_column(char *data, t_source *src, t_tex *tex, int params[4])
 {
-	int		drawing;
-	double	texPos;
-	int		texY;
-	int		color;
-	int		i = params[0];
-	int		draw_start = params[1];
-	int		draw_end = params[2];
-	int		lineheight = params[3];
-	int		tex_x;
-	double	p_ouvert = 0.0;
+	t_wall_draw	w;
 
-	tex_x = calculate_tex_x(src, src->ray, tex);
-	drawing = draw_start;
-	if (src->ray->wall_dir == 4)
-    {
-        t_doors *current = src->door;
-        while (current && current->index != src->ray->door_id)
-            current = current->next;
-        if (current)
-            p_ouvert = current->p_ouvert;
-    }
-	while (drawing <= draw_end)
-	{
-		texPos = (drawing - HEIGHT / 2.0 + lineheight / 2.0)
-			* tex->height / lineheight;
-		texY = (int)texPos % tex->height;
-		if (texY < 0 || texY >= tex->height)
-		{
-			printf("Error: texY=%d out of bounds (height=%d)\n", texY, tex->height);
-			if (texY < 0)
-				texY = 0;
-			else
-				texY = tex->height - 1;
-		}
-		int adjusted_tex_x = tex_x;
-        if (src->ray->wall_dir == 4)
-            adjusted_tex_x = tex_x + (int)(p_ouvert * tex->width);
-        if (adjusted_tex_x >= tex->width)
-            adjusted_tex_x = tex->width - 1;
-		color = *(unsigned int *)(tex->data + (texY * tex->line_len + adjusted_tex_x
-					* (tex->bpp / 8)));
-		my_put_pixel(data, src, i, drawing, color);
-		drawing++;
-	}
+	w.tex = tex;
+	init_wall_params(&w, params, src);
+	w.p_ouvert = get_door_opening(src);
+	draw_texture_line(data, src, &w, tex);
 }
 
 int	process_column(t_source *src, char *data, int i, int params[4])
@@ -115,8 +81,11 @@ int	render_frame(t_source *src)
 	t_raycast	*ray;
 	double		time;
 	int			params[4];
+	t_pixel		p;
 
 	i = -1;
+	p.x = 0;
+	p.y = 0;
 	time = get_time();
 	src->frame_time = (time - src->old_time) / 1000;
 	if (src->frame_time == 0)
@@ -137,7 +106,7 @@ int	render_frame(t_source *src)
 	render_cell_floor(src, data);
 	while (++i < WIDTH)
 		process_column(src, data, i, params);
-	ft_mini_map(src);
+	ft_mini_map(src, p);
 	mlx_put_image_to_window(src->mlx_pointer, src->mlx_window,
 		src->render_image, 0, 0);
 	return (0);

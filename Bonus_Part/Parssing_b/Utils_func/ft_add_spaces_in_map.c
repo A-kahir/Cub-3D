@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_spaces_in_map.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:46:25 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/27 22:03:43 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/29 02:18:16 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	ft_len(char *str)
 	return (j - i + 1);
 }
 
-
 int	ft_max_len(t_source *src)
 {
 	int	max;
@@ -51,6 +50,14 @@ int	ft_max_len(t_source *src)
 	return (max);
 }
 
+void	check_init(t_source *src, int *max, int *i)
+{
+	if (!src || !src->map)
+		return ;
+	*max = ft_max_len(src);
+	*i = -1;
+}
+
 void	ft_add_spaces_in_map(t_source *src)
 {
 	int		i;
@@ -59,10 +66,7 @@ void	ft_add_spaces_in_map(t_source *src)
 	char	*new_row;
 	int		len;
 
-	if (!src || !src->map)
-		return ;
-	max = ft_max_len(src);
-	i = -1;
+	check_init(src, &max, &i);
 	while (src->map[++i])
 	{
 		len = ft_strlen(src->map[i]);
@@ -81,4 +85,3 @@ void	ft_add_spaces_in_map(t_source *src)
 		}
 	}
 }
-
