@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/03 18:57:36 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/03 22:57:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	key_press(int key, t_source *src)
 
 int	ft_key_loading(int key, t_source *src)
 {
-	if (key == 36)
+	if (key == 65293)
 	{
 		if (src->mlx_image)
 		{

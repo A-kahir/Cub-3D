@@ -133,7 +133,6 @@ typedef struct s_chars
 	int			ea;
 	int			f;
 	int			c;
-	int			dr;
 }	t_chars;
 
 typedef struct s_sp_infos
@@ -204,7 +203,7 @@ t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
-int			ft_key_theme_b(int key, t_source *src);
+int			ft_key_theme_b(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_sec_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src);
