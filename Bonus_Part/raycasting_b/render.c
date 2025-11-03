@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/30 05:45:46 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/31 11:36:16 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	render_frame(t_source *src)
 	t_pixel		p;
 
 	i = -1;
+	p.x = 0;
+	p.y = 0;
 	time = get_time();
 	src->frame_time = (time - src->old_time) / 1000;
 	if (src->frame_time == 0)

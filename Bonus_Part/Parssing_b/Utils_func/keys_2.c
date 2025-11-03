@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 05:02:52 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/29 07:17:44 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/31 11:55:28 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static int	ft_animate_sprites(t_source *src)
 
 int	key_animation(int key, t_source *src)
 {
-	if (key == 110)
+	if (key == 37)
 		return (ft_animate_sprites(src));
 	return (0);
 }

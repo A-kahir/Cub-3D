@@ -50,6 +50,20 @@ typedef struct s_colors
 	unsigned int	hexa_rgb_c;
 }	t_colors;
 
+typedef struct s_minimp
+{
+	int	view;
+	int	mini_size;
+	int	left_off;
+	int	top_off;
+	int	start_x;
+	int	end_x;
+	int	start_y;
+	int	end_y;
+	int	map_width;
+	int	map_height;
+}	t_minimp;
+
 typedef struct s_raycast
 {
 	double	camera_x;
@@ -67,8 +81,15 @@ typedef struct s_raycast
 	int		side;
 	double	perpwalldis;
 	int		wall_dir;
+	int		door_id;
 	int		tex_x;
 }	t_raycast;
+
+typedef struct s_pixel
+{
+	int	x;
+	int	y;
+}	t_pixel;
 
 typedef struct s_player
 {
@@ -93,6 +114,52 @@ typedef struct s_texture
 	int		endian;
 }	t_tex;
 
+typedef struct s_doors
+{
+	int				index;
+	int				x;
+	int				y;
+	int				etat;
+	double			p_ouvert;
+	double			timer;
+	struct s_doors	*next;
+}	t_doors;
+
+typedef struct s_chars
+{
+	int			no;
+	int			so;
+	int			we;
+	int			ea;
+	int			f;
+	int			c;
+	int			dr;
+}	t_chars;
+
+typedef struct s_sp_infos
+{
+	int		h;
+	int		w;
+	int		i;
+	char	*path;
+	void	*sprite;
+	int		sp_x;
+	int		sp_y;
+}	t_sp_infos;
+
+typedef struct s_wall_draw
+{
+	int		i;
+	int		draw_start;
+	int		draw_end;
+	int		lineheight;
+	int		drawing;
+	int		tex_x;
+	double	p_ouvert;
+	t_tex	*tex;
+
+}	t_wall_draw;
+
 typedef struct s_source
 {
 	char			*var;
@@ -115,16 +182,16 @@ typedef struct s_source
 	t_tex			sud_tex;
 	t_tex			est_tex;
 	t_tex			west_tex;
+	t_tex			doors_tex;
 	t_colors		*colors;
 	t_player		*p;
+	t_doors			*door;
 	t_raycast		*ray;
-	int				draw_start;
-	int				draw_end;
-	int				tex_x;
+	t_minimp		*mmp;
+	int				color;
 	struct s_source	*next;
 }	t_source;
 
-//principale func:
 int			ft_parsing(int argc, char **argv);
 t_source	*ft_get_source(t_source *src, char *file);
 void		ft_is_hell(t_source *src);
@@ -132,18 +199,20 @@ void		ft_is_hell(t_source *src);
 //Utils func:
 void		print_message(int flag, char *arg, char ch);
 char		*ft_get_next_line(int fd);
-int			ft_chack_valid_source(char *str);
+int			ft_chack_valid_source(t_source *src, char *str);
 t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
-void		ft_key_theme(t_source *src);
+int			ft_key_theme_b(int key, t_source *src);
 int			ft_key_loading(int key, t_source *src);
-void		ft_secound_parsing(t_source *src);
+void		ft_sec_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src);
 int			ft_max_len(t_source *src);
 char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
+int			ft_static_flag(int new_nb, int flag);
+int			ft_stop_reading(t_source *src);
 
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
@@ -164,15 +233,24 @@ int			ft_check_corners(t_source *src, int i, int l);
 int			ft_check_middle_chars(t_source *src, int i, int len_j);
 int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
 int			ft_valid_char_rows(t_source *src, int i, int len_j);
+void		ft_free_mlx(t_source *src);
+char		*ft_itoa(int n);
 
 //init data
 void		init_player(t_source *src);
 void		init_text(t_source *src);
 
+// drawing
+void		init_wall_params(t_wall_draw *w, int params[4], t_source *src);
+double		get_door_opening(t_source *src);
+int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
+int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
+void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,
+			t_tex *tex);
 //utils raycasting
 int			get_map_height(char **map);
 int			get_map_width(char **map);
-void		my_put_pixel(char *data, t_source *src, int x, int y, int color);
+void		my_put_pixel(char *data, t_source *src, t_pixel p, int color);
 void		init_data(t_source *src, t_raycast *ray, int *i);
 int			dda(t_source *src, t_raycast *ray);
 void		init_side_dest(t_source *src, t_raycast *ray);
@@ -182,11 +260,14 @@ void		calculate_draw_limits(int lineheight,
 				int *draw_start, int *draw_end);
 t_tex		*select_texture(t_source *src, t_raycast *ray);
 int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
+
 // rendering floor celling
 int			render_frame(t_source *src);
+
 /// should remove when we finish
 void		ft_debug_map(char *map, int pos); // in utils func
 void		ft_debug(t_source *src, int flag); // in utils func
+
 //timing
 long		get_time(void);
 
@@ -196,4 +277,9 @@ void		norm_keys2(int key, t_source *src, double move_speed);
 void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
 
+int			ft_check_player(t_source *src);
+t_source	*ft_read_lines(int fd, t_source *src);
+int			ft_check_up_bottom_valid_chars(t_source *src, int len_j);
+void		dda_norm(t_raycast *ray);
+void		dda_norm(t_raycast *ray);
 #endif

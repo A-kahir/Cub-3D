@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:25:02 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/07 01:37:04 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/31 17:45:23 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_valid_char_rows(t_source *src, int i, int len_j)
 		if (src->map[i][l] != '0' && src->map[i][l] != '1'
 			&& ft_is_spaces(src->map[i][l]) == -1
 			&& !(src->map[i][l] == 'N' || src->map[i][l] == 'S'
-			|| src->map[i][l] == 'E' || src->map[i][l] == 'W' || src->map[i][l] == 'D'))
+			|| src->map[i][l] == 'E' || src->map[i][l] == 'W'))
 			return (ft_debug_map(src->map[i], l),
 				print_message(4, src->map[i], src->map[i][l]), -1);
 		l++;

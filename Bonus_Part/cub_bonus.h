@@ -89,7 +89,6 @@ typedef struct s_pixel
 {
 	int	x;
 	int	y;
-	int	color;
 }	t_pixel;
 
 typedef struct s_player
@@ -281,7 +280,8 @@ void		norm_key_fleche(int key, t_source *src, double r_speed);
 void		norm_mouse(t_source *src, double rot_speed, int delta_x);
 void		norm_key3(int key, t_source *src);
 // Bonus func :
-
+//
+int			ft_mini_map(t_source *src, t_pixel p);
 	//-> conditions mmp
 void		ft_calc_demonsions(t_minimp *mmp);
 void		ft_fix_negative(t_minimp *mmp);
@@ -305,5 +305,5 @@ t_source	*ft_read_lines(int fd, t_source *src);
 int			key_animation(int key, t_source *src);
 int			ft_check_up_bottom_valid_chars(t_source *src, int len_j);
 void		dda_norm(t_raycast *ray);
-
+//drawing 
 #endif

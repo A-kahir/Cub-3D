@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:53:37 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/30 05:42:36 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/31 12:14:49 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_free_mlx(t_source *src)
 		mlx_destroy_window(src->mlx_pointer, src->mlx_window);
 	if (src->mlx_pointer)
 	{
-		mlx_destroy_display(src->mlx_pointer);
 		free(src->mlx_pointer);
 		src->mlx_pointer = NULL;
 		src->mlx_window = NULL;

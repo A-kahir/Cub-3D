@@ -3,100 +3,86 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_source.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/23 12:10:25 by akahir           ###   ########.fr       */
+/*   Updated: 2025/10/31 17:41:33 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_mand.h"
 
-static int	ft_check_player(t_source *src)
+void	init_chars(t_chars *c)
 {
-	int	i;
-	int	j;
-	int	player;
-
-	1 && (player = 0, i = 0);
-	while (src && src->map[++i])
-	{
-		j = -1;
-		while (src->map[i][++j] != '\0')
-		{
-			if (src->map[i][j] == 'S' || src->map[i][j] == 'N'
-				|| src->map[i][j] == 'W' || src->map[i][j] == 'E')
-			{
-				src->p->p_px = j;
-				src->p->p_py = i;
-				src->p->p_or = src->map[i][j];
-				player++;
-			}
-		}
-	}
-	if (player > 1)
-		return (print_message(8, NULL, '\0'), -1);
-	else if (player == 0)
-		return (print_message(9, NULL, '\0'), -1);
-	return (0);
+	c->no = 0;
+	c->so = 0;
+	c->we = 0;
+	c->ea = 0;
+	c->f = 0;
+	c->c = 0;
 }
 
-int ft_stop_reading(t_source *src)
+static void	ft_check_dir(t_source *curr, t_chars *c)
 {
-	static int NO;
-	static int SO;
-	static int WE;
-	static int EA;
-	static int F;
-	static int C;
-	t_source *curr;
+	if (!ft_strcmp(curr->var, "NO"))
+		c->no = 1;
+	else if (!ft_strcmp(curr->var, "SO"))
+		c->so = 1;
+	else if (!ft_strcmp(curr->var, "WE"))
+		c->we = 1;
+	else if (!ft_strcmp(curr->var, "EA"))
+		c->ea = 1;
+	else if (!ft_strcmp(curr->var, "F"))
+		c->f = 1;
+	else if (!ft_strcmp(curr->var, "C"))
+		c->c = 1;
+}
+
+int	ft_stop_reading(t_source *src)
+{
+	t_chars		c;
+	t_source	*curr;
 
 	curr = src;
+	init_chars(&c);
 	while (curr)
 	{
-		if (!ft_strcmp(curr->var, "NO"))
-			NO = 1;
-		else if (!ft_strcmp(curr->var, "SO"))
-			SO = 1;
-		else if (!ft_strcmp(curr->var, "WE"))
-			WE = 1;
-		else if (!ft_strcmp(curr->var, "EA"))
-			EA = 1;
-		else if (!ft_strcmp(curr->var, "F"))
-			F = 1;
-		else if (!ft_strcmp(curr->var, "C"))
-			C = 1;
+		ft_check_dir(curr, &c);
 		curr = curr->next;
 	}
-	if (NO && SO && WE && EA && F && C)
+	if (c.no && c.so && c.we && c.ea && c.f && c.c && c.dr)
 		return (0);
 	return (-1);
 }
 
-t_source	*ft_get_source(t_source *src, char *file)
+static char	*ft_skip_line(char *line, int fd)
 {
-	int		fd;
+	while (*line == ' ' || *line == '\t')
+		line++;
+	if (line[0] == '\n' || ft_is_spaces(line[0]) == 0)
+		return (ft_get_next_line(fd));
+	return (line);
+}
+
+t_source	*ft_read_lines(int fd, t_source *src)
+{
 	char	*line;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (perror("open"), NULL);
 	line = ft_get_next_line(fd);
 	while (line)
 	{
-		if (ft_chack_valid_source(line) == 0)
+		line = ft_skip_line(line, fd);
+		if (!line || line[0] == '\n' || ft_is_spaces(line[0]) == 0)
+		{
+			if (line)
+				line = ft_get_next_line(fd);
+			continue ;
+		}
+		if (ft_chack_valid_source(src, line) == 0)
 			src = ft_fill_struct(src, line);
 		if (ft_stop_reading(src) == 0)
-		{
-			free(line);
 			break ;
-		}
-		free(line);
 		line = ft_get_next_line(fd);
 	}
-	if (ft_check_before_map(src) == -1)
-		return (print_message(5, NULL, '\0'), NULL);
-	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src) == -1)
-		return (NULL);
 	return (src);
 }

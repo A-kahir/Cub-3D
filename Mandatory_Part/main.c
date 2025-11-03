@@ -18,15 +18,22 @@ static void	*ft_open_mlx_window(t_source *src)
 	if (!src->mlx_pointer)
 		return (print_message(3, NULL, '\0'), NULL);
 	src->mlx_window = mlx_new_window(src->mlx_pointer,
-			WIDTH, HEIGHT, "-HELL");
+			WIDTH, HEIGHT, "- hell -");
 	if (!src->mlx_window)
 		return (print_message(3, NULL, '\0'), NULL);
-	ft_key_theme(src);
+	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
+			"Mandatory_Part/Parssing/texture/Loading-hell.xpm",
+			&src->width, &src->height);
+	if (!src->mlx_image)
+		return (write(2, "mlx image failed1\n", 19), NULL);
+	mlx_put_image_to_window(src->mlx_pointer,
+		src->mlx_window, src->mlx_image, 0, 0);
+	mlx_key_hook(src->mlx_window, ft_key_theme_b, src);
 	return (src->mlx_pointer);
 }
 
 int	main(int argc, char **argv)
-{ 
+{
 	t_source	*src;
 
 	src = NULL;
@@ -35,6 +42,7 @@ int	main(int argc, char **argv)
 	src = ft_get_source(src, argv[1]);
 	if (!src)
 		return (print_message(1, NULL, '\0'), 1);
+	ft_debug(src, 1);
 	src->mlx_pointer = ft_open_mlx_window(src);
 	if (!src->mlx_pointer)
 		return (-1);

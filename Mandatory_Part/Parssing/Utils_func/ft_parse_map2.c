@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:17:42 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/07 01:40:48 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/10/31 17:44:25 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,9 @@ int	check_corner_and_side(t_source *src, int i, int l)
 	char	curr;
 
 	curr = ft_check(src, i, l);
-	if (curr == '0' || curr == 'N' || curr == 'S' || curr == 'E' || curr == 'W')
+	if (curr == '0' || curr == 'N' || curr == 'S'
+		|| curr == 'E' || curr == 'W')
 	{
-		if (ft_check(src, i - 1, l - 1) == ' ')
-			return (-1);
-		if (ft_check(src, i + 1, l + 1) == ' ')
-			return (-1);
-		if (ft_check(src, i + 1, l - 1) == ' ')
-			return (-1);
-		if (ft_check(src, i - 1, l + 1) == ' ')
-			return (-1);
 		if (ft_check(src, i - 1, l) == ' ')
 			return (-1);
 		if (ft_check(src, i + 1, l) == ' ')
