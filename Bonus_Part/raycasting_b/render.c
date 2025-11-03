@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/31 11:36:16 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/03 18:55:01 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int	render_frame(t_source *src)
 	if (!data)
 		return (0);
 	memset(data, 0, WIDTH * HEIGHT * (src->bpp / 8));
-	update_door_animation(src);
 	render_cell_floor(src, data);
 	while (++i < WIDTH)
 		process_column(src, data, i, params);

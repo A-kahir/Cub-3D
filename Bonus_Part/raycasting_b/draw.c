@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 05:43:49 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/31 11:43:57 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/03 18:54:45 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	get_adjusted_tex_x(t_wall_draw *w, t_tex *tex)
 	int	adjusted_tex_x;
 
 	adjusted_tex_x = w->tex_x;
-	if (w->p_ouvert > 0.0)
-		adjusted_tex_x = w->tex_x + (int)(w->p_ouvert * tex->width);
 	if (adjusted_tex_x >= tex->width)
 		adjusted_tex_x = tex->width - 1;
 	return (adjusted_tex_x);

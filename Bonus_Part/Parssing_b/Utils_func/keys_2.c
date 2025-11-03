@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 05:02:52 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/31 11:55:28 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/03 21:08:48 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ static char	*ft_get_sprite_path(int i, int flag)
 
 	image = ft_itoa(i);
 	if (flag == 1)
-		base = "Bonus_Part/Parssing_b/texture/HELL/xpm_sprites/";
+		base = "Bonus_Part/Parssing_b/texture/HELL/sp/";
 	else
-		base = "Bonus_Part/Parssing_b/texture/PARADISE/xpm_sprites/";
+		base = "Bonus_Part/Parssing_b/texture/PARADISE/sp/";
 	tmp = ft_strjoin(base, image);
 	path = ft_strjoin(tmp, ".xpm");
-	free(tmp);
+	// free(tmp);
 	return (path);
 }
 
@@ -83,9 +83,16 @@ static int	ft_animate_sprites(t_source *src)
 		sp.path = ft_get_sprite_path(sp.i, flag);
 		sp.sprite = mlx_xpm_file_to_image(src->mlx_pointer, sp.path,
 				&sp.w, &sp.h);
-		free(sp.path);
+		if (sp.path)
+		{
+			free(sp.path);
+			sp.path = NULL;
+		}
 		if (!sp.sprite)
+		{
+			printf("#################\n");
 			return (exit(1), 1);
+		}
 		sp.sp_x = (WIDTH - sp.w) / 2;
 		sp.sp_y = HEIGHT - sp.h;
 		mlx_put_image_to_window(src->mlx_pointer, src->mlx_window,
@@ -99,7 +106,8 @@ static int	ft_animate_sprites(t_source *src)
 
 int	key_animation(int key, t_source *src)
 {
-	if (key == 37)
+	printf("key ==> %d\n", key);
+	if (key == 45) // n
 		return (ft_animate_sprites(src));
 	return (0);
 }
