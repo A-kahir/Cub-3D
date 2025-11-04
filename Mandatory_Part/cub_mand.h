@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_mand.h                                          :+:      :+:    :+:   */
+/*   cub_mand.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 16:08:37 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/15 16:08:37 by akahir           ###   ########.fr       */
+/*   Created: 2025/11/04 16:45:17 by akahir            #+#    #+#             */
+/*   Updated: 2025/11/04 16:45:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <sys/stat.h>
 # include <mlx.h>
 # include <math.h>
-#include <sys/time.h>
+# include <sys/time.h>
 
 typedef enum s_mal
 {
@@ -245,7 +245,7 @@ double		get_door_opening(t_source *src);
 int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
 int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
 void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,
-			t_tex *tex);
+				t_tex *tex);
 //utils raycasting
 int			get_map_height(char **map);
 int			get_map_width(char **map);
