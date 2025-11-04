@@ -110,7 +110,7 @@ OBJS = $(SRC:.c=.o)
 OBJB = $(SRC_B:.c=.o)
 
 MLX_DIR = mlx
-# MLX = $(MLX_DIR)/libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g\
@@ -120,10 +120,10 @@ CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g\
          -IBonus_Part/Parssing_b \
          -IBonus_Part/Parssing_b/Libft_utils \
          -IBonus_Part/Parssing_b/Utils_func \
-		#  -I$(MLX_DIR)
+		  -I$(MLX_DIR)
 
-# MLXFLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
-MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+# MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 

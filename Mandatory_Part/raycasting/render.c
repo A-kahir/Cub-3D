@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/31 18:17:06 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/04 18:22:52 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,8 @@ int	render_frame(t_source *src)
 	t_raycast	*ray;
 	double		time;
 	int			params[4];
-	t_pixel		p;
 
 	i = -1;
-	p.x = 0;
-	p.y = 0;
 	time = get_time();
 	src->frame_time = (time - src->old_time) / 1000;
 	if (src->frame_time == 0)

@@ -25,7 +25,7 @@ static void	*ft_open_mlx_window(t_source *src)
 			"Bonus_Part/Parssing_b/texture/first_page.xpm",
 			&src->width, &src->height);
 	if (!src->mlx_image)
-		return (write(2, "mlx image failed1\n", 19), NULL);
+		return (write(2, "mlx image failed11\n", 19), NULL);
 	mlx_put_image_to_window(src->mlx_pointer,
 		src->mlx_window, src->mlx_image, 0, 0);
 	mlx_key_hook(src->mlx_window, ft_key_theme_b, src);

@@ -21,14 +21,7 @@ static void	*ft_open_mlx_window(t_source *src)
 			WIDTH, HEIGHT, "- hell -");
 	if (!src->mlx_window)
 		return (print_message(3, NULL, '\0'), NULL);
-	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-			"Mandatory_Part/Parssing/texture/Loading-hell.xpm",
-			&src->width, &src->height);
-	if (!src->mlx_image)
-		return (write(2, "mlx image failed1\n", 19), NULL);
-	mlx_put_image_to_window(src->mlx_pointer,
-		src->mlx_window, src->mlx_image, 0, 0);
-	mlx_key_hook(src->mlx_window, ft_key_theme_b, src);
+	ft_key_theme_b(src);
 	return (src->mlx_pointer);
 }
 

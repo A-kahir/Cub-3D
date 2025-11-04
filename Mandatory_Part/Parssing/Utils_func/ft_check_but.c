@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 17:54:13 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/03 16:32:31 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/04 18:22:38 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ int	ft_check_up_bottom_valid_chars(t_source *src, int len_j)
 {
 	int	i;
 	int	l;
-	int	index_d;
 
 	i = 1;
-	index_d = 0;
 	while (src && src->map && src->map[i])
 	{
 		l = 0;

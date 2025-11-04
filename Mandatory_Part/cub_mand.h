@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_mand.h                                          :+:      :+:    :+:   */
+/*   cub_mand.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 16:08:37 by akahir            #+#    #+#             */
-/*   Updated: 2025/08/15 16:08:37 by akahir           ###   ########.fr       */
+/*   Created: 2025/11/04 16:45:17 by akahir            #+#    #+#             */
+/*   Updated: 2025/11/04 16:45:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <sys/stat.h>
 # include <mlx.h>
 # include <math.h>
-#include <sys/time.h>
+# include <sys/time.h>
 
 typedef enum s_mal
 {
@@ -133,7 +133,6 @@ typedef struct s_chars
 	int			ea;
 	int			f;
 	int			c;
-	int			dr;
 }	t_chars;
 
 typedef struct s_sp_infos
@@ -204,7 +203,7 @@ t_source	*ft_fill_struct(t_source *src, char *line);
 void		*ft_fill_the_map(int fd, t_source *src);
 int			ft_check_before_map(t_source *src);
 int			ft_parse_map(t_source *src);
-int			ft_key_theme_b(int key, t_source *src);
+int			ft_key_theme_b(t_source *src);
 int			ft_key_loading(int key, t_source *src);
 void		ft_sec_parsing(t_source *src);
 void		ft_add_spaces_in_map(t_source *src);
@@ -246,7 +245,7 @@ double		get_door_opening(t_source *src);
 int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
 int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
 void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,
-			t_tex *tex);
+				t_tex *tex);
 //utils raycasting
 int			get_map_height(char **map);
 int			get_map_width(char **map);

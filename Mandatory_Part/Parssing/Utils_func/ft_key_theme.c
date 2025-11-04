@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/03 16:36:19 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/04 16:44:13 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	key_events(int key, t_source *src)
 
 	move_speed = src->frame_time * 5.0;
 	rot_speed = src->frame_time * 3.0;
-	if (key == 53)
+	if (key == 65307)
 	{
 		ft_free_mlx(src);
 		malloc_cl(0, 1);
@@ -33,7 +33,7 @@ int	key_events(int key, t_source *src)
 
 int	ft_key_loading(int key, t_source *src)
 {
-	if (key == 36)
+	if (key == 65293)
 	{
 		if (src->mlx_image)
 		{
@@ -58,14 +58,13 @@ int	ft_key_loading(int key, t_source *src)
 	return (0);
 }
 
-int	ft_key_theme_b(int key, t_source *src)
+int	ft_key_theme_b(t_source *src)
 {
 	int	w;
 	int	h;
 
 	w = WIDTH;
 	h = HEIGHT;
-	(void)key;
 	ft_sec_parsing(src);
 	if (src->mlx_image)
 	{
@@ -73,7 +72,7 @@ int	ft_key_theme_b(int key, t_source *src)
 		src->mlx_image = NULL;
 	}
 	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-			"Bonus_Part/Parssing_b/texture/Loading_page.xpm", &w, &h);
+			"Mandatory_Part/Parssing/texture/keyboard.xpm", &w, &h);
 	if (src->mlx_image)
 		mlx_put_image_to_window(src->mlx_pointer,
 			src->mlx_window, src->mlx_image, 0, 0);

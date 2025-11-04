@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_source.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/31 17:41:33 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/03 23:02:04 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_stop_reading(t_source *src)
 		ft_check_dir(curr, &c);
 		curr = curr->next;
 	}
-	if (c.no && c.so && c.we && c.ea && c.f && c.c && c.dr)
+	if (c.no && c.so && c.we && c.ea && c.f && c.c)
 		return (0);
 	return (-1);
 }
