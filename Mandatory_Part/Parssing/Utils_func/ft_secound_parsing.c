@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_secound_parsing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/06 21:03:41 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/06 22:00:56 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	fill_textures(t_source *src, char *var, char *value)
 		src->west_tex.path = value;
 }
 
-
-void ft_fill_mlx_ptr(t_source *src)
+void	ft_fill_mlx_ptr(t_source *src)
 {
 	t_source	*tmp;
 
@@ -36,6 +35,7 @@ void ft_fill_mlx_ptr(t_source *src)
 		tmp = tmp->next;
 	}
 }
+
 void	ft_sec_parsing(t_source *src)
 {
 	int			width_img;
