@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/06 21:23:56 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/06 23:40:10 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void	init_text(t_source *src)
 	if (!src->no_tex.data || !src->sud_tex.data
 		|| !src->west_tex.data || !src->est_tex.data || !src->doors_tex.data)
 	{
-		perror("Error\nFailed to get texture data\n");
+		perror("Error\nFailed to get texture data");
+		ft_free_mlx(src);
+		malloc_cl(0, 1);
 		exit(1);
 	}
 }

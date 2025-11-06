@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:53:37 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/06 16:10:54 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/06 23:29:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_free_mlx(t_source *src)
 {
-	if (src->mlx_image)
-		mlx_destroy_image(src->mlx_pointer, src->mlx_image);
 	if (src->render_image)
 		mlx_destroy_image(src->mlx_pointer, src->render_image);
 	if (src->no_tex.image)
@@ -28,6 +26,8 @@ void	ft_free_mlx(t_source *src)
 		mlx_destroy_image(src->mlx_pointer, src->west_tex.image);
 	if (src->mlx_window)
 		mlx_destroy_window(src->mlx_pointer, src->mlx_window);
+	if (src->mlx_image)
+		mlx_destroy_image(src->mlx_pointer, src->mlx_image);
 	if (src->mlx_pointer)
 	{
 		free(src->mlx_pointer);
