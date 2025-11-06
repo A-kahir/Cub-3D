@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 05:02:52 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/04 16:47:23 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/04 22:59:41 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static char	*ft_get_sprite_path(int i, int flag)
 		base = "Bonus_Part/Parssing_b/texture/PARADISE/sp/";
 	tmp = ft_strjoin(base, image);
 	path = ft_strjoin(tmp, ".xpm");
-	free(tmp);
 	return (path);
 }
 
@@ -74,9 +73,7 @@ static int	ft_animate_sprites(t_source *src)
 	t_sp_infos	sp;
 	int			flag;
 
-	sp.h = HEIGHT;
-	sp.w = WIDTH / 2;
-	sp.i = 0;
+	1 && (sp.h = HEIGHT, sp.w = WIDTH / 2, sp.i = 0);
 	flag = ft_static_flag(0, 0);
 	while (sp.i <= 30)
 	{
@@ -84,10 +81,7 @@ static int	ft_animate_sprites(t_source *src)
 		sp.sprite = mlx_xpm_file_to_image(src->mlx_pointer, sp.path,
 				&sp.w, &sp.h);
 		if (sp.path)
-		{
-			free(sp.path);
 			sp.path = NULL;
-		}
 		if (!sp.sprite)
 			return (exit(1), 1);
 		sp.sp_x = (WIDTH - sp.w) / 2;

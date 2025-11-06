@@ -113,17 +113,16 @@ MLX_DIR = mlx
 MLX = $(MLX_DIR)/libmlx.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g\
+CFLAGS = -Wall -Wextra -Werror \
          -IMandatory_Part/Parssing \
          -IMandatory_Part/Parssing/Libft_utils \
          -IMandatory_Part/Parssing/Utils_func \
          -IBonus_Part/Parssing_b \
          -IBonus_Part/Parssing_b/Libft_utils \
          -IBonus_Part/Parssing_b/Utils_func \
-		  -I$(MLX_DIR)
+		 -I$(MLX_DIR)
 
 MLXFLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
-# MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
@@ -145,5 +144,3 @@ fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
-
-

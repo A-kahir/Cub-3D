@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_text.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/29 07:43:16 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/06 21:23:56 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ static void	init_text_img(t_source *src)
 	if (!src->no_tex.image || !src->sud_tex.image
 		|| !src->west_tex.image || !src->est_tex.image || !src->doors_tex.image)
 	{
-		perror("Error\nFailed to load texture images\n");
+		perror("Error\nFailed to load texture images");
+		ft_free_mlx(src);
+		malloc_cl(0, 1);
 		exit(1);
 	}
 }

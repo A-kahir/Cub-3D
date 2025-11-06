@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/04 16:47:42 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/06 21:03:41 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ void	fill_textures(t_source *src, char *var, char *value)
 		src->west_tex.path = value;
 }
 
+
+void ft_fill_mlx_ptr(t_source *src)
+{
+	t_source	*tmp;
+
+	tmp = src;
+	while (tmp && tmp->mlx_pointer && src->mlx_pointer)
+	{
+		tmp->mlx_pointer = src->mlx_pointer;
+		tmp = tmp->next;
+	}
+}
 void	ft_sec_parsing(t_source *src)
 {
 	int			width_img;
@@ -32,6 +44,7 @@ void	ft_sec_parsing(t_source *src)
 
 	width_img = WIDTH;
 	height_img = HEIGHT;
+	ft_fill_mlx_ptr(src);
 	curr = src;
 	while (curr)
 	{
@@ -39,10 +52,12 @@ void	ft_sec_parsing(t_source *src)
 			&& (!ft_strcmp(curr->var, "NO") || !ft_strcmp(curr->var, "SO")
 				|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")))
 		{
-			src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
+			curr->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 					curr->value, &width_img, &height_img);
 			if (!src->mlx_image)
-				return (print_message(12, NULL, '\0'), exit(1));
+				return (print_message(12, NULL, '\0'),
+					ft_free_mlx(src), malloc_cl(0, 1), exit(1));
+			mlx_destroy_image(src->mlx_pointer, curr->mlx_image);
 			fill_textures(src, curr->var, curr->value);
 		}
 		curr = curr->next;
