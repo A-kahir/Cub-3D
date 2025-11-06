@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/06 16:31:00 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/06 21:45:50 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ int	ft_key_theme_b(t_source *src)
 	w = WIDTH;
 	h = HEIGHT;
 	ft_sec_parsing(src);
-	// if (src->mlx_image)
-	// {
-	// 	mlx_destroy_image(src->mlx_pointer, src->mlx_image);
-	// 	src->mlx_image = NULL;
-	// }
 	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 			"Mandatory_Part/Parssing/texture/keyboard.xpm", &w, &h);
 	if (src->mlx_image)
