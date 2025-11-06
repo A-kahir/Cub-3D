@@ -247,7 +247,7 @@ double		get_door_opening(t_source *src);
 int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
 int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
 void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,
-			t_tex *tex);
+				t_tex *tex);
 //utils raycasting
 int			get_map_height(char **map);
 int			get_map_width(char **map);

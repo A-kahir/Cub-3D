@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/04 18:17:28 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/03 23:39:43 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	key_events(int key, t_source *src)
 
 	move_speed = src->frame_time * 5.0;
 	rot_speed = src->frame_time * 3.0;
-	if (key == 53)
+	if (key == 65307)
 	{
 		ft_free_mlx(src);
 		malloc_cl(0, 1);
@@ -144,7 +144,7 @@ int	ft_key_theme_b(int key, t_source *src)
 
 	w = WIDTH;
 	h = HEIGHT;
-	if (key == 18 || key == 19)
+	if (key == 49 || key == 50)
 	{
 		ft_sec_parsing(src);
 		if (src->mlx_image)
@@ -152,7 +152,7 @@ int	ft_key_theme_b(int key, t_source *src)
 			mlx_destroy_image(src->mlx_pointer, src->mlx_image);
 			src->mlx_image = NULL;
 		}
-		if (key == 19)
+		if (key == 50)
 			1 && (ft_is_hell(src), ft_sec_parsing(src), ft_static_flag(1, 1));
 		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 				"Bonus_Part/Parssing_b/texture/Loading_page.xpm", &w, &h);

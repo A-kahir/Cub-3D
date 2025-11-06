@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/04 16:47:42 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/06 16:58:50 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,18 @@ void	ft_sec_parsing(t_source *src)
 	width_img = WIDTH;
 	height_img = HEIGHT;
 	curr = src;
+	while (curr && curr->mlx_pointer && src->mlx_pointer)
+	{
+		curr->mlx_pointer = src->mlx_pointer;
+		curr = curr->next;
+	}
 	while (curr)
 	{
 		if (curr && curr->var && curr->value
 			&& (!ft_strcmp(curr->var, "NO") || !ft_strcmp(curr->var, "SO")
 				|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")))
 		{
-			src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
+			curr->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 					curr->value, &width_img, &height_img);
 			if (!src->mlx_image)
 				return (print_message(12, NULL, '\0'), exit(1));
