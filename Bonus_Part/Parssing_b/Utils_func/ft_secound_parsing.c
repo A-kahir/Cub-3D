@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/06 21:26:59 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/06 22:13:32 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	ft_sec_parsing(t_source *src)
 			if (!src->mlx_image)
 				return (print_message(12, NULL, '\0'),
 					ft_free_mlx(src), malloc_cl(0, 1), exit(1));
-			mlx_destroy_image(src->mlx_pointer, curr->mlx_image);
+			if (curr->mlx_image && src->mlx_pointer)
+				mlx_destroy_image(src->mlx_pointer, curr->mlx_image);
 			fill_textures(src, curr->var, curr->value);
 		}
 		curr = curr->next;
