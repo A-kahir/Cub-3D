@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:41:40 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/30 05:27:08 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/07 04:34:23 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,7 @@ int	ft_get_color_pixel(t_source *src, int i, int j)
 	return (src->color);
 }
 
-static void	ft_draw_player(t_source *src, char *img_data, t_minimp *mmp,
-		t_pixel p)
+static void	ft_draw_player(t_source *src, char *img_data, t_minimp *mmp)
 {
 	int	player_size;
 	int	player_dx;
@@ -111,22 +110,24 @@ static void	ft_draw_player(t_source *src, char *img_data, t_minimp *mmp,
 		x = 0;
 		while (x < player_size)
 		{
-			p.x = player_dx + x;
-			p.y = player_dy + y;
-			ft_set_pixel_img(src, img_data, p, 0xFFFFFF);
+			src->pi.x = player_dx + x;
+			src->pi.y = player_dy + y;
+			ft_set_pixel_img(src, img_data, src->pi, 0xFFFFFF);
 			x++;
 		}
 		y++;
 	}
 }
 
-int	ft_mini_map(t_source *src, t_pixel p)
+int	ft_mini_map(t_source *src)
 {
 	char		*img_data;
 	t_minimp	mmp;
 	int			map_row_len;
 	int			map_h;
 
+	src->pi.x = 0;
+	src->pi.y = 0;
 	if (!src->render_image)
 		return (1);
 	img_data = mlx_get_data_addr(src->render_image, &src->bpp,
@@ -138,13 +139,11 @@ int	ft_mini_map(t_source *src, t_pixel p)
 		return (-1);
 	ft_init_minimap(&mmp, src);
 	1 && (map_row_len = ft_strlen(src->map[0]), map_h = ft_lenght_j(src));
-	ft_cadring_outside(&mmp, map_row_len, map_h);
-	ft_fix_negative(&mmp);
-	ft_calc_demonsions(&mmp);
+	norm_mini(&mmp, map_h, &map_row_len);
 	if (mmp.map_width <= 0 || mmp.map_height <= 0)
 		return (0);
 	*src->mmp = mmp;
 	ft_render_tiles(src, img_data, src->mmp);
 	return (ft_frame_mini_mp(src, img_data, 8, 8),
-		ft_draw_player(src, img_data, src->mmp, p), 0);
+		ft_draw_player(src, img_data, src->mmp), 0);
 }

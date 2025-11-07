@@ -5,7 +5,7 @@ PARSER_SRC = Mandatory_Part/main.c
 PARSER_B   = Bonus_Part/main.c
 
 LIBFT_SRC = \
-	Mandatory_Part/Parssing/Libft_utils/malloc.c \
+	Mandatory_Part/Parssing/Libft_utils/alloc.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_strcmp.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_strdup.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_strchr.c \
@@ -18,10 +18,11 @@ LIBFT_SRC = \
 	Mandatory_Part/Parssing/Libft_utils/ft_is_spaces.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_strstr.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_free_mlx.c \
-	Mandatory_Part/Parssing/Libft_utils/ft_itoa.c 
+	Mandatory_Part/Parssing/Libft_utils/ft_itoa.c \
+	# Mandatory_Part/Parssing/Libft_utils/ft_calloc.c 
 
 LIBFT_SRCB = \
-	Bonus_Part/Parssing_b/Libft_utils/malloc.c \
+	Bonus_Part/Parssing_b/Libft_utils/alloc.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_strcmp.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_strdup.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_strchr.c \
@@ -34,7 +35,8 @@ LIBFT_SRCB = \
 	Bonus_Part/Parssing_b/Libft_utils/ft_is_spaces.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_free_mlx.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_itoa.c 
+	Bonus_Part/Parssing_b/Libft_utils/ft_itoa.c \
+	# Bonus_Part/Parssing_b/Libft_utils/ft_calloc.c 
 
 UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/print_messages.c \
@@ -144,3 +146,4 @@ fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
+# -fsanitize=address -g

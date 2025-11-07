@@ -45,5 +45,6 @@ int	main(int argc, char **argv)
 	src->mlx_pointer = ft_open_mlx_window(src);
 	if (!src->mlx_pointer)
 		return (ft_free_mlx(src), malloc_cl(0, 1), -1);
+	mlx_hook(src->mlx_window, 17, 0, handle_close, src);
 	mlx_loop(src->mlx_pointer);
 }

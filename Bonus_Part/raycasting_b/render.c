@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/03 18:55:01 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/07 04:37:17 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,8 @@ int	render_frame(t_source *src)
 	t_raycast	*ray;
 	double		time;
 	int			params[4];
-	t_pixel		p;
 
-	i = -1;
-	p.x = 0;
-	p.y = 0;
-	time = get_time();
-	src->frame_time = (time - src->old_time) / 1000;
-	if (src->frame_time == 0)
-		src->frame_time = 0.0001;
-	src->old_time = time;
+	norm_render(src, &i, &time);
 	ray = malloc_cl(sizeof(t_raycast), 0);
 	if (!ray)
 		return (1);
@@ -105,7 +97,7 @@ int	render_frame(t_source *src)
 	render_cell_floor(src, data);
 	while (++i < WIDTH)
 		process_column(src, data, i, params);
-	ft_mini_map(src, p);
+	ft_mini_map(src);
 	mlx_put_image_to_window(src->mlx_pointer, src->mlx_window,
 		src->render_image, 0, 0);
 	return (0);

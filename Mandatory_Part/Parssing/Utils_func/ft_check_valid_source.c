@@ -21,8 +21,10 @@ int	ft_chack_valid_source(t_source *src, char *str)
 	curr = src;
 	while (curr)
 	{
-		if (!ft_strncmp(curr->var, str, 2) || !ft_strncmp(curr->var, str, 1))
-			return (print_message(17, NULL, '\0'), malloc_cl(0, 1), exit(1), -1);
+		if (!ft_strncmp(curr->var, str, 2)
+			|| !ft_strncmp(curr->var, str, 1))
+			return (print_message(17, NULL, '\0'),
+				malloc_cl(0, 1), exit(1), -1);
 		curr = curr->next;
 	}
 	if (ft_is_spaces(str[0]) == 0)

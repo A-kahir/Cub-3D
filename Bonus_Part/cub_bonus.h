@@ -186,6 +186,7 @@ typedef struct s_source
 	t_colors		*colors;
 	t_player		*p;
 	t_doors			*door;
+	t_pixel			pi;
 	t_raycast		*ray;
 	t_minimp		*mmp;
 	int				color;
@@ -214,7 +215,6 @@ char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
 int			ft_stop_reading(t_source *src);
-
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
 int			ft_strcmp(char *s1, char *s2);
@@ -236,7 +236,7 @@ int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
 int			ft_valid_char_rows(t_source *src, int i, int len_j);
 void		ft_free_mlx(t_source *src);
 char		*ft_itoa(int n);
-
+void		*ft_calloc(size_t count, size_t size);
 //init data
 void		init_player(t_source *src);
 void		init_text(t_source *src);
@@ -264,7 +264,7 @@ int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
 
 // rendering floor celling
 int			render_frame(t_source *src);
-
+void		norm_render(t_source *src, int *i, double *time);
 /// should remove when we finish
 void		ft_debug_map(char *map, int pos); // in utils func
 void		ft_debug(t_source *src, int flag); // in utils func
@@ -279,10 +279,12 @@ void		norm_keys1(int key, t_source *src, double move_speed);
 void		norm_key_fleche(int key, t_source *src, double r_speed);
 void		norm_mouse(t_source *src, double rot_speed, int delta_x);
 void		norm_key3(int key, t_source *src);
+int			handle_close(t_source *src);
 // Bonus func :
 //
-int			ft_mini_map(t_source *src, t_pixel p);
+int			ft_mini_map(t_source *src);
 	//-> conditions mmp
+void		norm_mini(t_minimp *mmp, int map_h, int	*map_row_len);
 void		ft_calc_demonsions(t_minimp *mmp);
 void		ft_fix_negative(t_minimp *mmp);
 void		ft_cadring_outside(t_minimp *mmp, int map_w, int map_h);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub_bonus.h"
+#include "../../cub_mand.h"
 
 static void	free_leaks_list(t_leaks **head)
 {
@@ -30,10 +30,10 @@ static void	*ft_allocate(size_t size, t_leaks **head)
 	void		*ptr;
 	t_leaks		*new_node;
 
-	ptr = malloc(size);
+	ptr = ft_calloc(1, size);
 	if (!ptr)
 		return (NULL);
-	new_node = malloc(sizeof(t_leaks));
+	new_node = ft_calloc(1, sizeof(t_leaks));
 	if (!new_node)
 	{
 		free(ptr);
@@ -52,7 +52,7 @@ void	*malloc_cl(size_t size, t_mal mode)
 	if (mode == 1)
 	{
 		free_leaks_list(&node);
-		return (NULL);
+		return (exit (1), NULL);
 	}
 	return (ft_allocate(size, &node));
 }

@@ -234,7 +234,7 @@ int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
 int			ft_valid_char_rows(t_source *src, int i, int len_j);
 void		ft_free_mlx(t_source *src);
 char		*ft_itoa(int n);
-
+void		*ft_calloc(size_t count, size_t size);
 //init data
 void		init_player(t_source *src);
 void		init_text(t_source *src);
@@ -259,7 +259,7 @@ void		calculate_draw_limits(int lineheight,
 				int *draw_start, int *draw_end);
 t_tex		*select_texture(t_source *src, t_raycast *ray);
 int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
-
+int			handle_close(t_source *src);
 // rendering floor celling
 int			render_frame(t_source *src);
 
