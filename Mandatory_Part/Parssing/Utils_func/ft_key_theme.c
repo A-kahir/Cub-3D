@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 04:50:14 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 16:24:19 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,17 @@ int	ft_key_theme_b(t_source *src)
 	w = WIDTH;
 	h = HEIGHT;
 	ft_sec_parsing(src);
-	src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
+	if (src->mlx_pointer)
+		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 			"Mandatory_Part/Parssing/texture/keyboard.xpm", &w, &h);
 	if (src->mlx_image)
 		mlx_put_image_to_window(src->mlx_pointer,
 			src->mlx_window, src->mlx_image, 0, 0);
 	else
-		return (write(2, "mlx image failed\n", 18), ft_free_mlx(src),
+	{
+		return (perror("mlx failed"), ft_free_mlx(src),
 			malloc_cl(0, 2), -1);
+	}
 	mlx_key_hook(src->mlx_window, ft_key_loading, src);
 	return (1);
 }

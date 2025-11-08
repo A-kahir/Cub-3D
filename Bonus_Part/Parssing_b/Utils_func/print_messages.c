@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_messages.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/29 07:39:48 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 16:32:36 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_cantinue1(int flag, char *arg, char ch)
 {
 	if (flag == 3)
 	{
-		write(2, "Error : MLX System call failed\n", 32);
+		write(2, "MLX System call failed\n", 24);
 		return ;
 	}
 	if (flag == 4)
@@ -100,7 +100,7 @@ void	print_message(int flag, char *arg, char ch)
 	if (flag == 0)
 		return (write(2, "invalid Args ❌\n", 18), (void) NULL);
 	if (flag == 1)
-		return (write(2, "Error: check your file .cub ❌\n", 33), (void) NULL);
+		return (write(2, "check your file .cub ❌\n", 26), (void) NULL);
 	if (flag == 2)
 	{
 		write(2, "check your Map: You have invalid character: [", 46);

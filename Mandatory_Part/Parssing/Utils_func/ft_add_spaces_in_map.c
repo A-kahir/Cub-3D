@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_spaces_in_map.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:46:25 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/31 12:17:09 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 16:37:45 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_add_spaces_in_map(t_source *src)
 	int		len;
 
 	check_init(src, &max, &i);
-	while (src->map[++i])
+	while (src && src->map && src->map[++i])
 	{
 		len = ft_strlen(src->map[i]);
 		if (len < max)

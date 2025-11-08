@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 19:10:27 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/27 01:49:00 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 16:47:20 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_is_hell(t_source *src)
 {
 	t_source	*curr;
 
-	printf("HELL is selected\n");
 	curr = src;
 	while (curr)
 	{
