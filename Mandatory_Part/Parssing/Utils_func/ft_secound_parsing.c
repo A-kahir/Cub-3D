@@ -6,21 +6,22 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 21:05:56 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:08:35 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_mand.h"
+
 void	fill_textures(t_source *src, char *var, char *value)
 {
 	if (!ft_strcmp(var, "NO"))
-		src->no_tex.path = ft_strdup(value, 0);
+		src->no_tex.path = ft_strdup(value);
 	else if (!ft_strcmp(var, "SO"))
-		src->sud_tex.path = ft_strdup(value, 0);
+		src->sud_tex.path = ft_strdup(value);
 	else if (!ft_strcmp(var, "EA"))
-		src->est_tex.path = ft_strdup(value, 0);
+		src->est_tex.path = ft_strdup(value);
 	else if (!ft_strcmp(var, "WE"))
-		src->west_tex.path = ft_strdup(value, 0);
+		src->west_tex.path = ft_strdup(value);
 }
 
 void	ft_fill_mlx_ptr(t_source *src)

@@ -47,7 +47,6 @@ UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/ft_check_before_map.c \
 	Mandatory_Part/Parssing/Utils_func/ft_parsing.c \
 	Mandatory_Part/Parssing/Utils_func/ft_get_source.c \
-	Mandatory_Part/Parssing/Utils_func/ft_debug.c \
 	Mandatory_Part/Parssing/Utils_func/ft_parse_map.c \
 	Mandatory_Part/Parssing/Utils_func/ft_parse_map2.c \
 	Mandatory_Part/Parssing/Utils_func/ft_parse_map3.c \
@@ -69,7 +68,6 @@ UTILS_SRC_B = \
 	Bonus_Part/Parssing_b/Utils_func/ft_check_before_map.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_parsing.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_get_source.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_debug.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_parse_map.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_parse_map2.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_parse_map3.c \

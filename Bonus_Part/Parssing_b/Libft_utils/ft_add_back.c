@@ -42,9 +42,9 @@ t_source	*ft_add_back(t_source *line, char *var, char *value)
 	new_node = malloc_cl(sizeof(t_source), 0);
 	if (!new_node)
 		return (line);
-	new_node->var = ft_strdup(var, 0);
+	new_node->var = ft_strdup(var);
 	if (value != NULL)
-		new_node->value = ft_strdup(value, 0);
+		new_node->value = ft_strdup(value);
 	else
 		new_node->value = NULL;
 	new_node->colors = malloc_cl(sizeof(t_colors), 0);

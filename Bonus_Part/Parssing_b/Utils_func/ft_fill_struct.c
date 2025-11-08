@@ -22,7 +22,7 @@ static t_source	*ft_handle_rgb(t_source *src, char **var)
 	while (var[i])
 	{
 		if (!rgb_str)
-			rgb_str = ft_strdup(var[i], 0);
+			rgb_str = ft_strdup(var[i]);
 		else
 			rgb_str = ft_strjoin(rgb_str, var[i]);
 		i++;

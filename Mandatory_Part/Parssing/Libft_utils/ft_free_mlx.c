@@ -6,18 +6,16 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:53:37 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 20:50:06 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:08:08 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_mand.h"
 
-void	ft_free_mlx(t_source *src)
+void	ft_loop_destroy(t_source *src)
 {
-	t_source *curr;
+	t_source	*curr;
 
-	if (!src)
-		return;
 	curr = src;
 	while (curr)
 	{
@@ -25,6 +23,13 @@ void	ft_free_mlx(t_source *src)
 			mlx_destroy_image(curr->mlx_pointer, curr->mlx_image);
 		curr = curr->next;
 	}
+}
+
+void	ft_free_mlx(t_source *src)
+{
+	if (!src)
+		return ;
+	ft_loop_destroy(src);
 	if (src->render_image && src->mlx_pointer)
 		mlx_destroy_image(src->mlx_pointer, src->render_image);
 	if (src->no_tex.image && src->mlx_pointer)

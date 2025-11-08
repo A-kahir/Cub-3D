@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:07:21 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/29 01:30:24 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 01:59:24 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*ft_itoa(int n)
 	int			len_number;
 
 	if (n == 0)
-		return (ft_strdup("0", 0));
+		return (ft_strdup("0"));
 	len_number = count_len_number(n);
 	if (n < 0)
 	{

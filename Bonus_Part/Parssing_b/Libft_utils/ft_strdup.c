@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:06:24 by akahir            #+#    #+#             */
-/*   Updated: 2025/09/27 08:57:00 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 01:59:31 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
 
-char	*ft_strdup(char *s1, int flag)
+char	*ft_strdup(char *s1)
 {
 	char	*ptr;
 	int		len;
@@ -21,7 +21,7 @@ char	*ft_strdup(char *s1, int flag)
 	if (s1 == NULL)
 		return (NULL);
 	len = ft_strlen(s1);
-	ptr = malloc_cl((len + 1) * sizeof(char), flag);
+	ptr = malloc_cl((len + 1) * sizeof(char), 0);
 	if (ptr == NULL)
 	{
 		return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_but.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 07:25:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/10/29 07:26:26 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:18:12 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ static int	ft_check_player_char(t_source *src, int i, int l, int len_j)
 		{
 			if (ft_is_spaces(src->map[i - 1][l]) == 0
 				|| ft_is_spaces(src->map[i + 1][l]) == 0)
-				return (ft_debug_map(src->map[i], l),
-					print_message(4, src->map[i], src->map[i][l]), -1);
+				return (print_message(4, src->map[i], src->map[i][l]), -1);
 		}
 	}
 	return (0);

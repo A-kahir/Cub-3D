@@ -216,7 +216,7 @@ int			ft_stop_reading(t_source *src);
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
 int			ft_strcmp(char *s1, char *s2);
-char		*ft_strdup(char *s1, int flag);
+char		*ft_strdup(char *s1);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strjoin(char *s1, char *s2);
 int			ft_strlen(char	*str);
@@ -262,10 +262,6 @@ int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
 int			handle_close(t_source *src);
 // rendering floor celling
 int			render_frame(t_source *src);
-
-/// should remove when we finish
-void		ft_debug_map(char *map, int pos); // in utils func
-void		ft_debug(t_source *src, int flag); // in utils func
 
 //timing
 long		get_time(void);

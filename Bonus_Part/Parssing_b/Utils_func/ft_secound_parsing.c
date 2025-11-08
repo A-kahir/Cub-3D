@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 21:07:07 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:13:39 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	fill_textures(t_source *src, char *var, char *value)
 {
 	if (!ft_strcmp(var, "NO"))
-		src->no_tex.path = ft_strdup(value, 0);
+		src->no_tex.path = ft_strdup(value);
 	if (!ft_strcmp(var, "SO"))
-		src->sud_tex.path = ft_strdup(value, 0);
+		src->sud_tex.path = ft_strdup(value);
 	if (!ft_strcmp(var, "EA"))
-		src->est_tex.path = ft_strdup(value, 0);
+		src->est_tex.path = ft_strdup(value);
 	if (!ft_strcmp(var, "WE"))
-		src->west_tex.path = ft_strdup(value, 0);
+		src->west_tex.path = ft_strdup(value);
 	if (!ft_strcmp(var, "DR"))
-		src->doors_tex.path = ft_strdup(value, 0);
+		src->doors_tex.path = ft_strdup(value);
 }
 
 void	ft_fill_mlx_ptr(t_source *src)
@@ -45,8 +45,7 @@ void	ft_sec_parsing(t_source *src)
 	void		*temp_img;
 	t_source	*curr;
 
-	width_img = WIDTH;
-	height_img = HEIGHT;
+	1 && (width_img = WIDTH, height_img = HEIGHT);
 	ft_fill_mlx_ptr(src);
 	curr = src;
 	while (curr)

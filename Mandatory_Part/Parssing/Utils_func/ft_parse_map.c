@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:06 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/03 23:20:02 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:20:24 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static int	ft_check_first_last_row(t_source *src, int i, int len_j)
 			if (ft_is_spaces(src->map[i][l]) == -1 && i == 0)
 				return (print_message(2, src->map[i], src->map[i][l]), -1);
 			if (ft_is_spaces(src->map[i][l]) == -1 && i == len_j)
-				return (ft_debug_map(src->map[i], l),
-					print_message(7, src->map[i], src->map[i][l]), -1);
+				return (print_message(7, src->map[i], src->map[i][l]), -1);
 		}
 		l++;
 	}
@@ -48,8 +47,7 @@ static int	ft_check_cadring_map(t_source *src, int i, int len_i)
 				if (!(ft_is_spaces(src->map[i][l]) == 0
 					|| (src->map[i][l] == 'N') || (src->map[i][l] == 'S')
 					|| (src->map[i][l] == 'W') || (src->map[i][l] == 'E')))
-					return (ft_debug_map(src->map[i], l),
-						print_message(4, src->map[i], src->map[i][l]), -1);
+					return (print_message(4, src->map[i], src->map[i][l]), -1);
 			}
 			else if (ft_check_spaces_zone(src, i, l, len_i) == -1)
 				return (-1);
@@ -76,11 +74,11 @@ static int	ft_check_vertical_spaces(t_source *src, int i, int len_j)
 			{
 				sv_po = l;
 				if (ft_is_spaces(src->map[i + 1][sv_po]) == 0)
-					return (ft_debug_map(src->map[i], l),
-						print_message(4, src->map[i], src->map[i][sv_po]), -1);
+					return (print_message(4, src->map[i],
+							src->map[i][sv_po]), -1);
 				else if (ft_is_spaces(src->map[i - 1][sv_po]) == 0)
-					return (ft_debug_map(src->map[i], l),
-						print_message(4, src->map[i], src->map[i][sv_po]), -1);
+					return (print_message(4, src->map[i],
+							src->map[i][sv_po]), -1);
 			}
 		}
 		1 && (l++, sv_po = 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:17:42 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/29 07:29:32 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:17:59 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	check_corner_and_side(t_source *src, int i, int l)
 int	ft_check_corners(t_source *src, int i, int l)
 {
 	if (check_corner_and_side(src, i, l) == -1)
-		return (ft_debug_map(src->map[i], l),
-			print_message(4, src->map[i], src->map[i][l]), -1);
+		return (print_message(4, src->map[i], src->map[i][l]), -1);
 	return (0);
 }
 
@@ -82,21 +81,18 @@ int	ft_check_spaces_zone(t_source *src, int i, int l, int len_i)
 	if (ft_is_spaces(src->map[i][l + 1]) == 0)
 	{
 		if (src->map[i][l] != '1' && !(ft_is_spaces(src->map[i][l]) == 0))
-			return (ft_debug_map(src->map[i], l),
-				print_message(4, src->map[i], src->map[i][l]), -1);
+			return (print_message(4, src->map[i], src->map[i][l]), -1);
 	}
 	else if (l > 0 && ft_is_spaces(src->map[i][l - 1]) == 0)
 	{
 		if (src->map[i][l] != '1' && !(ft_is_spaces(src->map[i][l]) == 0))
-			return (ft_debug_map(src->map[i], l),
-				print_message(4, src->map[i], src->map[i][l]), -1);
+			return (print_message(4, src->map[i], src->map[i][l]), -1);
 	}
 	else if (l == len_i)
 	{
 		if (src->map[i][l] != '1')
 			if (ft_is_spaces(src->map[i][l]) == -1)
-				return (ft_debug_map(src->map[i], l),
-					print_message(4, src->map[i], src->map[i][l]), -1);
+				return (print_message(4, src->map[i], src->map[i][l]), -1);
 	}
 	return (0);
 }

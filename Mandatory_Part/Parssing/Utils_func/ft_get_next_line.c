@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:03:21 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/31 17:40:35 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:00:39 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static	char	*ft_operation(char *str, char *temp, char *buff)
 {
 	if (!str)
-		temp = ft_strdup(buff, 0);
+		temp = ft_strdup(buff);
 	else
 	{
 		temp = ft_strjoin(str, buff);
@@ -57,8 +57,8 @@ static char	*return_and_save(char *newline_pos, char **str, char **line)
 	if (newline_pos)
 	{
 		*newline_pos = '\0';
-		*line = ft_strdup(*str, 0);
-		temp = ft_strdup(newline_pos + 1, 0);
+		*line = ft_strdup(*str);
+		temp = ft_strdup(newline_pos + 1);
 		if (!(*line) || !temp)
 			return (free(*str), *str = NULL, free(*line), free(temp), NULL);
 		*str = temp;
@@ -69,7 +69,7 @@ static char	*return_and_save(char *newline_pos, char **str, char **line)
 	}
 	else
 	{
-		*line = ft_strdup(*str, 0);
+		*line = ft_strdup(*str);
 		*str = NULL;
 	}
 	return (*line);
