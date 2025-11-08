@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 05:02:52 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/06 22:46:14 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 04:40:37 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	ft_animate_sprites(t_source *src)
 		if (sp.path)
 			sp.path = NULL;
 		if (!sp.sprite)
-			return (ft_free_mlx(src), malloc_cl(0, 1), exit(1), 1);
+			return (ft_free_mlx(src), malloc_cl(0, 2), 1);
 		sp.sp_x = (WIDTH - sp.w) / 2;
 		sp.sp_y = HEIGHT - sp.h;
 		mlx_put_image_to_window(src->mlx_pointer, src->mlx_window,

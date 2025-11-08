@@ -34,12 +34,10 @@ int	main(int argc, char **argv)
 		return (1);
 	src = ft_get_source(src, argv[1]);
 	if (!src)
-		return (print_message(1, NULL, '\0'), malloc_cl(0, 1), 1);
+		return (print_message(1, NULL, '\0'), malloc_cl(0, 2), 1);
 	src->mlx_pointer = ft_open_mlx_window(src);
 	if (!src->mlx_pointer)
-		return (ft_free_mlx(src), malloc_cl(0, 1), -1);
+		return (ft_free_mlx(src), malloc_cl(0, 2), -1);
 	mlx_hook(src->mlx_window, 17, 0, handle_close, src);
 	mlx_loop(src->mlx_pointer);
-	ft_free_mlx(src);
-	malloc_cl(0, 1);
 }

@@ -35,7 +35,8 @@
 typedef enum s_mal
 {
 	ALLOCATION,
-	FREE,
+	FREE_0,
+	FREE_1,
 }	t_mal;
 
 typedef struct s_leaks

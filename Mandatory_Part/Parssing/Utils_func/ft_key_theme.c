@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 01:15:12 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/08 04:50:14 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	key_events(int key, t_source *src)
 	{
 		ft_free_mlx(src);
 		malloc_cl(0, 1);
-		exit(0);
 	}
 	norm_keys2(key, src, move_speed);
 	norm_keys1(key, src, move_speed);
@@ -35,7 +34,7 @@ int	handle_close(t_source *src)
 {
 	ft_free_mlx(src);
 	malloc_cl(0, 1);
-	exit(0);
+	return (0);
 }
 
 int	ft_key_loading(int key, t_source *src)
@@ -81,7 +80,7 @@ int	ft_key_theme_b(t_source *src)
 			src->mlx_window, src->mlx_image, 0, 0);
 	else
 		return (write(2, "mlx image failed\n", 18), ft_free_mlx(src),
-			malloc_cl(0, 1), exit(1), -1);
+			malloc_cl(0, 2), -1);
 	mlx_key_hook(src->mlx_window, ft_key_loading, src);
 	return (1);
 }

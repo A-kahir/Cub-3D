@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/08 02:05:14 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 04:43:12 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ static void	init_text_img(t_source *src)
 	{
 		perror("Error\nFailed to load texture images");
 		ft_free_mlx(src);
-		malloc_cl(0, 1);
-		exit(1);
+		malloc_cl(0, 2);
 	}
 }
 
@@ -51,8 +50,7 @@ void	init_text(t_source *src)
 	{
 		perror("Error\nFailed to get texture data");
 		ft_free_mlx(src);
-		malloc_cl(0, 1);
-		exit(1);
+		malloc_cl(0, 2);
 	}
 }
 

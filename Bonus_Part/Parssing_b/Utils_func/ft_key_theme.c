@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 02:56:50 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 04:40:20 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	ft_key_theme_b(int key, t_source *src)
 				src->mlx_window, src->mlx_image, 0, 0);
 		else
 			(write(2, "mlx image failed\n", 18),
-				ft_free_mlx(src), malloc_cl(0, 1), exit(1));
+				ft_free_mlx(src), malloc_cl(0, 2));
 		mlx_key_hook(src->mlx_window, ft_key_loading, src);
 	}
 	return (1);
