@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 02:12:58 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:56:50 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,14 @@ int	ft_key_theme_b(int key, t_source *src)
 	1 && (w = WIDTH, h = HEIGHT);
 	if (key == 49 || key == 50)
 	{
+		ft_sec_parsing(src);
 		if (src->mlx_image)
 		{
 			mlx_destroy_image(src->mlx_pointer, src->mlx_image);
 			src->mlx_image = NULL;
 		}
 		if (key == 50)
-			1 && (ft_is_hell(src), ft_static_flag(1, 1));
-		ft_sec_parsing(src);
+			1 && (ft_is_hell(src), ft_sec_parsing(src), ft_static_flag(1, 1));
 		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 				"Bonus_Part/Parssing_b/texture/Loading_page.xpm", &w, &h);
 		if (src->mlx_image)

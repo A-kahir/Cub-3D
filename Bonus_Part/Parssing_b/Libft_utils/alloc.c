@@ -54,7 +54,6 @@ void	*malloc_cl(size_t size, t_mal mode)
 	{
 		free_leaks_list(&node);
 		node = NULL;
-		exit(0);
 	}
 	return (ft_allocate(size, &node));
 }

@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:53:37 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 02:09:48 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/08 02:51:12 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_free_mlx(t_source *src)
 {
 	if (!src)
 		return ;
+	ft_loop_destroy(src);
 	if (src->render_image && src->mlx_pointer)
 		mlx_destroy_image(src->mlx_pointer, src->render_image);
 	if (src->no_tex.image && src->mlx_pointer)
