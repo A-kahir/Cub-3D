@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:53:37 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 03:45:15 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/07 20:03:27 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 void	ft_free_mlx(t_source *src)
 {
+	t_source *curr;
+
+	if (!src)
+		return;
+	curr = src;
+	while (curr)
+	{
+		if (curr->mlx_image && curr->mlx_pointer)
+			mlx_destroy_image(curr->mlx_pointer, curr->mlx_image);
+		curr = curr->next;
+	}
 	if (src->render_image && src->mlx_pointer)
 		mlx_destroy_image(src->mlx_pointer, src->render_image);
 	if (src->no_tex.image && src->mlx_pointer)
@@ -24,10 +35,10 @@ void	ft_free_mlx(t_source *src)
 		mlx_destroy_image(src->mlx_pointer, src->est_tex.image);
 	if (src->west_tex.image && src->mlx_pointer)
 		mlx_destroy_image(src->mlx_pointer, src->west_tex.image);
+	if (src->doors_tex.image && src->mlx_pointer)
+		mlx_destroy_image(src->mlx_pointer, src->doors_tex.image);
 	if (src->mlx_window && src->mlx_pointer)
 		mlx_destroy_window(src->mlx_pointer, src->mlx_window);
-	if (src->mlx_image && src->mlx_pointer)
-		mlx_destroy_image(src->mlx_pointer, src->mlx_image);
 	if (src->mlx_pointer)
 	{
 		mlx_destroy_display(src->mlx_pointer);

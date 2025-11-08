@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_secound_parsing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 04:49:54 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/07 21:07:07 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void	fill_textures(t_source *src, char *var, char *value)
 {
 	if (!ft_strcmp(var, "NO"))
-		src->no_tex.path = value;
+		src->no_tex.path = ft_strdup(value, 0);
 	if (!ft_strcmp(var, "SO"))
-		src->sud_tex.path = value;
+		src->sud_tex.path = ft_strdup(value, 0);
 	if (!ft_strcmp(var, "EA"))
-		src->est_tex.path = value;
+		src->est_tex.path = ft_strdup(value, 0);
 	if (!ft_strcmp(var, "WE"))
-		src->west_tex.path = value;
+		src->west_tex.path = ft_strdup(value, 0);
 	if (!ft_strcmp(var, "DR"))
-		src->doors_tex.path = value;
+		src->doors_tex.path = ft_strdup(value, 0);
 }
 
 void	ft_fill_mlx_ptr(t_source *src)
 {
 	t_source	*tmp;
 
-	tmp = src;
-	while (tmp && tmp->mlx_pointer && src->mlx_pointer)
+	tmp = src->next;
+	while (tmp)
 	{
 		tmp->mlx_pointer = src->mlx_pointer;
 		tmp = tmp->next;
@@ -42,9 +42,11 @@ void	ft_sec_parsing(t_source *src)
 {
 	int			width_img;
 	int			height_img;
+	void		*temp_img;
 	t_source	*curr;
 
-	1 & (width_img = WIDTH, height_img = HEIGHT);
+	width_img = WIDTH;
+	height_img = HEIGHT;
 	ft_fill_mlx_ptr(src);
 	curr = src;
 	while (curr)
@@ -54,13 +56,12 @@ void	ft_sec_parsing(t_source *src)
 				|| !ft_strcmp(curr->var, "WE") || !ft_strcmp(curr->var, "EA")
 				|| !ft_strcmp(curr->var, "DR")))
 		{
-			curr->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
+			temp_img = mlx_xpm_file_to_image(src->mlx_pointer,
 					curr->value, &width_img, &height_img);
-			if (!src->mlx_image)
+			if (!temp_img)
 				return (print_message(12, NULL, '\0'),
-					ft_free_mlx(src), malloc_cl(0, 1), (void) NULL);
-			if (curr->mlx_image && src->mlx_pointer)
-				mlx_destroy_image(src->mlx_pointer, curr->mlx_image);
+					ft_free_mlx(src), malloc_cl(0, 1), exit(1));
+			mlx_destroy_image(src->mlx_pointer, temp_img);
 			fill_textures(src, curr->var, curr->value);
 		}
 		curr = curr->next;

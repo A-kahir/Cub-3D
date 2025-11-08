@@ -236,7 +236,7 @@ int			ft_check_spaces_zone(t_source *src, int i, int l, int len_i);
 int			ft_valid_char_rows(t_source *src, int i, int len_j);
 void		ft_free_mlx(t_source *src);
 char		*ft_itoa(int n);
-void		*ft_calloc(size_t count, size_t size);
+void		ft_bzero(void *s, size_t n);
 //init data
 void		init_player(t_source *src);
 void		init_text(t_source *src);

@@ -30,10 +30,11 @@ static void	*ft_allocate(size_t size, t_leaks **head)
 	void		*ptr;
 	t_leaks		*new_node;
 
-	ptr = calloc(1, size);
+	ptr = malloc(size);
 	if (!ptr)
 		return (NULL);
-	new_node = calloc(1, sizeof(t_leaks));
+	ft_bzero(ptr, size);
+	new_node = malloc(sizeof(t_leaks));
 	if (!new_node)
 	{
 		free(ptr);
@@ -52,7 +53,8 @@ void	*malloc_cl(size_t size, t_mal mode)
 	if (mode == 1)
 	{
 		free_leaks_list(&node);
-		return (exit(1), NULL);
+		node = NULL;
+		exit(0);
 	}
 	return (ft_allocate(size, &node));
 }
