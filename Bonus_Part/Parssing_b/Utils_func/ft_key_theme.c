@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 04:40:20 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/10 02:49:19 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,50 @@
 
 int	mouse_move(int x, int y, t_source *src)
 {
-	static int	last_x;
 	int			delta_x;
-	double		rot_sped;
+	double		rot_speed;
 
-	last_x = -1;
-	if (last_x == -1)
+	(void) y;
+	if (src->mouse_last_x == -1)
 	{
-		last_x = x;
-		last_x = y;
+		src->mouse_last_x = x;
+		return (0);
 	}
-	delta_x = x - last_x;
-	rot_sped = src->frame_time * 3.0;
-	norm_mouse(src, rot_sped, delta_x);
-	last_x = x;
+	delta_x = x - src->mouse_last_x;
+	if (delta_x == 0)
+	{
+		src->mouse_last_x = x;
+		return (0);
+	}
+	rot_speed = src->frame_time * 3.0;
+	norm_mouse(src, rot_speed, delta_x);
+	src->mouse_last_x = x;
 	return (0);
 }
 
-int	key_events(int key, t_source *src)
+int	key_2event(int key, t_source *src)
 {
-	double	move_speed;
-	double	rot_speed;
-
-	move_speed = src->frame_time * 5.0;
-	rot_speed = src->frame_time * 3.0;
-	if (key == 65307)
-	{
-		ft_free_mlx(src);
-		malloc_cl(0, 1);
-		exit(0);
-	}
-	norm_keys2(key, src, move_speed);
-	norm_keys1(key, src, move_speed);
-	norm_key_fleche(key, src, rot_speed);
 	key_animation(key, src);
 	norm_key3(key, src);
 	return (0);
 }
 
-int	key_press(int key, t_source *src)
+int	key_events(t_source *src)
 {
 	double	move_speed;
 	double	rot_speed;
 
 	move_speed = src->frame_time * 5.0;
 	rot_speed = src->frame_time * 3.0;
-	if (key == 53)
+	if (src->keys.esc)
 	{
 		ft_free_mlx(src);
 		malloc_cl(0, 1);
 		exit(0);
 	}
-	norm_keys2(key, src, move_speed);
-	norm_keys1(key, src, move_speed);
-	norm_key_fleche(key, src, rot_speed);
-	key_animation(key, src);
-	if (key == 49)
-		norm_key3(key, src);
+	norm_keys2(src, move_speed);
+	norm_keys1(src, move_speed);
+	norm_key_fleche(src, rot_speed);
 	return (0);
 }
 
@@ -90,13 +77,13 @@ int	ft_key_loading(int key, t_source *src)
 		src->map_w = get_map_width(src->map);
 		src->old_time = get_time();
 		src->frame_time = 0.0;
+		init_keys(src);
 		src->render_image = mlx_new_image(src->mlx_pointer,
 				WIDTH, HEIGHT);
 		if (!src->render_image)
 			return (1);
-		mlx_hook(src->mlx_window, 2, 1L << 0, key_events, src);
-		mlx_hook(src->mlx_window, 3, 1L << 1, key_events, src);
-		mlx_hook(src->mlx_window, 6, 1L << 6, mouse_move, src);
+		mlx_hook(src->mlx_window, 2, 1L << 0, key_press, src);
+		mlx_hook(src->mlx_window, 3, 1L << 1, key_release, src);
 		mlx_loop_hook(src->mlx_pointer, render_frame, src);
 	}
 	return (0);
@@ -107,7 +94,7 @@ int	ft_key_theme_b(int key, t_source *src)
 	int	w;
 	int	h;
 
-	1 && (w = WIDTH, h = HEIGHT);
+	1 & (w = WIDTH, h = HEIGHT);
 	if (key == 49 || key == 50)
 	{
 		ft_sec_parsing(src);

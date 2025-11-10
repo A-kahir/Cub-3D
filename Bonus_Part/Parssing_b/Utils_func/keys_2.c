@@ -3,52 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   keys_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 05:02:52 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/08 04:40:37 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/10 01:47:51 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
 
-void	norm_mouse1(t_source *src, double rot_speed, int delta_x)
+void	handle_mouse_polling(t_source *src)
 {
-	double		old_d;
-	double		old_p;
+	int	current_x;
+	int	current_y;
 
-	old_d = src->p->dir_x;
-	src->p->dir_x = old_d * cos(-rot_speed * (-delta_x) * 0.0005)
-		- src->p->dir_y * sin(-rot_speed * (-delta_x) * 0.0005);
-	src->p->dir_y = old_d * sin(-rot_speed * (-delta_x) * 0.0005)
-		+ src->p->dir_y * cos(-rot_speed * (-delta_x) * 0.0005);
-	old_p = src->p->plan_x;
-	src->p->plan_x = old_p * cos(-rot_speed * (-delta_x) * 0.0005)
-		- src->p->plan_y * sin(-rot_speed * (-delta_x) * 0.0005);
-	src->p->plan_y = old_p * sin(-rot_speed * (-delta_x) * 0.0005)
-		+ src->p->plan_y * cos(-rot_speed * (-delta_x) * 0.0005);
+	mlx_mouse_get_pos(src->mlx_pointer, src->mlx_window,
+		&current_x, &current_y);
+	mouse_move(current_x, current_y, src);
 }
 
 void	norm_mouse(t_source *src, double rot_speed, int delta_x)
 {
-	double		old_d;
-	double		old_p;
+	double	angle;
+	double	old_dir_x;
+	double	old_plan_x;
 
-	if (delta_x > 0)
-	{
-		old_d = src->p->dir_x;
-		src->p->dir_x = old_d * cos(rot_speed * delta_x * 0.0005)
-			- src->p->dir_y * sin(rot_speed * delta_x * 0.0005);
-		src->p->dir_y = old_d * sin(rot_speed * delta_x * 0.0005)
-			+ src->p->dir_y * cos(rot_speed * delta_x * 0.0005);
-		old_p = src->p->plan_x;
-		src->p->plan_x = old_p * cos(rot_speed * delta_x * 0.0005)
-			- src->p->plan_y * sin(rot_speed * delta_x * 0.0005);
-		src->p->plan_y = old_p * sin(rot_speed * delta_x * 0.0005)
-			+ src->p->plan_y * cos(rot_speed * delta_x * 0.0005);
-	}
-	else if (delta_x < 0)
-		norm_mouse1(src, rot_speed, delta_x);
+	angle = rot_speed * delta_x * 0.003;
+	old_dir_x = src->p->dir_x;
+	src->p->dir_x = old_dir_x * cos(angle) - src->p->dir_y * sin(angle);
+	src->p->dir_y = old_dir_x * sin(angle) + src->p->dir_y * cos(angle);
+	old_plan_x = src->p->plan_x;
+	src->p->plan_x = old_plan_x * cos(angle) - src->p->plan_y * sin(angle);
+	src->p->plan_y = old_plan_x * sin(angle) + src->p->plan_y * cos(angle);
 }
 
 static char	*ft_get_sprite_path(int i, int flag)

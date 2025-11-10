@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/07 04:37:17 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/10 02:38:08 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	render_frame(t_source *src)
 	double		time;
 	int			params[4];
 
+	key_events(src);
+	handle_mouse_polling(src);
 	norm_render(src, &i, &time);
 	ray = malloc_cl(sizeof(t_raycast), 0);
 	if (!ray)

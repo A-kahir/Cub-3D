@@ -6,18 +6,18 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 02:11:04 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/04 16:28:54 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/10 02:37:20 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
 
-void	norm_key_fleche(int key, t_source *src, double r_speed)
+void	norm_key_fleche(t_source *src, double r_speed)
 {
 	double	old_d;
 	double	old_p;
 
-	if (key == 65361)
+	if (src->keys.left)
 	{
 		old_d = src->p->dir_x;
 		src->p->dir_x = src->p->dir_x * cos(-r_speed)
@@ -27,7 +27,7 @@ void	norm_key_fleche(int key, t_source *src, double r_speed)
 		src->p->plan_x = old_p * cos(-r_speed) - src->p->plan_y * sin(-r_speed);
 		src->p->plan_y = old_p * sin(-r_speed) + src->p->plan_y * cos(-r_speed);
 	}
-	if (key == 65363)
+	if (src->keys.right)
 	{
 		old_d = src->p->dir_x;
 		src->p->dir_x = old_d * cos(r_speed) - src->p->dir_y * sin(r_speed);
@@ -58,12 +58,12 @@ int	can_pass(t_source *src, int x, int y)
 	return (1);
 }
 
-void	norm_keys2(int key, t_source *src, double move_speed)
+void	norm_keys2(t_source *src, double move_speed)
 {
 	double	newx;
 	double	newy;
 
-	if (key == 119)
+	if (src->keys.w)
 	{
 		newx = src->p->p_px + src->p->dir_x * move_speed;
 		newy = src->p->p_py + src->p->dir_y * move_speed;
@@ -74,7 +74,7 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 			src->p->p_py = newy;
 		}
 	}
-	if (key == 97)
+	if (src->keys.a)
 	{
 		newx = src->p->p_px - src->p->plan_x * move_speed;
 		newy = src->p->p_py - src->p->plan_y * move_speed;
@@ -87,12 +87,12 @@ void	norm_keys2(int key, t_source *src, double move_speed)
 	}
 }
 
-void	norm_keys1(int key, t_source *src, double move_speed)
+void	norm_keys1(t_source *src, double move_speed)
 {
 	double	newx;
 	double	newy;
 
-	if (key == 115)
+	if (src->keys.s)
 	{
 		newx = src->p->p_px - src->p->dir_x * move_speed;
 		newy = src->p->p_py - src->p->dir_y * move_speed;
@@ -103,7 +103,7 @@ void	norm_keys1(int key, t_source *src, double move_speed)
 			src->p->p_py = newy;
 		}
 	}
-	if (key == 100)
+	if (src->keys.d)
 	{
 		newx = src->p->p_px + src->p->plan_x * move_speed;
 		newy = src->p->p_py + src->p->plan_y * move_speed;

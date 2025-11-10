@@ -137,6 +137,17 @@ typedef struct s_chars
 	int			dr;
 }	t_chars;
 
+typedef struct s_keys
+{
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		left;
+	int		right;
+	int		esc;
+}	t_keys;
+
 typedef struct s_sp_infos
 {
 	int		h;
@@ -189,11 +200,14 @@ typedef struct s_source
 	t_doors			*door;
 	t_pixel			pi;
 	t_raycast		*ray;
+	t_keys			keys;
 	t_minimp		*mmp;
 	int				color;
+	int				mouse_last_x;
 	struct s_source	*next;
 }	t_source;
 
+void	handle_mouse_polling(t_source *src);
 //principale func:
 int			ft_parsing(int argc, char **argv);
 t_source	*ft_get_source(t_source *src, char *file);
@@ -271,13 +285,17 @@ void		norm_render(t_source *src, int *i, double *time);
 long		get_time(void);
 
 //keys
-int			key_events(int key, t_source *src);
-void		norm_keys2(int key, t_source *src, double move_speed);
-void		norm_keys1(int key, t_source *src, double move_speed);
-void		norm_key_fleche(int key, t_source *src, double r_speed);
+void		init_keys(t_source *src);
+int			mouse_move(int x, int y, t_source *src);
+int			key_events(t_source *src);
+void		norm_keys2(t_source *src, double move_speed);
+void		norm_keys1(t_source *src, double move_speed);
+void		norm_key_fleche(t_source *src, double r_speed);
 void		norm_mouse(t_source *src, double rot_speed, int delta_x);
 void		norm_key3(int key, t_source *src);
 int			handle_close(t_source *src);
+int			key_press(int key, t_source *src);
+int			key_release(int key, t_source *src);
 // Bonus func :
 //
 int			ft_mini_map(t_source *src);
