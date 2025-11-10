@@ -51,20 +51,6 @@ typedef struct s_colors
 	unsigned int	hexa_rgb_c;
 }	t_colors;
 
-typedef struct s_minimp
-{
-	int	view;
-	int	mini_size;
-	int	left_off;
-	int	top_off;
-	int	start_x;
-	int	end_x;
-	int	start_y;
-	int	end_y;
-	int	map_width;
-	int	map_height;
-}	t_minimp;
-
 typedef struct s_raycast
 {
 	double	camera_x;
@@ -82,7 +68,6 @@ typedef struct s_raycast
 	int		side;
 	double	perpwalldis;
 	int		wall_dir;
-	int		door_id;
 	int		tex_x;
 }	t_raycast;
 
@@ -103,6 +88,17 @@ typedef struct s_player
 	char		p_or;
 }	t_player;
 
+typedef struct s_keys
+{
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		left;
+	int		right;
+	int		esc;
+}	t_keys;
+
 typedef struct s_texture
 {
 	void	*image;
@@ -114,17 +110,6 @@ typedef struct s_texture
 	int		line_len;
 	int		endian;
 }	t_tex;
-
-typedef struct s_doors
-{
-	int				index;
-	int				x;
-	int				y;
-	int				etat;
-	double			p_ouvert;
-	double			timer;
-	struct s_doors	*next;
-}	t_doors;
 
 typedef struct s_chars
 {
@@ -155,7 +140,6 @@ typedef struct s_wall_draw
 	int		lineheight;
 	int		drawing;
 	int		tex_x;
-	double	p_ouvert;
 	t_tex	*tex;
 
 }	t_wall_draw;
@@ -182,12 +166,10 @@ typedef struct s_source
 	t_tex			sud_tex;
 	t_tex			est_tex;
 	t_tex			west_tex;
-	t_tex			doors_tex;
 	t_colors		*colors;
 	t_player		*p;
-	t_doors			*door;
 	t_raycast		*ray;
-	t_minimp		*mmp;
+	t_keys			keys;
 	int				color;
 	struct s_source	*next;
 }	t_source;
@@ -268,14 +250,15 @@ int			render_frame(t_source *src);
 long		get_time(void);
 
 //keys
-int			key_events(int key, t_source *src);
-void		norm_keys2(int key, t_source *src, double move_speed);
-void		norm_keys1(int key, t_source *src, double move_speed);
-void		norm_key_fleche(int key, t_source *src, double r_speed);
-
+int			key_events(t_source *src);
+void		norm_keys2(t_source *src, double move_speed);
+void		norm_keys1(t_source *src, double move_speed);
+void		norm_key_fleche(t_source *src, double r_speed);
+int			key_press(int key, t_source *src);
 int			ft_check_player(t_source *src);
 t_source	*ft_read_lines(int fd, t_source *src);
 int			ft_check_up_bottom_valid_chars(t_source *src, int len_j);
 void		dda_norm(t_raycast *ray);
 void		dda_norm(t_raycast *ray);
+
 #endif

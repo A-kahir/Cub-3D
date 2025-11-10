@@ -28,7 +28,7 @@ static void	*ft_open_mlx_window(t_source *src)
 		return (write(2, "mlx image failed11\n", 19), NULL);
 	mlx_put_image_to_window(src->mlx_pointer,
 		src->mlx_window, src->mlx_image, 0, 0);
-	mlx_key_hook(src->mlx_window, ft_key_theme_b, src);
+	mlx_hook(src->mlx_window, 2, (1L << 0), ft_key_theme_b, src);
 	return (src->mlx_pointer);
 }
 

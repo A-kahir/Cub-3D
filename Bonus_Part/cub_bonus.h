@@ -207,13 +207,14 @@ typedef struct s_source
 	struct s_source	*next;
 }	t_source;
 
-void	handle_mouse_polling(t_source *src);
 //principale func:
+
 int			ft_parsing(int argc, char **argv);
 t_source	*ft_get_source(t_source *src, char *file);
 void		ft_is_hell(t_source *src);
 
 //Utils func:
+
 void		print_message(int flag, char *arg, char ch);
 char		*ft_get_next_line(int fd);
 int			ft_chack_valid_source(t_source *src, char *str);
@@ -231,6 +232,7 @@ int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
 int			ft_stop_reading(t_source *src);
 //Libft utils:
+
 void		*malloc_cl(size_t size, t_mal mode);
 int			ft_strcmp(char *s1, char *s2);
 char		*ft_strdup(char *s1);
@@ -253,10 +255,11 @@ void		ft_free_mlx(t_source *src);
 char		*ft_itoa(int n);
 void		ft_bzero(void *s, size_t n);
 //init data
+
 void		init_player(t_source *src);
 void		init_text(t_source *src);
-
 // drawing
+
 void		init_wall_params(t_wall_draw *w, int params[4], t_source *src);
 double		get_door_opening(t_source *src);
 int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
@@ -264,6 +267,7 @@ int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
 void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,
 				t_tex *tex);
 //utils raycasting
+
 int			get_map_height(char **map);
 int			get_map_width(char **map);
 void		my_put_pixel(char *data, t_source *src, t_pixel p, int color);
@@ -276,8 +280,8 @@ void		calculate_draw_limits(int lineheight,
 				int *draw_start, int *draw_end);
 t_tex		*select_texture(t_source *src, t_raycast *ray);
 int			calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex);
-
 // rendering floor celling
+
 int			render_frame(t_source *src);
 void		norm_render(t_source *src, int *i, double *time);
 
@@ -295,7 +299,7 @@ void		norm_mouse(t_source *src, double rot_speed, int delta_x);
 void		norm_key3(int key, t_source *src);
 int			handle_close(t_source *src);
 int			key_press(int key, t_source *src);
-int			key_release(int key, t_source *src);
+void		handle_mouse(t_source *src);
 // Bonus func :
 //
 int			ft_mini_map(t_source *src);
@@ -323,5 +327,5 @@ t_source	*ft_read_lines(int fd, t_source *src);
 int			key_animation(int key, t_source *src);
 int			ft_check_up_bottom_valid_chars(t_source *src, int len_j);
 void		dda_norm(t_raycast *ray);
-//drawing 
+
 #endif

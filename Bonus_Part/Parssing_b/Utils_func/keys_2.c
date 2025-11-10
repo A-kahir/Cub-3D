@@ -6,13 +6,13 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 05:02:52 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/10 01:47:51 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/10 20:09:47 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
 
-void	handle_mouse_polling(t_source *src)
+void	handle_mouse(t_source *src)
 {
 	int	current_x;
 	int	current_y;
@@ -28,7 +28,7 @@ void	norm_mouse(t_source *src, double rot_speed, int delta_x)
 	double	old_dir_x;
 	double	old_plan_x;
 
-	angle = rot_speed * delta_x * 0.003;
+	angle = rot_speed * delta_x * 0.002;
 	old_dir_x = src->p->dir_x;
 	src->p->dir_x = old_dir_x * cos(angle) - src->p->dir_y * sin(angle);
 	src->p->dir_y = old_dir_x * sin(angle) + src->p->dir_y * cos(angle);

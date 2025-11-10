@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/10 02:49:19 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/10 23:33:33 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ int	mouse_move(int x, int y, t_source *src)
 	return (0);
 }
 
-int	key_2event(int key, t_source *src)
-{
-	key_animation(key, src);
-	norm_key3(key, src);
-	return (0);
-}
-
 int	key_events(t_source *src)
 {
 	double	move_speed;
@@ -55,9 +48,12 @@ int	key_events(t_source *src)
 		malloc_cl(0, 1);
 		exit(0);
 	}
-	norm_keys2(src, move_speed);
-	norm_keys1(src, move_speed);
-	norm_key_fleche(src, rot_speed);
+	if (src->keys.a || src->keys.w)
+		norm_keys2(src, move_speed);
+	if (src->keys.s || src->keys.d)
+		norm_keys1(src, move_speed);
+	if (src->keys.right || src->keys.left)
+		norm_key_fleche(src, rot_speed);
 	return (0);
 }
 
@@ -82,8 +78,7 @@ int	ft_key_loading(int key, t_source *src)
 				WIDTH, HEIGHT);
 		if (!src->render_image)
 			return (1);
-		mlx_hook(src->mlx_window, 2, 1L << 0, key_press, src);
-		mlx_hook(src->mlx_window, 3, 1L << 1, key_release, src);
+		mlx_hook(src->mlx_window, 2, (1L << 1), key_press, src);
 		mlx_loop_hook(src->mlx_pointer, render_frame, src);
 	}
 	return (0);
@@ -113,7 +108,7 @@ int	ft_key_theme_b(int key, t_source *src)
 		else
 			(write(2, "mlx image failed\n", 18),
 				ft_free_mlx(src), malloc_cl(0, 2));
-		mlx_key_hook(src->mlx_window, ft_key_loading, src);
+		mlx_hook(src->mlx_window, 2, (1L << 0), ft_key_loading, src);
 	}
 	return (1);
 }

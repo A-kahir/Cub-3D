@@ -54,6 +54,7 @@ UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/ft_secound_parsing.c \
 	Mandatory_Part/Parssing/Utils_func/ft_add_spaces_in_map.c \
 	Mandatory_Part/Parssing/Utils_func/keys.c \
+	Mandatory_Part/Parssing/Utils_func/keys_utils.c \
 	Mandatory_Part/Parssing/Utils_func/ft_lenght_j.c \
 	Mandatory_Part/Parssing/Utils_func/ft_static_flag.c \
 	Mandatory_Part/Parssing/Utils_func/ft_check_player.c \

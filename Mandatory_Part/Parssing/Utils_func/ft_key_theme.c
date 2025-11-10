@@ -3,30 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 16:24:19 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/10 23:51:10 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_mand.h"
 
-int	key_events(int key, t_source *src)
+int	key_events(t_source *src)
 {
 	double	move_speed;
 	double	rot_speed;
 
 	move_speed = src->frame_time * 5.0;
 	rot_speed = src->frame_time * 3.0;
-	if (key == 65307)
+	if (src->keys.esc)
 	{
 		ft_free_mlx(src);
 		malloc_cl(0, 1);
+		exit(0);
 	}
-	norm_keys2(key, src, move_speed);
-	norm_keys1(key, src, move_speed);
-	norm_key_fleche(key, src, rot_speed);
+	if (src->keys.a || src->keys.w)
+		norm_keys2(src, move_speed);
+	if (src->keys.s || src->keys.d)
+		norm_keys1(src, move_speed);
+	if (src->keys.right || src->keys.left)
+		norm_key_fleche(src, rot_speed);
 	return (0);
 }
 
@@ -57,9 +61,7 @@ int	ft_key_loading(int key, t_source *src)
 				WIDTH, HEIGHT);
 		if (!src->render_image)
 			return (1);
-		mlx_hook(src->mlx_window, 2, 1L << 0, key_events, src);
-		mlx_hook(src->mlx_window, 3, 1L << 1, key_events, src);
-		mlx_hook(src->mlx_window, 17, 0, handle_close, src);
+		mlx_hook(src->mlx_window, 2, (1L << 1), key_press, src);
 		mlx_loop_hook(src->mlx_pointer, render_frame, src);
 	}
 	return (0);
@@ -75,7 +77,7 @@ int	ft_key_theme_b(t_source *src)
 	ft_sec_parsing(src);
 	if (src->mlx_pointer)
 		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
-			"Mandatory_Part/Parssing/texture/keyboard.xpm", &w, &h);
+				"Mandatory_Part/Parssing/texture/keyboard.xpm", &w, &h);
 	if (src->mlx_image)
 		mlx_put_image_to_window(src->mlx_pointer,
 			src->mlx_window, src->mlx_image, 0, 0);
@@ -84,6 +86,6 @@ int	ft_key_theme_b(t_source *src)
 		return (perror("mlx failed"), ft_free_mlx(src),
 			malloc_cl(0, 2), -1);
 	}
-	mlx_key_hook(src->mlx_window, ft_key_loading, src);
+	mlx_hook(src->mlx_window, 2, (1L << 0), ft_key_loading, src);
 	return (1);
 }
