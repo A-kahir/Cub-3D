@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 04:42:11 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/11 18:16:25 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ static int	ft_fill_struct_colors(t_source *src, char **colors_rgb)
 	return (0);
 }
 
+int	norm_hexa(t_source *curr, char **colors_rgb)
+{
+	if (!colors_rgb || !colors_rgb[0] || !colors_rgb[1]
+		|| !colors_rgb[2] || colors_rgb[3] != NULL
+		|| curr->value[ft_strlen(curr->value) - 1] == ',')
+		return (print_message(11, NULL, '\0'), malloc_cl(0, 2), -1);
+	return (0);
+}
+
 static int	ft_prepare_hexa_rgb(t_source *curr)
 {
 	char	**colors_rgb;
@@ -44,10 +53,8 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 		if ((check[i] == ',' && check[i + 1] == ',') || check[0] == ',')
 			return (print_message(11, NULL, '\0'), malloc_cl(0, 2), -1);
 	colors_rgb = ft_split(curr->value, ',');
-	if (!colors_rgb || !colors_rgb[0] || !colors_rgb[1]
-		|| !colors_rgb[2] || colors_rgb[3] != NULL
-		|| curr->value[ft_strlen(curr->value) - 1] == ',')
-		return (print_message(11, NULL, '\0'), malloc_cl(0, 2), -1);
+	if (norm_hexa(curr, colors_rgb) == -1)
+		return (-1);
 	i = -1;
 	while (colors_rgb[++i])
 	{

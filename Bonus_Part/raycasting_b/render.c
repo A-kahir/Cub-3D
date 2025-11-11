@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/10 23:41:37 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/11 20:03:05 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,15 +92,15 @@ int	render_frame(t_source *src)
 	keys(src, &i, &time);
 	ray = malloc_cl(sizeof(t_raycast), 0);
 	if (!ray)
-		return (1);
+		return (ft_free_mlx(src), malloc_cl(0, 2), -1);
 	if (!src->render_image)
 		return (0);
 	src->ray = ray;
 	data = mlx_get_data_addr(src->render_image, &src->bpp,
 			&src->line_len, &src->endian);
 	if (!data)
-		return (0);
-	memset(data, 0, WIDTH * HEIGHT * (src->bpp / 8));
+		return (ft_free_mlx(src), malloc_cl(0, 2), -1);
+	ft_memset(data, 0, WIDTH * HEIGHT * (src->bpp / 8));
 	render_cell_floor(src, data);
 	while (++i < WIDTH)
 		process_column(src, data, i, params);

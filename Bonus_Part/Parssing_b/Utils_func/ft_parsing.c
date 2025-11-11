@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:04 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 04:37:42 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/11 18:05:44 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void	norm_render(t_source *src, int *i, double *time)
 {
 	*i = -1;
 	*time = get_time();
+	if (*time == -1)
+	{
+		ft_free_mlx(src);
+		malloc_cl(0, 2);
+	}
 	src->frame_time = (*time - src->old_time) / 1000;
 	if (src->frame_time == 0)
 		src->frame_time = 0.0001;

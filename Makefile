@@ -19,7 +19,8 @@ LIBFT_SRC = \
 	Mandatory_Part/Parssing/Libft_utils/ft_strstr.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_free_mlx.c \
 	Mandatory_Part/Parssing/Libft_utils/ft_itoa.c \
-	Mandatory_Part/Parssing/Libft_utils/ft_bzero.c
+	Mandatory_Part/Parssing/Libft_utils/ft_bzero.c \
+	Mandatory_Part/Parssing/Libft_utils/ft_memset.c
 
 LIBFT_SRCB = \
 	Bonus_Part/Parssing_b/Libft_utils/alloc.c \
@@ -36,7 +37,8 @@ LIBFT_SRCB = \
 	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_free_mlx.c \
 	Bonus_Part/Parssing_b/Libft_utils/ft_itoa.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_bzero.c
+	Bonus_Part/Parssing_b/Libft_utils/ft_bzero.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_memset.c
 
 UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/print_messages.c \

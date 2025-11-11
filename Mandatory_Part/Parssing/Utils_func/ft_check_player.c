@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 18:26:54 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/03 22:46:30 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/11 17:49:00 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_source	*ft_get_source(t_source *src, char *file)
 		return (perror("open"), NULL);
 	src = ft_read_lines(fd, src);
 	if (ft_check_before_map(src) == -1)
-		return (print_message(5, NULL, '\0'), NULL);
+		return (print_message(5, NULL, '\0'), close(fd), NULL);
 	if (ft_fill_the_map(fd, src) == NULL || ft_check_player(src) == -1)
-		return (NULL);
+		return (close(fd),NULL);
 	return (close(fd), src);
 }

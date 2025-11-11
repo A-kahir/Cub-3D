@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_the_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/31 17:40:03 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/11 19:15:42 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ static int	ft_add_line(t_source *src, char *line, int i)
 	return (i);
 }
 
+static int	ft_is_empty_line(char *line)
+{
+	if (!line)
+		return (1);
+	int i = 0;
+	while (line[i])
+	{
+		if (line[i] != '\n' && line[i] != '\r')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static int	ft_read_map_lines(int fd, t_source *src, char **line)
 {
 	int	i;
@@ -48,7 +62,7 @@ static int	ft_read_map_lines(int fd, t_source *src, char **line)
 	i = 0;
 	while (*line)
 	{
-		if ((*line)[0] == '\n' || (*line)[0] == '\0')
+		if (ft_is_empty_line(*line))
 			break ;
 		i = ft_add_line(src, *line, i);
 		if (i < 0)
@@ -65,7 +79,7 @@ void	*ft_fill_the_map(int fd, t_source *src)
 
 	src->map = NULL;
 	line = ft_get_next_line(fd);
-	while (line && (line[0] == '\n' || line[0] == '\0'))
+	while (line && (line[0] == '\n' || line[0] == '\0' || line[0] == '\r'))
 		line = ft_get_next_line(fd);
 	i = ft_read_map_lines(fd, src, &line);
 	if (i < 0)

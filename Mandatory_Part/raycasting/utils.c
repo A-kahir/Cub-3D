@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 03:58:42 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/03 00:00:33 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/11 16:57:31 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_map_width(char **map)
 	i = 0;
 	while (map[i])
 	{
-		len = strlen(map[i]);
+		len = ft_strlen(map[i]);
 		if (len > max_w)
 			max_w = len;
 		i++;

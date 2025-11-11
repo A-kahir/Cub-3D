@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/10 23:33:33 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/11 18:10:28 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	ft_key_loading(int key, t_source *src)
 		src->map_h = get_map_height(src->map);
 		src->map_w = get_map_width(src->map);
 		src->old_time = get_time();
+		if (src->old_time == -1)
+			return (ft_free_mlx(src), malloc_cl(0, 2), -1);
 		src->frame_time = 0.0;
 		init_keys(src);
 		src->render_image = mlx_new_image(src->mlx_pointer,
@@ -89,7 +91,7 @@ int	ft_key_theme_b(int key, t_source *src)
 	int	w;
 	int	h;
 
-	1 & (w = WIDTH, h = HEIGHT);
+	1 && (w = WIDTH, h = HEIGHT);
 	if (key == 49 || key == 50)
 	{
 		ft_sec_parsing(src);

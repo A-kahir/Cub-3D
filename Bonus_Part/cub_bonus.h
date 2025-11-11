@@ -254,6 +254,7 @@ int			ft_valid_char_rows(t_source *src, int i, int len_j);
 void		ft_free_mlx(t_source *src);
 char		*ft_itoa(int n);
 void		ft_bzero(void *s, size_t n);
+void		*ft_memset(void *b, int c, size_t len);
 //init data
 
 void		init_player(t_source *src);

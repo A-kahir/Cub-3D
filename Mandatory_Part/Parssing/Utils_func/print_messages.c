@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:19 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/08 16:32:43 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/11 18:15:17 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	print_message(int flag, char *arg, char ch)
 
 	if (flag_error == 0)
 	{
-		write(2, "Error : ", 9);
+		write(2, "Error :\n", 9);
 		flag_error = 1;
 	}
 	if (flag == 0)
