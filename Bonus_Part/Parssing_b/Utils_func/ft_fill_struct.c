@@ -91,7 +91,8 @@ t_source	*ft_fill_struct(t_source *src, char *line)
 	if (!value || !value[0])
 		return (NULL);
 	if (var && (!ft_strncmp(var[0], "NO", 2) || !ft_strncmp(var[0], "SO", 2)
-			|| !ft_strncmp(var[0], "WE", 2) || !ft_strncmp(var[0], "EA", 2)))
+			|| !ft_strncmp(var[0], "WE", 2) || !ft_strncmp(var[0], "EA", 2)
+            || !ft_strncmp(var[0], "DR", 2)))
 		src = ft_add_back(src, var[0], value);
 	else if (!ft_strcmp(var[0], "F") || !ft_strcmp(var[0], "C"))
 		src = ft_handle_rgb(src, var);
