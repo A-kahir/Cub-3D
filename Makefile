@@ -23,22 +23,22 @@ LIBFT_SRC = \
 	Mandatory_Part/Parssing/Libft_utils/ft_memset.c
 
 LIBFT_SRCB = \
-	Bonus_Part/Parssing_b/Libft_utils/alloc.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strcmp.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strdup.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strchr.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strjoin.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strlen.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strncmp.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_add_back.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_split.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_atoi.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_is_spaces.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_strstr.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_free_mlx.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_itoa.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_bzero.c \
-	Bonus_Part/Parssing_b/Libft_utils/ft_memset.c
+	Bonus_Part/Parssing_b/Libft_utils/alloc_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strcmp_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strdup_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strchr_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strjoin_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strlen_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strncmp_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_add_back_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_split_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_atoi_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_is_spaces_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_strstr_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_free_mlx_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_itoa_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_bzero_bonus.c \
+	Bonus_Part/Parssing_b/Libft_utils/ft_memset_bonus.c
 
 UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/print_messages.c \
@@ -63,32 +63,32 @@ UTILS_SRC = \
 	Mandatory_Part/Parssing/Utils_func/ft_check_but.c
 
 UTILS_SRC_B = \
-	Bonus_Part/Parssing_b/Utils_func/print_messages.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_get_next_line.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_check_valid_source.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_fill_struct.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_fill_the_map.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_check_before_map.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_parsing.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_get_source.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_parse_map.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_parse_map2.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_parse_map3.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_key_theme.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_secound_parsing.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_add_spaces_in_map.c \
-	Bonus_Part/Parssing_b/Utils_func/keys.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_lenght_j.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_is_hell.c \
+	Bonus_Part/Parssing_b/Utils_func/print_messages_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_get_next_line_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_check_valid_source_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_fill_struct_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_fill_the_map_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_check_before_map_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_parsing_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_get_source_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_parse_map_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_parse_map2_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_parse_map3_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_key_theme_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_secound_parsing_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_add_spaces_in_map_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/keys_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_lenght_j_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_is_hell_bonus.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_mini_map_bonus.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_mini_map_conditions.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_mini_map_conditions_bonus.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_draw_pixels_bonus.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_static_flag.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_static_flag_bonus.c \
 	Bonus_Part/Parssing_b/Utils_func/ft_add_door_bonus.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_check_player.c \
-	Bonus_Part/Parssing_b/Utils_func/keys_2.c \
-	Bonus_Part/Parssing_b/Utils_func/keys_utils.c \
-	Bonus_Part/Parssing_b/Utils_func/ft_check_but.c 
+	Bonus_Part/Parssing_b/Utils_func/ft_check_player_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/keys_2_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/keys_utils_bonus.c \
+	Bonus_Part/Parssing_b/Utils_func/ft_check_but_bonus.c 
 
 RAY_FUNC = \
 	Mandatory_Part/raycasting/init_player.c \
@@ -99,13 +99,13 @@ RAY_FUNC = \
 	Mandatory_Part/raycasting/draw.c
 
 RAY_FUNC_B = \
-	Bonus_Part/raycasting_b/init_player.c \
-	Bonus_Part/raycasting_b/init_text.c \
-	Bonus_Part/raycasting_b/raycast.c \
-	Bonus_Part/raycasting_b/utils.c \
-	Bonus_Part/raycasting_b/render.c \
-	Bonus_Part/raycasting_b/doors.c \
-	Bonus_Part/raycasting_b/draw.c
+	Bonus_Part/raycasting_b/init_player_bonus.c \
+	Bonus_Part/raycasting_b/init_text_bonus.c \
+	Bonus_Part/raycasting_b/raycast_bonus.c \
+	Bonus_Part/raycasting_b/utils_bonus.c \
+	Bonus_Part/raycasting_b/render_bonus.c \
+	Bonus_Part/raycasting_b/doors_bonus.c \
+	Bonus_Part/raycasting_b/draw_bonus.c
 
 SRC   = $(PARSER_SRC) $(LIBFT_SRC) $(UTILS_SRC) $(RAY_FUNC)
 SRC_B = $(PARSER_B)   $(LIBFT_SRCB) $(UTILS_SRC_B) $(RAY_FUNC_B)
@@ -117,7 +117,7 @@ MLX_DIR = mlx
 MLX = $(MLX_DIR)/libmlx.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror \
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g\
          -IMandatory_Part/Parssing \
          -IMandatory_Part/Parssing/Libft_utils \
          -IMandatory_Part/Parssing/Utils_func \

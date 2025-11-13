@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_the_map.c                                  :+:      :+:    :+:   */
+/*   ft_fill_the_map_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/11 21:32:42 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/13 22:16:46 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub_bonus.h"
-
 
 static int	ft_add_line(t_source *src, char *line, int i)
 {
@@ -44,9 +43,11 @@ static int	ft_add_line(t_source *src, char *line, int i)
 
 static int	ft_is_empty_line(char *line)
 {
+	int	i;
+
 	if (!line)
 		return (1);
-	int i = 0;
+	i = 0;
 	while (line[i])
 	{
 		if (line[i] != '\n' && line[i] != '\r')
