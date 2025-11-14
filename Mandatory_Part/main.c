@@ -17,6 +17,7 @@ static void	*ft_open_mlx_window(t_source *src)
 	src->mlx_pointer = mlx_init();
 	if (!src->mlx_pointer)
 		return (print_message(3, NULL, '\0'), NULL);
+	ft_sec_parsing(src);
 	src->mlx_window = mlx_new_window(src->mlx_pointer,
 			WIDTH, HEIGHT, "- hell -");
 	if (!src->mlx_window)

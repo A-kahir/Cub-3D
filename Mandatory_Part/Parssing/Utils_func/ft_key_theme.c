@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/11 18:00:37 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:03:28 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	key_events(t_source *src)
 	double	move_speed;
 	double	rot_speed;
 
-	move_speed = src->frame_time * 5.0;
-	rot_speed = src->frame_time * 3.0;
+	move_speed = src->frame_time * 1.0;
+	rot_speed = src->frame_time * 0.5;
 	if (src->keys.esc)
 	{
 		ft_free_mlx(src);
@@ -76,7 +76,6 @@ int	ft_key_theme_b(t_source *src)
 
 	w = WIDTH;
 	h = HEIGHT;
-	ft_sec_parsing(src);
 	if (src->mlx_pointer)
 		src->mlx_image = mlx_xpm_file_to_image(src->mlx_pointer,
 				"Mandatory_Part/Parssing/texture/keyboard.xpm", &w, &h);

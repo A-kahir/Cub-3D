@@ -121,7 +121,6 @@ typedef struct s_doors
 	int				x;
 	int				y;
 	int				etat;
-	double			p_ouvert;
 	double			timer;
 	struct s_doors	*next;
 }	t_doors;
@@ -167,7 +166,6 @@ typedef struct s_wall_draw
 	int		lineheight;
 	int		drawing;
 	int		tex_x;
-	double	p_ouvert;
 	t_tex	*tex;
 
 }	t_wall_draw;
@@ -262,7 +260,6 @@ void		init_text(t_source *src);
 // drawing
 
 void		init_wall_params(t_wall_draw *w, int params[4], t_source *src);
-double		get_door_opening(t_source *src);
 int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
 int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
 void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,

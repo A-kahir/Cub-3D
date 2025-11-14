@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 05:43:49 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/03 18:54:45 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:02:23 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,7 @@ void	init_wall_params(t_wall_draw *w, int params[4], t_source *src)
 	w->draw_end = params[2];
 	w->lineheight = params[3];
 	w->drawing = w->draw_start;
-	w->p_ouvert = 0.0;
 	w->tex_x = calculate_tex_x(src, src->ray, w->tex);
-}
-
-double	get_door_opening(t_source *src)
-{
-	t_doors	*current;
-
-	if (src->ray->wall_dir != 4)
-		return (0.0);
-	current = src->door;
-	while (current && current->index != src->ray->door_id)
-		current = current->next;
-	if (current)
-		return (current->p_ouvert);
-	return (0.0);
 }
 
 int	get_adjusted_tex_x(t_wall_draw *w, t_tex *tex)

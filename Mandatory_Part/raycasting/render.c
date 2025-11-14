@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/11 20:00:28 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:26:11 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	init_time(t_source *src, int *i, double *time)
 		ft_free_mlx(src);
 		malloc_cl(0, 2);
 	}
-		src->frame_time = (*time - src->old_time) / 1000;
+	src->frame_time = (*time - src->old_time) / 1000;
 	if (src->frame_time == 0)
 		src->frame_time = 0.0001;
 	src->old_time = *time;

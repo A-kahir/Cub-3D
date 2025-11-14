@@ -31,46 +31,66 @@ static t_source	*ft_handle_rgb(t_source *src, char **var)
 	return (src);
 }
 
-static char **ft_split_vars(char *line, char ch)
+static char	*ft_fill_key(char *line, char ch)
 {
-    char    **res;
-    int     i;
-    int     j;
+	char	*key;
+	int		i;
+	int		j;
 
-    if (!line)
-        return (NULL);
-    res = malloc_cl(sizeof(char *) * 3, 0);
-    if (!res)
-        return (NULL);
-    i = 0;
-    while (line[i] && line[i] != ch)
-        i++;
-    res[0] = malloc_cl(i + 1, 0);
-    if (!res[0])
-        return (NULL);
-    j = 0;
-    while (j < i)
-    {
-        res[0][j] = line[j];
-        j++;
-    }
-    res[0][j] = '\0';
-    while (line[i] && line[i] == ch)
-        i++;
-    if (!line[i])
-        res[1] = NULL;
-    else
-    {
-        res[1] = malloc_cl(ft_strlen(&line[i]) + 1, 0);
-        if (!res[1])
-            return (NULL);
-        j = 0;
-        while (line[i])
-            res[1][j++] = line[i++];
-        res[1][j] = '\0';
-    }
-    res[2] = NULL;
-    return (res);
+	i = 0;
+	while (line[i] && line[i] != ch)
+		i++;
+	key = malloc_cl(i + 1, 0);
+	if (!key)
+		return (NULL);
+	j = 0;
+	while (j < i)
+	{
+		key[j] = line[j];
+		j++;
+	}
+	key[j] = '\0';
+	return (key);
+}
+
+static char	*ft_fill_value(char *line, int i, char ch)
+{
+	char	*value;
+	int		j;
+
+	while (line[i] && line[i] == ch)
+		i++;
+	if (!line[i])
+		return (NULL);
+	value = malloc_cl(ft_strlen(&line[i]) + 1, 0);
+	if (!value)
+		return (NULL);
+	j = 0;
+	while (line[i])
+		value[j++] = line[i++];
+	value[j] = '\0';
+	return (value);
+}
+
+static char	**ft_split_vars(char *line, char ch)
+{
+	char	**res;
+	int		i;
+
+	if (!line)
+		return (NULL);
+	res = malloc_cl(sizeof(char *) * 3, 0);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != ch)
+		i++;
+	res[0] = ft_fill_key(line, ch);
+	if (!res[0])
+		return (NULL);
+	res[1] = ft_fill_value(line, i, ch);
+	res[2] = NULL;
+	return (res);
 }
 
 t_source	*ft_fill_struct(t_source *src, char *line)

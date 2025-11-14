@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/11 20:03:05 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:00:19 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	draw_wall_column(char *data, t_source *src, t_tex *tex, int params[4])
 
 	w.tex = tex;
 	init_wall_params(&w, params, src);
-	w.p_ouvert = get_door_opening(src);
 	draw_texture_line(data, src, &w, tex);
 }
 

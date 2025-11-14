@@ -195,7 +195,7 @@ char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
 int			ft_stop_reading(t_source *src);
-
+void		ft_norm_check_hexa(t_source *curr);
 //Libft utils:
 void		*malloc_cl(size_t size, t_mal mode);
 int			ft_strcmp(char *s1, char *s2);
@@ -225,7 +225,6 @@ void		init_text(t_source *src);
 
 // drawing
 void		init_wall_params(t_wall_draw *w, int params[4], t_source *src);
-double		get_door_opening(t_source *src);
 int			get_adjusted_tex_x(t_wall_draw *w, t_tex *tex);
 int			get_texture_color(t_tex *tex, int tex_x, int tex_y);
 void		draw_texture_line(char *data, t_source *src, t_wall_draw *w,

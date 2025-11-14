@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/11 18:16:25 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:39:28 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,8 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	char	**colors_rgb;
 	int		i;
 	int		j;
-	char	*check;
 
-	1 && (check = curr->value, i = 0);
-	while (check[i++])
-		if ((check[i] == ',' && check[i + 1] == ',') || check[0] == ',')
-			return (print_message(11, NULL, '\0'), malloc_cl(0, 2), -1);
+	ft_norm_check_hexa(curr);
 	colors_rgb = ft_split(curr->value, ',');
 	if (norm_hexa(curr, colors_rgb) == -1)
 		return (-1);
@@ -60,8 +56,12 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	{
 		j = -1;
 		while (colors_rgb[i][++j] != '\0')
-			if (!(colors_rgb[i][j] >= '0' && colors_rgb[i][j] <= '9'))
+		{
+			if (ft_is_spaces(colors_rgb[i][j]) == 0)
+				continue ;
+			else if (!(colors_rgb[i][j] >= '0' && colors_rgb[i][j] <= '9'))
 				return (print_message(10, NULL, '\0'), -1);
+		}
 	}
 	if (ft_fill_struct_colors(curr, colors_rgb) == -1)
 		return (-1);

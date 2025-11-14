@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_key_theme.c                                     :+:      :+:    :+:   */
+/*   ft_key_theme_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/11 18:10:28 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:53:31 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	key_events(t_source *src)
 	double	move_speed;
 	double	rot_speed;
 
-	move_speed = src->frame_time * 5.0;
-	rot_speed = src->frame_time * 3.0;
+	move_speed = src->frame_time * 1.5;
+	rot_speed = src->frame_time * 0.5;
 	if (src->keys.esc)
 	{
 		ft_free_mlx(src);
@@ -94,7 +94,6 @@ int	ft_key_theme_b(int key, t_source *src)
 	1 && (w = WIDTH, h = HEIGHT);
 	if (key == 49 || key == 50)
 	{
-		ft_sec_parsing(src);
 		if (src->mlx_image)
 		{
 			mlx_destroy_image(src->mlx_pointer, src->mlx_image);

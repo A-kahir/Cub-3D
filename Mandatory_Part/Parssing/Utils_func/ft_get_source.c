@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/11 18:40:11 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:08:48 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ t_source	*ft_read_lines(int fd, t_source *src)
 	char	*line;
 
 	line = ft_get_next_line(fd);
+	if (!line)
+		return (close(fd), perror("Error"),
+			exit(1), NULL);
 	while (line)
 	{
 		line = ft_skip_line(line, fd);

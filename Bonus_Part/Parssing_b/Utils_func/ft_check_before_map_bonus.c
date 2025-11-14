@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_before_map.c                              :+:      :+:    :+:   */
+/*   ft_check_before_map_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/11 18:12:29 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/13 23:19:35 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,12 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	{
 		j = -1;
 		while (colors_rgb[i][++j] != '\0')
-			if (!(colors_rgb[i][j] >= '0' && colors_rgb[i][j] <= '9'))
+		{
+			if (ft_is_spaces(colors_rgb[i][j]) == 0)
+				continue ;
+			else if (!(colors_rgb[i][j] >= '0' && colors_rgb[i][j] <= '9'))
 				return (print_message(10, NULL, '\0'), -1);
+		}
 	}
 	if (ft_fill_struct_colors(curr, colors_rgb) == -1)
 		return (-1);
