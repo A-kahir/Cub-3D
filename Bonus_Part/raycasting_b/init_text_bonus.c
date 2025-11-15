@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_text.c                                        :+:      :+:    :+:   */
+/*   init_text_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 03:15:18 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/08 04:40:54 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/15 00:27:15 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ int	calculate_tex_x(t_source *src, t_raycast *ray, t_tex *tex)
 		tex_x = tex->width - tex_x - 1;
 	if (tex_x < 0 || tex_x >= tex->width)
 	{
-		printf("Error: tex_x=%d out of bounds (width=%d)\n",
-			tex_x, tex->width);
 		if (tex_x < 0)
 			tex_x = 0;
 		else

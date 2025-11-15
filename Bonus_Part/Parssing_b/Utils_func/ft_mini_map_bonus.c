@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:41:40 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/07 04:34:23 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/14 22:52:19 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int	ft_mini_map(t_source *src)
 		return (1);
 	src->mmp = malloc_cl(sizeof(t_minimp), 0);
 	if (!src->mmp)
-		return (-1);
+		return (ft_free_mlx(src), malloc_cl(0, 2), -1);
 	ft_init_minimap(&mmp, src);
 	1 && (map_row_len = ft_strlen(src->map[0]), map_h = ft_lenght_j(src));
 	norm_mini(&mmp, map_h, &map_row_len);

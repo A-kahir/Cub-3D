@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys_2.c                                           :+:      :+:    :+:   */
+/*   keys_2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 05:02:52 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/10 20:09:47 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/14 22:57:52 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static char	*ft_get_sprite_path(int i, int flag)
 	char	*base;
 
 	image = ft_itoa(i);
+	if (!image)
+		return (NULL);
 	if (flag == 1)
 		base = "Bonus_Part/Parssing_b/texture/HELL/sp/";
 	else
@@ -64,6 +66,8 @@ static int	ft_animate_sprites(t_source *src)
 	while (sp.i <= 30)
 	{
 		sp.path = ft_get_sprite_path(sp.i, flag);
+		if (!sp.path)
+			return (ft_free_mlx(src), malloc_cl(0, 2), 1);
 		sp.sprite = mlx_xpm_file_to_image(src->mlx_pointer, sp.path,
 				&sp.w, &sp.h);
 		if (sp.path)

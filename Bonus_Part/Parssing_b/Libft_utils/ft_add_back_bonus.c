@@ -21,15 +21,10 @@ void	init_new_node(t_source *new_node)
 	new_node->colors->hexa_rgb_c = 0;
 	new_node->p = malloc_cl(sizeof(t_player), 0);
 	if (!new_node->p)
-		return ;
+		return (malloc_cl(0, 2), (void) NULL);
 	new_node->p->p_px = 0;
 	new_node->p->p_py = 0;
 	new_node->p->p_or = '\0';
-	new_node->door = malloc_cl(sizeof(t_doors), 0);
-	if (!new_node->door)
-		return ;
-	new_node->door->x = 0;
-	new_node->door->y = 0;
 	new_node->door = NULL;
 	new_node->next = NULL;
 }
@@ -41,7 +36,7 @@ t_source	*ft_add_back(t_source *line, char *var, char *value)
 
 	new_node = malloc_cl(sizeof(t_source), 0);
 	if (!new_node)
-		return (line);
+		return (malloc_cl(0, 2), NULL);
 	new_node->var = ft_strdup(var);
 	if (value != NULL)
 		new_node->value = ft_strdup(value);
@@ -49,7 +44,7 @@ t_source	*ft_add_back(t_source *line, char *var, char *value)
 		new_node->value = NULL;
 	new_node->colors = malloc_cl(sizeof(t_colors), 0);
 	if (!new_node->colors)
-		return (line);
+		return (malloc_cl(0, 2), NULL);
 	init_new_node(new_node);
 	if (!line)
 		return (new_node);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:04 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 00:39:37 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 02:24:43 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ int	ft_parsing(int argc, char **argv)
 	return (0);
 }
 
-void ft_norm_check_hexa(t_source *curr)
+void	ft_norm_check_hexa(t_source *curr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (curr->value[i++])
-		if ((curr->value[i] == ',' && curr->value[i + 1] == ',') || curr->value[0] == ',')
-			return (print_message(11, NULL, '\0'), malloc_cl(0, 2), (void) NULL);
+		if ((curr->value[i] == ',' && curr->value[i + 1] == ',')
+			|| curr->value[0] == ',')
+			return (print_message(11, NULL, '\0'), malloc_cl(0, 2),
+				(void) NULL);
 }

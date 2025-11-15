@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_spaces_in_map.c                             :+:      :+:    :+:   */
+/*   ft_add_spaces_in_map_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:46:25 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/10 23:42:34 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/14 22:07:10 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_add_spaces_in_map(t_source *src)
 		{
 			new_row = (char *)malloc_cl(sizeof(char) * (max + 1), 0);
 			if (!new_row)
-				return ;
+				return (ft_free_mlx(src), malloc_cl(0, 1), (void) NULL);
 			j = -1;
 			while (src->map[i][++j])
 				new_row[j] = src->map[i][j];

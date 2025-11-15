@@ -6,7 +6,7 @@
 /*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:11:31 by akahir            #+#    #+#             */
-/*   Updated: 2025/10/29 07:55:30 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/14 22:25:51 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	ptr = (char *)malloc_cl((ft_strlen(s1) + ft_strlen(s2) + 1)
-			* sizeof(char), 0);
 	i = 0;
 	j = 0;
+	ptr = (char *)malloc_cl((ft_strlen(s1) + ft_strlen(s2) + 1)
+			* sizeof(char), 0);
 	if (ptr == NULL)
 		return (NULL);
 	while (s1[i] != '\0')

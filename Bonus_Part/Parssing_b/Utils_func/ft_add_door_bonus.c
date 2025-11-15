@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_door_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 23:05:49 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 00:02:19 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 21:57:48 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_add_door(t_source *src, int x, int y, int index)
 
 	new_door = malloc_cl(sizeof(t_doors), 0);
 	if (!new_door)
-		return ;
+		return (ft_free_mlx(src), malloc_cl(0, 2), (void) NULL);
 	new_door->index = index;
 	new_door->x = x;
 	new_door->y = y;

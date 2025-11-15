@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 04:19:39 by ifaleh            #+#    #+#             */
-/*   Updated: 2025/11/14 00:26:11 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 19:39:44 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ int	render_frame(t_source *src)
 	ray = malloc_cl(sizeof(t_raycast), 0);
 	if (!ray)
 		return (ft_free_mlx(src), malloc_cl(0, 2), -1);
-	if (!src->render_image)
-		return (0);
 	src->ray = ray;
 	data = mlx_get_data_addr(src->render_image, &src->bpp,
 			&src->line_len, &src->endian);

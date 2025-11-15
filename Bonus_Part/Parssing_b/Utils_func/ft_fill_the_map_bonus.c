@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_the_map_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 02:53:12 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 00:25:31 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 22:21:22 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static int	ft_add_line(t_source *src, char *line, int i)
 		return (i);
 	tmp = malloc_cl(sizeof(char *) * (i + 2), 0);
 	if (!tmp)
-		return (perror("malloc failed"), -1);
+		return (perror("malloc failed"), malloc_cl(0, 2), -1);
 	j = -1;
 	while (++j < i)
 		tmp[j] = src->map[j];
 	src->map = tmp;
 	src->map[i] = malloc_cl(len + 1, 0);
 	if (!src->map[i])
-		return (perror("malloc failed"), -1);
+		return (perror("malloc failed"), malloc_cl(0, 2), -1);
 	j = -1;
 	while (line[++j])
 		src->map[i][j] = line[j];

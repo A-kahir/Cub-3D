@@ -148,4 +148,3 @@ fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
-# -fsanitize=address -g

@@ -229,7 +229,7 @@ char		ft_check(t_source *src, int r, int c);
 int			check_args1(t_source *src);
 int			ft_static_flag(int new_nb, int flag);
 int			ft_stop_reading(t_source *src);
-void ft_norm_check_hexa(t_source *curr);
+void		ft_norm_check_hexa(t_source *curr);
 //Libft utils:
 
 void		*malloc_cl(size_t size, t_mal mode);
@@ -300,15 +300,12 @@ int			handle_close(t_source *src);
 int			key_press(int key, t_source *src);
 void		handle_mouse(t_source *src);
 // Bonus func :
-//
 int			ft_mini_map(t_source *src);
-	//-> conditions mmp
 void		norm_mini(t_minimp *mmp, int map_h, int	*map_row_len);
 void		ft_calc_demonsions(t_minimp *mmp);
 void		ft_fix_negative(t_minimp *mmp);
 void		ft_cadring_outside(t_minimp *mmp, int map_w, int map_h);
 void		ft_init_minimap(t_minimp *mmp, t_source *src);
-	//-> draw Pixels
 void		ft_set_pixel_img(t_source *src, char *img_data, t_pixel pixel,
 				int color);
 void		ft_draw_pixel(t_source *src, char *img_data,

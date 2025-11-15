@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 00:03:28 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 19:40:01 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_key_loading(int key, t_source *src)
 		src->render_image = mlx_new_image(src->mlx_pointer,
 				WIDTH, HEIGHT);
 		if (!src->render_image)
-			return (1);
+			return (ft_free_mlx(src), malloc_cl(0, 2), 1);
 		mlx_hook(src->mlx_window, 2, (1L << 1), key_press, src);
 		mlx_loop_hook(src->mlx_pointer, render_frame, src);
 	}

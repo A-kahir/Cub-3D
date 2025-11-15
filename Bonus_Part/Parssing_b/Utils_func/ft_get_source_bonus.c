@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_source_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 00:08:14 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/14 21:47:51 by ifaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,13 @@ t_source	*ft_read_lines(int fd, t_source *src)
 
 	line = ft_get_next_line(fd);
 	if (!line)
-			return (close(fd), perror("Error"),
-				exit(1), NULL);
+		return (close(fd), perror("Error"),
+			exit(1), NULL);
 	while (line)
 	{
 		line = ft_skip_line(line, fd);
 		if (!line || line[0] == '\n' || ft_is_spaces(line[0]) == 0)
-		{
-			if (line)
-				line = ft_get_next_line(fd);
 			continue ;
-		}
 		if (ft_chack_valid_source(src, line) == 0)
 			src = ft_fill_struct(src, line);
 		if (ft_stop_reading(src) == 0)
