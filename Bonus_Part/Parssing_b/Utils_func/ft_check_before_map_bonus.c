@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_before_map_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 22:17:17 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/15 15:19:28 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 	int		i;
 	int		j;
 
-	i = 0;
 	ft_norm_check_hexa(curr);
 	colors_rgb = ft_split(curr->value, ',');
 	norm_hexa(curr, colors_rgb);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_secound_parsing_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 18:00:39 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 21:32:27 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/15 14:33:14 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_sec_parsing(t_source *src)
 	void		*temp_img;
 	t_source	*curr;
 
-	1 & (width_img = WIDTH, height_img = HEIGHT);
+	1 && (width_img = WIDTH, height_img = HEIGHT);
 	ft_fill_mlx_ptr(src);
 	curr = src;
 	while (curr)

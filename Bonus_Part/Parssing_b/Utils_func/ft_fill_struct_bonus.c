@@ -65,10 +65,10 @@ static char	*ft_fill_value(char *line, int i, char ch)
 	while (line[i] && line[i] == ch)
 		i++;
 	if (!line[i])
-		return (malloc_cl(0, 2), NULL);
+		return (NULL);
 	value = malloc_cl(ft_strlen(&line[i]) + 1, 0);
 	if (!value)
-		return (malloc_cl(0, 2), NULL);
+		return (NULL);
 	j = 0;
 	while (line[i])
 		value[j++] = line[i++];

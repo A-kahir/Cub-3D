@@ -24,7 +24,11 @@ static t_source	*ft_handle_rgb(t_source *src, char **var)
 		if (!rgb_str)
 			rgb_str = ft_strdup(var[i]);
 		else
+		{
 			rgb_str = ft_strjoin(rgb_str, var[i]);
+			if (!rgb_str)
+				return (ft_free_mlx(src), malloc_cl(0, 2), NULL);
+		}
 		i++;
 	}
 	src = ft_add_back(src, var[0], rgb_str);
@@ -106,7 +110,7 @@ t_source	*ft_fill_struct(t_source *src, char *line)
 		line[len - 2] = '\0';
 	var = ft_split_vars(line, ' ');
 	if (!var)
-		return (perror("variables"), NULL);
+		return (perror("variables"), malloc_cl(0, 2), NULL);
 	value = var[1];
 	if (!value || !value[0])
 		return (NULL);

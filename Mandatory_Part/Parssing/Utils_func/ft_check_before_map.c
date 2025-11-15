@@ -6,7 +6,7 @@
 /*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:11:10 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 00:39:28 by akahir           ###   ########.fr       */
+/*   Updated: 2025/11/15 15:17:51 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ static int	ft_prepare_hexa_rgb(t_source *curr)
 
 	ft_norm_check_hexa(curr);
 	colors_rgb = ft_split(curr->value, ',');
-	if (norm_hexa(curr, colors_rgb) == -1)
-		return (-1);
+	norm_hexa(curr, colors_rgb);
 	i = -1;
 	while (colors_rgb[++i])
 	{

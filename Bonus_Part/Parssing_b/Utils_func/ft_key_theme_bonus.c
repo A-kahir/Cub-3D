@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_theme_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:46:59 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 21:32:19 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/15 14:35:06 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_key_theme_b(int key, t_source *src)
 	int	w;
 	int	h;
 
-	1 & (w = WIDTH, h = HEIGHT);
+	1 && (w = WIDTH, h = HEIGHT);
 	if (key == 49 || key == 50)
 	{
 		if (src->mlx_image)

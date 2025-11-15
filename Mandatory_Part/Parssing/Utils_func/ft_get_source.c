@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_source.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifaleh <ifaleh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akahir <akahir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:30:44 by akahir            #+#    #+#             */
-/*   Updated: 2025/11/14 21:48:10 by ifaleh           ###   ########.fr       */
+/*   Updated: 2025/11/15 15:14:28 by akahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ t_source	*ft_read_lines(int fd, t_source *src)
 
 	line = ft_get_next_line(fd);
 	if (!line)
-		return (close(fd), perror("Error"),
-			exit(1), NULL);
+		return (close(fd), write(2, "Error\n", 7),
+			malloc_cl(0, 2), NULL);
 	while (line)
 	{
 		line = ft_skip_line(line, fd);
